@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shater/util/color.dart';
 
 import '../../../util/font_style.dart';
 
 
-class TextCustom extends StatelessWidget {
+class CustomText extends StatelessWidget {
   final String text;
   final double fontSize;
   final double? textHeight;
@@ -17,7 +18,7 @@ class TextCustom extends StatelessWidget {
   final int? maxLine;
   final TextDecoration? textDecoration;
 
- const TextCustom({
+ const CustomText({
     required this.text,
     this.fontSize = 14,
     this.fontWeight = FontWeight.w400,
@@ -33,7 +34,7 @@ class TextCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text.tr,
       style: FontStyleConstant.hNLTRegular.copyWith(
         fontWeight: fontWeight,
         fontSize: fontSize.sp,

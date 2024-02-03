@@ -4,8 +4,23 @@ import 'package:get/get.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
 
-class SplashScreen extends StatelessWidget {
+import '../../../../routes/app_routes.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+     Get.toNamed(Routes.getDashBoardScreen());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +33,13 @@ class SplashScreen extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Text(
-              'Shater'.tr,
-              style: FontStyleConstant.hNLTBBold
-                  .copyWith(fontSize: Dimensions.fontSize18, color: Colors.white),
+              'shater'.tr,
+              style: FontStyleConstant.hNLTBBold.copyWith(
+                  fontSize: Dimensions.fontSize18, color: Colors.white),
             ),
           ),
           Text(
-            'Version''\t' "1.0.0",
+            "version".tr + '\t' "1.0.0",
             style: FontStyleConstant.hNLTBBold
                 .copyWith(fontSize: Dimensions.fontSize18, color: Colors.white),
           ),

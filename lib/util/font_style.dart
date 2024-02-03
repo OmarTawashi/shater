@@ -18,7 +18,7 @@ class FontStyleConstant {
     fontSize: Dimensions.fontSize14,
     color: COLORS.textColor
   );
-  static TextStyle hNLTBBold = TextStyle(
+  static TextStyle hNLTSemiBold = TextStyle(
     fontFamily: familyFont,
     fontWeight: FontWeight.w700,
     fontSize: Dimensions.fontSize14,
@@ -30,7 +30,7 @@ class FontStyleConstant {
     fontSize: Dimensions.fontSize14,
     color: COLORS.textColor
   );
-  static TextStyle hNLTSemiBold = TextStyle(
+  static TextStyle hNLTBBold = TextStyle(
     fontFamily: familyFont,
     fontWeight: FontWeight.w600,
     fontSize: Dimensions.fontSize14,
