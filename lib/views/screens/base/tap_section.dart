@@ -16,8 +16,8 @@ class TapSection extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(11.sp),
-          margin: EdgeInsets.all(3.sp),
+          padding: EdgeInsets.all(7.sp),
+          margin: EdgeInsets.all(4.sp),
           decoration: BoxDecoration(
               color: isSelected ?? false
                   ? COLORS.secanderyColor

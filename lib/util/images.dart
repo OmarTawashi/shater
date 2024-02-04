@@ -15,6 +15,7 @@ class ICONS {
       'assets/icons/subscriptionTapActive.svg';
   static const String teachersTopBar = 'assets/icons/teachersTopBar.svg';
   static const String notification = 'assets/icons/notification.svg';
+  static const String subscriptionTop = 'assets/icons/subscriptionTop.svg';
   static const String book = 'assets/images/book.png';
   static const List<String> unActiveTab = [
     teachersTap,

@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
-import 'package:shater/views/screens/base/section_header_delegate.dart';
-import 'package:shater/views/screens/base/tap_section.dart';
 import 'package:shater/views/screens/teachers/controller/teachers_controller.dart';
 
 import '../../../../util/dimensions.dart';
+import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
+import '../../base/tap_section.dart';
 import '../../base/text_custom.dart';
 
 class TeacherScreen extends StatelessWidget {
@@ -23,40 +23,28 @@ class TeacherScreen extends StatelessWidget {
             const PerfectAppBar(
               assetName: ICONS.teachersTopBar,
             ),
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: SectionHeaderDelegate(
-                height: 100,
-                widget: Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(80),
-                      border:
-                          Border.all(color: COLORS.secanderyColor, width: 2.5)),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TapSection(
-                        isSelected:
-                            (controller.selectSection == TabSection.sectionOne),
-                        onTap: () {
-                          controller.changeSection(TabSection.sectionOne);
-                        },
-                        text: 'season_one'.tr,
-                      ),
-                      TapSection(
-                        isSelected:
-                            (controller.selectSection == TabSection.sectionTwo),
-                        onTap: () {
-                          controller.changeSection(TabSection.sectionTwo);
-                        },
-                        text: 'season_two'.tr,
-                      ),
-                    ],
-                  ),
-                ),
+            IntikeTapBar(
+              child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TapSection(
+                isSelected:
+                    (controller.selectSection == TabSection.sectionOne),
+                onTap: () {
+                  controller.changeSection(TabSection.sectionOne);
+                },
+                text: 'season_one'.tr,
               ),
+              TapSection(
+                isSelected:
+                    (controller.selectSection == TabSection.sectionTwo),
+                onTap: () {
+                  controller.changeSection(TabSection.sectionTwo);
+                },
+                text: 'season_two'.tr,
+              ),
+            ],
+          ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
@@ -129,22 +117,28 @@ class TeacherScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    CustomText(
-                                      text: "2",
-                                      color: Colors.white,
-                                      textAlign: TextAlign.start,
-                                      fontSize: Dimensions.fontSize12.sp,
-                                      fontWeight: FontWeight.w400,
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom:6.0),
+                                      child: CustomText(
+                                        text: "2",
+                                        color: Colors.white,
+                                        textAlign: TextAlign.start,
+                                        fontSize: Dimensions.fontSize12.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: Dimensions.paddingSize5,
                                     ),
-                                    CustomText(
-                                      text: 'teachers',
-                                      color: Colors.white,
-                                      textAlign: TextAlign.start,
-                                      fontSize: Dimensions.fontSize10.sp,
-                                      fontWeight: FontWeight.bold,
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom:6.0),
+                                      child: CustomText(
+                                        text: 'teachers',
+                                        color: Colors.white,
+                                        textAlign: TextAlign.start,
+                                        fontSize: Dimensions.fontSize10.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: Dimensions.paddingSize10,
@@ -179,3 +173,4 @@ class TeacherScreen extends StatelessWidget {
     );
   }
 }
+

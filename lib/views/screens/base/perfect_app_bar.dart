@@ -22,6 +22,7 @@ class PerfectAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       leading: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.all(16),
@@ -48,7 +49,7 @@ class PerfectAppBar extends StatelessWidget {
           margin:const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
           padding: const EdgeInsets.symmetric(
               horizontal: Dimensions.paddingSize16,
-              vertical: Dimensions.paddingSize8),
+              vertical: Dimensions.paddingSize5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: const Color.fromRGBO(72, 131, 196, 1),
@@ -61,11 +62,15 @@ class PerfectAppBar extends StatelessWidget {
               const SizedBox(
                 width: Dimensions.paddingSize5,
               ),
-              CustomText(
-                text: '2',
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: Dimensions.fontSize14 + 2.sp,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,5),
+                child: CustomText(
+                  text: '2',
+                  color: Colors.white,
+                  textAlign: TextAlign.start,
+                  fontWeight: FontWeight.bold,
+                  fontSize: Dimensions.fontSize14 + 2.sp,
+                ),
               )
             ],
           ),
