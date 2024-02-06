@@ -9,6 +9,7 @@ import 'package:shater/views/screens/base/svgpicture_custom.dart';
 
 import '../../../base/custom_cupertino_button.dart';
 import '../../../base/text_custom.dart';
+import '../../../base/text_not_acounts.dart';
 import '../widgets/rate_app.dart';
 
 class BaseLoginScreen extends StatelessWidget {
@@ -49,8 +50,7 @@ class BaseLoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),
-                    border: Border.all(
-                        color: COLORS.strokeColor , width: 2)),
+                    border: Border.all(color: COLORS.strokeColor, width: 2)),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -76,32 +76,20 @@ class BaseLoginScreen extends StatelessWidget {
             SizedBox(
               height: 45.h,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CustomText(
-                  text: 'have_an_account'.tr + '\t',
-                  color: const Color.fromRGBO(159, 191, 216, 1),
-                  fontSize: Dimensions.fontSize16,
-                  fontWeight: FontWeight.w400,
-                ),
-                InkWell(
-                    onTap: () {},
-                    child: const CustomText(
-                      text: 'create_new_acounts',
-                      color: Color.fromRGBO(0, 207, 254, 1),
-                      fontSize: Dimensions.fontSize16,
-                      fontWeight: FontWeight.w400,
-                    )),
-              ],
+            TextNotAcount(
+              startText: 'have_an_account',
+              lastText: 'create_new_acounts',
+              isShowIcon: false,
+              mainAxisAlignment:  MainAxisAlignment.start,
+              onTap: () {},
             ),
-           const SizedBox(
+            const SizedBox(
               height: 16,
             ),
             CustomCupertinoButton(
               assetName: ICONS.studentIC,
               text: 'teacher',
-              trailing:const Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_sharp,
                 color: Colors.white,
                 size: 18,
@@ -114,9 +102,9 @@ class BaseLoginScreen extends StatelessWidget {
               height: Dimensions.paddingSize16,
             ),
             CustomCupertinoButton(
-               assetName: ICONS.student,
-               text: 'student',
-              trailing:const Icon(
+              assetName: ICONS.student,
+              text: 'student',
+              trailing: const Icon(
                 Icons.arrow_forward_ios_sharp,
                 color: Colors.white,
                 size: 18,
@@ -131,4 +119,3 @@ class BaseLoginScreen extends StatelessWidget {
     );
   }
 }
-

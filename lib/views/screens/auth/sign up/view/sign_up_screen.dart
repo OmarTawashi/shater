@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/routes/app_routes.dart';
-import 'package:shater/views/screens/base/custom_intike_container.dart';
-import 'package:shater/views/screens/base/custom_text_form_field.dart';
-import 'package:shater/views/screens/base/text_custom.dart';
 
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';
 import '../../../base/custom_cupertino_button.dart';
+import '../../../base/custom_intike_container.dart';
+import '../../../base/custom_text_form_field.dart';
+import '../../../base/text_custom.dart';
 import '../../../base/text_not_acounts.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: COLORS.primaryColor,
       appBar: AppBar(
         backgroundColor: COLORS.primaryColor,
-        leading: ButtonBack(),
+        leading: const ButtonBack(),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -33,9 +32,9 @@ class SignInScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CustomIntikeContainer(
-                    paddingHorizontal: 70,
+                    paddingHorizontal: 21,
                     child: CustomText(
-                      text: 'enter_acounts',
+                      text: 'create_new_acount_student',
                       textAlign: TextAlign.center,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -57,70 +56,55 @@ class SignInScreen extends StatelessWidget {
               ),
               CustomTextFormField(
                 controller: TextEditingController(),
-                hintText: 'password'.tr,
+                hintText: 'enter_password'.tr,
                 keyboardType: TextInputType.visiblePassword,
-              ),
-              SizedBox(
-                height: 22,
-              ),
-              CustomCupertinoButton(
-                text: 'enter',
               ),
               SizedBox(
                 height: 16,
               ),
+              CustomTextFormField(
+                controller: TextEditingController(),
+                hintText: 'retry_enter_password'.tr,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              const SizedBox(
+                height: 45,
+              ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  InkWell(
-                      onTap: () {},
-                      child: const CustomText(
-                        text: 'forget_passwords',
-                        color: Color.fromRGBO(159, 191, 216, 1),
-                        fontSize: Dimensions.fontSize15,
-                        fontWeight: FontWeight.w400,
-                      )),
+                  Checkbox.adaptive(
+                    value: false,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    fillColor: MaterialStatePropertyAll(Colors.transparent),
+                    activeColor: Colors.amber,
+                    side: BorderSide(color: Colors.white, width: 1.5),
+                    checkColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    onChanged: (value) {},
+                  ),
+                  TextNotAcount(
+                    startText: 'ok_to',
+                    lastText: 'privcy_policy',
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    onTap: () {},
+                  ),
                 ],
               ),
               SizedBox(
-                height: 45,
+                height: 16,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Divider(
-                      color: COLORS.strokeColor,
-                      thickness: 2,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: CustomText(
-                      text: 'or',
-                      color: Color.fromRGBO(159, 191, 216, 1),
-                      fontSize: Dimensions.fontSize15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      color: COLORS.strokeColor,
-                      thickness: 2,
-                    ),
-                  ),
-                ],
+              CustomCupertinoButton(
+                text: 'next',
               ),
               const SizedBox(
                 height: Dimensions.paddingSize16,
               ),
               TextNotAcount(
-                startText: 'have_an_account',
-                lastText: 'create_new_acounts',
-                onTap: () {
-                  Get.toNamed(Routes.getSignUpScreen());
-                },
+                startText: 'have_an_acount',
+                lastText: 'sign_in',
+                onTap: () {},
               ),
             ],
           ),

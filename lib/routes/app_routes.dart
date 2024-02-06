@@ -4,6 +4,7 @@ abstract class RoutesName {
   static const homeScreen = '/home-screen';
   static const profileScreen = '/profile-screen';
   static const baseLoginScreen = '/base-login-screen';
+  static const signUpScreen = '/sign-up-screen';
   static const signInScreen = '/sign-in-screen';
   static const firstsScreen = '/firsts-screen';
   static const resultScreen = '/result-screen';
@@ -15,6 +16,7 @@ abstract class Routes {
   static String getProfileScreen() => RoutesName.profileScreen;
   static String getBaseLoginScreen() => RoutesName.baseLoginScreen;
   static String getSignInScreen() => RoutesName.signInScreen;
+  static String getSignUpScreen() => RoutesName.signUpScreen;
   static String getFirstsScreen() => RoutesName.firstsScreen;
   static String getResultScreen() => RoutesName.resultScreen;
   static String getDashBoardScreen() => RoutesName.dashBoardScreen;

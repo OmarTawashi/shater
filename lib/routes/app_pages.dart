@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/views/screens/auth/base%20login/view/base_login_screen.dart';
 import 'package:shater/views/screens/auth/sign%20in/view/sign_in_screen.dart';
+import 'package:shater/views/screens/auth/sign%20up/view/sign_up_screen.dart';
 import 'package:shater/views/screens/dashBord/controller/dashboard_controller.dart';
 import 'package:shater/views/screens/dashBord/view/dashbord_screen.dart';
 import 'package:shater/views/screens/firsts/view/first_screen.dart';
@@ -32,6 +33,10 @@ class AppPages {
     GetPage(
       name: RoutesName.baseLoginScreen,
       page: () => const BaseLoginScreen(),
+    ),
+    GetPage(
+      name: RoutesName.signUpScreen,
+      page: () => const SignUpScreen(),
     ),
     GetPage(
       name: RoutesName.signInScreen,
