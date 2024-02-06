@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-     Get.toNamed(Routes.getDashBoardScreen());
+     Get.offAllNamed(Routes.getBaseLoginScreen());
     });
   }
 

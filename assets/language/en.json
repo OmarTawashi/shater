@@ -8,6 +8,21 @@
     "results":"Results",
     "season_one":"SeasonOne",
     "season_two":"SeasonTwo",
-    "subscription":"Subscription"
+    "subscription":"Subscription",
+    "student_today":"Student Today",
+    "school_today":"School Today",
+    "leader":"Leader",
+    "points":"Points",
+    "school":"School",
+    "teacher":"Teacher",
+    "student":"Student",
+    "email":"Email",
+    "enter":"Enter",
+    "or":"OR",
+    "password":"Password",
+    "forget_passwords":"Forget Passwords?",
+    "enter_acounts":"Enter Acounts",
+    "have_an_account":"Have An Account?",
+    "create_new_acounts":"Create new Acounts"
 
 }
