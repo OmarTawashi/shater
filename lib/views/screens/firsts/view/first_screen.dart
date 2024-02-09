@@ -21,10 +21,9 @@ class FirstsScreen extends StatelessWidget {
     return Scaffold(
         body: GetBuilder<FirstsController>(
       builder: (controller) => CustomScrollView(slivers: [
-        const PerfectAppBar(
-          assetName: ICONS.firstsTop,
-        ),
+        const PerfectAppBar(),
         IntikeTapBar(
+          assetName: ICONS.firstsTop,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -72,8 +71,15 @@ class FirstsScreen extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            childCount: 15,
-            (context, index) => ItemFirstStudents(),
+            childCount: 8,
+            (context, index) => ItemFirstStudents(
+              index: index + 1,
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 100.h,
           ),
         )
       ]),
@@ -82,9 +88,8 @@ class FirstsScreen extends StatelessWidget {
 }
 
 class ItemFirstStudents extends StatelessWidget {
-  const ItemFirstStudents({
-    super.key,
-  });
+  final int? index;
+  const ItemFirstStudents({super.key, this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +105,7 @@ class ItemFirstStudents extends StatelessWidget {
               color: COLORS.primaryColor,
             ),
             child: CustomText(
-              text: '1',
+              text: index.toString(),
               fontWeight: FontWeight.w700,
               color: Colors.white,
               fontSize: Dimensions.fontSize16.sp,
@@ -111,60 +116,96 @@ class ItemFirstStudents extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-              margin:const EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.fromLTRB(10, 7, 10, 7),
+              margin: const EdgeInsets.only(left: 16),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: COLORS.primaryColor),
-              child: ListTile(
-                minVerticalPadding: 0,
-                contentPadding: EdgeInsets.zero,
-                horizontalTitleGap: 12,
-                leading: Image.asset(IMAGES.firstImages),
-                title: CustomText(
-                  text: 'أسماء سالم غنام الشمري',
-                  fontWeight: FontWeight.bold,
-                  textHeight: 1,
-                  fontSize: Dimensions.fontSize13.sp,
-                  color: Colors.white,
-                ),
-                subtitle: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomText(
-                      text: "school".tr + ":\t",
-                      fontWeight: FontWeight.bold,
-                      fontSize: Dimensions.fontSize12.sp,
-                      color: Colors.white,
+              child: Row(
+                children: [
+                  Image.asset(IMAGES.firstImages),
+                 const Padding(
+                    padding:  EdgeInsets.only(right: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextStudentInfo(
+                              textTitle: 'أسماء سالم غنام الشمري',
+                              title: 'الطالب',
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextStudentInfo(
+                              textTitle: 'سلافة بنت سعد',
+                              title: 'المدرسة',
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            TextStudentInfo(
+                              textTitle: 'حولي',
+                              title: 'المنطقة',
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                    CustomText(
-                      text: "اروى بنت الحارث",
-                      fontWeight: FontWeight.bold,
-                      fontSize: Dimensions.fontSize12.sp,
-                      color: Color.fromRGBO(205, 223, 235, 1),
-                    )
-                  ],
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomSvgPicture(assetName: ICONS.star),
-                    SizedBox(
-                      width: Dimensions.paddingSize8,
-                    ),
-                    CustomText(
-                      text: "333",
-                      fontWeight: FontWeight.bold,
-                      fontSize: Dimensions.fontSize16.sp,
-                      color: Colors.white,
-                    )
-                  ],
-                ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomSvgPicture(assetName: ICONS.star),
+                      SizedBox(
+                        width: Dimensions.paddingSize8,
+                      ),
+                      CustomText(
+                        text: "333",
+                        fontWeight: FontWeight.bold,
+                        fontSize: Dimensions.fontSize16.sp,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
-          )
+          ),
         ],
       ),
+    );
+  }
+}
+
+class TextStudentInfo extends StatelessWidget {
+  final String? title;
+  final String? textTitle;
+  const TextStudentInfo({super.key, this.textTitle, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomText(
+          text: title!.tr + ":\t",
+          fontWeight: FontWeight.bold,
+          fontSize: Dimensions.fontSize12.sp,
+          maxLine: 1,
+          color: Colors.white,
+        ),
+        CustomText(
+          text: textTitle ?? '',
+          fontWeight: FontWeight.bold,
+          maxLine: 1,
+          fontSize: Dimensions.fontSize12.sp,
+          color: Color.fromRGBO(205, 223, 235, 1),
+        )
+      ],
     );
   }
 }

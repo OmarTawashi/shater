@@ -26,8 +26,9 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       textAlign: TextAlign.center,
+      cursorColor: Colors.white,
       style: FontStyleConstant.hNLTRegular.copyWith(
-        color: Color.fromRGBO(159, 191, 216, 1),
+        color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: Dimensions.fontSize15,
       ),

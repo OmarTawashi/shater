@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shater/views/screens/base/text_custom.dart';
 
 import '../../../util/color.dart';
@@ -16,8 +15,8 @@ class TapSection extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(7.sp),
-          margin: EdgeInsets.all(4.sp),
+          padding:const EdgeInsets.all(11),
+          margin:const EdgeInsets.all(2),
           decoration: BoxDecoration(
               color: isSelected ?? false
                   ? COLORS.secanderyColor

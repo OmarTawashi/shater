@@ -28,12 +28,17 @@ class BaseLoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                  color: Colors.white, shape: BoxShape.circle),
-              child: const CustomSvgPicture(assetName: ICONS.logoAppt),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(Routes.getEditProfileScreen());
+              },
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                    color: Colors.white, shape: BoxShape.circle),
+                child: const CustomSvgPicture(assetName: ICONS.logoAppt),
+              ),
             ),
             SizedBox(
               height: Dimensions.paddingSize20.h,

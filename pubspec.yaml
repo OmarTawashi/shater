@@ -87,10 +87,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: HelveticaNeueLTArabic
+    - family: Helvetica Neue W23 for SKY
       fonts:
-        - asset: assets/fonts/HelveticaNeueLTArabic-Light.ttf
-        - asset: assets/fonts/HelveticaNeueLTArabic-Roman.ttf
+        # - asset: assets/fonts/HelveticaNeueLTArabic-Light.ttf
+        # - asset: assets/fonts/HelveticaNeueLTArabic-Roman.ttf
         - asset: assets/fonts/HelveticaNeueW23forSKY-Reg.ttf
   #
   # For details regarding fonts from package dependencies,

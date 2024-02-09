@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shater/util/color.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
@@ -32,7 +31,7 @@ class CustomSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       leadingWidth: leadingWidth,
-      toolbarHeight: 150.h,
+      toolbarHeight: 60,
       automaticallyImplyLeading: automaticallyImplyLeading,
       actions: actions,
       floating: floating,

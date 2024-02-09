@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/constant.dart';
@@ -18,9 +19,8 @@ class DashBoardScreen extends StatelessWidget {
       builder: (controller) => Scaffold(
           extendBody: true,
           bottomNavigationBar: Container(
-            height: 75,
+            height: 65,
             color: Colors.transparent,
-            margin: const EdgeInsets.fromLTRB(0, 0, 0, 8),
             child: BottomNavigationBar(
               currentIndex: controller.selectedIndex,
               onTap: (value) {
@@ -30,9 +30,9 @@ class DashBoardScreen extends StatelessWidget {
               unselectedItemColor: const Color.fromRGBO(190, 190, 190, 1),
               showUnselectedLabels: true,
               selectedLabelStyle: FontStyleConstant.hNLTBBold
-                  .copyWith(fontSize: Dimensions.fontSize13),
+                  .copyWith(fontSize: Dimensions.fontSize12.sp),
               unselectedLabelStyle: FontStyleConstant.hNLTBBold
-                  .copyWith(fontSize: Dimensions.fontSize13),
+                  .copyWith(fontSize: Dimensions.fontSize12.sp),
               type: BottomNavigationBarType.fixed,
               items: List.generate(
                 5,
@@ -60,6 +60,8 @@ class DashBoardScreen extends StatelessWidget {
         label: label,
         icon: CustomSvgPicture(
           assetName: isSelected == true ? activeAssets! : unActiveAssets!,
+          height: 22,
+          width: 22,
         ));
   }
 }

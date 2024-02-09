@@ -12,7 +12,7 @@ class IntikTextTop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.fromLTRB(16, 5, 16, 10),
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
       decoration: BoxDecoration(
           color: COLORS.primaryColor, borderRadius: BorderRadius.circular(18)),
       child: CustomText(

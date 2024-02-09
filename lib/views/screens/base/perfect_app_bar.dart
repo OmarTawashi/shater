@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shater/util/images.dart';
 import 'package:shater/views/screens/base/custom_sliver_app_bar.dart';
-import 'package:shater/views/screens/base/svgpicture_custom.dart';
 import 'package:shater/views/screens/base/text_custom.dart';
 
 import '../../../util/dimensions.dart';
 
 class PerfectAppBar extends StatelessWidget {
-  final String assetName;
   const PerfectAppBar({
     super.key,
-    required this.assetName,
   });
 
   @override
@@ -19,6 +15,8 @@ class PerfectAppBar extends StatelessWidget {
     return CustomSliverAppBar(
       leadingWidth: 116.w,
       pinned: true,
+      primary: true,
+      elevation: 0,
       automaticallyImplyLeading: false,
       leading: Row(
         mainAxisSize: MainAxisSize.min,
@@ -40,16 +38,13 @@ class PerfectAppBar extends StatelessWidget {
           )
         ],
       ),
-      centerTitle: true,
-      title: Container(
-          margin: EdgeInsets.fromLTRB(0, 55.h, 0, 0),
-          child: CustomSvgPicture(assetName: assetName)),
       actions: [
         Container(
-          margin:const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
+          margin:
+              const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
           padding: const EdgeInsets.symmetric(
               horizontal: Dimensions.paddingSize16,
-              vertical: Dimensions.paddingSize5),
+              vertical: Dimensions.paddingSize8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: const Color.fromRGBO(72, 131, 196, 1),
@@ -57,20 +52,12 @@ class PerfectAppBar extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              //notification
-              const CustomSvgPicture(assetName: ICONS.notification),
-              const SizedBox(
-                width: Dimensions.paddingSize5,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0,0,0,5),
-                child: CustomText(
-                  text: '2',
-                  color: Colors.white,
-                  textAlign: TextAlign.start,
-                  fontWeight: FontWeight.bold,
-                  fontSize: Dimensions.fontSize14 + 2.sp,
-                ),
+              CustomText(
+                text: 'season_one',
+                color: Colors.white,
+                textAlign: TextAlign.start,
+                fontWeight: FontWeight.bold,
+                fontSize: Dimensions.fontSize12 + 2.sp,
               )
             ],
           ),

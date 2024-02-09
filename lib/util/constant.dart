@@ -5,11 +5,11 @@ class APPCONSTANT {
   static const String LANGUAGE_CODE = 'saidBox_language_code';
 
   static const List<String> labelTab = [
-    "teachers",
+    "subjects",
     "exercise",
-    "subscriptions",
+    "teachers",
     "top",
-    "results",
+    "contacts",
   ];
   static List<LanguageModel> languages = [
     LanguageModel(

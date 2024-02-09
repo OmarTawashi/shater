@@ -65,6 +65,9 @@ class SignInScreen extends StatelessWidget {
               ),
               CustomCupertinoButton(
                 text: 'enter',
+                onPressed: () {
+                  Get.toNamed(Routes.getDashBoardScreen());
+                },
               ),
               SizedBox(
                 height: 16,

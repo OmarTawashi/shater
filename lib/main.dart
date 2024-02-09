@@ -12,12 +12,14 @@ import 'controller/localization_controller.dart';
 import 'util/constant.dart';
 import 'util/messages.dart';
 
-void main()async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final languages = await InitApp.initLanguage();
-   SharedPreferences shared = await SharedPreferences.getInstance();
+  SharedPreferences shared = await SharedPreferences.getInstance();
   Get.lazyPut(() => shared);
-  runApp( MyApp(languages: languages,));
+  runApp(MyApp(
+    languages: languages,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,15 +31,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: const Size(414, 905),
-        minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, child) => GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Shater',
             theme: ThemeApp.materialLightTheme(),
+            defaultTransition: Transition.cupertino,
             initialBinding: RootBinding(),
             initialRoute: RoutesName.spalshScreen,
-                        locale: Get.find<LocalizationController>().locale,
+            locale: Get.find<LocalizationController>().locale,
             translations: Messages(languages: languages),
             fallbackLocale: Locale(APPCONSTANT.languages[1].languageCode!,
                 APPCONSTANT.languages[1].countryCode),
