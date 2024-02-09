@@ -47,36 +47,15 @@ class BaseLoginScreen extends StatelessWidget {
             SizedBox(
               height: 45.h,
             ),
-            GestureDetector(
+            ButtonBorderFillWidget(
               onTap: () {
                 Get.toNamed(Routes.getSignInScreen());
               },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(13),
-                    border: Border.all(color: COLORS.strokeColor, width: 2)),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: CustomText(
-                        text: 'enter_acounts',
-                        textHeight: 1,
-                        textAlign: TextAlign.center,
-                        color: Color.fromRGBO(159, 191, 216, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.fontSize15,
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios_sharp,
-                      size: 18,
-                      color: Colors.white,
-                    )
-                  ],
-                ),
-              ),
+              borderColor: COLORS.strokeColor,
+              isShowIcon: true,
+              text: 'enter_acounts',
+              backgroundColor: Colors.transparent,
+              textColor: Color.fromRGBO(159, 191, 216, 1),
             ),
             SizedBox(
               height: 45.h,
@@ -85,7 +64,7 @@ class BaseLoginScreen extends StatelessWidget {
               startText: 'have_an_account',
               lastText: 'create_new_acounts',
               isShowIcon: false,
-              mainAxisAlignment:  MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               onTap: () {},
             ),
             const SizedBox(
@@ -118,6 +97,61 @@ class BaseLoginScreen extends StatelessWidget {
                 print('');
               },
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonBorderFillWidget extends StatelessWidget {
+  final Function()? onTap;
+  final Color? borderColor;
+  final Color? backgroundColor;
+  final Color textColor;
+  final String? text;
+  final bool isShowIcon;
+  const ButtonBorderFillWidget(
+      {super.key,
+      this.onTap,
+      this.borderColor,
+      this.backgroundColor,
+      this.text,
+      this.isShowIcon = false,
+      this.textColor = Colors.white});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(13),
+            color: backgroundColor,
+            border: borderColor != null
+                ? Border.all(color: borderColor!, width: 2)
+                : null),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: CustomText(
+                text: text ?? '',
+                textHeight: 1,
+                textAlign: TextAlign.center,
+                color: textColor,
+                fontWeight: FontWeight.bold,
+                fontSize: Dimensions.fontSize15,
+              ),
+            ),
+            isShowIcon
+                ? Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    size: 18,
+                    color: Colors.white,
+                  )
+                : SizedBox()
           ],
         ),
       ),

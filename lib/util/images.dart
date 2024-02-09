@@ -29,6 +29,7 @@ class ICONS {
   static const String teachersTopBar = 'assets/icons/teachersTopBar.svg';
   static const String teacherTop = 'assets/icons/teacherTop.svg';
   static const String teacherWhite = 'assets/icons/teacherIconWhite.svg';
+  static const String contactWhite = 'assets/icons/contactWhite.svg';
   static const String contactTop = 'assets/icons/contactTop.svg';
   static const String notification = 'assets/icons/notification.svg';
   static const String subscriptionTop = 'assets/icons/subscriptionTop.svg';

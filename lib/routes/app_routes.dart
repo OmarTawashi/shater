@@ -9,6 +9,7 @@ abstract class RoutesName {
   static const signInScreen = '/sign-in-screen';
   static const firstsScreen = '/firsts-screen';
   static const contactScreen = '/contact-screen';
+  static const semesterScreen = '/semester-screen';
 }
 
 abstract class Routes {
@@ -22,4 +23,5 @@ abstract class Routes {
   static String getFirstsScreen() => RoutesName.firstsScreen;
   static String getContactScreen() => RoutesName.contactScreen;
   static String getDashBoardScreen() => RoutesName.dashBoardScreen;
+  static String getSemesterScreen() => RoutesName.semesterScreen;
 }

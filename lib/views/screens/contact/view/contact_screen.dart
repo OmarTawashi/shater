@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:shater/views/screens/contact/controller/contact_controller.dart';
 
 import '../../../../util/images.dart';
+import '../../base/custom_empty_view.dart';
 import '../../base/intike_tab_bar.dart';
-import '../../base/perfect_app_bar.dart';
 import '../../base/tap_section.dart';
 
 class ContactScreen extends StatelessWidget {
@@ -17,8 +17,7 @@ class ContactScreen extends StatelessWidget {
         builder: (controller) => 
          CustomScrollView(
           slivers: [
-             const PerfectAppBar(
-              ),
+            
               IntikeTapBar(
                                 assetName: ICONS.exerciseTop,
 
@@ -44,7 +43,11 @@ class ContactScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              
+               const CustomEmptyView(
+              assetName: ICONS.contactWhite,
+              primaryText: 'not_find_message',
+              secanderyText: 'find_message_teacher',
+            ),
           ],
         ),
       )

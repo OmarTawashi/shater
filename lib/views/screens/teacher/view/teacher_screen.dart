@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
 import 'package:shater/views/screens/base/intike_tab_bar.dart';
 import 'package:shater/views/screens/base/perfect_app_bar.dart';
-import 'package:shater/views/screens/base/svgpicture_custom.dart';
 import 'package:shater/views/screens/base/text_custom.dart';
 import 'package:shater/views/screens/teacher/controller/teacher_controller.dart';
+
+import '../../base/custom_empty_view.dart';
 
 class TeacherScreen extends StatelessWidget {
   const TeacherScreen({super.key});
@@ -70,37 +70,10 @@ class TeacherScreen extends StatelessWidget {
                         itemCount: 8),
                   ),
                 )),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 100.h),
-                child: const Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomSvgPicture(assetName: ICONS.teacherWhite),
-                      SizedBox(
-                        height: Dimensions.paddingSize16,
-                      ),
-                      CustomText(
-                        text: 'soon',
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.fontSize16,
-                      ),
-                      SizedBox(
-                        height: Dimensions.paddingSize16,
-                      ),
-                      CustomText(
-                        text: 'find_account_teacher',
-                        color: Color.fromRGBO(179, 238, 255, 1),
-                        fontWeight: FontWeight.w400,
-                        fontSize: Dimensions.fontSize16,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            const CustomEmptyView(
+              assetName: ICONS.teacherWhite,
+              primaryText: 'soon',
+              secanderyText: 'find_account_teacher',
             ),
           ],
         ),
@@ -108,3 +81,4 @@ class TeacherScreen extends StatelessWidget {
     );
   }
 }
+

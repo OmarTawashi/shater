@@ -6,6 +6,7 @@ import 'package:shater/views/screens/auth/sign%20up/view/sign_up_screen.dart';
 import 'package:shater/views/screens/contact/controller/contact_controller.dart';
 import 'package:shater/views/screens/dashBord/controller/dashboard_controller.dart';
 import 'package:shater/views/screens/dashBord/view/dashbord_screen.dart';
+import 'package:shater/views/screens/dashBord/widgets/semester_screen.dart';
 import 'package:shater/views/screens/edit%20profile/view/edit_profile_screen.dart';
 import 'package:shater/views/screens/firsts/view/first_screen.dart';
 
@@ -63,6 +64,13 @@ class AppPages {
     GetPage(
       name: RoutesName.contactScreen,
       page: () => const ContactScreen(),
+    ),
+    GetPage(
+      name: RoutesName.semesterScreen,
+      page: () => const SemesterScreen(),
+      binding: BindingsBuilder(() {
+        
+      })
     ),
   ];
 }

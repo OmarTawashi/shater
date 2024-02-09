@@ -7,8 +7,12 @@ import 'package:shater/views/screens/subject/view/subjects_screen.dart';
 
 import '../../teacher/view/teacher_screen.dart';
 
+enum Semester { semesterOne, semesterTWo }
+
 class DashBoardController extends GetxController {
   int selectedIndex = 0;
+
+  Semester selectSemester = Semester.semesterOne;
 
   List<Widget> screens = [
     SubjectsSCreen(),
@@ -20,6 +24,11 @@ class DashBoardController extends GetxController {
 
   void changeIndex(int index) {
     selectedIndex = index;
+    update();
+  }
+
+  void changeSemester(Semester semester) {
+    selectSemester = semester;
     update();
   }
 }
