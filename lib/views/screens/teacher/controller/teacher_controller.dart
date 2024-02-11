@@ -7,4 +7,6 @@ class TeacherController extends GetxController {
     selectedTapIndex = index;
     update();
   }
+  
+  
 }

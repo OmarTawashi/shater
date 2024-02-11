@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 import 'package:shater/views/screens/subject/controller/subjects_controller.dart';
 
@@ -38,7 +39,11 @@ class SubjectsSCreen extends StatelessWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 childCount: 5,
-                (context, index) => ItemSubject(),
+                (context, index) => ItemSubject(
+                  onTap: () {
+                    Get.toNamed(Routes.getExerciseSubjectScreen());
+                  }
+                ),
               ),
             ),
             SliverToBoxAdapter(

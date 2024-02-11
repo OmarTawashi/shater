@@ -8,6 +8,8 @@ import 'package:shater/views/screens/dashBord/controller/dashboard_controller.da
 import 'package:shater/views/screens/dashBord/view/dashbord_screen.dart';
 import 'package:shater/views/screens/dashBord/widgets/semester_screen.dart';
 import 'package:shater/views/screens/edit%20profile/view/edit_profile_screen.dart';
+import 'package:shater/views/screens/exercise%20subject/controller/exercise_subject_controller.dart';
+import 'package:shater/views/screens/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/views/screens/firsts/view/first_screen.dart';
 
 import '../views/screens/auth/sign in/controller/sign_in_controller.dart';
@@ -64,6 +66,13 @@ class AppPages {
     GetPage(
       name: RoutesName.contactScreen,
       page: () => const ContactScreen(),
+    ),
+    GetPage(
+      name: RoutesName.exerciseSubjectScreen,
+      page: () => const ExerciseSubjectScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => ExerciseSubjectController());
+      })
     ),
     GetPage(
       name: RoutesName.semesterScreen,

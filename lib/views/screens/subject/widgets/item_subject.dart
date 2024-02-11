@@ -7,8 +7,10 @@ import '../../../../util/images.dart';
 import '../../base/text_custom.dart';
 
 class ItemSubject extends StatelessWidget {
+  final Function()? onTap;
   const ItemSubject({
     super.key,
+    this.onTap,
   });
 
   @override
@@ -68,31 +70,34 @@ class ItemSubject extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32),
-                    color: Colors.white),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CustomText(
-                      text: 'تعلم',
-                      color: COLORS.primaryColor,
-                      textAlign: TextAlign.start,
-                      fontSize: Dimensions.fontSize14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    SizedBox(
-                      width: Dimensions.paddingSize10,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios_sharp,
-                      color: COLORS.primaryColor,
-                      size: 16,
-                    )
-                  ],
+              GestureDetector(
+                onTap: onTap ,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(32),
+                      color: Colors.white),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CustomText(
+                        text: 'تعلم',
+                        color: COLORS.primaryColor,
+                        textAlign: TextAlign.start,
+                        fontSize: Dimensions.fontSize14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(
+                        width: Dimensions.paddingSize10,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_sharp,
+                        color: COLORS.primaryColor,
+                        size: 16,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
