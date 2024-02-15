@@ -1,8 +1,12 @@
-class ApiConfig {
+import 'package:shater/flavors/app_config.dart';
+
+class ApiConstant {
   // Base
-  static const baseUrl = "";
+  static String baseUrl = BuildEnvironment.baseUrlUse ?? '';
 
- 
 
-  static const String TOPIC = 'all_zone_customer';
+  //student
+  static const String textUser = 'student';
+  static const String version = 'v2';
+  static const String checkEmail = '/api/$version/$textUser/auth/check-email';
 }

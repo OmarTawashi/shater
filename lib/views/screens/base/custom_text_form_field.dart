@@ -10,11 +10,13 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? textValidation;
   final bool? enabledField;
+  final Function(String)? onChanged;
   final Widget? suffix;
   const CustomTextFormField(
       {super.key,
       this.hintText,
       this.controller,
+      this.onChanged,
       this.enabledField = true,
       this.keyboardType,
       this.suffix,
@@ -25,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
+      onChanged:onChanged ,
       textAlign: TextAlign.center,
       cursorColor: Colors.white,
       style: FontStyleConstant.hNLTRegular.copyWith(

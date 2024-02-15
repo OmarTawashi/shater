@@ -26,6 +26,9 @@ class ApiClient {
     headers: {
       HttpHeaders.contentTypeHeader: 'application/json',
       HttpHeaders.acceptHeader: 'application/json',
+      "device-type": "ios",
+      "site_country": "",
+      "Accept-Language": "ar"
       // 'Authorization':
       //     SharedPrefs.user == null ? '' : 'Bearer ${SharedPrefs.user?.token}'
 
@@ -164,13 +167,13 @@ class ApiClient {
         late dio.Response response;
         if (requestType == RequestType.get) {
           response = await _dio.get(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             queryParameters: queryParams,
             options: Options(headers: headers),
           );
         } else if (requestType == RequestType.post) {
           response = await _dio.post(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             data: data,
             queryParameters: queryParams,
             onSendProgress: onSendProgress,
@@ -178,7 +181,7 @@ class ApiClient {
           );
         } else if (requestType == RequestType.put) {
           response = await _dio.put(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             data: data,
             queryParameters: queryParams,
             onSendProgress: onSendProgress,
@@ -186,7 +189,7 @@ class ApiClient {
           );
         } else {
           response = await _dio.delete(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             queryParameters: queryParams,
             options: Options(headers: headers),
           );

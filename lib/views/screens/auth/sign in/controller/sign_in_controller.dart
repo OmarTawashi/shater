@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../config/api_constant.dart';
+import '../../../../../core/network/api_client.dart';
+import '../../../../../core/network/api_response.dart';
+import '../../../../../model/empty_model.dart';
+
 class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  void checkEmail(context) async {
+    final data = {
+      "email": emailController.text,
+    };
+
+    await ApiClient.requestData(
+      endpoint: ApiConstant.checkEmail,
+      requestType: RequestType.post,
+      create: () => APIResponse<EmptyModel>(
+        create: () => EmptyModel(),
+      ),
+      data: data,
+      onSuccess: (response) {},
+      onError: (error) {},
+    );
+  }
 
   // void signIn(context) async {
   //   setIsloading(true);
