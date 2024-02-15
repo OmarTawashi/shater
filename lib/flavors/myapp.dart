@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/flavors/env_config.dart';
 
 import '../controller/localization_controller.dart';
 import '../controller/root_binding.dart';
@@ -9,6 +10,7 @@ import '../routes/app_routes.dart';
 import '../util/constant.dart';
 import '../util/messages.dart';
 import '../util/theme.dart';
+import 'build_config.dart';
 
 class MyApp extends StatelessWidget {
   final Map<String, Map<String, String>>? languages;
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final EnvConfig _envConfig = BuildConfig.instance.config;
     return ScreenUtilInit(
         designSize: const Size(414, 905),
         splitScreenMode: true,
