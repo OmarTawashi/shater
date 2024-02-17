@@ -23,32 +23,8 @@ class ExerciseSubjectScreen extends StatelessWidget {
           backgroundColor: COLORS.primaryColor,
           automaticallyImplyLeading: false,
           excludeHeaderSemantics: true,
-          leading: Padding(
-            padding: const EdgeInsets.only(bottom: 62),
-            child: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: const CustomIntikeContainer(
-                paddingHorizontal: Dimensions.paddingSize12,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.arrow_back_ios_new_sharp,
-                        color: Colors.white, size: 18),
-                    SizedBox(
-                      width: Dimensions.paddingSize10,
-                    ),
-                    CustomText(
-                      text: 'رياضيات',
-                      color: Colors.white,
-                      fontSize: Dimensions.fontSize14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          leading: IconTextCont(
+            text: 'رياضيات',
           ),
           centerTitle: true,
           title: Container(
@@ -88,3 +64,38 @@ class ExerciseSubjectScreen extends StatelessWidget {
   }
 }
 
+class IconTextCont extends StatelessWidget {
+  final String text;
+  const IconTextCont({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 62),
+      child: GestureDetector(
+        onTap: () {
+          Get.back();
+        },
+        child: CustomIntikeContainer(
+          paddingHorizontal: Dimensions.paddingSize12,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.arrow_back_ios_new_sharp,
+                  color: Colors.white, size: 18),
+              const SizedBox(
+                width: Dimensions.paddingSize10,
+              ),
+              CustomText(
+                text: text,
+                color: Colors.white,
+                fontSize: Dimensions.fontSize14,
+                fontWeight: FontWeight.bold,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

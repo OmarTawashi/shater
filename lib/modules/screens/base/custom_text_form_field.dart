@@ -12,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool? enabledField;
   final Function(String)? onChanged;
   final Widget? suffix;
+  final bool obscureText;
   const CustomTextFormField(
       {super.key,
       this.hintText,
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
       this.onChanged,
       this.enabledField = true,
       this.keyboardType,
+      this.obscureText = false,
       this.suffix,
       this.textValidation});
 
@@ -28,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       onChanged:onChanged ,
+      obscureText:obscureText ,
       textAlign: TextAlign.center,
       cursorColor: Colors.white,
       style: FontStyleConstant.hNLTRegular.copyWith(
@@ -45,6 +48,8 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         enabled: enabledField!,
         alignLabelWithHint: true,
+        suffixIcon: suffix,
+        suffixIconColor: COLORS.secanderyColor,
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(13),
             borderSide: const BorderSide(color: COLORS.strokeColor, width: 2)),

@@ -17,6 +17,7 @@ class ThemeApp {
           primary: color,
           secondary: color,
         ),
+        
         textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom()),
       );
 }

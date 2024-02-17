@@ -1,6 +1,7 @@
 class IMAGES {//first.png
   static const String firstImages = 'assets/images/first.png';
   static const String exerciseSubject = 'assets/images/exercise_subject.png';
+  static const String logoApp = 'assets/images/logoApp.png';
 
 }
 

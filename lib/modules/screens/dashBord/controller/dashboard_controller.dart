@@ -15,11 +15,11 @@ class DashBoardController extends GetxController {
   Semester selectSemester = Semester.semesterOne;
 
   List<Widget> screens = [
-    SubjectsSCreen(),
-    ExerciseScreen(),
-    TeacherScreen(),
-    FirstsScreen(),
-    ContactScreen()
+    const SubjectsSCreen(),
+    const ExerciseScreen(),
+    const TeacherScreen(),
+    const FirstsScreen(),
+    const ContactScreen()
   ];
 
   void changeIndex(int index) {

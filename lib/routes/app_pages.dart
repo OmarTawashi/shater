@@ -9,6 +9,7 @@ import 'package:shater/modules/screens/edit%20profile/view/edit_profile_screen.d
 import 'package:shater/modules/screens/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/modules/screens/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/modules/screens/firsts/view/first_screen.dart';
+import 'package:shater/modules/screens/notification/view/notification_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../modules/screens/auth/sign in/bindings/signin_binding.dart';
@@ -43,7 +44,7 @@ class AppPages {
     ),
     GetPage(
         name: RoutesName.signInScreen,
-        page: () => const SignInScreen(), //SignInController
+        page: () =>  SignInScreen(), //SignInController
         binding: SignInBinding()),
     GetPage(
       name: RoutesName.firstsScreen,
@@ -52,6 +53,14 @@ class AppPages {
     GetPage(
       name: RoutesName.contactScreen,
       page: () => const ContactScreen(),
+    ),
+    GetPage(
+      name: RoutesName.contactScreen,
+      page: () => const ContactScreen(),
+    ),
+    GetPage(
+      name: RoutesName.notificationDetails,
+      page: () => const NotificationDetails(),
     ),
     GetPage(
         name: RoutesName.exerciseSubjectScreen,

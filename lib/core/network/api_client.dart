@@ -58,7 +58,7 @@ class ApiClient {
     );
 
   static _handleDioError({
-    required DioError error,
+    required DioException error,
     Function(ApiException)? onError,
   }) async {
     final _response = error.response;
@@ -90,28 +90,32 @@ class ApiClient {
         message: _response?.data['message'] ?? '',
       );
     }
+    if (error.response?.statusCode == 403) {
+      exception = ApiException(
+        message: _response?.data['message'] ?? '',
+        statusCode: 403,
+      );
+    }
 
     if (error.response?.statusCode == 500) {
-      var exception = ApiException(
+      exception = ApiException(
         message: 'Server Error',
         statusCode: 500,
       );
-
-      if (onError != null) {
-        return onError(exception);
-      } else {
-        return _handleError(
-          'Server Error',
-        );
-      }
     }
+    exception = ApiException(
+      message: error.message ?? '',
+      response: error.response,
+      statusCode: error.response?.statusCode,
+    );
 
-    // if (error.response?.statusCode == 403) {
-    //   exception = ApiException(
-    //     message: _response?.data['message'] ?? '',
-    //     statusCode: 403,
-    //   );
-    // }
+    if (onError != null) {
+      return onError(exception);
+    } else {
+      return _handleError(
+        'Server Error',
+      );
+    }
 
     // if (error.response?.statusCode == 401) {
     //   SharedPrefs.removeUser();
@@ -119,18 +123,6 @@ class ApiClient {
     //   Get.offAllNamed(Routes.getSignInScreen());
 
     // }
-
-    // var exception = ApiException(
-    //   message: error.message ?? '',
-    //   response: error.response,
-    //   statusCode: error.response?.statusCode,
-    // );
-
-    if (onError != null) {
-      return onError(exception);
-    } else {
-      return _handleError(exception.message);
-    }
   }
 
   static _handleError(String msg) {
@@ -207,16 +199,16 @@ class ApiClient {
           if (onSuccessdynamic != null) {
             onSuccessdynamic(response.data);
           }
-        } on DioError catch (err) {
-          throw ErrorResponse(message: err.message);
+        } on DioException catch (err) {
+          _handleDioError(error: err, onError: onError);
         }
-      } on DioError catch (error) {
+      } on DioException catch (error) {
         // final data = ResponseWrapper.init(create: create, data: error.response?.data);
         _handleDioError(error: error, onError: onError);
       } on TimeoutException {
         onError!(
           ApiException(
-            message: 'no_internet_connection',
+            message: 'time_out_connection',
             type: ApiExceptions.noInternetConnection,
           ),
         );

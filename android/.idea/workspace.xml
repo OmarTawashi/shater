@@ -5,22 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a63835-291a-4d8e-8ce6-513c181e4a12" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/language/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/config/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/config/api_constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/network/api_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/network/api_client.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/base/custom_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/base/custom_text_form_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/contact/view/contact_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/contact/view/contact_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/dashBord/controller/dashboard_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/dashBord/controller/dashboard_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/modules/screens/exercise subject/view/exercise_subject_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/modules/screens/exercise subject/view/exercise_subject_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/util/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/util/images.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/util/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/util/theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\acer\.android\avd\Nexus_10_API_34.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RR8NA06MCXP]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="android" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2cEGPRxjTcdXiWW4NYSIuklAtik" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

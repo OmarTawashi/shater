@@ -10,6 +10,7 @@ class ApiConstant {
   static const String textUser = 'student';
   static const String version = 'v2';
   static const String checkEmail = '/api/$version/$textUser/auth/check-email';
+  static const String studentLogin = '/api/$version/$textUser/auth/login';
 
 
   

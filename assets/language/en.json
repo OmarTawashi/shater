@@ -19,6 +19,8 @@
     "student": "Student",
     "email": "Email",
     "soon": "Soon",
+    "server_error": "Server Error",
+    "not_found": "Not Found",
     "select_the_semester": "Select the semester",
     "not_find_message": "Not Find Messages",
     "find_message_teacher": "You will find messages sent to you by teachers here",
