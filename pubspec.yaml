@@ -47,6 +47,8 @@ dependencies:
   meta: ^1.10.0
   logger: ^2.0.2+1
   fluttertoast: ^8.2.4
+  fpdart: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:

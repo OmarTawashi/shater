@@ -22,7 +22,7 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: COLORS.primaryColor,
       appBar: AppBar(
         backgroundColor: COLORS.primaryColor,
-        leading: ButtonBack(),
+        leading: const ButtonBack(),
       ),
       body: GetBuilder<SignInController>(
         builder: (controller) => SingleChildScrollView(
@@ -59,7 +59,7 @@ class SignInScreen extends StatelessWidget {
                     onChanged: (value) {
                       // controller.checkEmail();
                     },
-                    textValidation: 'email_validation'.tr,
+                    textValidation: 'please_enter_email'.tr,
                   ),
                   const SizedBox(
                     height: 16,
@@ -69,19 +69,8 @@ class SignInScreen extends StatelessWidget {
                     hintText: 'password'.tr,
                     obscureText: controller.isHide,
                     keyboardType: TextInputType.visiblePassword,
-                    textValidation: 'password_validation'.tr,
-                    suffix: GestureDetector(
-                      onTap: () {
-                        controller.changeHide();
-                      },
-                      child: controller.isHide
-                          ? const Icon(
-                              Icons.visibility_off_sharp,
-                            )
-                          : const Icon(
-                              Icons.visibility_sharp,
-                            ),
-                    ),
+                    textValidation: 'please_enter_password'.tr,
+                    suffix: visibleSecure(controller),
                   ),
                   const SizedBox(
                     height: 22,
@@ -157,6 +146,21 @@ class SignInScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  GestureDetector visibleSecure(SignInController controller) {
+    return GestureDetector(
+      onTap: () {
+        controller.changeHide();
+      },
+      child: controller.isHide
+          ? const Icon(
+              Icons.visibility_off_sharp,
+            )
+          : const Icon(
+              Icons.visibility_sharp,
+            ),
     );
   }
 

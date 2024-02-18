@@ -1,4 +1,4 @@
-import '../model/language_model.dart';
+import '../data/model/language_model.dart';
 
 class APPCONSTANT {
   static const String COUNTRY_CODE = 'saidBox_country_code';
