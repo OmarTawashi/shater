@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 
 import '../../../util/color.dart';
 

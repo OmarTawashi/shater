@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shater/modules/screens/notification/widgets/leading_icon_notification.dart';
+import 'package:shater/presentation/screens/notification/widgets/leading_icon_notification.dart';
 
 import '../../../../util/color.dart';
 import '../../../../util/dimensions.dart';

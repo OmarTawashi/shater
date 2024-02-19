@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shater/controller/localization_controller.dart';
 
-import '../model/language_model.dart';
+import '../data/model/language_model.dart';
 import '../util/constant.dart';
 
 class InitApp {

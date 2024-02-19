@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/auth/base%20login/view/base_login_screen.dart';
+import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
 
 import '../../../../util/color.dart';
 import '../../../../util/dimensions.dart';

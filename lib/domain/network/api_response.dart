@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../model/error_model.dart';
+import '../../data/model/error_model.dart';
 import 'decodable.dart';
 
 ///A function that creates an object of type [T]

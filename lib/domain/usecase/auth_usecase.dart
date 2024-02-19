@@ -1,10 +1,11 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:shater/core/data/repository/auth_repository.dart';
+import 'package:shater/data/repository/auth_repository.dart';
+import 'package:shater/domain/network/api_exceptions.dart';
 
-import '../../../model/user.dart';
+import '../../data/model/user.dart';
 
 abstract class AuthUseCase {
-  Future<Either<Exception, User>?> signInWithEmailPassword(
+  Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password);
   Future<Either<Exception, User>?> registerWithEmailPassword(
       String email, String password);
@@ -17,7 +18,7 @@ class AuthUseCaseImp extends AuthUseCase {
   AuthUseCaseImp(this._authRepository);
 
   @override
-  Future<Either<Exception, User>?> signInWithEmailPassword(
+  Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password) {
     return _authRepository.signInWithEmailPassword(email, password);
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 
 import '../../../util/dimensions.dart';
 

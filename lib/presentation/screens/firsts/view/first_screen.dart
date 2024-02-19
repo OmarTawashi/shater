@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/svgpicture_custom.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 

@@ -1,4 +1,4 @@
-import '../core/network/decodable.dart';
+import '../../domain/network/decodable.dart';
 
 class User implements Decodable<User> {
   int? id;

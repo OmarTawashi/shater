@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/intike_tab_bar.dart';
-import 'package:shater/modules/screens/base/perfect_app_bar.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
-import 'package:shater/modules/screens/teacher/controller/teacher_controller.dart';
+import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
+import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/teacher/controller/teacher_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';

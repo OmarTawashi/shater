@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/perfect_app_bar.dart';
-import 'package:shater/modules/screens/contact/controller/contact_controller.dart';
-import 'package:shater/modules/screens/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
+import 'package:shater/presentation/screens/contact/controller/contact_controller.dart';
+import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
 
 import '../../../../util/images.dart';
 import '../../base/custom_empty_view.dart';

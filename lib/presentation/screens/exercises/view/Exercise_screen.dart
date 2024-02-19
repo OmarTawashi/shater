@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/intike_tab_bar.dart';
-import 'package:shater/modules/screens/exercises/controller/exercise_controller.dart';
-import 'package:shater/modules/screens/exercises/widgets/item_exercise.dart';
+import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
+import 'package:shater/presentation/screens/exercises/controller/exercise_controller.dart';
+import 'package:shater/presentation/screens/exercises/widgets/item_exercise.dart';
 
 import '../../../../util/images.dart';
 import '../../base/perfect_app_bar.dart';

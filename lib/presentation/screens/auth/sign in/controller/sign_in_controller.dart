@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/core/data/repository/auth_repository.dart';
-import 'package:shater/core/data/usecase/auth_usecase.dart';
-import 'package:shater/model/user.dart';
+import 'package:shater/data/model/user.dart';
+import 'package:shater/data/repository/auth_repository.dart';
+import 'package:shater/domain/usecase/auth_usecase.dart';
 
-import '../../../../../config/api_constant.dart';
-import '../../../../../core/network/api_client.dart';
-import '../../../../../core/network/api_response.dart';
-import '../../../../../model/empty_model.dart';
+import '../../../../../data/model/empty_model.dart';
+import '../../../../../domain/network/api_client.dart';
+import '../../../../../domain/network/api_response.dart';
+import '../../../../../util/api_constant.dart';
 
 class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -45,12 +45,15 @@ class SignInController extends GetxController {
     final password = passwordController.text;
    await _authUseCaseImp?.signInWithEmailPassword(email, password).then((value) {
       value?.fold((l) {
-        print('error');
+        print('error :${l.message}');
+        //this is error 
       }, (r) {
         _user = r;
+        // this is user 
+         print(r);
         update();
       });
-      print(value);
+     
       update();
     });
   }

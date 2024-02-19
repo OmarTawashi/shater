@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/auth/sign%20in/controller/sign_in_controller.dart';
-import 'package:shater/modules/screens/base/custom_intike_container.dart';
-import 'package:shater/modules/screens/base/custom_text_form_field.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/auth/sign%20in/controller/sign_in_controller.dart';
+import 'package:shater/presentation/screens/base/custom_intike_container.dart';
+import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../util/color.dart';

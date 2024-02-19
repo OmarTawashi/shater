@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/subject/controller/subjects_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
-import 'package:shater/modules/screens/subject/controller/subjects_controller.dart';
 
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/base/custom_sliver_app_bar.dart';
-import 'package:shater/modules/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/base/custom_sliver_app_bar.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../../../util/dimensions.dart';

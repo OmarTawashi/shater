@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:shater/core/network/api_client.dart';
-import 'package:shater/core/network/api_response.dart';
+import 'package:shater/domain/network/api_client.dart';
+import 'package:shater/domain/network/api_exceptions.dart';
+import 'package:shater/domain/network/api_response.dart';
 
-import '../../../config/api_constant.dart';
-import '../../../model/user.dart';
+import '../../util/api_constant.dart';
+import '../model/user.dart';
 
 abstract class BaseAuthRepository {
-  Future<Either<Exception, User>?> signInWithEmailPassword(
+  Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password);
   Future<Either<Exception, User>?> registerWithEmailPassword(
       String email, String password);
@@ -19,9 +20,9 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   AuthRepositoryRemote(this._apiClient);
 
-  Future<Either<Exception, User>?> signInWithEmailPassword(
+  Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password) async {
-    final completer = Completer<Either<Exception, User>?>();
+    final completer = Completer<Either<ApiException, User>?>();
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.studentLogin,
@@ -43,7 +44,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           completer.complete(left(error));
         },
       );
-    } on Exception catch (error) {
+    } on ApiException catch (error) {
       completer.complete(left(error));
     }
     return completer.future;

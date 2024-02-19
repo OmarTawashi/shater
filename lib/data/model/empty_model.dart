@@ -1,5 +1,5 @@
 
-import '../core/network/decodable.dart';
+import '../../domain/network/decodable.dart';
 
 class EmptyModel extends Decodable<EmptyModel> {
   @override

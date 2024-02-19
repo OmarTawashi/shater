@@ -1,22 +1,22 @@
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/auth/base%20login/view/base_login_screen.dart';
-import 'package:shater/modules/screens/auth/sign%20in/view/sign_in_screen.dart';
-import 'package:shater/modules/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
-import 'package:shater/modules/screens/auth/sign%20up/view/sign_up_screen.dart';
-import 'package:shater/modules/screens/dashBord/bindings/bindings_dashbord.dart';
-import 'package:shater/modules/screens/dashBord/view/dashbord_screen.dart';
-import 'package:shater/modules/screens/dashBord/widgets/semester_screen.dart';
-import 'package:shater/modules/screens/edit%20profile/view/edit_profile_screen.dart';
-import 'package:shater/modules/screens/exercise%20subject/bindings/exercise_subject_bindings.dart';
-import 'package:shater/modules/screens/exercise%20subject/view/exercise_subject_screen.dart';
-import 'package:shater/modules/screens/firsts/view/first_screen.dart';
-import 'package:shater/modules/screens/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
+import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.dart';
+import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
+import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.dart';
+import 'package:shater/presentation/screens/dashBord/bindings/bindings_dashbord.dart';
+import 'package:shater/presentation/screens/dashBord/view/dashbord_screen.dart';
+import 'package:shater/presentation/screens/dashBord/widgets/semester_screen.dart';
+import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
+import 'package:shater/presentation/screens/exercise%20subject/bindings/exercise_subject_bindings.dart';
+import 'package:shater/presentation/screens/exercise%20subject/view/exercise_subject_screen.dart';
+import 'package:shater/presentation/screens/firsts/view/first_screen.dart';
+import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
-import '../modules/screens/auth/sign in/bindings/signin_binding.dart';
-import '../modules/screens/contact/view/contact_screen.dart';
-import '../modules/screens/splach/view/splash_screen.dart';
-import '../modules/screens/teacher/view/teacher_screen.dart';
+import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
+import '../presentation/screens/contact/view/contact_screen.dart';
+import '../presentation/screens/splach/view/splash_screen.dart';
+import '../presentation/screens/teacher/view/teacher_screen.dart';
 
 class AppPages {
   AppPages._();

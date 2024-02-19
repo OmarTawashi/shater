@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/modules/screens/notification/widgets/leading_icon_notification.dart';
+import 'package:shater/presentation/screens/notification/widgets/leading_icon_notification.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../../../../util/color.dart';

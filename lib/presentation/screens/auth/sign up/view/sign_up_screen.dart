@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/core/base/base_mixin.dart';
-import 'package:shater/modules/screens/auth/sign%20up/controller/sign_up_controller.dart';
+import 'package:shater/domain/base/base_mixin.dart';
+import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
 
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
