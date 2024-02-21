@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:shater/util/constant.dart';
 
-import '../util/constant.dart';
 import 'shared_prefrences.dart';
 
 class LocalizationController extends GetxController {

@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shater/data/model/config_model.dart';
 import 'package:shater/data/model/user.dart';
 
-import '../data/model/config_model.dart';
-import '../util/shared_constant.dart';
+import '../../util/shared_constant.dart';
+
 
 class SharedPrefs {
   SharedPrefs._();

@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:shater/controller/localization_controller.dart';
+import 'package:shater/core/controller/localization_controller.dart';
+import 'package:shater/util/constant.dart';
 
-import '../data/model/language_model.dart';
-import '../util/constant.dart';
+import '../../data/model/language_model.dart';
+
 
 class InitApp {
   static initLanguage() async {

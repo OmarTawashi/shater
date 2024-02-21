@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -9,6 +10,7 @@ def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
+        
     }
 }
 
@@ -25,7 +27,7 @@ if (flutterVersionName == null) {
 android {
     namespace "com.example.shater"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "25.1.8937393"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,6 +51,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+         multiDexEnabled true
     }
 
     buildTypes {
@@ -65,4 +68,8 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    
+     implementation 'com.google.firebase:firebase-analytics'
+     implementation 'com.android.support:multidex:2.0.1'
+}

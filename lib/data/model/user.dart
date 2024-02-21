@@ -1,4 +1,5 @@
-import '../../domain/network/decodable.dart';
+import 'package:shater/core/network/decodable.dart';
+
 
 class User implements Decodable<User> {
   int? id;

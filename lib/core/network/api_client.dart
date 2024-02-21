@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:shater/domain/network/error_response.dart' as errorRes;
+import 'package:shater/core/network/error_response.dart' as errorRes;
 import 'package:shater/util/api_constant.dart';
 
 import 'api_exceptions.dart';

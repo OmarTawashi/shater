@@ -13,5 +13,12 @@ class ApiConstant {
   static const String studentLogin = '/api/$version/auth/login';
 
 
+
+
+
+
+  static const String topic = 'all_zone_customer';
+
+
   
 }

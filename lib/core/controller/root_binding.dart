@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shater/controller/localization_controller.dart';
+import 'package:shater/core/controller/localization_controller.dart';
 
 
 class RootBinding extends Bindings {

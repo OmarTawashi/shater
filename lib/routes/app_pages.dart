@@ -11,6 +11,7 @@ import 'package:shater/presentation/screens/exercise%20subject/bindings/exercise
 import 'package:shater/presentation/screens/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/firsts/view/first_screen.dart';
 import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
@@ -22,7 +23,10 @@ class AppPages {
   AppPages._();
 
   static List<GetPage<dynamic>> routes = [
-    GetPage(name: RoutesName.spalshScreen, page: () => const SplashScreen()),
+    GetPage(
+        name: RoutesName.spalshScreen,
+        page: () => const SplashScreen(),
+        binding: SpalchBinding()),
     GetPage(
         name: RoutesName.dashBoardScreen,
         page: () => const DashBoardScreen(),
@@ -40,13 +44,12 @@ class AppPages {
       page: () => const BaseLoginScreen(),
     ),
     GetPage(
-      name: RoutesName.signUpScreen,
-      page: () =>  SignUpScreen(),
-      binding: SignUpBinding()
-    ),
+        name: RoutesName.signUpScreen,
+        page: () => SignUpScreen(),
+        binding: SignUpBinding()),
     GetPage(
         name: RoutesName.signInScreen,
-        page: () =>  SignInScreen(), //SignInController
+        page: () => SignInScreen(), //SignInController
         binding: SignInBinding()),
     GetPage(
       name: RoutesName.firstsScreen,

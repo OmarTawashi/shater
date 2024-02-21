@@ -1,4 +1,5 @@
-import '../../domain/network/decodable.dart';
+import 'package:shater/core/network/decodable.dart';
+
 
 class ConfigModel implements Decodable<ConfigModel> {
   String? businessName;

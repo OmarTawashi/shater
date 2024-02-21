@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "491520970085",
+    "firebase_url": "https://shatter-6c60a.firebaseio.com",
+    "project_id": "shatter-6c60a",
+    "storage_bucket": "shatter-6c60a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491520970085:android:f3f0b4588d3df9199be58c",
+        "android_client_info": {
+          "package_name": "com.example.shater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491520970085-9jo93o217eh4kcu89a3jo125hr7slbjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC32utDQZ-aJ-iy4T2YarJbnpyd32izm8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491520970085-9jo93o217eh4kcu89a3jo125hr7slbjt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "491520970085-c52sbaqavub9am3v48t601kvgliv1lup.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.comany.GoApp2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/models.dart';
+import 'package:shater/data/repository/auth_repository_remote.dart';
+import 'package:shater/domain/usecase/auth_usecase_imp.dart';
 
-import '../../../../../data/repository/auth_repository.dart';
-import '../../../../../domain/network/api_client.dart';
-import '../../../../../domain/usecase/auth_usecase.dart';
+
 
 class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();

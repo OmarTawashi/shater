@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/domain/base/base_mixin.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
 
+import '../../../../../core/base/base_mixin.dart';
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';
