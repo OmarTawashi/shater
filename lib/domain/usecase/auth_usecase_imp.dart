@@ -22,7 +22,7 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
-  Future<Either<Exception, User>?> registerWithEmailPassword(
+  Future<Either<ApiException, User>?> registerWithEmailPassword(
       String email, String password) {
      return _authRepository.registerWithEmailPassword(email, password);
   }

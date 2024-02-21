@@ -78,14 +78,10 @@ class SignUpScreen extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
                     // suffix: visibleSecure(controller),
-                    onChanged: (p0) {
-                      controller.changeEnable(
-                          controller.passwordController.text ==
-                              controller.againPasswordController.text);
-                    },
+                    onChanged: (p0) {},
                     textValidation: 'please_enter_password'.tr,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: Dimensions.paddingSize5,
                   ),
                   Visibility(
@@ -104,17 +100,21 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     children: [
                       Checkbox.adaptive(
-                        value: false,
+                        value: controller.isAgree,
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         fillColor:
                             const MaterialStatePropertyAll(Colors.transparent),
                         activeColor: Colors.amber,
                         side: const BorderSide(color: Colors.white, width: 1.5),
-                        checkColor: Colors.white,
+                        checkColor: COLORS.secanderyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4),
+                          side:
+                              const BorderSide(color: Colors.white, width: 1.5),
                         ),
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          controller.changeAgree(value ?? false);
+                        },
                       ),
                       TextNotAcount(
                         startText: 'ok_to',
@@ -129,7 +129,9 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomCupertinoButton(
                     text: 'next',
-                    onPressed: controller.isEnable ? () {} : null,
+                    onPressed: controller.isEnable()
+                        ? () => _submit(controller)
+                        : null,
                   ),
                   const SizedBox(
                     height: Dimensions.paddingSize16,
@@ -152,9 +154,15 @@ class SignUpScreen extends StatelessWidget {
     if (formKey.currentState!.validate()) {
       if (controller.passwordController.text !=
           controller.againPasswordController.text) {
-        BaseMixin.showToastFlutter(messsage: 'Please enter same password');
+        BaseMixin.showToastFlutter(messsage: 'Passwords do not match');
       } else {
-        formKey.currentState!.save();
+        if (controller.isAgree) {
+          formKey.currentState!.save();
+          controller.registerWithEmailPassword();
+        } else {
+          BaseMixin.showToastFlutter(
+              messsage: 'Please agree to the terms and conditions');
+        }
       }
     }
   }

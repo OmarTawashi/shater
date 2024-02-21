@@ -65,7 +65,9 @@ class BaseLoginScreen extends StatelessWidget {
               lastText: 'create_new_acounts',
               isShowIcon: false,
               mainAxisAlignment: MainAxisAlignment.start,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(Routes.getSignUpScreen());
+              },
             ),
             const SizedBox(
               height: 16,
