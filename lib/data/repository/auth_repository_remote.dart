@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
+import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/base/device_info_sevice.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
@@ -35,7 +36,12 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           "device_type": 'ios'
         },
         onSuccess: (response) {
-          completer.complete(Right(response.data?.item ?? User()));
+          if (response.data?.status == false ?? false) {
+            BaseMixin.showToastFlutter(
+                messsage: response.data?.errors?.first.message);
+          } else {
+            completer.complete(Right(response.data?.item ?? User()));
+          }
         },
         onError: (error) {
           completer.complete(left(error));

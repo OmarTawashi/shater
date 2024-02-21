@@ -45,6 +45,7 @@ class ResponseWrapper<T> extends GenericObject<T> {
 class APIResponse<T> extends GenericObject<T>
     implements Decodable<APIResponse<T>> {
   String? error;
+  bool? status;
   List<T>? items;
   T? item;
   List<ErrorModel>? errors;
@@ -54,6 +55,7 @@ class APIResponse<T> extends GenericObject<T>
   @override
   APIResponse<T> decode(dynamic json) {
     error = json['error'];
+    status = json['status'];
     items = [];
 
     try {

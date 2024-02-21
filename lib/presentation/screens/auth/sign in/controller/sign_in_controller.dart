@@ -53,7 +53,6 @@ class SignInController extends GetxController {
         print(r);
         update();
       });
-
       update();
     });
   }
