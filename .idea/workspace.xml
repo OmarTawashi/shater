@@ -5,36 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/auth_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/init_app.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/localization_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/root_binding.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/shared_prefrences.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/repository/auth_repository.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/base/base_mixin.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/api_call_status.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/api_client.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/api_exceptions.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/api_response.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/decodable.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/error_response.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/network/network_info.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_dev.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_dev.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_prod.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_prod.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/perfect_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/perfect_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/exercises/widgets/item_exercise.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/exercises/widgets/item_exercise.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/firsts/view/first_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/firsts/view/first_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +26,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\acer\.android\avd\Nexus_10_API_34.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\acer\.android\avd\Pixel_6_Pro_API_34.avd]" />
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
@@ -77,85 +59,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "mohamed-dev-v1",
-    "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mohamed-dev-v1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Documents/GitHub/shater&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Android App.main_dev.dart">
-    <configuration name="main_dev.dart" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="shater_android" />
-      <option name="DEPLOY" value="true" />
-      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
-      <option name="DEPLOY_AS_INSTANT" value="false" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ALL_USERS" value="true" />
-      <option name="ALWAYS_INSTALL_WITH_PM" value="true" />
-      <option name="CLEAR_APP_STORAGE" value="true" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Hybrid>
-      <Java>
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Java>
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
-        <option name="DEBUG_SANDBOX_SDK" value="false" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
-        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
-        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
-      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Android App.main_dev.dart" />
     </list>

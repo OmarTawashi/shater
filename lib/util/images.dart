@@ -3,6 +3,7 @@ class IMAGES {//first.png
   static const String exerciseSubject = 'assets/images/exercise_subject.png';
   static const String logoApp = 'assets/images/logoApp.png';
   static const String logoLuncher = 'assets/images/logoLuncher.png';
+  static const String add = 'assets/images/add.png';
 
 }
 

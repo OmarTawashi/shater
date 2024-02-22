@@ -30,7 +30,7 @@ class BaseLoginScreen extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.getEditProfileScreen());
+                Get.toNamed(Routes.getProfileScreen());
               },
               child: Container(
                 alignment: Alignment.center,

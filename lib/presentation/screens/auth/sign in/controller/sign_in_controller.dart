@@ -16,8 +16,13 @@ class SignInController extends GetxController {
   bool _isHide = true;
   bool get isHide => _isHide;
 
-  bool _isEnable = false;
-  bool get isEnable => _isEnable;
+  bool _isValidEmail = false;
+  bool get isValidEmail => _isValidEmail;
+
+  bool _isValidPassword = false;
+  bool get isValidPassword => _isValidPassword;
+
+  bool get isEnable => (_isValidEmail && _isValidPassword);
 
   User? _user;
   User? get user => _user;
@@ -35,8 +40,13 @@ class SignInController extends GetxController {
     update();
   }
 
-  void changeEnable(bool isEnable) {
-    _isEnable = isEnable;
+  void validEmail(String value) {
+    _isValidEmail = value.contains(".com") && emailController.text.isNotEmpty;
+    update();
+  }
+
+  void validPassword(String value) {
+    _isValidPassword = value.length > 7 && passwordController.text.isNotEmpty;
     update();
   }
 
@@ -46,9 +56,7 @@ class SignInController extends GetxController {
     await _authUseCaseImp
         ?.signInWithEmailPassword(email, password)
         .then((value) {
-      value?.fold((l) {
-        print('error :${l.message}');
-      }, (r) {
+      value?.fold((l) {}, (r) {
         _user = r;
         print(r);
         update();

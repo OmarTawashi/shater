@@ -29,8 +29,8 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
-      onChanged:onChanged ,
-      obscureText:obscureText ,
+      onChanged: onChanged,
+      obscureText: obscureText,
       textAlign: TextAlign.center,
       cursorColor: Colors.white,
       style: FontStyleConstant.hNLTRegular.copyWith(
@@ -43,6 +43,7 @@ class CustomTextFormField extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return textValidation;
         }
+
         return null;
       },
       decoration: InputDecoration(

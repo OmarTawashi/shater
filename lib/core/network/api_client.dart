@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shater/core/network/error_response.dart' as errorRes;
 import 'package:shater/util/api_constant.dart';
@@ -126,11 +128,11 @@ class ApiClient {
   }
 
   static _handleError(String msg) {
-    // Fluttertoast.showToast(
-    //   msg: msg,
-    //   backgroundColor: Colors.red[500],
-    //   textColor: Colors.white,
-    // );
+    Fluttertoast.showToast(
+      msg: msg,
+      backgroundColor: Colors.red[500],
+      textColor: Colors.white,
+    );
   }
 
   static requestData<T extends Decodable>({

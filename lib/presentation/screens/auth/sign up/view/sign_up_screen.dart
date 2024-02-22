@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 
-import '../../../../../core/base/base_mixin.dart';
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';
@@ -57,6 +57,9 @@ class SignUpScreen extends StatelessWidget {
                     hintText: 'email'.tr,
                     keyboardType: TextInputType.emailAddress,
                     textValidation: 'please_enter_email'.tr,
+                    onChanged: (value) {
+                      controller.validEmail(value);
+                    },
                   ),
                   const SizedBox(
                     height: 16,
@@ -67,6 +70,9 @@ class SignUpScreen extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
                     // suffix: visibleSecure(controller),
+                    onChanged: (value) {
+                      controller.validPassword(value);
+                    },
                     textValidation: 'please_enter_password'.tr,
                   ),
                   const SizedBox(
@@ -78,7 +84,9 @@ class SignUpScreen extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
                     // suffix: visibleSecure(controller),
-                    onChanged: (p0) {},
+                    onChanged: (value) {
+                      controller.validAgainPassword(value);
+                    },
                     textValidation: 'please_enter_password'.tr,
                   ),
                   const SizedBox(
@@ -129,8 +137,10 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomCupertinoButton(
                     text: 'next',
-                    onPressed: controller.isEnable()
-                        ? () => _submit(controller)
+                    onPressed: controller.isEnable
+                        ? () {
+                            _submit(controller);
+                          }
                         : null,
                   ),
                   const SizedBox(
@@ -139,7 +149,13 @@ class SignUpScreen extends StatelessWidget {
                   TextNotAcount(
                     startText: 'have_an_acount',
                     lastText: 'sign_in',
-                    onTap: () {},
+                    onTap: () {
+                      if (Get.previousRoute == Routes.getSignInScreen()) {
+                        Get.back();
+                      } else {
+                        Get.offNamed(Routes.getSignInScreen());
+                      }
+                    },
                   ),
                 ],
               ),
@@ -152,18 +168,8 @@ class SignUpScreen extends StatelessWidget {
 
   void _submit(SignUpController controller) {
     if (formKey.currentState!.validate()) {
-      if (controller.passwordController.text !=
-          controller.againPasswordController.text) {
-        BaseMixin.showToastFlutter(messsage: 'Passwords do not match');
-      } else {
-        if (controller.isAgree) {
-          formKey.currentState!.save();
-          controller.registerWithEmailPassword();
-        } else {
-          BaseMixin.showToastFlutter(
-              messsage: 'Please agree to the terms and conditions');
-        }
-      }
+      formKey.currentState!.save();
+      controller.registerWithEmailPassword();
     }
   }
 }

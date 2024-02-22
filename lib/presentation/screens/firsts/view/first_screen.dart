@@ -124,8 +124,8 @@ class ItemFirstStudents extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset(IMAGES.firstImages),
-                 const Padding(
-                    padding:  EdgeInsets.only(right: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -166,7 +166,7 @@ class ItemFirstStudents extends StatelessWidget {
                       CustomText(
                         text: "333",
                         fontWeight: FontWeight.bold,
-                        fontSize: Dimensions.fontSize16.sp,
+                        fontSize: Dimensions.fontSize14.sp,
                         color: Colors.white,
                       )
                     ],

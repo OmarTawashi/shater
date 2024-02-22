@@ -38,7 +38,8 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
             BaseMixin.showToastFlutter(
-                messsage: response.data?.errors?.first.message);
+              messsage: response.data?.errors?.first.message,
+            );
           } else {
             completer.complete(Right(response.data?.item ?? User()));
           }

@@ -18,23 +18,42 @@ class SignUpController extends GetxController {
 
   AuthUseCaseImp? _authUseCaseImp;
 
+  bool _isValidEmail = false;
+  bool get isValidEmail => _isValidEmail;
+
+  bool _isValidPassword = false;
+  bool get isValidPassword => _isValidPassword;
+
+  bool _isValidAgainPassword = false;
+  bool get isValidAgainPassword => _isValidAgainPassword;
+
+  bool  get isEnable => (_isValidEmail && _isValidPassword && _isValidAgainPassword && isAgree);
+
   @override
   void onInit() {
     super.onInit();
     _authUseCaseImp = AuthUseCaseImp(AuthRepositoryRemote(ApiClient()));
   }
 
-  void changeAgree(bool isAgree) {
-    _isAgree = isAgree;
+  void changeAgree(bool isagree) {
+    _isAgree = isagree;
     update();
   }
 
-  bool isEnable() {
-    return emailController.text.isNotEmpty &&
-        passwordController.text.isNotEmpty &&
-        againPasswordController.text.isNotEmpty &&
-        emailController.text.contains('@') &&
-        isAgree;
+  void validEmail(String value) {
+    _isValidEmail = value.contains(".com") && emailController.text.isNotEmpty;
+    update();
+  }
+
+  void validPassword(String value) {
+    _isValidPassword = value.length > 7 && passwordController.text.isNotEmpty;
+    update();
+  }
+
+  void validAgainPassword(String value) {
+    _isValidAgainPassword =
+        value.length > 7 && againPasswordController.text.isNotEmpty;
+    update();
   }
 
   void registerWithEmailPassword() async {
@@ -43,11 +62,8 @@ class SignUpController extends GetxController {
     await _authUseCaseImp
         ?.registerWithEmailPassword(email, password)
         .then((value) {
-      value?.fold((l) {
-        print('error :${l}');
-      }, (r) {
+      value?.fold((l) {}, (r) {
         _user = r;
-        print(r);
         update();
       });
 

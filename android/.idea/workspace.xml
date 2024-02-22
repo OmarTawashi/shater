@@ -10,13 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a63835-291a-4d8e-8ce6-513c181e4a12" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/core/repository/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/repository/auth_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/data/repository/auth_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/data/repository/auth_repository_remote.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/domain/usecase/auth_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/domain/usecase/auth_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/base/perfect_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/base/perfect_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/exercises/widgets/item_exercise.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/exercises/widgets/item_exercise.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/firsts/view/first_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/firsts/view/first_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,19 +80,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ResourceManagerPrefKey.ResourceType": "MIPMAP",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android.gradle.sync.needed": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "mohamed-dev-v1",
-    "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;MIPMAP&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mohamed-dev-v1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Documents/GitHub/shater&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />

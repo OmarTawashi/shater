@@ -58,6 +58,7 @@ class SignInScreen extends StatelessWidget {
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (value) {
                       // controller.checkEmail();
+                      controller.validEmail(value);
                     },
                     textValidation: 'please_enter_email'.tr,
                   ),
@@ -71,13 +72,16 @@ class SignInScreen extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     textValidation: 'please_enter_password'.tr,
                     suffix: visibleSecure(controller),
+                    onChanged: (value) {
+                      controller.validPassword(value);
+                    },
                   ),
                   const SizedBox(
                     height: 22,
                   ),
                   CustomCupertinoButton(
                     text: 'enter',
-                    onPressed: controller.isEnable == false
+                    onPressed: controller.isEnable
                         ? () {
                             // Get.toNamed(Routes.getDashBoardScreen());
                             _submit(controller);
