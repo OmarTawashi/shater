@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/error_response.dart' as errorRes;
 import 'package:shater/util/api_constant.dart';
 
@@ -30,9 +31,9 @@ class ApiClient {
       HttpHeaders.acceptHeader: 'application/json',
       "device-type": "ios",
       "site_country": "",
-      "Accept-Language": "ar"
-      // 'Authorization':
-      //     SharedPrefs.user == null ? '' : 'Bearer ${SharedPrefs.user?.token}'
+      "Accept-Language": "ar",
+      "Authorization":
+          SharedPrefs.user == null ? "" : "Bearer ${SharedPrefs.user?.apiToken}"
 
       // 'X-Client-Device-Name': DeviceInfo.deviceName,
       // 'X-Client-Device-Type': DeviceInfo.manufacturerName,
@@ -42,9 +43,9 @@ class ApiClient {
     receiveTimeout: const Duration(milliseconds: 60 * 1000), // 1 minute
   );
 
-  // static void updateHeader() {
-  //   _options.headers['Authorization'] = 'Bearer ${SharedPrefs.user?.token}';
-  // }
+  static void updateHeader() {
+    _options.headers['Authorization'] = 'Bearer ${SharedPrefs.user?.apiToken}';
+  }
 
   static final Dio _dio = Dio(_options)
     ..interceptors.add(

@@ -128,7 +128,9 @@ class SignUpScreen extends StatelessWidget {
                         startText: 'ok_to',
                         lastText: 'privcy_policy',
                         mainAxisAlignment: MainAxisAlignment.start,
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.getCityScreen());
+                        },
                       ),
                     ],
                   ),
@@ -169,7 +171,8 @@ class SignUpScreen extends StatelessWidget {
   void _submit(SignUpController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      controller.registerWithEmailPassword();
+      // controller.registerWithEmailPassword();
+      Get.toNamed(Routes.getCityScreen());
     }
   }
 }

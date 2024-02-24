@@ -8,6 +8,7 @@ mixin BaseMixin {
       msg: (messsage ?? '').tr,
       toastLength: Toast.LENGTH_LONG,
       timeInSecForIosWeb: 1,
+      gravity: ToastGravity.TOP,
       backgroundColor: Colors.red,
       textColor: Colors.white,
       fontSize: 16.0,

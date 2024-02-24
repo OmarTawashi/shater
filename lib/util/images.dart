@@ -9,6 +9,7 @@ class IMAGES {//first.png
 
 class ICONS {
   static const String logoApp = 'assets/icons/logoApp.svg';
+  static const String internalServerError = 'assets/icons/internal_server_error.svg';
   static const String exerciseTab = 'assets/icons/exerciseUnActive.svg';
   static const String subjectUnActive = 'assets/icons/subjectUnActive.svg';
   static const String firstsTap = 'assets/icons/firstsTap.svg';

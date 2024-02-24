@@ -26,7 +26,7 @@ class CustomCupertinoButton extends StatelessWidget {
     return CupertinoButton(
       onPressed: onPressed,
       borderRadius: BorderRadius.circular(13),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal:  16,vertical: 18),
       color: color,
       disabledColor: color,
       child: Row(
@@ -41,7 +41,7 @@ class CustomCupertinoButton extends StatelessWidget {
             textAlign: TextAlign.center,
             color:onPressed != null ? Colors.white :  COLORS.textColor,
             fontWeight: FontWeight.bold,
-            fontSize: Dimensions.fontSize15,
+            fontSize: Dimensions.fontSize16,
           ),
           trailing ?? SizedBox()
         ],

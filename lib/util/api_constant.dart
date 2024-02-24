@@ -12,6 +12,8 @@ class ApiConstant {
   static const String checkEmail = '/api/$version/auth/check-email';
   static const String studentLogin = '/api/$version/auth/login';
   static const String registerLogin = '/api/$version/auth/register';
+  static const String getCities = '/api/$version/main/getCities';
+  static const String getSchools = '/api/$version/main/getSchools';
 
 
 

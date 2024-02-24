@@ -41,7 +41,12 @@ class AuthRepositoryRemote extends BaseAuthRepository {
               messsage: response.data?.errors?.first.message,
             );
           } else {
-            completer.complete(Right(response.data?.item ?? User()));
+            final user = response.data?.item;
+            completer.complete(Right(user ?? User()));
+            if (user != null) {
+              SharedPrefs.saveUser(user);
+              ApiClient.updateHeader();
+            }
           }
         },
         onError: (error) {
@@ -56,7 +61,13 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   @override
   Future<Either<ApiException, User>?> registerWithEmailPassword(
-      String email, String password) async {
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      int countryId,
+      int cityId) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
@@ -70,11 +81,22 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         data: {
           "email": email,
           "password": password,
+          "password_confirmation": passwordConfirmation,
           "FCM_token": fcmToken,
           "device_type": "ios",
+          "school_id": schoolId,
+          "name": name,
+          "country_id": countryId,
+          "city_id": cityId,
         },
         onSuccess: (response) {
-          completer.complete(Right(response.data?.item ?? User()));
+          if (response.data?.status == false ?? false) {
+            BaseMixin.showToastFlutter(
+              messsage: response.data?.errors?.first.message,
+            );
+          } else {
+            completer.complete(Right(response.data?.item ?? User()));
+          }
         },
         onError: (error) {
           completer.complete(left(error));

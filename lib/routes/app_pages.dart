@@ -3,6 +3,9 @@ import 'package:shater/presentation/screens/auth/base%20login/view/base_login_sc
 import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.dart';
+import 'package:shater/presentation/screens/auth/sign%20up/widgets/create_name_screen.dart';
+import 'package:shater/presentation/screens/auth/sign%20up/widgets/level_screen.dart';
+import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/dashBord/bindings/bindings_dashbord.dart';
 import 'package:shater/presentation/screens/dashBord/view/dashbord_screen.dart';
 import 'package:shater/presentation/screens/dashBord/widgets/semester_screen.dart';
@@ -13,10 +16,13 @@ import 'package:shater/presentation/screens/exercise%20subject/view/exercise_sub
 import 'package:shater/presentation/screens/firsts/view/first_screen.dart';
 import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
+import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
+import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
+import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/contact/view/contact_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
 
@@ -51,6 +57,24 @@ class AppPages {
     GetPage(
       name: RoutesName.profileScreen,
       page: () => const ProfileScreen(),
+    ),
+    GetPage(
+      name: RoutesName.createNameScreen,
+      page: () => const CreateNameScreen(),
+    ),
+    GetPage(
+      name: RoutesName.levelScreen,
+      page: () => const LevelScreen(),
+    ),
+    GetPage(
+      name: RoutesName.cityScreen,
+      page: () =>  cityScreen(),
+      binding: CityBinding()
+    ),
+    GetPage(
+      name: RoutesName.schoolScreen,
+      page: () => const SchoolScreen(),
+      binding: SchoolBinding()
     ),
     GetPage(
         name: RoutesName.signUpScreen,

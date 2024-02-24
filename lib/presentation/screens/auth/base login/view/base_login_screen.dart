@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
+import 'package:shater/presentation/screens/base/circle_logo_app.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
@@ -32,13 +32,7 @@ class BaseLoginScreen extends StatelessWidget {
               onTap: () {
                 Get.toNamed(Routes.getProfileScreen());
               },
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                    color: Colors.white, shape: BoxShape.circle),
-                child: const CustomSvgPicture(assetName: ICONS.logoAppt),
-              ),
+              child: CircleLogoApp(),
             ),
             SizedBox(
               height: Dimensions.paddingSize20.h,
@@ -105,6 +99,8 @@ class BaseLoginScreen extends StatelessWidget {
     );
   }
 }
+
+
 
 class ButtonBorderFillWidget extends StatelessWidget {
   final Function()? onTap;

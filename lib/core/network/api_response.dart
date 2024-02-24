@@ -59,7 +59,7 @@ class APIResponse<T> extends GenericObject<T>
     items = [];
 
     try {
-      json['data'].forEach((item) {
+      json['items'].forEach((item) {
         items?.add(genericObject(item));
       });
     } catch (error) {
@@ -67,8 +67,8 @@ class APIResponse<T> extends GenericObject<T>
     }
 
     try {
-      if (json is Map<String, dynamic> && json.containsKey("data")) {
-        item = genericObject(json["data"]);
+      if (json is Map<String, dynamic> && json.containsKey("items")) {
+        item = genericObject(json["items"]);
       } else {
         item = genericObject(json);
       }

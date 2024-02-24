@@ -1,5 +1,6 @@
+import 'package:shater/data/model/user.dart';
+
 import 'message_model.dart';
-import 'user_model.dart';
 
 class Chat {
   final String? id;

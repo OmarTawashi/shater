@@ -46,7 +46,7 @@ class SignInController extends GetxController {
   }
 
   void validPassword(String value) {
-    _isValidPassword = value.length > 7 && passwordController.text.isNotEmpty;
+    _isValidPassword = value.length > 5 && passwordController.text.isNotEmpty;
     update();
   }
 
@@ -56,9 +56,8 @@ class SignInController extends GetxController {
     await _authUseCaseImp
         ?.signInWithEmailPassword(email, password)
         .then((value) {
-      value?.fold((l) {}, (r) {
-        _user = r;
-        print(r);
+      value?.fold((l) {}, (user) {
+        _user = user;
         update();
       });
       update();

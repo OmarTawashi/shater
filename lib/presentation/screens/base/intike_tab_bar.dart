@@ -17,7 +17,7 @@ class IntikeTapBar extends StatelessWidget {
     return SliverPersistentHeader(
       pinned: true,
       delegate: SectionHeaderDelegate(
-        height: 148,
+        height: 165,
         widget: Column(
           children: [
             Container(
