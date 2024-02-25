@@ -6,6 +6,7 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/public_repository.dart';
+import 'package:shater/data/model/data_register_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';
 import 'package:shater/util/api_constant.dart';
@@ -58,6 +59,37 @@ class PublicRepositoryRemote extends PublicRepository {
         queryParams: param,
         onSuccess: (response) {
           final data = response.data?.items;
+          if (data != null) {
+            completer.complete(right(data));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+  
+  @override
+  Future<Either<ApiException, DataRegisterModel>?> fetchLevel(int cityId,int schoolId)async {
+    final completer = Completer<Either<ApiException, DataRegisterModel>?>();
+    final param = {
+      "city_id": cityId,
+      "school_id": schoolId,
+    };
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.getDataForUserRegistration,
+        requestType: RequestType.get,
+        create: () => APIResponse<DataRegisterModel>(
+          create: () => DataRegisterModel(),
+        ),
+        queryParams: param,
+        onSuccess: (response) {
+          final data = response.data?.item;
           if (data != null) {
             completer.complete(right(data));
           }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/widget_data_user.dart';
 import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/school/controller/school_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 
 import '../../../../core/base/base_mixin.dart';
@@ -80,7 +81,7 @@ SliverList listCity(SchoolController controller) {
           final school = controller.schools[index];
           Get.find<SignUpController>().setSchool(school);
           if (Get.find<SignUpController>().schoolSelected != null) {
-            // Get.toNamed(Routes.getLevelScreen());
+            Get.toNamed(Routes.getLevelScreen());
           } else {
             BaseMixin.showToastFlutter(messsage: 'please_select_school');
           }

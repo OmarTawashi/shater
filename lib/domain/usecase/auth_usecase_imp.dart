@@ -29,8 +29,9 @@ class AuthUseCaseImp extends AuthUseCase {
       int schoolId,
       String name,
       int countryId,
-      int cityId) {
+      int cityId,
+      String classId) {
     return _authRepository.registerWithEmailPassword(email, password,
-        passwordConfirmation, schoolId, name, countryId, cityId);
+        passwordConfirmation, schoolId, name, countryId, cityId, classId);
   }
 }

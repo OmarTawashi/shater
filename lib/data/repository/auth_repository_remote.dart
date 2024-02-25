@@ -67,7 +67,8 @@ class AuthRepositoryRemote extends BaseAuthRepository {
       int schoolId,
       String name,
       int countryId,
-      int cityId) async {
+      int cityId,
+      String classId) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
@@ -88,6 +89,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           "name": name,
           "country_id": countryId,
           "city_id": cityId,
+          "class_id": classId,
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
@@ -95,7 +97,12 @@ class AuthRepositoryRemote extends BaseAuthRepository {
               messsage: response.data?.errors?.first.message,
             );
           } else {
-            completer.complete(Right(response.data?.item ?? User()));
+            final user = response.data?.item;
+            completer.complete(Right(user ?? User()));
+            if (user != null) {
+              SharedPrefs.saveUser(user);
+              ApiClient.updateHeader();
+            }
           }
         },
         onError: (error) {

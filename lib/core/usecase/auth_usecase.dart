@@ -13,6 +13,8 @@ abstract class AuthUseCase {
       int schoolId,
       String name,
       int countryId,
-      int cityId);
+      int cityId,
+      String classId
+      );
   Future<void> signOut();
 }

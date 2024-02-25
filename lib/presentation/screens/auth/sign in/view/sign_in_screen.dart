@@ -30,122 +30,139 @@ class SignInScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Form(
               key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CustomIntikeContainer(
-                        paddingHorizontal: 70,
-                        child: CustomText(
-                          text: 'enter_acounts',
-                          textAlign: TextAlign.center,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: Dimensions.fontSize15,
+              child: Stack(
+                alignment: Alignment.center,
+                children:[ Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomIntikeContainer(
+                          paddingHorizontal: 70,
+                          child: CustomText(
+                            text: 'enter_acounts',
+                            textAlign: TextAlign.center,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.fontSize15,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 70,
-                  ),
-                  CustomTextFormField(
-                    controller: controller.emailController,
-                    hintText: 'email'.tr,
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (value) {
-                      // controller.checkEmail();
-                      controller.validEmail(value);
-                    },
-                    textValidation: 'please_enter_email'.tr,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  CustomTextFormField(
-                    controller: controller.passwordController,
-                    hintText: 'password'.tr,
-                    obscureText: controller.isHide,
-                    keyboardType: TextInputType.visiblePassword,
-                    textValidation: 'please_enter_password'.tr,
-                    suffix: visibleSecure(controller),
-                    onChanged: (value) {
-                      controller.validPassword(value);
-                    },
-                  ),
-                  const SizedBox(
-                    height: 22,
-                  ),
-                  CustomCupertinoButton(
-                    text: 'enter',
-                    onPressed: controller.isEnable
-                        ? () {
-                            // Get.toNamed(Routes.getDashBoardScreen());
-                            _submit(controller);
-                          }
-                        : null,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      InkWell(
-                          onTap: () {},
-                          child: const CustomText(
-                            text: 'forget_passwords',
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 70,
+                    ),
+                    CustomTextFormField(
+                      controller: controller.emailController,
+                      hintText: 'email'.tr,
+                      keyboardType: TextInputType.emailAddress,
+                      onChanged: (value) {
+                        // controller.checkEmail();
+                        controller.validEmail(value);
+                      },
+                      textValidation: 'please_enter_email'.tr,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    CustomTextFormField(
+                      controller: controller.passwordController,
+                      hintText: 'password'.tr,
+                      obscureText: controller.isHide,
+                      keyboardType: TextInputType.visiblePassword,
+                      textValidation: 'please_enter_password'.tr,
+                      suffix: visibleSecure(controller),
+                      onChanged: (value) {
+                        controller.validPassword(value);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 22,
+                    ),
+                    CustomCupertinoButton(
+                      text: 'enter',
+                      onPressed: controller.isEnable
+                          ? () {
+                              // Get.toNamed(Routes.getDashBoardScreen());
+                              _submit(controller);
+                            }
+                          : null,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        InkWell(
+                            onTap: () {},
+                            child: const CustomText(
+                              text: 'forget_passwords',
+                              color: Color.fromRGBO(159, 191, 216, 1),
+                              fontSize: Dimensions.fontSize15,
+                              fontWeight: FontWeight.w400,
+                            )),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 45,
+                    ),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            color: COLORS.strokeColor,
+                            thickness: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: CustomText(
+                            text: 'or',
                             color: Color.fromRGBO(159, 191, 216, 1),
                             fontSize: Dimensions.fontSize15,
                             fontWeight: FontWeight.w400,
-                          )),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: COLORS.strokeColor,
-                          thickness: 2,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: CustomText(
-                          text: 'or',
-                          color: Color.fromRGBO(159, 191, 216, 1),
-                          fontSize: Dimensions.fontSize15,
-                          fontWeight: FontWeight.w400,
+                        Expanded(
+                          child: Divider(
+                            color: COLORS.strokeColor,
+                            thickness: 2,
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: COLORS.strokeColor,
-                          thickness: 2,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: Dimensions.paddingSize16,
-                  ),
-                  TextNotAcount(
-                    startText: 'have_an_account',
-                    lastText: 'create_new_acounts',
-                    onTap: () {
-                      Get.toNamed(Routes.getSignUpScreen());
-                    },
-                  ),
-                ],
-              ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: Dimensions.paddingSize16,
+                    ),
+                    TextNotAcount(
+                      startText: 'have_an_account',
+                      lastText: 'create_new_acounts',
+                      onTap: () {
+                        Get.toNamed(Routes.getSignUpScreen());
+                      },
+                    ),
+                  ],
+                ),
+                  controller.isloading
+                    ? Container(
+                        margin: EdgeInsets.symmetric(horizontal: 90),
+                        padding: EdgeInsets.all(50),
+                        decoration: BoxDecoration(
+                            color: Colors.black38,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Center(
+                            child: CircularProgressIndicator(
+                          color: COLORS.secanderyColor,
+                          strokeWidth: 3.5,
+                        )),
+                      )
+                    : SizedBox()
+              ]),
             ),
           ),
         ),

@@ -4,7 +4,6 @@ import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.d
 import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/create_name_screen.dart';
-import 'package:shater/presentation/screens/auth/sign%20up/widgets/level_screen.dart';
 import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/dashBord/bindings/bindings_dashbord.dart';
 import 'package:shater/presentation/screens/dashBord/view/dashbord_screen.dart';
@@ -14,6 +13,8 @@ import 'package:shater/presentation/screens/exercise%20details/view/exercise_det
 import 'package:shater/presentation/screens/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/presentation/screens/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/firsts/view/first_screen.dart';
+import 'package:shater/presentation/screens/level/binding/level_binding.dart';
+import 'package:shater/presentation/screens/level/view/level_screen.dart';
 import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
@@ -60,11 +61,12 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.createNameScreen,
-      page: () => const CreateNameScreen(),
+      page: () =>  CreateNameScreen(),
     ),
     GetPage(
       name: RoutesName.levelScreen,
       page: () => const LevelScreen(),
+     binding:  LevelBinding()
     ),
     GetPage(
       name: RoutesName.cityScreen,

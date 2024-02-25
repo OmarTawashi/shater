@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shater/util/constant.dart';
 
 import '../../../util/color.dart';
 import '../../../util/dimensions.dart';
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final Widget? suffix;
   final bool obscureText;
+  final TextInputAction? textInputAction;
   const CustomTextFormField(
       {super.key,
       this.hintText,
@@ -22,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
       this.keyboardType,
       this.obscureText = false,
       this.suffix,
+      this.textInputAction,
       this.textValidation});
 
   @override
@@ -29,15 +32,18 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
+      textDirection: TextDirection.rtl,
       onChanged: onChanged,
+      textInputAction:textInputAction ,
       obscureText: obscureText,
       textAlign: TextAlign.center,
       cursorColor: Colors.white,
       style: FontStyleConstant.hNLTRegular.copyWith(
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: Dimensions.fontSize15,
-      ),
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: Dimensions.fontSize15,
+          locale: Locale(APPCONSTANT.languages[1].languageCode ?? '',
+              APPCONSTANT.languages[0].languageCode)),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
         if (value == null || value.isEmpty) {

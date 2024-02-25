@@ -13,5 +13,7 @@ abstract class BaseAuthRepository {
       int schoolId,
       String name,
       int countryId,
-      int cityId);
+      int cityId,
+      String classId
+      );
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/data/model/class_model.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/item_city.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/widget_data_user.dart';
 import 'package:shater/presentation/screens/level/controller/level_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 
+import '../../../../core/base/base_mixin.dart';
+import '../../auth/sign up/controller/sign_up_controller.dart';
 import '../../base/animator_container.dart';
 
 class LevelScreen extends StatelessWidget {
@@ -19,7 +23,7 @@ class LevelScreen extends StatelessWidget {
             viewType: controller.viewType,
             isSliver: true,
             emptyParams: EmptyParams(
-                text: 'empty city',
+                text: 'empty Level',
                 caption: '',
                 image: ICONS.internalServerError),
             successWidget: listLevel(controller),
@@ -33,19 +37,19 @@ class LevelScreen extends StatelessWidget {
   SliverList listLevel(LeveController controller) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: controller.levels.length,
+        childCount: controller.classes?.country?.first.classes?.length,
         (context, index) => ItemCity(
-          name: controller.levels[index].name,
+          name: controller.classes?.country?.first.classes?[index].title,
           onTap: () {
-            // final city = controller.cities[index];
-            // Get.find<SignUpController>().setCity(city);
-            // if (Get.find<SignUpController>().citySelected !=null) {
-            //    Get.toNamed(Routes.getSchoolScreen());
-            // }else{
-            //   BaseMixin.showToastFlutter(
-            //     messsage: 'please_select_city'
-            //   );
-            // }
+            Classes? classes =
+                controller.classes?.country?.first.classes?[index];
+            Get.find<SignUpController>().setClass(classes!);
+            if (Get.find<SignUpController>().citySelected != null) {
+               Get.toNamed(Routes.getCreateNameScreen());
+              print('object');
+            } else {
+              BaseMixin.showToastFlutter(messsage: 'please_select_class');
+            }
           },
         ),
       ),

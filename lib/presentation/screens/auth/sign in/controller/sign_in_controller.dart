@@ -5,6 +5,7 @@ import 'package:shater/core/network/api_response.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/auth_repository_remote.dart';
 import 'package:shater/domain/usecase/auth_usecase_imp.dart';
+import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../data/model/empty_model.dart';
 import '../../../../../util/api_constant.dart';
@@ -15,6 +16,10 @@ class SignInController extends GetxController {
 
   bool _isHide = true;
   bool get isHide => _isHide;
+
+  
+  bool _isLoading = false;
+  bool get isloading => _isLoading;
 
   bool _isValidEmail = false;
   bool get isValidEmail => _isValidEmail;
@@ -44,6 +49,10 @@ class SignInController extends GetxController {
     _isValidEmail = value.contains(".com") && emailController.text.isNotEmpty;
     update();
   }
+    void changeLoading(bool isLoad) {
+    _isLoading = isLoad;
+    update();
+  }
 
   void validPassword(String value) {
     _isValidPassword = value.length > 5 && passwordController.text.isNotEmpty;
@@ -53,13 +62,18 @@ class SignInController extends GetxController {
   void signInWithEmailPassword() async {
     final email = emailController.text;
     final password = passwordController.text;
+    changeLoading(true);
     await _authUseCaseImp
         ?.signInWithEmailPassword(email, password)
         .then((value) {
       value?.fold((l) {}, (user) {
         _user = user;
         update();
+        if (_user != null) {
+          Get.offAllNamed(Routes.getDashBoardScreen());
+        }
       });
+      changeLoading(false);
       update();
     });
   }
