@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/controller/shared_prefrences.dart';
+import 'package:shater/data/model/user.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
 
@@ -14,13 +16,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  User? _user;
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-     Get.offAllNamed(Routes.getBaseLoginScreen());
+    _user = SharedPrefs.user;
+    Future.delayed(const Duration(seconds: 1)).then((value) {
+      if (_user == null) {
+        Get.offAllNamed(Routes.getSignInScreen());
+      } else {
+        Get.offAllNamed(Routes.getDashBoardScreen());
+      }
     });
   }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.delayed(const Duration(seconds: 2)).then((value) {
+  //    Get.offAllNamed(Routes.getBaseLoginScreen());
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

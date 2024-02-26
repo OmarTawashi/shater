@@ -22,6 +22,7 @@ class ICONS {
   static const String student = 'assets/icons/student.svg';
   static const String teacherUnActive = 'assets/icons/teacherUnActive.svg';
   static const String teacherActive = 'assets/icons/teacherActive.svg';
+  static const String decriptionTop = 'assets/icons/decriptionTop.svg';
   static const String star = 'assets/icons/star.svg';
 
   static const String exerciseTabActive = 'assets/icons/exerciseActive.svg';

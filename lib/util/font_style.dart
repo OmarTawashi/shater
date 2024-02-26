@@ -3,7 +3,7 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class FontStyleConstant {
-  static String familyFont = 'HelveticaNeueLTArabic';
+  static String familyFont = 'Helvetica Neue W23 for SKY Bd';
   
 
   static TextStyle hNLTRegular = TextStyle(

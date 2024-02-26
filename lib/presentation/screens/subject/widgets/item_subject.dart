@@ -8,9 +8,15 @@ import '../../base/text_custom.dart';
 
 class ItemSubject extends StatelessWidget {
   final Function()? onTap;
+  final String? textSubject;
+  final int? pageCount;
+  final int? questionCount;
   const ItemSubject({
     super.key,
     this.onTap,
+    this.textSubject,
+    this.pageCount,
+    this.questionCount,
   });
 
   @override
@@ -43,8 +49,8 @@ class ItemSubject extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const CustomText(
-                      text: 'رياضيات',
+                    CustomText(
+                      text: textSubject ?? "",
                       color: Colors.white,
                       fontSize: Dimensions.fontSize18,
                       fontWeight: FontWeight.bold,
@@ -53,7 +59,7 @@ class ItemSubject extends StatelessWidget {
                       height: Dimensions.paddingSize12,
                     ),
                     CustomText(
-                      text: "110" + "\t" + 'درس',
+                      text: "${pageCount}" + "\t" + 'درس',
                       color: Color.fromRGBO(198, 235, 245, 1),
                       fontSize: Dimensions.fontSize14,
                       fontWeight: FontWeight.bold,
@@ -62,7 +68,7 @@ class ItemSubject extends StatelessWidget {
                       height: Dimensions.paddingSize8,
                     ),
                     CustomText(
-                      text: "110" + "\t" + 'تدريب',
+                      text: "${questionCount}" + "\t" + 'تدريب',
                       color: Color.fromRGBO(198, 235, 245, 1),
                       fontSize: Dimensions.fontSize14,
                       fontWeight: FontWeight.bold,
@@ -71,7 +77,7 @@ class ItemSubject extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: onTap ,
+                onTap: onTap,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                   decoration: BoxDecoration(
