@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/auth_repository.dart';
 import 'package:shater/core/usecase/auth_usecase.dart';
+import 'package:shater/data/model/empty_model.dart';
 
 import '../../data/model/user.dart';
 
@@ -33,5 +34,10 @@ class AuthUseCaseImp extends AuthUseCase {
       String classId) {
     return _authRepository.registerWithEmailPassword(email, password,
         passwordConfirmation, schoolId, name, countryId, cityId, classId);
+  }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> checkEmail(String email) {
+    return _authRepository.checkEmail(email);
   }
 }

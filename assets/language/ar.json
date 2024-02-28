@@ -20,6 +20,8 @@
     "student": "طالب",
     "male": "بنين",
     "female": "بنات",
+    "select_subject": "اختر المادة الدراسية",
+    "create_new_acount_teacher": "إنشاء حساب جديد للمعلم",
     "create_account": "انشأ حساب",
     "welcome": "مرحبا !",
     "please_select_class": "رجاءا اختر الصف",

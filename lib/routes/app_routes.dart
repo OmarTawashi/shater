@@ -1,3 +1,5 @@
+
+
 abstract class RoutesName {
   static const spalshScreen = '/';
   static const dashBoardScreen = '/dash-board-screen';
@@ -16,7 +18,10 @@ abstract class RoutesName {
   static const cityScreen = '/city-screen';
   static const schoolScreen = '/school-screen';
   static const levelScreen = '/level-screen';
+  static const subjectTeacherScreen = '/subject-teacher-screen';
   static const createNameScreen = '/create-name-screen';
+  static const termsConditionScreen = '/terms-condition-screen';
+  static const privcyPolicyScreen = '/privcy-policy-screen';
 }
 
 abstract class Routes {
@@ -31,11 +36,14 @@ abstract class Routes {
   static String getFirstsScreen() => RoutesName.firstsScreen;
   static String getContactScreen() => RoutesName.contactScreen;
   static String getNotificationDetails() => RoutesName.notificationDetails;
+  static String getTermsConditionScreen() => RoutesName.termsConditionScreen;
+  static String getPrivcyPolicyScreen() => RoutesName.privcyPolicyScreen;
   static String getDashBoardScreen() => RoutesName.dashBoardScreen;
   static String getSemesterScreen() => RoutesName.semesterScreen;
   static String getSchoolScreen() => RoutesName.schoolScreen;
   static String getExerciseDetailsScreen() => RoutesName.exerciseDetailsScreen;
   static String getCityScreen() => RoutesName.cityScreen;
   static String getLevelScreen() => RoutesName.levelScreen;
+  static String getSubjectTeacherScreen() => RoutesName.subjectTeacherScreen;
   static String getCreateNameScreen() => RoutesName.createNameScreen;
 }

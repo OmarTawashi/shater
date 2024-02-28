@@ -5,6 +5,7 @@ import 'package:shater/presentation/screens/base/custom_sliver_app_bar.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/dashBord/controller/dashboard_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 
 import '../../../util/dimensions.dart';
 
@@ -26,13 +27,18 @@ class PerfectAppBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              margin:
-                  EdgeInsets.symmetric(horizontal: Dimensions.paddingSize10.w),
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                shape: BoxShape.circle,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(Routes.getProfileScreen());
+              },
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                margin:
+                    EdgeInsets.symmetric(horizontal: Dimensions.paddingSize10.w),
+                decoration: const BoxDecoration(
+                  color: Colors.amber,
+                  shape: BoxShape.circle,
+                ),
               ),
             ),
             CustomText(

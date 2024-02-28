@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/network/api_client.dart';
-import 'package:shater/core/network/api_response.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/auth_repository_remote.dart';
 import 'package:shater/domain/usecase/auth_usecase_imp.dart';
 import 'package:shater/routes/app_routes.dart';
-
-import '../../../../../data/model/empty_model.dart';
-import '../../../../../util/api_constant.dart';
 
 class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -17,7 +14,6 @@ class SignInController extends GetxController {
   bool _isHide = true;
   bool get isHide => _isHide;
 
-  
   bool _isLoading = false;
   bool get isloading => _isLoading;
 
@@ -49,7 +45,8 @@ class SignInController extends GetxController {
     _isValidEmail = value.contains(".com") && emailController.text.isNotEmpty;
     update();
   }
-    void changeLoading(bool isLoad) {
+
+  void changeLoading(bool isLoad) {
     _isLoading = isLoad;
     update();
   }
@@ -66,7 +63,9 @@ class SignInController extends GetxController {
     await _authUseCaseImp
         ?.signInWithEmailPassword(email, password)
         .then((value) {
-      value?.fold((l) {}, (user) {
+      value?.fold((l) {
+        BaseMixin.showToastFlutter(messsage: l.message);
+      }, (user) {
         _user = user;
         update();
         if (_user != null) {
@@ -76,22 +75,5 @@ class SignInController extends GetxController {
       changeLoading(false);
       update();
     });
-  }
-
-  void checkEmail() async {
-    final data = {
-      "email": emailController.text,
-    };
-
-    await ApiClient.requestData(
-      endpoint: ApiConstant.checkEmail,
-      requestType: RequestType.post,
-      create: () => APIResponse<EmptyModel>(
-        create: () => EmptyModel(),
-      ),
-      data: data,
-      onSuccess: (response) {},
-      onError: (error) {},
-    );
   }
 }

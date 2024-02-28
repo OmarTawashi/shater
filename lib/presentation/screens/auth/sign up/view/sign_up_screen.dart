@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
+import 'package:shater/presentation/screens/auth/base%20login/widgets/auth_mixin.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 
@@ -15,7 +17,7 @@ import '../../../base/text_not_acounts.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final formKey = GlobalKey<FormState>();
-
+  final authController = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,14 +35,14 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CustomIntikeContainer(
                         paddingHorizontal: 21,
                         child: CustomText(
-                          text: 'create_new_acount_student',
+                          text: authController.userType.title,
                           textAlign: TextAlign.center,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -129,7 +131,7 @@ class SignUpScreen extends StatelessWidget {
                         lastText: 'privcy_policy',
                         mainAxisAlignment: MainAxisAlignment.start,
                         onTap: () {
-                          Get.toNamed(Routes.getCityScreen());
+                          Get.toNamed(Routes.getPrivcyPolicyScreen());
                         },
                       ),
                     ],
@@ -139,6 +141,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   CustomCupertinoButton(
                     text: 'next',
+                    isLoading: controller.isLoadingCheck,
                     onPressed: controller.isEnable
                         ? () {
                             _submit(controller);
@@ -171,8 +174,8 @@ class SignUpScreen extends StatelessWidget {
   void _submit(SignUpController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      // controller.registerWithEmailPassword();
-      Get.toNamed(Routes.getCityScreen());
+      controller.checkEmail();
+      // Get.toNamed(Routes.getCityScreen());
     }
   }
 }

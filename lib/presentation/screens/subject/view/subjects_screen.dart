@@ -64,12 +64,12 @@ class SubjectsSCreen extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         childCount: controller.subjects.length,
         (context, index) => ItemSubject(
-          textSubject: controller.subjects[index].title,
-          pageCount: controller.subjects[index].pagesCount,
-          questionCount: controller.subjects[index].countQuestions,
-          onTap: () {
-          // Get.toNamed(Routes.getExerciseSubjectScreen());
-        }),
+            textSubject: controller.subjects[index].title,
+            pageCount: controller.subjects[index].pagesCount,
+            questionCount: controller.subjects[index].countQuestions,
+            onTap: () {
+              // Get.toNamed(Routes.getExerciseSubjectScreen());
+            }),
       ),
     );
   }

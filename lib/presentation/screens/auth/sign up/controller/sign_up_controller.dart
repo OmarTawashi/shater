@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/class_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';
+import 'package:shater/data/model/subject_model.dart';
 import 'package:shater/data/repository/auth_repository_remote.dart';
 import 'package:shater/domain/usecase/auth_usecase_imp.dart';
+import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
+import 'package:shater/presentation/screens/auth/base%20login/widgets/auth_mixin.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../data/model/user.dart';
 
 class SignUpController extends GetxController {
+  final authController = Get.find<AuthController>();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController againPasswordController = TextEditingController();
@@ -22,11 +28,17 @@ class SignUpController extends GetxController {
   bool _isLoading = false;
   bool get isloading => _isLoading;
 
+  bool _isLoadingCheck = false;
+  bool get isLoadingCheck => _isLoadingCheck;
+
   PublicModel? _citySelected;
   PublicModel? get citySelected => _citySelected;
 
   Classes? _classSelected;
   Classes? get classSelected => _classSelected;
+
+  Subject? _subjectSlected;
+  Subject? get subjectSlected => _subjectSlected;
 
   String? _name;
   String? get name => _name;
@@ -70,6 +82,11 @@ class SignUpController extends GetxController {
     update();
   }
 
+  void changeLoadingCheck(bool isLoad) {
+    _isLoadingCheck = isLoad;
+    update();
+  }
+
   void setCity(PublicModel city) {
     _citySelected = city;
     update();
@@ -82,6 +99,11 @@ class SignUpController extends GetxController {
 
   void setSchool(School city) {
     _schoolSelected = city;
+    update();
+  }
+
+  void setSubject(Subject subject) {
+    _subjectSlected = subject;
     update();
   }
 
@@ -133,5 +155,24 @@ class SignUpController extends GetxController {
       });
       changeLoading(false);
     });
+  }
+
+  void checkEmail() async {
+    final email = emailController.text;
+    changeLoadingCheck(true);
+    await _authUseCaseImp
+        ?.checkEmail(
+      email,
+    )
+        .then((value) {
+      value?.fold((l) {
+        if (l.statusCode == 404) {
+          Get.toNamed(authController.userType.routesGO);
+        } else {
+          BaseMixin.showToastFlutter(messsage: l.message);
+        }
+      }, (r) {});
+    });
+    changeLoadingCheck(false);
   }
 }

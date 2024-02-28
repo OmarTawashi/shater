@@ -9,7 +9,7 @@ mixin BaseMixin {
       toastLength: Toast.LENGTH_LONG,
       timeInSecForIosWeb: 1,
       gravity: ToastGravity.TOP,
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.amberAccent,
       textColor: Colors.white,
       fontSize: 16.0,
     );

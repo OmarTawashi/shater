@@ -24,6 +24,8 @@ class ICONS {
   static const String teacherActive = 'assets/icons/teacherActive.svg';
   static const String decriptionTop = 'assets/icons/decriptionTop.svg';
   static const String star = 'assets/icons/star.svg';
+  static const String setting = 'assets/icons/setting.svg';
+  static const String point = 'assets/icons/point.svg';
 
   static const String exerciseTabActive = 'assets/icons/exerciseActive.svg';
   static const String subjectTapActive = 'assets/icons/subjectActive.svg';

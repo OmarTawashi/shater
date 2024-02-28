@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
+import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
 import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
@@ -20,6 +22,8 @@ import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
+import 'package:shater/presentation/screens/subject%20teacher/binding/subject_teacher_binding.dart';
+import 'package:shater/presentation/screens/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
@@ -62,6 +66,19 @@ class AppPages {
     GetPage(
       name: RoutesName.createNameScreen,
       page: () =>  CreateNameScreen(),
+    ),
+    GetPage(
+      name: RoutesName.subjectTeacherScreen,
+      page: () => const SubjectTeacherScreen(),
+     binding:  SubjectTeacherBinding()
+    ),
+    GetPage(
+      name: RoutesName.termsConditionScreen,
+      page: () => const TermsConditionScreen(),
+    ),
+    GetPage(
+      name: RoutesName.privcyPolicyScreen,
+      page: () => const PrivcyPolicyScreen(),
     ),
     GetPage(
       name: RoutesName.levelScreen,

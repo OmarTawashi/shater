@@ -1,29 +1,24 @@
-
+import 'package:get/get.dart';
 import 'package:shater/flavors/build_config.dart';
+import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
+import 'package:shater/presentation/screens/auth/base%20login/widgets/auth_mixin.dart';
 
 class ApiConstant {
   // Base
   static String baseUrl = BuildConfig.instance.config.baseUrl;
 
-
   //student
-  static const String textUser = 'student';
-  static const String version = 'v2';
-  static const String checkEmail = '/api/$version/auth/check-email';
-  static const String studentLogin = '/api/$version/auth/login';
-  static const String registerLogin = '/api/$version/auth/register';
-  static const String getCities = '/api/$version/main/getCities';
-  static const String getSchools = '/api/$version/main/getSchools';
-  static const String getSubjects = '/api/$version/main/getSubjects';
-  static const String getDataForUserRegistration = '/api/$version/getDataForUserRegistration';
 
-
-
-
-
+  static String textUser = Get.find<AuthController>().userType.user;
+  static String version = 'v2';
+  static String checkEmail = '/api/$version/$textUser/auth/check-email';
+  static String studentLogin = '/api/$version/auth/login';
+  static String registerLogin = '/api/$version/$textUser/auth/register';
+  static String getCities = '/api/$version/main/getCities';
+  static String getSchools = '/api/$version/main/getSchools';
+  static String getSubjects = '/api/$version/main/getSubjects';
+  static String getDataForUserRegistration =
+      '/api/$version/getDataForUserRegistration';
 
   static const String topic = 'all_zone_customer';
-
-
-  
 }

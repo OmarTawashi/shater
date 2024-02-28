@@ -10,18 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a63835-291a-4d8e-8ce6-513c181e4a12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/language/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/language/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/base/base_mixin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/controller/auth_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/controller/root_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/controller/root_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/repository/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/repository/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/usecase/auth_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/usecase/auth_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/data/repository/auth_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/data/repository/auth_repository_remote.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/domain/usecase/auth_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/domain/usecase/auth_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/base login/view/base_login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/base login/view/base_login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/base/custom_cupertino_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/base/custom_cupertino_button.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/base/perfect_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/base/perfect_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/exercises/widgets/item_exercise.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/exercises/widgets/item_exercise.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/firsts/view/first_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/firsts/view/first_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/profile/view/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/profile/view/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/splach/view/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/splach/view/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/subject/view/subjects_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/subject/view/subjects_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/util/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/util/api_constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/util/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/util/images.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

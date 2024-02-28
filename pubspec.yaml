@@ -88,6 +88,8 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/language/
+    - assets/privacy.html
+    - assets/terms.html
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

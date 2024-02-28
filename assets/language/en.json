@@ -16,6 +16,8 @@
     "points": "Points",
     "school": "School",
     "teacher": "Teacher",
+    "select_subject": "Select Subject",
+    "create_new_acount_teacher": "Create New Acount Teacher",
     "create_account": "Create Account",
     "student": "Student",
     "email": "Email",

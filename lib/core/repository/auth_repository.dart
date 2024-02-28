@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:shater/data/model/empty_model.dart';
 
 import '../../data/model/user.dart';
 import '../network/api_exceptions.dart';
@@ -16,4 +17,6 @@ abstract class BaseAuthRepository {
       int cityId,
       String classId
       );
+    Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
+    
 }

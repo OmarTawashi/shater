@@ -6,6 +6,7 @@ import 'package:shater/core/base/device_info_sevice.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/auth_repository.dart';
+import 'package:shater/data/model/empty_model.dart';
 
 import '../../core/controller/shared_prefrences.dart';
 import '../../core/network/api_client.dart';
@@ -37,9 +38,10 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
-            BaseMixin.showToastFlutter(
-              messsage: response.data?.errors?.first.message,
-            );
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
           } else {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
@@ -117,5 +119,39 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   Future<void> signOut() async {
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> checkEmail(String email) async {
+    final completer = Completer<Either<ApiException, EmptyModel>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.checkEmail,
+        requestType: RequestType.post,
+        create: () => APIResponse<EmptyModel>(
+          create: () => EmptyModel(),
+        ),
+        data: {
+          "email": email,
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? EmptyModel()));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
   }
 }
