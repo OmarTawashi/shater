@@ -99,7 +99,7 @@ class CreateNameScreen extends StatelessWidget {
   void _submit(SignUpController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      controller.registerWithEmailPassword();
+      controller.registerStudent();
     }
   }
 }

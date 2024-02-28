@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/base/device_info_sevice.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
@@ -62,7 +61,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
   }
 
   @override
-  Future<Either<ApiException, User>?> registerWithEmailPassword(
+  Future<Either<ApiException, User>?> registerStudent(
       String email,
       String password,
       String passwordConfirmation,
@@ -95,9 +94,10 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
-            BaseMixin.showToastFlutter(
-              messsage: response.data?.errors?.first.message,
-            );
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
           } else {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
@@ -143,6 +143,65 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           } else {
             final user = response.data?.item;
             completer.complete(Right(user ?? EmptyModel()));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, User>?> registerTeacher(
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      String subjectName,
+      int countryId,
+      int cityId,
+      String classId) async {
+    final completer = Completer<Either<ApiException, User>?>();
+    final fcmToken = SharedPrefs.fcmToken ?? '';
+    final deviceType = await DeviceInfoService.getDeviceType();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.registerLogin,
+        requestType: RequestType.post,
+        create: () => APIResponse<User>(
+          create: () => User(),
+        ),
+        data: {
+          "email": email,
+          "password": password,
+          "password_confirmation": passwordConfirmation,
+          "FCM_token": fcmToken,
+          "device_type": "ios",
+          "school_id": schoolId,
+          "subject_name": subjectName,
+          "name": name,
+          "country_id": countryId,
+          "city_id": cityId,
+          "class_id": classId,
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? User()));
+            if (user != null) {
+              SharedPrefs.saveUser(user);
+              ApiClient.updateHeader();
+            }
           }
         },
         onError: (error) {

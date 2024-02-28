@@ -129,14 +129,41 @@ class SignUpController extends GetxController {
     update();
   }
 
-  void registerWithEmailPassword() async {
+  void registerStudent() async {
     final email = emailController.text;
     final password = passwordController.text;
     final confirmationPassword = againPasswordController.text;
     final name = nameController.text;
     changeLoading(true);
     await _authUseCaseImp
-        ?.registerWithEmailPassword(
+        ?.registerStudent(
+            email,
+            password,
+            confirmationPassword,
+            _schoolSelected?.id ?? -1,
+            name,
+            _classSelected?.countryId ?? -1,
+            _citySelected?.id ?? -1,
+            _classSelected?.id ?? "")
+        .then((value) {
+      value?.fold((l) {}, (r) {
+        _user = r;
+        update();
+        if (_user != null) {
+          Get.offAllNamed(Routes.getDashBoardScreen());
+        }
+      });
+      changeLoading(false);
+    });
+  }
+  void registerTeacher() async {
+    final email = emailController.text;
+    final password = passwordController.text;
+    final confirmationPassword = againPasswordController.text;
+    final name = nameController.text;
+    changeLoading(true);
+    await _authUseCaseImp
+        ?.registerStudent(
             email,
             password,
             confirmationPassword,

@@ -23,7 +23,7 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
-  Future<Either<ApiException, User>?> registerWithEmailPassword(
+  Future<Either<ApiException, User>?> registerStudent(
       String email,
       String password,
       String passwordConfirmation,
@@ -32,8 +32,22 @@ class AuthUseCaseImp extends AuthUseCase {
       int countryId,
       int cityId,
       String classId) {
-    return _authRepository.registerWithEmailPassword(email, password,
+    return _authRepository.registerStudent(email, password,
         passwordConfirmation, schoolId, name, countryId, cityId, classId);
+  }
+  @override
+  Future<Either<ApiException, User>?> registerTeacher(
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      String subjectName,
+      int countryId,
+      int cityId,
+      String classId) {
+    return _authRepository.registerTeacher(email, password,
+        passwordConfirmation, schoolId, name,subjectName, countryId, cityId, classId);
   }
 
   @override
