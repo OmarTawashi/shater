@@ -50,6 +50,8 @@ dependencies:
   fpdart: ^1.1.0
   firebase_core: ^2.25.4
   firebase_messaging: ^14.7.16
+  flutter_html: ^3.0.0-beta.2
+  webview_flutter: ^4.7.0
   # device_info_plus: ^2.0.3
 
 
