@@ -46,6 +46,7 @@ class APIResponse<T> extends GenericObject<T>
     implements Decodable<APIResponse<T>> {
   String? error;
   bool? status;
+  String? message;
   List<T>? items;
   T? item;
   List<ErrorModel>? errors;
@@ -56,6 +57,7 @@ class APIResponse<T> extends GenericObject<T>
   APIResponse<T> decode(dynamic json) {
     error = json['error'];
     status = json['status'];
+    message = json['message'];
     items = [];
 
     try {

@@ -54,4 +54,9 @@ class AuthUseCaseImp extends AuthUseCase {
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email) {
     return _authRepository.checkEmail(email);
   }
+  
+  @override
+  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email) {
+    return _authRepository.ForgetPassword(email);
+  }
 }

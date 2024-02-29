@@ -27,5 +27,7 @@ abstract class AuthUseCase {
       int cityId,
       String classId);
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
+      Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
+
   Future<void> signOut();
 }

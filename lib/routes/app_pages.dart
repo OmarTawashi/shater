@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
 import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
 import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
+import 'package:shater/presentation/screens/auth/forget%20password/binding/forget_password_binding.dart';
+import 'package:shater/presentation/screens/auth/forget%20password/view/forget_password_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.dart';
@@ -65,13 +67,16 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.createNameScreen,
-      page: () =>  CreateNameScreen(),
+      page: () => CreateNameScreen(),
     ),
     GetPage(
-      name: RoutesName.subjectTeacherScreen,
-      page: () => const SubjectTeacherScreen(),
-     binding:  SubjectTeacherBinding()
-    ),
+        name: RoutesName.forgetPasswordScreen,
+        page: () => ForgetPasswordScreen(),
+        binding: ForgetPasswordBinding()),
+    GetPage(
+        name: RoutesName.subjectTeacherScreen,
+        page: () => const SubjectTeacherScreen(),
+        binding: SubjectTeacherBinding()),
     GetPage(
       name: RoutesName.termsConditionScreen,
       page: () => const TermsConditionScreen(),
@@ -81,20 +86,17 @@ class AppPages {
       page: () => const PrivcyPolicyScreen(),
     ),
     GetPage(
-      name: RoutesName.levelScreen,
-      page: () => const LevelScreen(),
-     binding:  LevelBinding()
-    ),
+        name: RoutesName.levelScreen,
+        page: () => const LevelScreen(),
+        binding: LevelBinding()),
     GetPage(
-      name: RoutesName.cityScreen,
-      page: () =>  cityScreen(),
-      binding: CityBinding()
-    ),
+        name: RoutesName.cityScreen,
+        page: () => cityScreen(),
+        binding: CityBinding()),
     GetPage(
-      name: RoutesName.schoolScreen,
-      page: () => const SchoolScreen(),
-      binding: SchoolBinding()
-    ),
+        name: RoutesName.schoolScreen,
+        page: () => const SchoolScreen(),
+        binding: SchoolBinding()),
     GetPage(
         name: RoutesName.signUpScreen,
         page: () => SignUpScreen(),

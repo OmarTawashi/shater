@@ -13,6 +13,7 @@ class ApiConstant {
   static String version = 'v2';
   static String checkEmail = '/api/$version/$textUser/auth/check-email';
   static String studentLogin = '/api/$version/auth/login';
+  static String ForgetPassword = '/api/$version/auth/password/email';
   static String registerLogin = '/api/$version/$textUser/auth/register';
   static String getCities = '/api/$version/main/getCities';
   static String getSchools = '/api/$version/main/getSchools';

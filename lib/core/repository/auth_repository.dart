@@ -29,5 +29,7 @@ abstract class BaseAuthRepository {
       String classId
       );
     Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
+
+    Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
     
 }

@@ -20,6 +20,7 @@
     "student": "طالب",
     "male": "بنين",
     "female": "بنات",
+    "forget_password": "استرجاع الرقم السري",
     "select_subject": "اختر المادة الدراسية",
     "create_new_acount_teacher": "إنشاء حساب جديد للمعلم",
     "create_account": "انشأ حساب",

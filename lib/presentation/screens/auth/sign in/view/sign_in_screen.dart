@@ -97,7 +97,9 @@ class SignInScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(Routes.getForgetPasswordScreen());
+                            },
                             child: const CustomText(
                               text: 'forget_passwords',
                               color: Color.fromRGBO(159, 191, 216, 1),
