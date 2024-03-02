@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
 import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/item_exercise.dart';
@@ -16,45 +17,68 @@ class ExerciseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<ExerciseController>(
-        builder: (controller) => CustomScrollView(
-          slivers: [
-            const PerfectAppBar(),
-            IntikeTapBar(
-              assetName: ICONS.exerciseTop,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TapSection(
-                    isSelected:
-                        (controller.selectExercise == TabExercise.exercied),
-                    onTap: () {
-                      controller.changeSection(TabExercise.exercied);
-                    },
-                    text: TabExercise.exercied.name.tr,
+        builder: (controller) => RefreshIndicator.adaptive(
+          color: Colors.black,
+          onRefresh: () async {
+            controller.fetchCourseLearning();
+          },
+          child: CustomScrollView(
+            slivers: [
+              const PerfectAppBar(),
+              IntikeTapBar(
+                assetName: ICONS.exerciseTop,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TapSection(
+                      isSelected:
+                          (controller.selectExercise == TabExercise.exercied),
+                      onTap: () {
+                        controller.changeSection(TabExercise.exercied);
+                      },
+                      text: TabExercise.exercied.name.tr,
+                    ),
+                    TapSection(
+                      isSelected: (controller.selectExercise ==
+                          TabExercise.exerciedTeachers),
+                      onTap: () {
+                        controller.changeSection(TabExercise.exerciedTeachers);
+                      },
+                      text: TabExercise.exerciedTeachers.name.tr,
+                    ),
+                  ],
+                ),
+              ),
+              AnimatorContainer(
+                viewType: controller.viewType,
+                isSliver: true,
+                emptyParams: EmptyParams(
+                  text: 'empty Level',
+                  caption: '',
+                  image: ICONS.internalServerError,
+                ),
+                successWidget: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: controller.courseLearningModel.length,
+                    (context, index) => ItemExercise(
+                      imageUrl: controller.courseLearningModel[index].image,
+                      subjectText: controller.courseLearningModel[index].title,
+                      trainingNumber:
+                          controller.courseLearningModel[index].countQuestions,
+                    ),
                   ),
-                  TapSection(
-                    isSelected: (controller.selectExercise ==
-                        TabExercise.exerciedTeachers),
-                    onTap: () {
-                      controller.changeSection(TabExercise.exerciedTeachers);
-                    },
-                    text: TabExercise.exerciedTeachers.name.tr,
-                  ),
-                ],
+                ),
+                retry: () {
+                  controller.fetchCourseLearning();
+                },
               ),
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: 5,
-                (context, index) => ItemExercise(),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 100.h,
-              ),
-            )
-          ],
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 100.h,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

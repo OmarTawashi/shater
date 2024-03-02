@@ -17,43 +17,49 @@ class SubjectsSCreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<SubjectController>(
-        builder: (controller) => CustomScrollView(
-          slivers: [
-            const PerfectAppBar(),
-            IntikeTapBar(
-              assetName: ICONS.decriptionTop,
-              child: Row(
-                children: [
-                  TapSection(
-                    isSelected: true,
-                    text: 'subjects'.tr,
-                  ),
-                ],
+        builder: (controller) =>  RefreshIndicator.adaptive(
+                            color: Colors.black,
+
+              onRefresh: () async {
+                controller.fetchSubject();},
+          child: CustomScrollView(
+            slivers: [
+              const PerfectAppBar(),
+              IntikeTapBar(
+                assetName: ICONS.decriptionTop,
+                child: Row(
+                  children: [
+                    TapSection(
+                      isSelected: true,
+                      text: 'subjects'.tr,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 16,
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 16,
+                ),
               ),
-            ),
-            AnimatorContainer(
-              viewType: controller.viewType,
-              isSliver: true,
-              emptyParams: EmptyParams(
-                  text: 'empty subject',
-                  caption: '',
-                  image: ICONS.internalServerError),
-              successWidget: SubjectList(controller),
-              retry: () {
-                controller.fetchSubject();
-              },
-            ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 100.h,
-              ),
-            )
-          ],
+               AnimatorContainer(
+                 viewType: controller.viewType,
+                 isSliver: true,
+                 emptyParams: EmptyParams(
+                     text: 'empty subject',
+                     caption: '',
+                     image: ICONS.internalServerError),
+                 successWidget: SubjectList(controller),
+                 retry: () {
+                   controller.fetchSubject();
+                 },
+               ),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 100.h,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

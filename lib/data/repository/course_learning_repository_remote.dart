@@ -5,7 +5,7 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/course_learning_repository.dart';
-import 'package:shater/data/model/subject_model.dart';
+import 'package:shater/data/model/course_learning_model.dart';
 import 'package:shater/util/api_constant.dart';
 
 class CoursesLearningRepositoryRemote extends CoursesLearningRepository {
@@ -16,17 +16,21 @@ class CoursesLearningRepositoryRemote extends CoursesLearningRepository {
  
 
   @override
-  Future<Either<ApiException, Subject>?> fetchCourseLearning(int level) async {
-    final completer = Completer<Either<ApiException, Subject>?>();
+  Future<Either<ApiException, List<CourseLearningModel>>?> fetchCourseLearning(int level) async {
+    final completer = Completer<Either<ApiException, List<CourseLearningModel>>>();
+    final param = {
+      'level':level
+    };
     try {
       await ApiClient.requestData(
-        endpoint: ApiConstant.getSubjects,
+        endpoint: ApiConstant.coursesLearning,
         requestType: RequestType.get,
-        create: () => APIResponse<Subject>(
-          create: () => Subject(),
+        create: () => APIResponse<CourseLearningModel>(
+          create: () => CourseLearningModel(),
         ),
+        queryParams: param,
         onSuccess: (response) {
-          final data = response.data?.item;
+          final data = response.data?.items;
           if (data != null) {
             completer.complete(right(data));
           }
