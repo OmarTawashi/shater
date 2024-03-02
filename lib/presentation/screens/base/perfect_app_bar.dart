@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/custom_sliver_app_bar.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
@@ -31,13 +32,19 @@ class PerfectAppBar extends StatelessWidget {
               onTap: () {
                 Get.toNamed(Routes.getProfileScreen());
               },
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                margin:
-                    EdgeInsets.symmetric(horizontal: Dimensions.paddingSize10.w),
-                decoration: const BoxDecoration(
-                  color: Colors.amber,
-                  shape: BoxShape.circle,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle
+                  ),
+                  child: CircleAvatar(
+                    child: CachedNetworkImageWidget(
+                      imageUrl: controller.user?.image ?? '',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -19,8 +19,11 @@ class CityController extends BaseController {
   }
 
   void getCities() async {
+    int countryId = 18;
     updateViewType(ViewType.loading);
-    await _publicUseCaseImp?.fetchCity().then((value) {
+    await _publicUseCaseImp?.fetchCity(
+      countryId
+    ).then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (r) {

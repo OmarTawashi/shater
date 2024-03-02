@@ -81,7 +81,7 @@ SliverList listCity(SchoolController controller) {
           final school = controller.schools[index];
           Get.find<SignUpController>().setSchool(school);
           if (Get.find<SignUpController>().schoolSelected != null) {
-            Get.toNamed(Routes.getLevelScreen());
+            Get.toNamed(Routes.getClasseScreen());
           } else {
             BaseMixin.showToastFlutter(messsage: 'please_select_school');
           }

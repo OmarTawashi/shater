@@ -49,8 +49,21 @@ class CustomCupertinoButton extends StatelessWidget {
                   trailing ?? SizedBox()
                 ],
               )
-            : CircularProgressIndicator(
-                color: Colors.white,
-              ));
+            : Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                        color: Colors.white,
+                        
+                      ),
+                  ),
+                ),
+              ],
+            ));
   }
 }

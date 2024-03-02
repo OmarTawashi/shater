@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/class_model.dart';
+import 'package:shater/data/model/data_register_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';
 import 'package:shater/data/model/subject_model.dart';
@@ -34,8 +35,16 @@ class SignUpController extends GetxController {
   PublicModel? _citySelected;
   PublicModel? get citySelected => _citySelected;
 
-  Classes? _classSelected;
-  Classes? get classSelected => _classSelected;
+  List<Classes> _classSelected = [];
+  List<Classes> get classSelected => _classSelected;
+
+  DataRegisterModel? _dataRegisterModel;
+  DataRegisterModel? get dataRegisterModel => _dataRegisterModel;
+
+  Classes? _classStudSelected;
+  Classes? get classStudSelected => _classStudSelected;
+
+  List<String> _classIDS = [];
 
   Subject? _subjectSlected;
   Subject? get subjectSlected => _subjectSlected;
@@ -92,8 +101,17 @@ class SignUpController extends GetxController {
     update();
   }
 
-  void setClass(Classes classe) {
-    _classSelected = classe;
+  void setClassStud(Classes classe) {
+    _classStudSelected = classe;
+    update();
+  }
+
+  void setClasses(Classes classe) {
+    if (_classSelected.contains(classe)) {
+      _classSelected.remove(classe);
+    } else {
+      _classSelected.add(classe);
+    }
     update();
   }
 
@@ -129,22 +147,28 @@ class SignUpController extends GetxController {
     update();
   }
 
-  void registerStudent() async {
+  void registerTeacher() async {
     final email = emailController.text;
     final password = passwordController.text;
     final confirmationPassword = againPasswordController.text;
     final name = nameController.text;
+    final countryId = 18;
+    _classSelected.forEach((element) {
+      _classIDS.add(element.id ?? '');
+    });
+    update();
     changeLoading(true);
     await _authUseCaseImp
-        ?.registerStudent(
+        ?.registerTeacher(
             email,
             password,
             confirmationPassword,
             _schoolSelected?.id ?? -1,
             name,
-            _classSelected?.countryId ?? -1,
+            _subjectSlected?.title ?? '',
+            _classSelected.first.countryId ?? countryId,
             _citySelected?.id ?? -1,
-            _classSelected?.id ?? "")
+            _classIDS)
         .then((value) {
       value?.fold((l) {}, (r) {
         _user = r;
@@ -156,11 +180,13 @@ class SignUpController extends GetxController {
       changeLoading(false);
     });
   }
-  void registerTeacher() async {
+
+  void  registerStudent() async {
     final email = emailController.text;
     final password = passwordController.text;
     final confirmationPassword = againPasswordController.text;
     final name = nameController.text;
+    final countryId = 18;
     changeLoading(true);
     await _authUseCaseImp
         ?.registerStudent(
@@ -169,9 +195,9 @@ class SignUpController extends GetxController {
             confirmationPassword,
             _schoolSelected?.id ?? -1,
             name,
-            _classSelected?.countryId ?? -1,
+            countryId,
             _citySelected?.id ?? -1,
-            _classSelected?.id ?? "")
+            _classStudSelected?.id ?? '')
         .then((value) {
       value?.fold((l) {}, (r) {
         _user = r;
@@ -193,13 +219,23 @@ class SignUpController extends GetxController {
     )
         .then((value) {
       value?.fold((l) {
-        if (l.statusCode == 404) {
-          Get.toNamed(authController.userType.routesGO);
-        } else {
-          BaseMixin.showToastFlutter(messsage: l.message);
-        }
-      }, (r) {});
+        BaseMixin.showToastFlutter(messsage: l.message);
+        Get.toNamed(authController.userType.routesGO);
+      }, (r) {
+        Get.toNamed(authController.userType.routesGO);
+      });
     });
     changeLoadingCheck(false);
+  }
+
+  void getFunUserType(AuthType type) {
+    switch (type) {
+      case AuthType.student:
+        return registerStudent();
+      case AuthType.teacher:
+        return registerTeacher();
+      default:
+        return registerStudent();
+    }
   }
 }

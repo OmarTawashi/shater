@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
+import 'package:get/get.dart';
 import 'package:shater/core/base/device_info_sevice.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/auth_repository.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
 
 import '../../core/controller/shared_prefrences.dart';
 import '../../core/network/api_client.dart';
@@ -62,20 +64,21 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   @override
   Future<Either<ApiException, User>?> registerStudent(
-      String email,
-      String password,
-      String passwordConfirmation,
-      int schoolId,
-      String name,
-      int countryId,
-      int cityId,
-      String classId) async {
+    String email,
+    String password,
+    String passwordConfirmation,
+    int schoolId,
+    String name,
+    int countryId,
+    int cityId,
+    String classId,
+  ) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
     try {
       await ApiClient.requestData(
-        endpoint: ApiConstant.registerLogin,
+        endpoint: ApiConstant.registerSudent,
         requestType: RequestType.post,
         create: () => APIResponse<User>(
           create: () => User(),
@@ -91,6 +94,66 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           "country_id": countryId,
           "city_id": cityId,
           "class_id": classId,
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? User()));
+            if (user != null) {
+              SharedPrefs.saveUser(user);
+              ApiClient.updateHeader();
+            }
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, User>?> registerTeacher(
+    String email,
+    String password,
+    String passwordConfirmation,
+    int schoolId,
+    String name,
+    String subjectName,
+    int countryId,
+    int cityId,
+    List<String> classesId,
+  ) async {
+    final completer = Completer<Either<ApiException, User>?>();
+    final fcmToken = SharedPrefs.fcmToken ?? '';
+    final deviceType = await DeviceInfoService.getDeviceType();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.registerTeacher,
+        requestType: RequestType.post,
+        create: () => APIResponse<User>(
+          create: () => User(),
+        ),
+        data: {
+          "email": email,
+          "password": password,
+          "password_confirmation": passwordConfirmation,
+          "FCM_token": fcmToken,
+          "device_type": "ios",
+          "school_id": schoolId,
+          "name": name,
+          "subject_name": subjectName,
+          "country_id": countryId,
+          "city_id": cityId,
+          "classes": classesId,
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
@@ -124,9 +187,12 @@ class AuthRepositoryRemote extends BaseAuthRepository {
   @override
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email) async {
     final completer = Completer<Either<ApiException, EmptyModel>?>();
+    final authController = Get.find<AuthController>();
     try {
       await ApiClient.requestData(
-        endpoint: ApiConstant.checkEmail,
+        endpoint: authController.userType == AuthType.teacher
+            ? ApiConstant.checkEmail
+            : ApiConstant.checkEmailStudent,
         requestType: RequestType.post,
         create: () => APIResponse<EmptyModel>(
           create: () => EmptyModel(),
@@ -156,66 +222,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
   }
 
   @override
-  Future<Either<ApiException, User>?> registerTeacher(
-      String email,
-      String password,
-      String passwordConfirmation,
-      int schoolId,
-      String name,
-      String subjectName,
-      int countryId,
-      int cityId,
-      String classId) async {
-    final completer = Completer<Either<ApiException, User>?>();
-    final fcmToken = SharedPrefs.fcmToken ?? '';
-    final deviceType = await DeviceInfoService.getDeviceType();
-    try {
-      await ApiClient.requestData(
-        endpoint: ApiConstant.registerLogin,
-        requestType: RequestType.post,
-        create: () => APIResponse<User>(
-          create: () => User(),
-        ),
-        data: {
-          "email": email,
-          "password": password,
-          "password_confirmation": passwordConfirmation,
-          "FCM_token": fcmToken,
-          "device_type": "ios",
-          "school_id": schoolId,
-          "subject_name": subjectName,
-          "name": name,
-          "country_id": countryId,
-          "city_id": cityId,
-          "class_id": classId,
-        },
-        onSuccess: (response) {
-          if (response.data?.status == false ?? false) {
-            completer.complete(left(ApiException(
-              message: response.data?.errors?.first.message ?? "",
-              response: response.response,
-            )));
-          } else {
-            final user = response.data?.item;
-            completer.complete(Right(user ?? User()));
-            if (user != null) {
-              SharedPrefs.saveUser(user);
-              ApiClient.updateHeader();
-            }
-          }
-        },
-        onError: (error) {
-          completer.complete(left(error));
-        },
-      );
-    } on ApiException catch (error) {
-      completer.complete(left(error));
-    }
-    return completer.future;
-  }
-  
-  @override
-  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email)async {
+  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email) async {
     final completer = Completer<Either<ApiException, EmptyModel>?>();
     try {
       await ApiClient.requestData(
@@ -235,7 +242,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             )));
           } else {
             final message = response.data?.message;
-            completer.complete(Right(EmptyModel(message: message) ));
+            completer.complete(Right(EmptyModel(message: message)));
           }
         },
         onError: (error) {

@@ -67,6 +67,7 @@ class CreateNameScreen extends StatelessWidget {
                     ),
                     CustomCupertinoButton(
                         text: 'create_account',
+                        isLoading: controller.isloading,
                         onPressed: controller.isValidName
                             ? () {
                                 _submit(controller);
@@ -74,20 +75,6 @@ class CreateNameScreen extends StatelessWidget {
                             : null)
                   ],
                 ),
-                controller.isloading
-                    ? Container(
-                        margin: EdgeInsets.symmetric(horizontal: 90),
-                        padding: EdgeInsets.all(50),
-                        decoration: BoxDecoration(
-                            color: Colors.black38,
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Center(
-                            child: CircularProgressIndicator(
-                          color: COLORS.secanderyColor,
-                          strokeWidth: 3.5,
-                        )),
-                      )
-                    : SizedBox()
               ]),
             ),
           ),
@@ -99,7 +86,7 @@ class CreateNameScreen extends StatelessWidget {
   void _submit(SignUpController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      controller.registerStudent();
+      controller.getFunUserType(controller.authController.userType);
     }
   }
 }

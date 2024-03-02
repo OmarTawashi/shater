@@ -8,14 +8,15 @@ abstract class AuthUseCase {
   Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password);
   Future<Either<Exception, User>?> registerStudent(
-      String email,
-      String password,
-      String passwordConfirmation,
-      int schoolId,
-      String name,
-      int countryId,
-      int cityId,
-      String classId);
+    String email,
+    String password,
+    String passwordConfirmation,
+    int schoolId,
+    String name,
+    int countryId,
+    int cityId,
+    String classId,
+  );
   Future<Either<Exception, User>?> registerTeacher(
       String email,
       String password,
@@ -25,9 +26,10 @@ abstract class AuthUseCase {
       String subjectName,
       int countryId,
       int cityId,
-      String classId);
+      List<String> classIDS);
+
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
-      Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
+  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
 
   Future<void> signOut();
 }

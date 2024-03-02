@@ -10,14 +10,19 @@ class ApiConstant {
   //student
 
   static String textUser = Get.find<AuthController>().userType.user;
+  static bool isTeacher =
+      Get.find<AuthController>().userType == AuthType.teacher;
   static String version = 'v2';
   static String checkEmail = '/api/$version/$textUser/auth/check-email';
+  static String checkEmailStudent = '/api/$version/auth/check-email';
   static String studentLogin = '/api/$version/auth/login';
   static String ForgetPassword = '/api/$version/auth/password/email';
-  static String registerLogin = '/api/$version/$textUser/auth/register';
+  static String registerSudent = '/api/$version/auth/register';
+  static String registerTeacher = '/api/$version/$textUser/auth/register';
   static String getCities = '/api/$version/main/getCities';
   static String getSchools = '/api/$version/main/getSchools';
   static String getSubjects = '/api/$version/main/getSubjects';
+  static String getClasses = '/api/$version/main/getClasses';
   static String getDataForUserRegistration =
       '/api/$version/getDataForUserRegistration';
 

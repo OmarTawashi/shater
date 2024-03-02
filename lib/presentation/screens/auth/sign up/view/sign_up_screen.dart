@@ -175,7 +175,6 @@ class SignUpScreen extends StatelessWidget {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       controller.checkEmail();
-      // Get.toNamed(Routes.getCityScreen());
     }
   }
 }

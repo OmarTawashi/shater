@@ -17,7 +17,7 @@ abstract class RoutesName {
   static const exerciseDetailsScreen = '/exercise-details-screen';
   static const cityScreen = '/city-screen';
   static const schoolScreen = '/school-screen';
-  static const levelScreen = '/level-screen';
+  static const classeScreen = '/classe-screen';
   static const subjectTeacherScreen = '/subject-teacher-screen';
   static const createNameScreen = '/create-name-screen';
   static const forgetPasswordScreen = '/forget-password-screen';
@@ -45,7 +45,7 @@ abstract class Routes {
   static String getSchoolScreen() => RoutesName.schoolScreen;
   static String getExerciseDetailsScreen() => RoutesName.exerciseDetailsScreen;
   static String getCityScreen() => RoutesName.cityScreen;
-  static String getLevelScreen() => RoutesName.levelScreen;
+  static String getClasseScreen() => RoutesName.classeScreen;
   static String getSubjectTeacherScreen() => RoutesName.subjectTeacherScreen;
   static String getCreateNameScreen() => RoutesName.createNameScreen;
 }

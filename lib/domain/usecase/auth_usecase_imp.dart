@@ -23,7 +23,17 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
-  Future<Either<ApiException, User>?> registerStudent(
+  Future<Either<ApiException, EmptyModel>?> checkEmail(String email) {
+    return _authRepository.checkEmail(email);
+  }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email) {
+    return _authRepository.ForgetPassword(email);
+  }
+
+  @override
+  Future<Either<Exception, User>?> registerStudent(
       String email,
       String password,
       String passwordConfirmation,
@@ -35,8 +45,9 @@ class AuthUseCaseImp extends AuthUseCase {
     return _authRepository.registerStudent(email, password,
         passwordConfirmation, schoolId, name, countryId, cityId, classId);
   }
+
   @override
-  Future<Either<ApiException, User>?> registerTeacher(
+  Future<Either<Exception, User>?> registerTeacher(
       String email,
       String password,
       String passwordConfirmation,
@@ -45,18 +56,16 @@ class AuthUseCaseImp extends AuthUseCase {
       String subjectName,
       int countryId,
       int cityId,
-      String classId) {
-    return _authRepository.registerTeacher(email, password,
-        passwordConfirmation, schoolId, name,subjectName, countryId, cityId, classId);
-  }
-
-  @override
-  Future<Either<ApiException, EmptyModel>?> checkEmail(String email) {
-    return _authRepository.checkEmail(email);
-  }
-  
-  @override
-  Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email) {
-    return _authRepository.ForgetPassword(email);
+      List<String> classIDS) {
+    return _authRepository.registerTeacher(
+        email,
+        password,
+        passwordConfirmation,
+        schoolId,
+        name,
+        subjectName,
+        countryId,
+        cityId,
+        classIDS);
   }
 }
