@@ -19,6 +19,7 @@ class ApiConstant {
   static String ForgetPassword = '/api/$version/auth/password/email';
   static String registerSudent = '/api/$version/auth/register';
   static String registerTeacher = '/api/$version/$textUser/auth/register';
+  static String coursesLearning = '/api/$version/$textUser/educational/courses/learning';
   static String getCities = '/api/$version/main/getCities';
   static String getSchools = '/api/$version/main/getSchools';
   static String getSubjects = '/api/$version/main/getSubjects';

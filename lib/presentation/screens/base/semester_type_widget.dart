@@ -13,7 +13,7 @@ class SemesterTypeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.getSemesterScreen());
+        Get.toNamed(Routes.getLevelScreen());
       },
       child: Container(
         margin:

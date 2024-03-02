@@ -13,7 +13,7 @@ abstract class RoutesName {
   static const exerciseSubjectScreen = '/exercise-subject-screen';
   static const contactScreen = '/contact-screen';
   static const notificationDetails = '/notification-details';
-  static const semesterScreen = '/semester-screen';
+  static const levelScreen = '/level-screen';
   static const exerciseDetailsScreen = '/exercise-details-screen';
   static const cityScreen = '/city-screen';
   static const schoolScreen = '/school-screen';
@@ -41,7 +41,7 @@ abstract class Routes {
   static String getTermsConditionScreen() => RoutesName.termsConditionScreen;
   static String getPrivcyPolicyScreen() => RoutesName.privcyPolicyScreen;
   static String getDashBoardScreen() => RoutesName.dashBoardScreen;
-  static String getSemesterScreen() => RoutesName.semesterScreen;
+  static String getLevelScreen() => RoutesName.levelScreen;
   static String getSchoolScreen() => RoutesName.schoolScreen;
   static String getExerciseDetailsScreen() => RoutesName.exerciseDetailsScreen;
   static String getCityScreen() => RoutesName.cityScreen;

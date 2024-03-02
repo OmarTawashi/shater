@@ -5,8 +5,7 @@ import 'package:shater/presentation/screens/base/cashed_network_image_widget.dar
 import 'package:shater/presentation/screens/base/custom_sliver_app_bar.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/dashBord/controller/dashboard_controller.dart';
-import 'package:shater/routes/app_routes.dart';
+import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
 
 import '../../../util/dimensions.dart';
 
@@ -30,15 +29,14 @@ class PerfectAppBar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.getProfileScreen());
+                // Get.toNamed(Routes.getProfileScreen());
+                print(controller.user);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Container(
                   clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle
-                  ),
+                  decoration: BoxDecoration(shape: BoxShape.circle),
                   child: CircleAvatar(
                     child: CachedNetworkImageWidget(
                       imageUrl: controller.user?.image ?? '',
@@ -56,7 +54,7 @@ class PerfectAppBar extends StatelessWidget {
             )
           ],
         ),
-        actions: [SemesterTypeWidget(semester: 'season_one')],
+        actions: [SemesterTypeWidget(semester: controller.level?.title)],
       ),
     );
   }

@@ -11,27 +11,28 @@ import 'package:shater/presentation/screens/auth/sign%20up/widgets/create_name_s
 import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
 import 'package:shater/presentation/screens/classe/view/classe_screen.dart';
-import 'package:shater/presentation/screens/dashBord/bindings/bindings_dashbord.dart';
-import 'package:shater/presentation/screens/dashBord/view/dashbord_screen.dart';
-import 'package:shater/presentation/screens/dashBord/widgets/semester_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
-import 'package:shater/presentation/screens/exercise%20details/view/exercise_details_screen.dart';
-import 'package:shater/presentation/screens/exercise%20subject/bindings/exercise_subject_bindings.dart';
-import 'package:shater/presentation/screens/exercise%20subject/view/exercise_subject_screen.dart';
-import 'package:shater/presentation/screens/firsts/view/first_screen.dart';
-import 'package:shater/presentation/screens/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/level/bindings/level_bindings.dart';
+import 'package:shater/presentation/screens/level/view/level_screen.dart';
 import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
-import 'package:shater/presentation/screens/subject%20teacher/binding/subject_teacher_binding.dart';
-import 'package:shater/presentation/screens/subject%20teacher/view/subject_teacher_screen.dart';
+import 'package:shater/presentation/screens/student/dashBord/bindings/bindings_dashbord.dart';
+import 'package:shater/presentation/screens/student/dashBord/view/dashbord_screen.dart';
+import 'package:shater/presentation/screens/student/exercise%20details/view/exercise_details_screen.dart';
+import 'package:shater/presentation/screens/student/exercise%20subject/bindings/exercise_subject_bindings.dart';
+import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
+import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
+import 'package:shater/presentation/screens/student/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
+import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
-import '../presentation/screens/contact/view/contact_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
+import '../presentation/screens/student/contact/view/contact_screen.dart';
 
 class AppPages {
   AppPages._();
@@ -126,8 +127,8 @@ class AppPages {
         page: () => const ExerciseSubjectScreen(),
         binding: ExerciseSubjectBinding()),
     GetPage(
-        name: RoutesName.semesterScreen,
-        page: () => const SemesterScreen(),
-        binding: BindingsBuilder(() {})),
+        name: RoutesName.levelScreen,
+        page: () => const LevelScreen(),
+        binding: LevelBindings()),
   ];
 }
