@@ -13,8 +13,7 @@ class ApiConstant {
   static bool isTeacher =
       Get.find<AuthController>().userType == AuthType.teacher;
   static String version = 'v2';
-  static String checkEmail = '/api/$version/$textUser/auth/check-email';
-  static String checkEmailStudent = '/api/$version/auth/check-email';
+  static String checkEmail = '/api/$version/teacher/auth/check-email';
   static String studentLogin = '/api/$version/auth/login';
   static String ForgetPassword = '/api/$version/auth/password/email';
   static String registerSudent = '/api/$version/auth/register';

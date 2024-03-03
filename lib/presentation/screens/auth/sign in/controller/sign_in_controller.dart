@@ -68,12 +68,36 @@ class SignInController extends GetxController {
       }, (user) {
         _user = user;
         update();
-        if (_user != null) {
-          Get.offAllNamed(Routes.getDashBoardScreen());
-        }
+        distinctUser(user);
       });
       changeLoading(false);
       update();
     });
+  }
+
+  void distinctUser(User? user) {
+    if (user != null) {
+      switch (user.isTeacher) {
+        case 1:
+          BaseMixin.showToastFlutter(messsage: 'the login is teacher');
+          break;
+        case 0:
+          defStudent(user);
+          break;
+        default:
+          defStudent(user);
+          break;
+      }
+    }
+  }
+
+  void defStudent(User? user) {
+    if (user?.children == null || user!.children!.isEmpty) {
+      //this is mean the father not have any child
+      Get.offAllNamed(Routes.getDashBoardScreen());
+    } else {
+      // in this the father select what the child login
+      BaseMixin.bottomSheetChildern();
+    }
   }
 }

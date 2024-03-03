@@ -16,7 +16,7 @@ class DashBoardController extends GetxController {
 
   int selectedIndex = 0;
 
-  PublicModel? _level = PublicModel(id: 1, title: 'الفصل الأول');
+  PublicModel? _level = PublicModel(id: 1, title: 'الفصل الأول'); //review
   PublicModel? get level => _level;
 
   List<Widget> screens = [

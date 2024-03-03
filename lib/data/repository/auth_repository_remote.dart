@@ -190,9 +190,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     final authController = Get.find<AuthController>();
     try {
       await ApiClient.requestData(
-        endpoint: authController.userType == AuthType.teacher
-            ? ApiConstant.checkEmail
-            : ApiConstant.checkEmailStudent,
+        endpoint: ApiConstant.checkEmail,
         requestType: RequestType.post,
         create: () => APIResponse<EmptyModel>(
           create: () => EmptyModel(),

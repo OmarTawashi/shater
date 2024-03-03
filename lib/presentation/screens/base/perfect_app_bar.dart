@@ -18,7 +18,7 @@ class PerfectAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DashBoardController>(
       builder: (controller) => CustomSliverAppBar(
-        leadingWidth: 150.w,
+        leadingWidth: 200.w,
         pinned: true,
         primary: true,
         elevation: 0,

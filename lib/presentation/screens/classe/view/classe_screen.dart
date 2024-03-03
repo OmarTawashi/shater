@@ -5,7 +5,7 @@ import 'package:shater/data/model/class_model.dart';
 import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/item_city.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/widget_data_user.dart';
-import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/base/button_bottom.dart';
 import 'package:shater/presentation/screens/classe/controller/classe_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
@@ -59,29 +59,11 @@ class ClasseScreen extends StatelessWidget {
           ),
         ),
         Get.find<AuthController>().userType == AuthType.teacher
-            ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      goRoutes();
-                    },
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                      ),
-                      child: CustomText(
-                        text: 'next',
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ])
+            ? ButtonBottom(
+              onTap: () {
+                goRoutes();
+              },
+            )
             : SizedBox()
       ],
     ));

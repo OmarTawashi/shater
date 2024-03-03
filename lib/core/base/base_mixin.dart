@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:shater/util/color.dart';
+
+import '../../presentation/screens/auth/sign in/widgets/childern_widget.dart';
 
 mixin BaseMixin {
   static void showToastFlutter({String? messsage}) {
@@ -12,6 +15,20 @@ mixin BaseMixin {
       backgroundColor: Colors.amberAccent,
       textColor: Colors.white,
       fontSize: 16.0,
+    );
+  }
+
+  static void bottomSheetChildern() {
+    Get.bottomSheet(
+      isDismissible: true,
+      isScrollControlled: true,
+      backgroundColor: COLORS.primaryColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(16),
+        ),
+      ),
+      ChildrenWidget(),
     );
   }
 }

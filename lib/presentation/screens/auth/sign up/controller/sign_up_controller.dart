@@ -142,7 +142,6 @@ class SignUpController extends GetxController {
         .then((value) {
       value?.fold((l) {
         BaseMixin.showToastFlutter(messsage: l.message);
-        Get.toNamed(authController.userType.routesGO);
       }, (r) {
         Get.toNamed(authController.userType.routesGO);
       });
