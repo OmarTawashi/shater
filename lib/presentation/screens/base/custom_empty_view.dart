@@ -32,6 +32,8 @@ class CustomEmptyView extends StatelessWidget {
               CustomText(
                 text: primaryText ?? "", //'soon'
                 color: Colors.white,
+                textAlign: TextAlign.center,
+
                 fontWeight: FontWeight.bold,
                 fontSize: Dimensions.fontSize16,
               ),
@@ -42,6 +44,7 @@ class CustomEmptyView extends StatelessWidget {
                 text: secanderyText ?? "", //'find_account_teacher'
                 color: Color.fromRGBO(179, 238, 255, 1),
                 fontWeight: FontWeight.w400,
+                textAlign: TextAlign.center,
                 fontSize: Dimensions.fontSize16,
               ),
             ],

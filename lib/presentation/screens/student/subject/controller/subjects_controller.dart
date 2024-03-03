@@ -20,7 +20,7 @@ class SubjectController extends BaseController {
   }
 
   void fetchSubject() async {
-    updateViewType(ViewType.loading);
+    updateViewType(ViewType.shimmer);
     await _dashBaoardUseCaseImp?.fetchSubject().then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);

@@ -70,6 +70,8 @@ class TeacherScreen extends StatelessWidget {
                         itemCount: 8),
                   ),
                 )),
+
+                
             const CustomEmptyView(
               assetName: ICONS.teacherWhite,
               primaryText: 'soon',

@@ -30,7 +30,7 @@ class ExerciseController extends BaseController {
     void fetchCourseLearning() async {
     final dashController = Get.find<DashBoardController>();
   
-    updateViewType(ViewType.loading);
+    updateViewType(ViewType.shimmer);
     await _CoursesLearningUseCaseImp?.fetchCourseLearning(dashController.level?.id ??-1).then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);

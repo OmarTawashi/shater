@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
+import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
 import 'package:shater/util/images.dart';
 
 import '../../../base/animator_container.dart';
@@ -17,11 +19,11 @@ class SubjectsSCreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<SubjectController>(
-        builder: (controller) =>  RefreshIndicator.adaptive(
-                            color: Colors.black,
-
-              onRefresh: () async {
-                controller.fetchSubject();},
+        builder: (controller) => RefreshIndicator.adaptive(
+          color: Colors.black,
+          onRefresh: () async {
+            controller.fetchSubject();
+          },
           child: CustomScrollView(
             slivers: [
               const PerfectAppBar(),
@@ -41,18 +43,20 @@ class SubjectsSCreen extends StatelessWidget {
                   height: 16,
                 ),
               ),
-               AnimatorContainer(
-                 viewType: controller.viewType,
-                 isSliver: true,
-                 emptyParams: EmptyParams(
-                     text: 'empty subject',
-                     caption: '',
-                     image: ICONS.internalServerError),
-                 successWidget: SubjectList(controller),
-                 retry: () {
-                   controller.fetchSubject();
-                 },
-               ),
+              AnimatorContainer(
+                viewType: controller.viewType,
+                isSliver: true,
+                errorWidget:  CustomShimmerList(itemShimmer: SubjectShimmer(),) ,
+                shimmerWidget: CustomShimmerList(itemShimmer: SubjectShimmer(),) ,
+                emptyParams: EmptyParams(
+                    text: 'empty subject',
+                    caption: '',
+                    image: ICONS.internalServerError),
+                successWidget: SubjectList(controller),
+                retry: () {
+                  controller.fetchSubject();
+                },
+              ),
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 100.h,

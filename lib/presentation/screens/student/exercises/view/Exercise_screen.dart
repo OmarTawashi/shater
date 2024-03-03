@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/animator_container.dart';
+import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
 import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
+import 'package:shater/presentation/screens/student/exercises/widgets/exercise_shimmer.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/item_exercise.dart';
 
 import '../../../../../util/images.dart';
@@ -56,6 +58,12 @@ class ExerciseScreen extends StatelessWidget {
                   text: 'empty Level',
                   caption: '',
                   image: ICONS.internalServerError,
+                ),
+                shimmerWidget: CustomShimmerList(
+                  itemShimmer: ExerciseShimmer(),
+                ),
+                errorWidget: CustomShimmerList(
+                  itemShimmer: ExerciseShimmer(),
                 ),
                 successWidget: SliverList(
                   delegate: SliverChildBuilderDelegate(

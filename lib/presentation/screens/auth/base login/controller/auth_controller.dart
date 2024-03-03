@@ -10,7 +10,6 @@ class AuthController extends BaseController {
   String _htmlData = '';
   String get htmlData => _htmlData;
 
-
   void changeAuthType(AuthType type) {
     _userType = type;
     update();
@@ -23,8 +22,7 @@ class AuthController extends BaseController {
     await rootBundle.loadString(htmlFileName).then((value) {
       _htmlData = value;
       update();
-          updateViewType(ViewType.success);
-
+      updateViewType(ViewType.success);
     });
 
     return _htmlData;

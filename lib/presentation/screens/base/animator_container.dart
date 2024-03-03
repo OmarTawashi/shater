@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
@@ -39,7 +40,7 @@ class AnimatorContainer extends StatelessWidget {
     if (isSliver && viewType != ViewType.success) {
       return SliverToBoxAdapter(
           child: SizedBox(
-        height: Get.height * 0.8,
+        height: Get.height * 0.8.h,
         child: _getChild(context),
       ));
     } else if (isSliver && viewType == ViewType.success) {
