@@ -11,7 +11,6 @@ import 'package:shater/data/repository/auth_repository_remote.dart';
 import 'package:shater/domain/usecase/auth_usecase_imp.dart';
 import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
 import 'package:shater/presentation/screens/auth/base%20login/widgets/auth_mixin.dart';
-import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../data/model/user.dart';
 
@@ -21,13 +20,9 @@ class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController againPasswordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
 
   School? _schoolSelected;
   School? get schoolSelected => _schoolSelected;
-
-  bool _isLoading = false;
-  bool get isloading => _isLoading;
 
   bool _isLoadingCheck = false;
   bool get isLoadingCheck => _isLoadingCheck;
@@ -44,7 +39,7 @@ class SignUpController extends GetxController {
   Classes? _classStudSelected;
   Classes? get classStudSelected => _classStudSelected;
 
-  List<String> _classIDS = [];
+  List<String> classIDS = [];
 
   Subject? _subjectSlected;
   Subject? get subjectSlected => _subjectSlected;
@@ -60,8 +55,7 @@ class SignUpController extends GetxController {
 
   AuthUseCaseImp? _authUseCaseImp;
 
-  bool _isValidName = false;
-  bool get isValidName => _isValidName;
+ 
 
   bool _isValidEmail = false;
   bool get isValidEmail => _isValidEmail;
@@ -83,11 +77,6 @@ class SignUpController extends GetxController {
 
   void changeAgree(bool isagree) {
     _isAgree = isagree;
-    update();
-  }
-
-  void changeLoading(bool isLoad) {
-    _isLoading = isLoad;
     update();
   }
 
@@ -135,79 +124,12 @@ class SignUpController extends GetxController {
     update();
   }
 
-  void validName(String value) {
-    List<String> words = value.split(' ');
-    _isValidName = words.length >= 2;
-    update();
-  }
+ 
 
   void validAgainPassword(String value) {
     _isValidAgainPassword =
         value.length > 7 && againPasswordController.text.isNotEmpty;
     update();
-  }
-
-  void registerTeacher() async {
-    final email = emailController.text;
-    final password = passwordController.text;
-    final confirmationPassword = againPasswordController.text;
-    final name = nameController.text;
-    final countryId = 18;
-    _classSelected.forEach((element) {
-      _classIDS.add(element.id ?? '');
-    });
-    update();
-    changeLoading(true);
-    await _authUseCaseImp
-        ?.registerTeacher(
-            email,
-            password,
-            confirmationPassword,
-            _schoolSelected?.id ?? -1,
-            name,
-            _subjectSlected?.title ?? '',
-            _classSelected.first.countryId ?? countryId,
-            _citySelected?.id ?? -1,
-            _classIDS)
-        .then((value) {
-      value?.fold((l) {}, (r) {
-        _user = r;
-        update();
-        if (_user != null) {
-          Get.offAllNamed(Routes.getDashBoardScreen());
-        }
-      });
-      changeLoading(false);
-    });
-  }
-
-  void  registerStudent() async {
-    final email = emailController.text;
-    final password = passwordController.text;
-    final confirmationPassword = againPasswordController.text;
-    final name = nameController.text;
-    final countryId = 18;
-    changeLoading(true);
-    await _authUseCaseImp
-        ?.registerStudent(
-            email,
-            password,
-            confirmationPassword,
-            _schoolSelected?.id ?? -1,
-            name,
-            countryId,
-            _citySelected?.id ?? -1,
-            _classStudSelected?.id ?? '')
-        .then((value) {
-      value?.fold((l) {}, (r) {
-        _user = r;
-        update();
-        if (_user != null) {
-          Get.offAllNamed(Routes.getDashBoardScreen());
-        }
-      });
-      changeLoading(false);
-    });
   }
 
   void checkEmail() async {
@@ -226,16 +148,5 @@ class SignUpController extends GetxController {
       });
     });
     changeLoadingCheck(false);
-  }
-
-  void getFunUserType(AuthType type) {
-    switch (type) {
-      case AuthType.student:
-        return registerStudent();
-      case AuthType.teacher:
-        return registerTeacher();
-      default:
-        return registerStudent();
-    }
   }
 }

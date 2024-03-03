@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
+import 'package:shater/presentation/screens/auth/resgister/controller/register_controller.dart';
 import 'package:shater/presentation/screens/base/button_back.dart';
 import 'package:shater/presentation/screens/base/circle_logo_app.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
@@ -21,7 +21,7 @@ class CreateNameScreen extends StatelessWidget {
         backgroundColor: COLORS.primaryColor,
         leading: ButtonBack(),
       ),
-      body: GetBuilder<SignUpController>(
+      body: GetBuilder<RegisterController>(
         builder: (controller) => SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -83,7 +83,7 @@ class CreateNameScreen extends StatelessWidget {
     );
   }
 
-  void _submit(SignUpController controller) {
+  void _submit(RegisterController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       controller.getFunUserType(controller.authController.userType);

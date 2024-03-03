@@ -113,7 +113,7 @@ class ItemExercise extends StatelessWidget {
             ],
           ),
            SizedBox(
-            height: 8,
+            height: 8 ,
           ),
           Divider(
             color: COLORS.primaryColor.withOpacity(0.15),

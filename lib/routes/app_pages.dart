@@ -4,10 +4,11 @@ import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
 import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
 import 'package:shater/presentation/screens/auth/forget%20password/binding/forget_password_binding.dart';
 import 'package:shater/presentation/screens/auth/forget%20password/view/forget_password_screen.dart';
+import 'package:shater/presentation/screens/auth/resgister/binding/register_binding.dart';
+import 'package:shater/presentation/screens/auth/resgister/view/create_name_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/view/sign_in_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/bindings/sign_up_bindings.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.dart';
-import 'package:shater/presentation/screens/auth/sign%20up/widgets/create_name_screen.dart';
 import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
 import 'package:shater/presentation/screens/classe/view/classe_screen.dart';
@@ -69,6 +70,7 @@ class AppPages {
     GetPage(
       name: RoutesName.createNameScreen,
       page: () => CreateNameScreen(),
+      binding: RegisterBinding()
     ),
     GetPage(
         name: RoutesName.forgetPasswordScreen,
