@@ -130,7 +130,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     String subjectName,
     int countryId,
     int cityId,
-    List<String> classesId,
+    String classesId,
   ) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';

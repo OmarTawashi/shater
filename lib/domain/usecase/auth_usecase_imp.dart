@@ -56,7 +56,7 @@ class AuthUseCaseImp extends AuthUseCase {
       String subjectName,
       int countryId,
       int cityId,
-      List<String> classIDS) {
+      String classIDS) {
     return _authRepository.registerTeacher(
         email,
         password,

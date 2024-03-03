@@ -22,7 +22,7 @@ class SubjectsSCreen extends StatelessWidget {
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
-            controller.fetchSubject();
+            controller.fetchCourseLearning();
           },
           child: CustomScrollView(
             slivers: [
@@ -54,7 +54,7 @@ class SubjectsSCreen extends StatelessWidget {
                     image: ICONS.internalServerError),
                 successWidget: SubjectList(controller),
                 retry: () {
-                  controller.fetchSubject();
+                  controller.fetchCourseLearning();
                 },
               ),
               SliverToBoxAdapter(
@@ -72,11 +72,11 @@ class SubjectsSCreen extends StatelessWidget {
   SliverList SubjectList(SubjectController controller) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: controller.subjects.length,
+        childCount: controller.courseLearningModel.length,
         (context, index) => ItemSubject(
-            textSubject: controller.subjects[index].title,
-            pageCount: controller.subjects[index].pagesCount,
-            questionCount: controller.subjects[index].countQuestions,
+            textSubject: controller.courseLearningModel[index].title,
+            pageCount: controller.courseLearningModel[index].pagesCount,
+            questionCount: controller.courseLearningModel[index].countQuestions,
             onTap: () {
               // Get.toNamed(Routes.getExerciseSubjectScreen());
             }),

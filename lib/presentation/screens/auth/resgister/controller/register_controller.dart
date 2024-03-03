@@ -49,7 +49,9 @@ class RegisterController extends GetxController {
     final name = nameController.text;
     final countryId = 18;
     signUpController.classSelected.forEach((element) {
-      signUpController.classIDS.add(element.id ?? '');
+      if (!signUpController.classIDS.contains(element.id)) {
+        signUpController.classIDS.add(element.id ?? '');
+      }
     });
     update();
     changeLoading(true);
@@ -63,7 +65,7 @@ class RegisterController extends GetxController {
             signUpController.subjectSlected?.title ?? '',
             signUpController.classSelected.first.countryId ?? countryId,
             signUpController.citySelected?.id ?? -1,
-            signUpController.classIDS)
+            "${signUpController.classIDS}")
         .then((value) {
       value?.fold((l) {}, (r) {
         _user = r;
@@ -74,7 +76,6 @@ class RegisterController extends GetxController {
       });
       changeLoading(false);
     });
-    
   }
 
   void registerStudent() async {

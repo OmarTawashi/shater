@@ -26,7 +26,7 @@ abstract class BaseAuthRepository {
       String subjectName,
       int countryId,
       int cityId,
-      List<String> classIDS);
+      String classIDS);
 
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
 
