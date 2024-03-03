@@ -28,6 +28,9 @@ import 'package:shater/presentation/screens/student/firsts/view/first_screen.dar
 import 'package:shater/presentation/screens/student/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
+import 'package:shater/presentation/screens/take%20image/binding/take_image_binding.dart';
+import 'package:shater/presentation/screens/take%20image/view/take_image_screen.dart';
+import 'package:shater/presentation/screens/take%20image/widget/grid_avatar_view.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
@@ -71,6 +74,15 @@ class AppPages {
       name: RoutesName.createNameScreen,
       page: () => CreateNameScreen(),
       binding: RegisterBinding()
+    ),
+    GetPage(
+      name: RoutesName.takeImageScreen,
+      page: () => TakeImageScreen(),
+      binding: TakeImageBinding()
+    ),
+    GetPage(
+      name: RoutesName.gridViewAvatar,
+      page: () => GridViewAvatar(),
     ),
     GetPage(
         name: RoutesName.forgetPasswordScreen,

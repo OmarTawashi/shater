@@ -37,14 +37,19 @@ class SignInScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomIntikeContainer(
-                        paddingHorizontal: 70,
-                        child: CustomText(
-                          text: 'enter_acounts',
-                          textAlign: TextAlign.center,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: Dimensions.fontSize15,
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.getTakeImageScreen());
+                        },
+                        child: CustomIntikeContainer(
+                          paddingHorizontal: 70,
+                          child: CustomText(
+                            text: 'enter_acounts',
+                            textAlign: TextAlign.center,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: Dimensions.fontSize15,
+                          ),
                         ),
                       ),
                     ],

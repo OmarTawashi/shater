@@ -23,6 +23,8 @@ abstract class RoutesName {
   static const forgetPasswordScreen = '/forget-password-screen';
   static const termsConditionScreen = '/terms-condition-screen';
   static const privcyPolicyScreen = '/privcy-policy-screen';
+  static const takeImageScreen = '/take-image-screen';
+  static const gridViewAvatar = '/grid-view-avatar-screen';
 }
 
 abstract class Routes {
@@ -34,7 +36,9 @@ abstract class Routes {
   static String getSignInScreen() => RoutesName.signInScreen;
   static String getForgetPasswordScreen() => RoutesName.forgetPasswordScreen;
   static String getExerciseSubjectScreen() => RoutesName.exerciseSubjectScreen;
+  static String getGridViewAvatar() => RoutesName.gridViewAvatar;
   static String getSignUpScreen() => RoutesName.signUpScreen;
+  static String getTakeImageScreen() => RoutesName.takeImageScreen;
   static String getFirstsScreen() => RoutesName.firstsScreen;
   static String getContactScreen() => RoutesName.contactScreen;
   static String getNotificationDetails() => RoutesName.notificationDetails;
