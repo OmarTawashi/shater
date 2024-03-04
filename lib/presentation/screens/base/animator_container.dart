@@ -140,16 +140,16 @@ class EmptyView extends StatelessWidget {
             if (emptyParams!.text.isNotEmpty)
               Text(
                 emptyParams!.text,
-                style: FontStyleConstant.hNLTRegular
-                    .copyWith(fontSize: Dimensions.fontSize14),
+                style: FontStyleConstant.hNLTRegular.copyWith(
+                    fontSize: Dimensions.fontSize16, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             if (emptyParams!.caption.isNotEmpty) ...[
               const SizedBox(height: 6),
               Text(
                 emptyParams!.caption,
-                style: FontStyleConstant.hNLTBMedium
-                    .copyWith(fontSize: Dimensions.fontSize12),
+                style: FontStyleConstant.hNLTBMedium.copyWith(
+                    fontSize: Dimensions.fontSize14, color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ]

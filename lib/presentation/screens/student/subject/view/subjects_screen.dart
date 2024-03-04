@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
@@ -46,12 +47,18 @@ class SubjectsSCreen extends StatelessWidget {
               AnimatorContainer(
                 viewType: controller.viewType,
                 isSliver: true,
-                errorWidget:  CustomShimmerList(itemShimmer: SubjectShimmer(),) ,
-                shimmerWidget: CustomShimmerList(itemShimmer: SubjectShimmer(),) ,
+                errorWidget: CustomEmptyView(
+                  assetName: ICONS.decriptionTop,
+                  primaryText: 'subjects',
+                  secanderyText: 'error_for_get_subject',
+                ),
+                shimmerWidget: CustomShimmerList(
+                  itemShimmer: SubjectShimmer(),
+                ),
                 emptyParams: EmptyParams(
-                    text: 'empty subject',
-                    caption: '',
-                    image: ICONS.internalServerError),
+                    text: 'subjects',
+                    caption: 'empty_subject',
+                    image: ICONS.decriptionTop),
                 successWidget: SubjectList(controller),
                 retry: () {
                   controller.fetchCourseLearning();
@@ -77,6 +84,7 @@ class SubjectsSCreen extends StatelessWidget {
             textSubject: controller.courseLearningModel[index].title,
             pageCount: controller.courseLearningModel[index].pagesCount,
             questionCount: controller.courseLearningModel[index].countQuestions,
+            imageUrl: controller.courseLearningModel[index].image,
             onTap: () {
               // Get.toNamed(Routes.getExerciseSubjectScreen());
             }),

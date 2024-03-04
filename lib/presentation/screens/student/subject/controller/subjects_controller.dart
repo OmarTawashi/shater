@@ -8,7 +8,6 @@ import 'package:shater/presentation/screens/student/dashBord/controller/dashboar
 import '../../../../../domain/usecase/course_learning_usecase_imp.dart';
 
 class SubjectController extends BaseController {
-  
   CoursesLearningUseCaseImp? _CoursesLearningUseCaseImp;
 
   List<CourseLearningModel> _courseLearningModel = [];
@@ -34,8 +33,8 @@ class SubjectController extends BaseController {
         if (r == null) {
           updateViewType(ViewType.empty);
         } else {
-          updateViewType(ViewType.success);
           _courseLearningModel = r;
+          updateViewType(ViewType.success);
         }
       });
 

@@ -32,13 +32,15 @@ class FirstsScreen extends StatelessWidget {
                     (controller.selectSection == TabFirsts.studentToday),
                 onTap: () {
                   controller.changeSection(TabFirsts.studentToday);
+                  controller.getData(TabFirsts.studentToday);
                 },
                 text: 'student_today'.tr,
               ),
               TapSection(
                 isSelected: (controller.selectSection == TabFirsts.schoolToday),
                 onTap: () {
-                  controller.changeSection(TabFirsts.studentToday);
+                  controller.changeSection(TabFirsts.schoolToday);
+                  controller.getData(TabFirsts.schoolToday);
                 },
                 text: 'school_today'.tr,
               ),

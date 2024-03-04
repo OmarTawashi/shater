@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
-import '../../../../../util/images.dart';
 import '../../../base/text_custom.dart';
 
 class ItemSubject extends StatelessWidget {
   final Function()? onTap;
   final String? textSubject;
+  final String? imageUrl;
   final int? pageCount;
   final int? questionCount;
   const ItemSubject({
     super.key,
     this.onTap,
     this.textSubject,
+    this.imageUrl,
     this.pageCount,
     this.questionCount,
   });
@@ -32,12 +34,14 @@ class ItemSubject extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
+                height: 130,
+                width: 100,
                 padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8)),
-                child: Image.asset(
-                  ICONS.book,
+                child: CachedNetworkImageWidget(
+                  imageUrl: imageUrl ?? '',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -56,7 +60,7 @@ class ItemSubject extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(
-                      height: Dimensions.paddingSize12,
+                      height: Dimensions.paddingSize20,
                     ),
                     CustomText(
                       text: "${pageCount}" + "\t" + 'درس',
