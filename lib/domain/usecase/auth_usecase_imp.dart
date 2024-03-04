@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/auth_repository.dart';
@@ -33,7 +35,7 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
-  Future<Either<Exception, User>?> registerStudent(
+  Future<Either<ApiException, User>?> registerStudent(
       String email,
       String password,
       String passwordConfirmation,
@@ -41,13 +43,15 @@ class AuthUseCaseImp extends AuthUseCase {
       String name,
       int countryId,
       int cityId,
-      String classId) {
+      String classId,
+      File imageFile
+      ) {
     return _authRepository.registerStudent(email, password,
-        passwordConfirmation, schoolId, name, countryId, cityId, classId);
+        passwordConfirmation, schoolId, name, countryId, cityId, classId,imageFile);
   }
 
   @override
-  Future<Either<Exception, User>?> registerTeacher(
+  Future<Either<ApiException, User>?> registerTeacher(
       String email,
       String password,
       String passwordConfirmation,
@@ -56,7 +60,9 @@ class AuthUseCaseImp extends AuthUseCase {
       String subjectName,
       int countryId,
       int cityId,
-      String classIDS) {
+      String classIDS,
+      File imageFile
+      ) {
     return _authRepository.registerTeacher(
         email,
         password,
@@ -66,6 +72,8 @@ class AuthUseCaseImp extends AuthUseCase {
         subjectName,
         countryId,
         cityId,
-        classIDS);
+        classIDS,
+        imageFile
+        );
   }
 }

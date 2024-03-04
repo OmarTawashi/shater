@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:shater/data/model/empty_model.dart';
 
@@ -7,7 +9,7 @@ import '../network/api_exceptions.dart';
 abstract class AuthUseCase {
   Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password);
-  Future<Either<Exception, User>?> registerStudent(
+  Future<Either<ApiException, User>?> registerStudent(
     String email,
     String password,
     String passwordConfirmation,
@@ -16,8 +18,9 @@ abstract class AuthUseCase {
     int countryId,
     int cityId,
     String classId,
+    File imageFile
   );
-  Future<Either<Exception, User>?> registerTeacher(
+  Future<Either<ApiException, User>?> registerTeacher(
       String email,
       String password,
       String passwordConfirmation,
@@ -26,7 +29,9 @@ abstract class AuthUseCase {
       String subjectName,
       int countryId,
       int cityId,
-      String classIDS);
+      String classIDS,
+      File imageFile
+      );
 
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
   Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);

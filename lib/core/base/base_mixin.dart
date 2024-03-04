@@ -17,6 +17,19 @@ mixin BaseMixin {
       fontSize: 16.0,
     );
   }
+   static showCustomBottomSheet(Widget child, {double? heightFactor}) =>
+      Get.bottomSheet(
+        child,
+        backgroundColor: COLORS.secanderyColor,
+        enableDrag: true,
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
+        ),
+      );
 
   static void bottomSheetChildern() {
     Get.bottomSheet(

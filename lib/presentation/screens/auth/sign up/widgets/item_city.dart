@@ -7,10 +7,12 @@ import '../../../base/text_custom.dart';
 class ItemCity extends StatelessWidget {
   final String? name;
   final Function()? onTap;
+  final bool isSelect;
   const ItemCity({
     super.key,
     this.name,
     this.onTap,
+    this.isSelect = false,
   });
 
   @override
@@ -25,12 +27,12 @@ class ItemCity extends StatelessWidget {
           vertical: 18,
         ),
         decoration: BoxDecoration(
-            color: COLORS.secanderyColor,
+            color: isSelect ? Colors.white : COLORS.secanderyColor,
             borderRadius: BorderRadius.circular(50)),
         child: CustomText(
           text: name ?? '',
-          color: Colors.white,
-          fontSize: Dimensions.fontSize18 ,
+          color: isSelect ? COLORS.primaryColor : Colors.white,
+          fontSize: Dimensions.fontSize18,
           maxLine: 1,
           fontWeight: FontWeight.bold,
         ),

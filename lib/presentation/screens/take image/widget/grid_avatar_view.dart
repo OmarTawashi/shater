@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/presentation/screens/auth/resgister/controller/register_controller.dart';
 import 'package:shater/presentation/screens/base/button_back.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/take%20image/controller/take_image_controller.dart';
@@ -24,16 +25,40 @@ class GridViewAvatar extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
       ),
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.fromLTRB(50, 0, 50, 50),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        decoration: BoxDecoration(color: COLORS.backGroundColor),
-        child: CustomText(
-          text: 'use',
-          fontSize: Dimensions.fontSize14,
-          textAlign: TextAlign.center,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+      bottomNavigationBar: GetBuilder<TakeImageController>(
+        builder: (controller) => GetBuilder<RegisterController>(
+          builder: (registerController) => 
+           GestureDetector(
+            onTap: controller.imageAvatarSelect != null
+                ? () {
+                  registerController.getFunUserType(
+                       registerController.authController.userType);
+                  }
+                : null,
+            child: Container(
+              margin: EdgeInsets.fromLTRB(50, 0, 50, 50),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              decoration: BoxDecoration(color: COLORS.backGroundColor),
+              child: registerController.isloading
+                  ? SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      ))
+                  : CustomText(
+                      text: 'use',
+                      fontSize: Dimensions.fontSize14,
+                      textAlign: TextAlign.center,
+                      color: controller.imageAvatarSelect != null
+                          ? Colors.white
+                          : Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+            ),
+          ),
         ),
       ),
       body: GetBuilder<TakeImageController>(
@@ -46,8 +71,26 @@ class GridViewAvatar extends StatelessWidget {
               mainAxisSpacing: 16,
               childAspectRatio: 1.1),
           itemBuilder: (context, index) {
-            return Image.asset(
-                'assets/${controller.typeAvatar}/${index + 1}.png');
+            return GestureDetector(
+              onTap: () {
+                controller.getImageAvatarToFile(
+                    'assets/${controller.typeAvatar}/${index + 1}.png');
+              },
+              child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                              'assets/${controller.typeAvatar}/${index + 1}.png'))),
+                  child: controller.imageAvatarSelect ==
+                          'assets/${controller.typeAvatar}/${index + 1}.png'
+                      ? Icon(
+                          Icons.check_sharp,
+                          color: Colors.green,
+                          size: 40,
+                          weight: 20,
+                        )
+                      : SizedBox()),
+            );
           },
         ),
       ),

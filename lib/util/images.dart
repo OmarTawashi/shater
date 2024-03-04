@@ -1,18 +1,21 @@
-class IMAGES {//first.png
+class IMAGES {
+  //first.png
   static const String firstImages = 'assets/images/first.png';
   static const String exerciseSubject = 'assets/images/exercise_subject.png';
   static const String logoApp = 'assets/images/logoApp.png';
   static const String logoLuncher = 'assets/images/logoLuncher.png';
   static const String add = 'assets/images/add.png';
-
 }
 
 class ICONS {
   static const String logoApp = 'assets/icons/logoApp.svg';
-  static const String internalServerError = 'assets/icons/internal_server_error.svg';
+  static const String internalServerError =
+      'assets/icons/internal_server_error.svg';
   static const String exerciseTab = 'assets/icons/exerciseUnActive.svg';
   static const String subjectUnActive = 'assets/icons/subjectUnActive.svg';
   static const String firstsTap = 'assets/icons/firstsTap.svg';
+  static const String cameraEdit = 'assets/icons/cameraEdit.svg';
+
   static const String logoAppt = 'assets/icons/logoAppt.svg';
   static const String resultTap = 'assets/icons/result.svg';
   static const String contactUnActive = 'assets/icons/contactUnActive.svg';

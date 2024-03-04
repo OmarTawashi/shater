@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/auth_repository_remote.dart';
@@ -47,6 +50,7 @@ class RegisterController extends GetxController {
     final password = signUpController.passwordController.text;
     final confirmationPassword = signUpController.againPasswordController.text;
     final name = nameController.text;
+    final image = signUpController.imageFileUser;
     final countryId = 18;
     signUpController.classSelected.forEach((element) {
       if (!signUpController.classIDS.contains(element.id)) {
@@ -65,9 +69,12 @@ class RegisterController extends GetxController {
             signUpController.subjectSlected?.title ?? '',
             signUpController.classSelected.first.countryId ?? countryId,
             signUpController.citySelected?.id ?? -1,
-            "${signUpController.classIDS}")
+            "${signUpController.classIDS}",
+            image ?? File(''))
         .then((value) {
-      value?.fold((l) {}, (r) {
+      value?.fold((l) {
+        BaseMixin.showToastFlutter(messsage: l.message);
+      }, (r) {
         _user = r;
         update();
         if (_user != null) {
@@ -82,6 +89,7 @@ class RegisterController extends GetxController {
     final email = signUpController.emailController.text;
     final password = signUpController.passwordController.text;
     final confirmationPassword = signUpController.againPasswordController.text;
+    final image = signUpController.imageFileUser;
     final name = nameController.text;
     final countryId = 18;
     changeLoading(true);
@@ -94,9 +102,12 @@ class RegisterController extends GetxController {
             name,
             countryId,
             signUpController.citySelected?.id ?? -1,
-            signUpController.classStudSelected?.id ?? '')
+            signUpController.classStudSelected?.id ?? '',
+            image ?? File(''))
         .then((value) {
-      value?.fold((l) {}, (r) {
+      value?.fold((l) {
+        BaseMixin.showToastFlutter(messsage: l.message);
+      }, (r) {
         _user = r;
         update();
         if (_user != null) {

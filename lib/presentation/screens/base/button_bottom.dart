@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/util/color.dart';
 
 class ButtonBottom extends StatelessWidget {
   final Function()? onTap;
@@ -15,7 +16,7 @@ class ButtonBottom extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 30),
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: COLORS.backGroundColor,
                       ),
                       child: CustomText(
                         text: 'next',

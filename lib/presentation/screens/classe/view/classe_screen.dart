@@ -18,53 +18,63 @@ class ClasseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ClasseController>(
-      builder: (controller) => WidgetDataUser(
-          headerText: 'select_level_study',
-          list: AnimatorContainer(
-            viewType: controller.viewType,
-            isSliver: true,
-            emptyParams: EmptyParams(
-                text: 'empty Level',
-                caption: '',
-                image: ICONS.internalServerError),
-            successWidget: ListClass(controller),
-            retry: () {
-              controller.getClassesStudent();
-            },
-          )),
+    return Scaffold(
+      bottomNavigationBar:
+          Get.find<AuthController>().userType == AuthType.teacher
+              ? ButtonBottom(
+                  onTap: () {
+                    goRoutes();
+                  },
+                )
+              : SizedBox(),
+      body: GetBuilder<ClasseController>(
+        builder: (controller) => WidgetDataUser(
+            headerText: 'select_level_study',
+            list: AnimatorContainer(
+              viewType: controller.viewType,
+              isSliver: true,
+              emptyParams: EmptyParams(
+                  text: 'empty Level',
+                  caption: '',
+                  image: ICONS.internalServerError),
+              successWidget: ListClass(controller),
+              retry: () {
+                controller.getClassesStudent();
+              },
+            )),
+      ),
     );
   }
 
-  SliverToBoxAdapter ListClass(ClasseController controller) {
+  SliverToBoxAdapter ListClass(ClasseController classeController) {
     return SliverToBoxAdapter(
         child: Column(
       // alignment: Alignment.bottomCenter,
       children: [
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: controller.classes.length,
-          itemBuilder: (context, index) => ItemCity(
-            name: controller.classes[index].title,
-            onTap: () {
-              Classes? classes = controller.classes[index];
-              if (Get.find<AuthController>().userType == AuthType.student) {
-                Get.find<SignUpController>().setClassStud(classes);
-                Get.toNamed(Routes.getCreateNameScreen());
-              } else {
-                Get.find<SignUpController>().setClasses(classes);
-              }
-            },
+        GetBuilder<SignUpController>(
+          builder: (controller) => 
+           ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: classeController.classes.length,
+            itemBuilder: (context, index) => ItemCity(
+              name: classeController.classes[index].title,
+              isSelect: Get.find<AuthController>().userType == AuthType.teacher &&
+                  Get.find<SignUpController>()
+                      .classSelected
+                      .contains(classeController.classes[index]),
+              onTap: () {
+                Classes? classes = classeController.classes[index];
+                if (Get.find<AuthController>().userType == AuthType.student) {
+                  Get.find<SignUpController>().setClassStud(classes);
+                  Get.toNamed(Routes.getCreateNameScreen());
+                } else {
+                  Get.find<SignUpController>().setClasses(classes);
+                }
+              },
+            ),
           ),
         ),
-        Get.find<AuthController>().userType == AuthType.teacher
-            ? ButtonBottom(
-              onTap: () {
-                goRoutes();
-              },
-            )
-            : SizedBox()
       ],
     ));
   }

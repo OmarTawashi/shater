@@ -6,6 +6,7 @@ import 'package:shater/presentation/screens/base/circle_logo_app.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
@@ -86,7 +87,7 @@ class CreateNameScreen extends StatelessWidget {
   void _submit(RegisterController controller) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      controller.getFunUserType(controller.authController.userType);
+      Get.toNamed(Routes.getTakeImageScreen());
     }
   }
 }

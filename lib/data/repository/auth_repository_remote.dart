@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:dio/dio.dart' as dio;
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/device_info_sevice.dart';
@@ -64,18 +66,37 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   @override
   Future<Either<ApiException, User>?> registerStudent(
-    String email,
-    String password,
-    String passwordConfirmation,
-    int schoolId,
-    String name,
-    int countryId,
-    int cityId,
-    String classId,
-  ) async {
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      int countryId,
+      int cityId,
+      String classId,
+      File imageFile) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
+    final data = {
+      "email": email,
+      "password": password,
+      "password_confirmation": passwordConfirmation,
+      "FCM_token": fcmToken,
+      "device_type": "ios",
+      "school_id": schoolId,
+      "name": name,
+      "country_id": countryId,
+      "city_id": cityId,
+      "class_id": classId,
+    };
+    dio.FormData formData = await dio.FormData.fromMap(data);
+    if (imageFile != null) {
+      formData.files.add(MapEntry(
+        'image',
+        await dio.MultipartFile.fromFile(imageFile.path ?? ''),
+      ));
+    }
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.registerSudent,
@@ -83,17 +104,9 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         create: () => APIResponse<User>(
           create: () => User(),
         ),
-        data: {
-          "email": email,
-          "password": password,
-          "password_confirmation": passwordConfirmation,
-          "FCM_token": fcmToken,
-          "device_type": "ios",
-          "school_id": schoolId,
-          "name": name,
-          "country_id": countryId,
-          "city_id": cityId,
-          "class_id": classId,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
@@ -122,19 +135,39 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   @override
   Future<Either<ApiException, User>?> registerTeacher(
-    String email,
-    String password,
-    String passwordConfirmation,
-    int schoolId,
-    String name,
-    String subjectName,
-    int countryId,
-    int cityId,
-    String classesId,
-  ) async {
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      String subjectName,
+      int countryId,
+      int cityId,
+      String classesId,
+      File imageFile) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
+    final data = {
+      "email": email,
+      "password": password,
+      "password_confirmation": passwordConfirmation,
+      "FCM_token": fcmToken,
+      "device_type": "ios",
+      "school_id": schoolId,
+      "name": name,
+      "subject_name": subjectName,
+      "country_id": countryId,
+      "city_id": cityId,
+      "classes": classesId,
+    };
+    dio.FormData formData = await dio.FormData.fromMap(data);
+    if (imageFile != null) {
+      formData.files.add(MapEntry(
+        'image',
+        await dio.MultipartFile.fromFile(imageFile.path ?? ''),
+      ));
+    }
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.registerTeacher,
@@ -142,18 +175,9 @@ class AuthRepositoryRemote extends BaseAuthRepository {
         create: () => APIResponse<User>(
           create: () => User(),
         ),
-        data: {
-          "email": email,
-          "password": password,
-          "password_confirmation": passwordConfirmation,
-          "FCM_token": fcmToken,
-          "device_type": "ios",
-          "school_id": schoolId,
-          "name": name,
-          "subject_name": subjectName,
-          "country_id": countryId,
-          "city_id": cityId,
-          "classes": classesId,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
@@ -23,6 +25,9 @@ class SignUpController extends GetxController {
 
   School? _schoolSelected;
   School? get schoolSelected => _schoolSelected;
+
+  File? _imageFileUser;
+  File? get imageFileUser => _imageFileUser;
 
   bool _isLoadingCheck = false;
   bool get isLoadingCheck => _isLoadingCheck;
@@ -55,8 +60,6 @@ class SignUpController extends GetxController {
 
   AuthUseCaseImp? _authUseCaseImp;
 
- 
-
   bool _isValidEmail = false;
   bool get isValidEmail => _isValidEmail;
 
@@ -87,6 +90,11 @@ class SignUpController extends GetxController {
 
   void setCity(PublicModel city) {
     _citySelected = city;
+    update();
+  }
+
+  void setImageFileUSer(File? image) {
+    _imageFileUser = image;
     update();
   }
 
@@ -123,8 +131,6 @@ class SignUpController extends GetxController {
     _isValidPassword = value.length > 7 && passwordController.text.isNotEmpty;
     update();
   }
-
- 
 
   void validAgainPassword(String value) {
     _isValidAgainPassword =
