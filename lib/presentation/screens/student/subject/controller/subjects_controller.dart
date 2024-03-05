@@ -28,7 +28,7 @@ class SubjectController extends BaseController {
             dashController.level?.id ?? -1)
         .then((value) {
       value?.fold((l) {
-        updateViewType(ViewType.error);
+        handelError(l);
       }, (r) {
         if (r == null) {
           updateViewType(ViewType.empty);

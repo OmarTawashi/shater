@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _user = SharedPrefs.user;
     Future.delayed(const Duration(seconds: 1)).then((value) {
       if (_user == null) {
-        Get.offAllNamed(Routes.getSignInScreen());
+        Get.offAllNamed(Routes.getBaseLoginScreen());
       } else {
         Get.offAllNamed(Routes.getDashBoardScreen());
       }

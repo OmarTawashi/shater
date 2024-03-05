@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/routes/app_routes.dart';
 
@@ -37,9 +38,8 @@ class BaseController extends GetxController {
         updateViewType(ViewType.noInternet);
         break;
       case 401:
-        // Get.find<AuthController>().clearSharedData();
-        // Get.find<AuthController>().stopLocationRecord();
-        Get.offAllNamed(Routes.getSignInScreen());
+        SharedPrefs.sharedPreferences.clear();
+        Get.offAllNamed(Routes.getBaseLoginScreen());
         break;
       case 403:
         return const Text('UnauthorisedException');

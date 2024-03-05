@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fpdart/src/either.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/rate_student_repository.dart';
+import 'package:shater/data/model/student_model.dart';
 import 'package:shater/data/model/subject_model.dart';
 import 'package:shater/util/api_constant.dart';
 
@@ -15,14 +16,14 @@ class RateStudentRepositoryRemote extends RateStudentRepository {
   RateStudentRepositoryRemote(this._apiClient);
 
   @override
-  Future<Either<ApiException, List<Subject>>?> fetchStudentsRate() async {
-    final completer = Completer<Either<ApiException, List<Subject>>?>();
+  Future<Either<ApiException, List<StudentModel>>?> fetchStudentsRate() async {
+    final completer = Completer<Either<ApiException, List<StudentModel>>?>();
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.studentRates,
         requestType: RequestType.get,
-        create: () => APIResponse<Subject>(
-          create: () => Subject(),
+        create: () => APIResponse<StudentModel>(
+          create: () => StudentModel(),
         ),
         onSuccess: (response) {
           final data = response.data?.items;

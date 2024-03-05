@@ -17,38 +17,35 @@ class CustomEmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverFillRemaining(
-      hasScrollBody: false,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 100.h),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomSvgPicture(assetName: assetName),
-              const SizedBox(
-                height: Dimensions.paddingSize16,
-              ),
-              CustomText(
-                text: primaryText ?? "", //'soon'
-                color: Colors.white,
-                textAlign: TextAlign.center,
-
-                fontWeight: FontWeight.bold,
-                fontSize: Dimensions.fontSize16,
-              ),
-              const SizedBox(
-                height: Dimensions.paddingSize16,
-              ),
-              CustomText(
-                text: secanderyText ?? "", //'find_account_teacher'
-                color: Color.fromRGBO(179, 238, 255, 1),
-                fontWeight: FontWeight.w400,
-                textAlign: TextAlign.center,
-                fontSize: Dimensions.fontSize16,
-              ),
-            ],
-          ),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 100.h),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomSvgPicture(assetName: assetName),
+            const SizedBox(
+              height: Dimensions.paddingSize16,
+            ),
+            CustomText(
+              text: primaryText ?? "", //'soon'
+              color: Colors.white,
+              textAlign: TextAlign.center,
+    
+              fontWeight: FontWeight.bold,
+              fontSize: Dimensions.fontSize16,
+            ),
+            const SizedBox(
+              height: Dimensions.paddingSize16,
+            ),
+            CustomText(
+              text: secanderyText ?? "", //'find_account_teacher'
+              color: Color.fromRGBO(179, 238, 255, 1),
+              fontWeight: FontWeight.w400,
+              textAlign: TextAlign.center,
+              fontSize: Dimensions.fontSize16,
+            ),
+          ],
         ),
       ),
     );
