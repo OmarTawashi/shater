@@ -13,8 +13,8 @@ class DashBoardBindings extends Bindings {
     Get.lazyPut<DashBoardController>(() => DashBoardController());
     Get.lazyPut(() => SubjectController());
     Get.lazyPut(() => ExerciseController());
-    Get.lazyPut(() => FirstsController());
     Get.lazyPut(() => TeacherController());
+    Get.lazyPut(() => FirstsController());
     Get.lazyPut(() => ContactController());
   }
 }

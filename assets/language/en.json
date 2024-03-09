@@ -18,6 +18,8 @@
     "teacher": "Teacher",
     "skip": "Skip",
     "use": "Use",
+    "name": "Name",
+    "subject": "Subject",
     "select_photo": "Select Photo",
     "select_photo_to_camera": "Select Photo To Camera",
     "select_photo_to_gallery": "Select Photo To Gallery",

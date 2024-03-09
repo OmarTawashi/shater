@@ -93,6 +93,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/male/
+    - assets/animate/
     - assets/female/
     - assets/language/
     - assets/privacy.html

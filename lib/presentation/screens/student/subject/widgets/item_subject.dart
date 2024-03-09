@@ -38,7 +38,10 @@ class ItemSubject extends StatelessWidget {
                 width: 100,
                 padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
+                   border: Border.all(
                     color: Colors.white,
+                    width: 4
+                   ),
                     borderRadius: BorderRadius.circular(8)),
                 child: CachedNetworkImageWidget(
                   imageUrl: imageUrl ?? '',

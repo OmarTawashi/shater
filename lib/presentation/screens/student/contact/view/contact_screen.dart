@@ -15,41 +15,42 @@ class ContactScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: PerfectAppBar(),
         body: GetBuilder<ContactController>(
-      builder: (controller) => CustomScrollView(
-        slivers: [
-          const PerfectAppBar(),
-          IntikeTapBar(
-            assetName: ICONS.exerciseTop,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TapSection(
-                  isSelected: (controller.selectContact == TabContact.contacts),
-                  onTap: () {
-                    controller.changeSection(TabContact.contacts);
-                  },
-                  text: TabContact.contacts.name.tr,
+          builder: (controller) => CustomScrollView(
+            slivers: [
+              IntikeTapBar(
+                assetName: ICONS.exerciseTop,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TapSection(
+                      isSelected:
+                          (controller.selectContact == TabContact.contacts),
+                      onTap: () {
+                        controller.changeSection(TabContact.contacts);
+                      },
+                      text: TabContact.contacts.name.tr,
+                    ),
+                    TapSection(
+                      isSelected: (controller.selectContact ==
+                          TabContact.notifications),
+                      onTap: () {
+                        controller.changeSection(TabContact.notifications);
+                      },
+                      text: TabContact.notifications.name.tr,
+                    ),
+                  ],
                 ),
-                TapSection(
-                  isSelected:
-                      (controller.selectContact == TabContact.notifications),
-                  onTap: () {
-                    controller.changeSection(TabContact.notifications);
-                  },
-                  text: TabContact.notifications.name.tr,
-                ),
-              ],
-            ),
+              ),
+              const SliverToBoxAdapter(
+                  child: SizedBox(
+                height: 10,
+              )),
+              selectable(controller.selectContact),
+            ],
           ),
-          const SliverToBoxAdapter(
-              child: SizedBox(
-            height: 10,
-          )),
-          selectable(controller.selectContact),
-        ],
-      ),
-    ));
+        ));
   }
 
   Widget selectable(TabContact tabContact) {

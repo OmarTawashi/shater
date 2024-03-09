@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/custom_sliver_app_bar.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
+import 'package:shater/util/color.dart';
 
 import '../../../util/dimensions.dart';
 
-class PerfectAppBar extends StatelessWidget {
+class PerfectAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PerfectAppBar({
     super.key,
   });
@@ -17,9 +17,10 @@ class PerfectAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashBoardController>(
-      builder: (controller) => CustomSliverAppBar(
+      builder: (controller) => AppBar(
         leadingWidth: 200.w,
-        pinned: true,
+        // pinned: true,
+        backgroundColor: COLORS.primaryColor,
         primary: true,
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -58,4 +59,8 @@ class PerfectAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(double.infinity, 50);
 }

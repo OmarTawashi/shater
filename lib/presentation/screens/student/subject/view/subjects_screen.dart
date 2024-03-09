@@ -19,6 +19,8 @@ class SubjectsSCreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      appBar: PerfectAppBar(),
       body: GetBuilder<SubjectController>(
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
@@ -27,7 +29,6 @@ class SubjectsSCreen extends StatelessWidget {
           },
           child: CustomScrollView(
             slivers: [
-              const PerfectAppBar(),
               IntikeTapBar(
                 assetName: ICONS.decriptionTop,
                 child: Row(

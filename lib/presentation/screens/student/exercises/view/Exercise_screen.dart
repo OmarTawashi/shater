@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
+import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
 import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/exercise_shimmer.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/item_exercise.dart';
 
 import '../../../../../util/images.dart';
-import '../../../base/perfect_app_bar.dart';
 import '../../../base/tap_section.dart';
 
 class ExerciseScreen extends StatelessWidget {
@@ -18,6 +18,8 @@ class ExerciseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+              appBar: PerfectAppBar(),
+
       body: GetBuilder<ExerciseController>(
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
@@ -26,7 +28,6 @@ class ExerciseScreen extends StatelessWidget {
           },
           child: CustomScrollView(
             slivers: [
-              const PerfectAppBar(),
               IntikeTapBar(
                 assetName: ICONS.exerciseTop,
                 child: Row(

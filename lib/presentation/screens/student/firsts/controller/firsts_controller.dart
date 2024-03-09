@@ -29,7 +29,7 @@ class FirstsController extends BaseController {
   }
 
   void fetchStudentsRate() async {
-    updateViewType(ViewType.loading);
+    updateViewType(ViewType.shimmer);
     await _rateStudentUseCaseImp?.fetchStudentsRate().then((value) {
       value?.fold((l) {
         handelError(l);

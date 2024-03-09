@@ -1,4 +1,7 @@
 class IMAGES {
+   //gif
+     static const String loadingGif = 'assets/animate/loading.gif';
+
   //first.png
   static const String firstImages = 'assets/images/first.png';
   static const String exerciseSubject = 'assets/images/exercise_subject.png';

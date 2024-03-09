@@ -36,8 +36,11 @@ class ItemExercise extends StatelessWidget {
                 width: 100,
                 clipBehavior: Clip.hardEdge,
                 padding: const EdgeInsets.all(2),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration:  BoxDecoration(
+                 border: Border.all(
+                    color: Colors.white,
+                    width: 4
+                   ),
                   shape: BoxShape.circle,
                 ),
                 child: CachedNetworkImageWidget(
