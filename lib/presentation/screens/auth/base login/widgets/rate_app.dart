@@ -5,14 +5,16 @@ import '../../../../../util/images.dart';
 import '../../../base/svgpicture_custom.dart';
 
 class RateApp extends StatelessWidget {
+  final double? initRate;
   const RateApp({
     super.key,
+    this.initRate,
   });
 
   @override
   Widget build(BuildContext context) {
     return RatingBar(
-      initialRating: 0,
+      initialRating: initRate ?? 0,
       minRating: 0,
       direction: Axis.horizontal,
       allowHalfRating: true,

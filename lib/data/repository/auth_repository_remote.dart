@@ -135,16 +135,17 @@ class AuthRepositoryRemote extends BaseAuthRepository {
 
   @override
   Future<Either<ApiException, User>?> registerTeacher(
-      String email,
-      String password,
-      String passwordConfirmation,
-      int schoolId,
-      String name,
-      String subjectName,
-      int countryId,
-      int cityId,
-      String classesId,
-      File imageFile) async {
+    String email,
+    String password,
+    String passwordConfirmation,
+    int schoolId,
+    String name,
+    String subjectName,
+    int countryId,
+    int cityId,
+    String classesId,
+    File imageFile,
+  ) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();

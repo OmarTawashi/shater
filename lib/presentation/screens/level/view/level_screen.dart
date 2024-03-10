@@ -5,7 +5,7 @@ import 'package:shater/presentation/screens/auth/base%20login/view/base_login_sc
 import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/custom_intike_container.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
+import 'package:shater/presentation/screens/edit%20profile/widgets/custom_border_text.dart';
 import 'package:shater/presentation/screens/level/controller/level_controller.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
 import 'package:shater/util/images.dart';

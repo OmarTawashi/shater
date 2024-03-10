@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/animator_container.dart';
+import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
 import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
@@ -18,8 +19,7 @@ class ExerciseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              appBar: PerfectAppBar(),
-
+      appBar: PerfectAppBar(),
       body: GetBuilder<ExerciseController>(
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
@@ -56,15 +56,16 @@ class ExerciseScreen extends StatelessWidget {
                 viewType: controller.viewType,
                 isSliver: true,
                 emptyParams: EmptyParams(
-                  text: 'empty Level',
-                  caption: '',
-                  image: ICONS.internalServerError,
-                ),
+                    text: 'first_student',
+                    caption: 'empty_first_student',
+                    image: ICONS.exerciseTop),
                 shimmerWidget: CustomShimmerList(
                   itemShimmer: ExerciseShimmer(),
                 ),
-                errorWidget: CustomShimmerList(
-                  itemShimmer: ExerciseShimmer(),
+                errorWidget: CustomEmptyView(
+                  assetName: ICONS.exerciseTop,
+                  primaryText: 'EXercise',
+                  secanderyText: 'error_for_get_exercise',
                 ),
                 successWidget: SliverList(
                   delegate: SliverChildBuilderDelegate(

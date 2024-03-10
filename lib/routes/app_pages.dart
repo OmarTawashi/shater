@@ -12,9 +12,11 @@ import 'package:shater/presentation/screens/auth/sign%20up/view/sign_up_screen.d
 import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
 import 'package:shater/presentation/screens/classe/view/classe_screen.dart';
+import 'package:shater/presentation/screens/edit%20profile/binding/edit_profile_binding.dart';
 import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
 import 'package:shater/presentation/screens/level/bindings/level_bindings.dart';
 import 'package:shater/presentation/screens/level/view/level_screen.dart';
+import 'package:shater/presentation/screens/profile/bindings/profile_binding.dart';
 import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
@@ -57,6 +59,7 @@ class AppPages {
     GetPage(
       name: RoutesName.editProfileScreen,
       page: () => const EditProfileScreen(),
+      binding: EditProfileBinding()
     ),
     GetPage(
       name: RoutesName.baseLoginScreen,
@@ -69,6 +72,7 @@ class AppPages {
     GetPage(
       name: RoutesName.profileScreen,
       page: () => const ProfileScreen(),
+      binding: ProfileBinding()
     ),
     GetPage(
       name: RoutesName.createNameScreen,

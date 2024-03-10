@@ -34,7 +34,7 @@ class FirstsController extends BaseController {
       value?.fold((l) {
         handelError(l);
       }, (r) {
-        if (r == null) {
+        if (r.isEmpty) {
           updateViewType(ViewType.empty);
         } else {
           _students = r;

@@ -5,6 +5,7 @@ import 'package:shater/presentation/screens/base/cashed_network_image_widget.dar
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 
 import '../../../util/dimensions.dart';
@@ -30,8 +31,8 @@ class PerfectAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             GestureDetector(
               onTap: () {
-                // Get.toNamed(Routes.getProfileScreen());
-                print(controller.user);
+                Get.toNamed(Routes.getProfileScreen());
+                // print(controller.user);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),

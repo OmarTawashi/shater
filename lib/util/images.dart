@@ -12,6 +12,11 @@ class IMAGES {
 
 class ICONS {
   static const String logoApp = 'assets/icons/logoApp.svg';
+  static const String support = 'assets/icons/support.svg';
+  static const String privcy = 'assets/icons/privcy.svg';
+  static const String about = 'assets/icons/about.svg';
+  static const String callFriend = 'assets/icons/callFriend.svg';
+  static const String rate = 'assets/icons/rate.svg';
   static const String internalServerError =
       'assets/icons/internal_server_error.svg';
   static const String exerciseTab = 'assets/icons/exerciseUnActive.svg';

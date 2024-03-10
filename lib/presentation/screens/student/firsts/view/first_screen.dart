@@ -88,9 +88,9 @@ class FirstsScreen extends StatelessWidget {
                 ),
                 shimmerWidget: ShimmerList(),
                 emptyParams: EmptyParams(
-                    text: 'subjects',
-                    caption: 'empty_subject',
-                    image: ICONS.decriptionTop),
+                    text: 'first_student',
+                    caption: 'empty_first_student',
+                    image: ICONS.firstsTop),
                 successWidget: SliverList(
                   delegate: SliverChildBuilderDelegate(
                     childCount: controller.students.length,

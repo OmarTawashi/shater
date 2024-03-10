@@ -22,6 +22,7 @@ class ApiConstant {
       '/api/$version/$textUser/educational/courses/learning';
   static String schoolsRates = '/api/$version/student/rates/schools';
   static String studentRates = '/api/$version/student/rates/students';
+  static String profile = '/api/$version/student/profile/my-profile';
   static String teacherOfStudent = '/api/$version/student/educational/videos/get-teachers-for-subject';
 
   static String getCities = '/api/$version/main/getCities';

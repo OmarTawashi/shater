@@ -4,7 +4,8 @@ import 'package:shater/data/model/country_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';
 import 'package:shater/data/model/subject_model.dart';
-class User extends Decodable<User>{
+
+class User extends Decodable<User> {
   int? id;
   String? name;
   String? email;
@@ -35,7 +36,7 @@ class User extends Decodable<User>{
   int? countVideo;
   int? countQuestions;
   int? countStar;
-  int? rate;
+  String? rate;
   int? isNotify;
   int? isFav;
   int? teacherRate;
@@ -93,8 +94,8 @@ class User extends Decodable<User>{
       this.school,
       this.city,
       this.children});
-      
-       @override
+
+  @override
   User decode(dynamic json) {
     id = json['id'];
     name = json['name'];
@@ -126,7 +127,7 @@ class User extends Decodable<User>{
     countVideo = json['count_video'];
     countQuestions = json['count_questions'];
     countStar = json['count_star'];
-    rate = json['rate'];
+    rate = "${json['rate']}";
     isNotify = json['is_notify'];
     isFav = json['is_fav'];
     teacherRate = json['teacher_rate'];
@@ -226,4 +227,3 @@ class User extends Decodable<User>{
     return data;
   }
 }
-
