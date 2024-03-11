@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/routes/app_routes.dart';
-
-
-
 
 enum ViewType {
   initial,
@@ -31,30 +27,29 @@ class BaseController extends GetxController {
     update();
   }
 
-   handelError(ApiException response) {
+  handelError(ApiException response) {
     errorStr = response.message;
     switch (response.statusCode) {
       case 400:
         updateViewType(ViewType.noInternet);
         break;
       case 401:
-        SharedPrefs.sharedPreferences.clear();
         Get.offAllNamed(Routes.getBaseLoginScreen());
         break;
       case 403:
         return const Text('UnauthorisedException');
       case 404:
-      updateViewType(ViewType.notFound);
-      break;  
+        updateViewType(ViewType.notFound);
+        break;
       case 500:
         updateViewType(ViewType.internalServarError);
         break;
       default:
-      if(response.message == 'no_internet_connection'){
-        updateViewType(ViewType.noInternet);
-      }else{
-        updateViewType(ViewType.error);
-      }
+        if (response.message == 'no_internet_connection') {
+          updateViewType(ViewType.noInternet);
+        } else {
+          updateViewType(ViewType.error);
+        }
     }
   }
 }

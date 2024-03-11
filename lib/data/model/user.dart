@@ -37,6 +37,7 @@ class User extends Decodable<User> {
   int? countQuestions;
   int? countStar;
   String? rate;
+  int? rateStar;
   int? isNotify;
   int? isFav;
   int? teacherRate;
@@ -109,6 +110,7 @@ class User extends Decodable<User> {
     apiToken = json['api_token'];
     videoNotification = json['video_notification'];
     status = json['status'];
+    rateStar = json['rate_star'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     isNew = json['is_new'];

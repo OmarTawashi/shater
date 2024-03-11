@@ -8,7 +8,7 @@ class CustomShimmerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 5,
+      itemCount: 8,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => itemShimmer,
     );

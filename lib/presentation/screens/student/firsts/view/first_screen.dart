@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/student/firsts/widgets/item_first_student.dart';
+import 'package:shater/presentation/screens/student/firsts/widgets/item_school_rate.dart';
 import 'package:shater/presentation/screens/student/firsts/widgets/shimmer_list.dart';
 
 import '../../../../../util/images.dart';
@@ -78,32 +79,7 @@ class FirstsScreen extends StatelessWidget {
                   height: 8.h,
                 ),
               ),
-              AnimatorContainer(
-                viewType: controller.viewType,
-                isSliver: true,
-                errorWidget: CustomEmptyView(
-                  assetName: ICONS.firstsTop,
-                  primaryText: 'subjects',
-                  secanderyText: 'error_for_get_subject',
-                ),
-                shimmerWidget: ShimmerList(),
-                emptyParams: EmptyParams(
-                    text: 'first_student',
-                    caption: 'empty_first_student',
-                    image: ICONS.firstsTop),
-                successWidget: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    childCount: controller.students.length,
-                    (context, index) => ItemFirstStudents(
-                      student: controller.students[index],
-                      index: index + 1,
-                    ),
-                  ),
-                ),
-                retry: () {
-                  controller.getData(controller.selectSection);
-                },
-              ),
+              getList(controller),
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 100.h,
@@ -112,5 +88,90 @@ class FirstsScreen extends StatelessWidget {
             ]),
           ),
         ));
+  }
+
+  Widget getList(FirstsController controller) {
+    switch (controller.selectSection) {
+      case TabFirsts.schoolToday:
+        return AnimatorContainer(
+          viewType: controller.viewType,
+          isSliver: true,
+          errorWidget: CustomEmptyView(
+            assetName: ICONS.firstsTop,
+            primaryText: 'school',
+            secanderyText: 'error_for_get_school',
+          ),
+          shimmerWidget: ShimmerList(),
+          emptyParams: EmptyParams(
+              text: 'school', caption: 'empty_list', image: ICONS.firstsTop),
+          successWidget: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: controller.school.length,
+              (context, index) => ItemSchoolRate(
+                school: controller.school[index],
+                index: index + 1,
+              ),
+            ),
+          ),
+          retry: () {
+            controller.getData(controller.selectSection);
+          },
+        );
+      case TabFirsts.studentToday:
+        return AnimatorContainer(
+          viewType: controller.viewType,
+          isSliver: true,
+          errorWidget: CustomEmptyView(
+            assetName: ICONS.firstsTop,
+            primaryText: 'subjects',
+            secanderyText: 'error_for_get_subject',
+          ),
+          shimmerWidget: ShimmerList(),
+          emptyParams: EmptyParams(
+              text: 'first_student',
+              caption: 'empty_first_student',
+              image: ICONS.firstsTop),
+          successWidget: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: controller.students.length,
+              (context, index) => ItemFirstStudents(
+                student: controller.students[index],
+                index: index + 1,
+              ),
+            ),
+          ),
+          retry: () {
+            controller.getData(controller.selectSection);
+          },
+        );
+
+      default:
+        return AnimatorContainer(
+          viewType: controller.viewType,
+          isSliver: true,
+          errorWidget: CustomEmptyView(
+            assetName: ICONS.firstsTop,
+            primaryText: 'subjects',
+            secanderyText: 'error_for_get_subject',
+          ),
+          shimmerWidget: ShimmerList(),
+          emptyParams: EmptyParams(
+              text: 'first_student',
+              caption: 'empty_first_student',
+              image: ICONS.firstsTop),
+          successWidget: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: controller.students.length,
+              (context, index) => ItemFirstStudents(
+                student: controller.students[index],
+                index: index + 1,
+              ),
+            ),
+          ),
+          retry: () {
+            controller.getData(controller.selectSection);
+          },
+        );
+    }
   }
 }

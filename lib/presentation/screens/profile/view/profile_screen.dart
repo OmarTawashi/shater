@@ -29,148 +29,162 @@ class ProfileScreen extends StatelessWidget {
         ),
         body: GetBuilder<ProfileController>(
             builder: (controller) => Stack(children: [
-                  CustomScrollView(slivers: [
-                    SliverPersistentHeader(
-                      pinned: true,
-                      delegate: SectionHeaderDelegate(
-                        height: 85,
-                        widget: Row(
+                  IgnorePointer(
+                    ignoring: controller.isLoading,
+                    child: CustomScrollView(slivers: [
+                      SliverPersistentHeader(
+                        pinned: true,
+                        delegate: SectionHeaderDelegate(
+                          height: 85,
+                          widget: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IntikeProfileImoji(
+                                asset: IMAGES.firstImages,
+                                text: 'mohamed',
+                                isEnable: true,
+                              ),
+                              IntikeProfileImoji(
+                                asset: IMAGES.firstImages,
+                                text: 'mohamed',
+                              ),
+                              IntikeProfileImoji(
+                                asset: IMAGES.add,
+                                text: 'add Student',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: Dimensions.paddingSize25 + 5,
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            IntikeProfileImoji(
-                              asset: IMAGES.firstImages,
-                              text: 'mohamed',
-                              isEnable: true,
+                            TextNumber(
+                              text: 'class',
+                              secWidget: CustomText(
+                                text: controller.user?.classes?.title
+                                        ?.replaceRange(0, 5, '') ??
+                                    '',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: Dimensions.fontSize15 + 1.sp,
+                              ),
                             ),
-                            IntikeProfileImoji(
-                              asset: IMAGES.firstImages,
-                              text: 'mohamed',
+                            ImageUser(
+                              imageUrl: controller.user?.image ?? '',
                             ),
-                            IntikeProfileImoji(
-                              asset: IMAGES.add,
-                              text: 'add Student',
+                            TextNumber(
+                              text: 'points',
+                              secWidget: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CustomSvgPicture(assetName: ICONS.point),
+                                  SizedBox(
+                                    width: Dimensions.paddingSize5,
+                                  ),
+                                  CustomText(
+                                    text: controller.user?.rateStar.toString() ??
+                                        "",
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: Dimensions.fontSize13 + 1.sp,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: Dimensions.paddingSize25 + 5,
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: Dimensions.paddingSize20,
+                        ),
                       ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          TextNumber(
-                            text: 'class',
-                            secWidget: CustomText(
-                              text: controller.user?.classes?.title ?? '',
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: Dimensions.fontSize15 + 1.sp,
-                            ),
-                          ),
-                          ImageUser(
-                            imageUrl: controller.user?.image ?? '',
-                          ),
-                          TextNumber(
-                            text: 'points',
-                            secWidget: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                CustomSvgPicture(assetName: ICONS.point),
-                                SizedBox(
-                                  width: Dimensions.paddingSize5,
-                                ),
-                                CustomText(
-                                  text: controller.user?.countStar.toString() ??
-                                      "",
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: Dimensions.fontSize13 + 1.sp,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: Dimensions.paddingSize20,
-                      ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: Center(
-                          child: Column(
-                        children: [
-                          RateApp(
-                            initRate: double.tryParse(controller.user?.rate ?? ''),
-                          ),
-                          SizedBox(
-                            height: Dimensions.paddingSize16,
-                          ),
-                          CustomText(
-                            text: controller.user?.email ?? '',
-                            fontSize: Dimensions.fontSize16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                          ),
-                          SizedBox(
-                            height: Dimensions.paddingSize12,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: Dimensions.paddingSize16),
-                            child: CustomCupertinoButton(
-                              color: COLORS.secanderyColor,
-                              onPressed: () {
-                                Get.toNamed(Routes.getEditProfileScreen());
-                              },
-                              text: controller.user?.name ?? '',
-                              trailing:
-                                  CustomSvgPicture(assetName: ICONS.setting),
-                            ),
-                          )
-                        ],
-                      )),
-                    ),
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: Dimensions.paddingSize12,
-                      ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      SliverToBoxAdapter(
+                        child: Center(
+                            child: Column(
                           children: [
-                            CustomText(
-                              text: 'subscript',
-                              color: Color.fromRGBO(149, 150, 152, 1),
-                              fontSize: Dimensions.fontSize16,
-                              fontWeight: FontWeight.w300,
-                              maxLine: 1,
+                            RateApp(
+                              initRate:
+                                  double.tryParse(controller.user?.rate ?? ''),
                             ),
+                            SizedBox(
+                              height: Dimensions.paddingSize16,
+                            ),
+                            CustomText(
+                              text: controller.user?.email ?? '',
+                              fontSize: Dimensions.fontSize16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            SizedBox(
+                              height: Dimensions.paddingSize12,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: Dimensions.paddingSize16),
+                              child: CustomCupertinoButton(
+                                color: COLORS.secanderyColor,
+                                onPressed: () {
+                                  Get.toNamed(Routes.getEditProfileScreen());
+                                },
+                                text: controller.user?.name ?? '',
+                                trailing:
+                                    CustomSvgPicture(assetName: ICONS.setting),
+                              ),
+                            )
                           ],
+                        )),
+                      ),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: Dimensions.paddingSize12,
                         ),
                       ),
-                    ),
-                    SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                      childCount: 2,
-                      (context, index) => ItemSubscribSubject(),
-                    ))
-                  ]),
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomText(
+                                text: 'subscript',
+                                color: Color.fromRGBO(149, 150, 152, 1),
+                                fontSize: Dimensions.fontSize16,
+                                fontWeight: FontWeight.w300,
+                                maxLine: 1,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                        childCount: 2,
+                        (context, index) => ItemSubscribSubject(),
+                      ))
+                    ]),
+                  ),
                   controller.isLoading
-                      ? Center(
-                          child: CircularProgressIndicator(
-                          color: COLORS.whiteColor,
-                        ))
+                      ? Container(
+                          height: Get.height,
+                          width: Get.width,
+                          child: BackdropFilter(
+                            filter: ColorFilter.mode(
+                                Colors.white24, BlendMode.color),
+                            child: Center(
+                                child: CircularProgressIndicator(
+                              color: COLORS.whiteColor,
+                            )),
+                          ),
+                        )
                       : SizedBox()
                 ])));
   }

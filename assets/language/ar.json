@@ -24,6 +24,8 @@
     "use": "استخدام",
     "name": "الاسم",
     "class": "الصف",
+    "empty_list": "لا يوجد شئ لعرضه",
+    "error_for_get_school": "حدث خطا  في عرض المدارس",
     "logout_account": "الخروج من الحساب",
     "call_friend": "اخبر صديقا",
     "rate_me": "قيمنا",

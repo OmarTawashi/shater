@@ -18,6 +18,8 @@
     "teacher": "Teacher",
     "skip": "Skip",
     "class": "Class",
+    "empty_list": "ُEmpty List",
+    "error_for_get_school": "Error For Get School",
     "logout_account": "Logout Account",
     "call_friend": "Call Friend",
     "about_me": "About me",

@@ -1,5 +1,6 @@
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/network/api_client.dart';
+import 'package:shater/data/model/rate_school_model.dart';
 import 'package:shater/data/model/student_model.dart';
 import 'package:shater/data/repository/rate_student_repository_remote.dart';
 import 'package:shater/domain/usecase/rate_student_useecase_imp.dart';
@@ -12,7 +13,10 @@ class FirstsController extends BaseController {
   RateStudentUseCaseImp? _rateStudentUseCaseImp;
 
   List<StudentModel> _students = [];
-  List<StudentModel>  get students =>_students;
+  List<StudentModel> get students => _students;
+
+  List<SchoolRateModel> _schools = [];
+  List<SchoolRateModel> get school => _schools;
 
   @override
   void onInit() {
@@ -50,12 +54,12 @@ class FirstsController extends BaseController {
     updateViewType(ViewType.shimmer);
     await _rateStudentUseCaseImp?.fetchSchoolsRate().then((value) {
       value?.fold((l) {
-         handelError(l);
+        handelError(l);
       }, (r) {
-        if (r == null) {
+        if (r.isEmpty) {
           updateViewType(ViewType.empty);
         } else {
-          // _courseLearningModel = r;
+          _schools = r;
           updateViewType(ViewType.success);
         }
       });

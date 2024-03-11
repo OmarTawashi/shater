@@ -99,8 +99,8 @@ class TeacherScreen extends StatelessWidget {
                 //   itemShimmer: SubjectShimmer(),
                 // ),
                 emptyParams: EmptyParams(
-                    text: 'subjects',
-                    caption: 'empty_subject',
+                    text: 'soon'.tr,
+                    caption: 'find_account_teacher'.tr,
                     image: ICONS.decriptionTop),
                 successWidget: teacherList(controller),
                 retry: () {
