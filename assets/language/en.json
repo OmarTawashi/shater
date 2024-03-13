@@ -18,6 +18,8 @@
     "teacher": "Teacher",
     "skip": "Skip",
     "class": "Class",
+    "city": "City",
+    "passworde": "Password",
     "empty_list": "ُEmpty List",
     "error_for_get_school": "Error For Get School",
     "logout_account": "Logout Account",

@@ -17,13 +17,15 @@ class ApiConstant {
   static String studentLogin = '/api/$version/auth/login';
   static String ForgetPassword = '/api/$version/auth/password/email';
   static String registerSudent = '/api/$version/auth/register';
+  static String logout = '/api/$version/auth/logout';
   static String registerTeacher = '/api/$version/$textUser/auth/register';
   static String coursesLearning =
       '/api/$version/$textUser/educational/courses/learning';
   static String schoolsRates = '/api/$version/student/rates/schools';
   static String studentRates = '/api/$version/student/rates/students';
   static String profile = '/api/$version/student/profile/my-profile';
-  static String teacherOfStudent = '/api/$version/student/educational/videos/get-teachers-for-subject';
+  static String teacherOfStudent =
+      '/api/$version/student/educational/videos/get-teachers-for-subject';
 
   static String getCities = '/api/$version/main/getCities';
   static String getSchools = '/api/$version/main/getSchools';

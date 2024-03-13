@@ -205,10 +205,6 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     return completer.future;
   }
 
-  Future<void> signOut() async {
-    throw UnimplementedError();
-  }
-
   @override
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email) async {
     final completer = Completer<Either<ApiException, EmptyModel>?>();
@@ -266,6 +262,36 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           } else {
             final message = response.data?.message;
             completer.complete(Right(EmptyModel(message: message)));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  Future<Either<ApiException, EmptyModel>?> signOut() async {
+    final completer = Completer<Either<ApiException, EmptyModel>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.logout,
+        requestType: RequestType.post,
+        create: () => APIResponse<EmptyModel>(
+          create: () => EmptyModel(),
+        ),
+        onSuccess: (response) {
+          if (response.data?.status == false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? EmptyModel()));
           }
         },
         onError: (error) {

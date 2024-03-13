@@ -213,7 +213,7 @@ class TeacherModel extends Decodable<TeacherModel> {
     if (json['school'] != null) {
       school = <School>[];
       json['school'].forEach((v) {
-        school!.add(new School.fromJson(v));
+        school?.add(new School.fromJson(v));
       });
     }
     story = json['story'];

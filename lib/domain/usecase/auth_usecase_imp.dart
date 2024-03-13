@@ -20,8 +20,9 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
-  Future<void> signOut() {
-    throw UnimplementedError();
+  Future<Either<ApiException, EmptyModel>?> signOut() {
+    return _authRepository.signOut();
+    
   }
 
   @override

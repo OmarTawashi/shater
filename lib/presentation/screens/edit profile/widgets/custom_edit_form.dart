@@ -43,11 +43,12 @@ class CustomEditForm extends StatelessWidget {
         Expanded(
             flex: 5,
             child: TextFormField(
+              textAlign: TextAlign.center,
               controller: textEditingController,
               style: FontStyleConstant.hNLTRegular.copyWith(
                   color: Colors.white54,
                   fontWeight: FontWeight.bold,
-                  fontSize: Dimensions.fontSize15,
+                  fontSize: Dimensions.fontSize14,
                   locale: Locale(APPCONSTANT.languages[1].languageCode ?? '',
                       APPCONSTANT.languages[0].languageCode)),
               autovalidateMode: AutovalidateMode.onUserInteraction,
