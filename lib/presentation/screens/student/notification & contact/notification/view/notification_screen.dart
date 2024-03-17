@@ -33,7 +33,7 @@ class NotificationScreen extends StatelessWidget {
         successWidget: SliverList(
             delegate: SliverChildBuilderDelegate(
                 (context, index) => ItemNotification(
-                      notification:  controller.notifications[index],
+                      notification: controller.notifications[index],
                       onTap: () {
                         Get.toNamed(Routes.getNotificationDetails());
                       },

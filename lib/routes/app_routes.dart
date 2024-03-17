@@ -12,6 +12,7 @@ abstract class RoutesName {
   static const firstsScreen = '/firsts-screen';
   static const exerciseSubjectScreen = '/exercise-subject-screen';
   static const contactScreen = '/contact-screen';
+  static const contactMeScreen = '/contact_me-screen';
   static const notificationDetails = '/notification-details';
   static const levelScreen = '/level-screen';
   static const exerciseDetailsScreen = '/exercise-details-screen';
@@ -41,6 +42,7 @@ abstract class Routes {
   static String getTakeImageScreen() => RoutesName.takeImageScreen;
   static String getFirstsScreen() => RoutesName.firstsScreen;
   static String getContactScreen() => RoutesName.contactScreen;
+  static String getContactMeScreen() => RoutesName.contactMeScreen;
   static String getNotificationDetails() => RoutesName.notificationDetails;
   static String getTermsConditionScreen() => RoutesName.termsConditionScreen;
   static String getPrivcyPolicyScreen() => RoutesName.privcyPolicyScreen;
