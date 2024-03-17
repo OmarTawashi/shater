@@ -1,92 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/student/contact/controller/contact_controller.dart';
-import 'package:shater/presentation/screens/student/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/student/notification%20&%20contact/contact/controller/contact_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
-import '../../../../../util/images.dart';
-import '../../../base/custom_empty_view.dart';
-import '../../../base/intike_tab_bar.dart';
-import '../../../base/tap_section.dart';
+import '../../../../../../util/images.dart';
+import '../../../../base/custom_empty_view.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PerfectAppBar(),
-        body: GetBuilder<ContactController>(
-          builder: (controller) => CustomScrollView(
-            slivers: [
-              IntikeTapBar(
-                assetName: ICONS.exerciseTop,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TapSection(
-                      isSelected:
-                          (controller.selectContact == TabContact.contacts),
-                      onTap: () {
-                        controller.changeSection(TabContact.contacts);
-                      },
-                      text: TabContact.contacts.name.tr,
-                    ),
-                    TapSection(
-                      isSelected: (controller.selectContact ==
-                          TabContact.notifications),
-                      onTap: () {
-                        controller.changeSection(TabContact.notifications);
-                      },
-                      text: TabContact.notifications.name.tr,
-                    ),
-                  ],
-                ),
-              ),
-              const SliverToBoxAdapter(
-                  child: SizedBox(
-                height: 10,
-              )),
-              selectable(controller),
-            ],
-          ),
-        ));
-  }
-
-  Widget selectable(ContactController controller) {
-    switch (controller.selectContact) {
-      case TabContact.contacts:
-        return getContactWidget(controller);
-      case TabContact.notifications:
-        return const NotificationScreen();
-      default:
-        return getContactWidget(controller);
-    }
-  }
-
-  Widget getContactWidget(ContactController contactController) {
-    contactController.updateViewType(ViewType.success);
-    return AnimatorContainer(
-      viewType: contactController.viewType,
-      isSliver: true,
-      errorWidget: const CustomEmptyView(
-        assetName: ICONS.contactWhite,
-        primaryText: 'not_find_message',
-        secanderyText: 'find_message_teacher',
+    return GetBuilder<ContactController>(
+      // init: Get.put(ContactController()),
+      builder: (controller) => AnimatorContainer(
+        viewType: controller.viewType,
+        isSliver: true,
+        errorWidget: const CustomEmptyView(
+          assetName: ICONS.contactWhite,
+          primaryText: 'not_find_message',
+          secanderyText: 'find_message_teacher',
+        ),
+        emptyParams: EmptyParams(
+            text: 'empty Level', caption: '', image: ICONS.internalServerError),
+        successWidget: SliverList(
+          delegate: SliverChildBuilderDelegate(
+              childCount: 5, (context, index) => ItemContact()),
+        ),
+        retry: () {},
       ),
-      emptyParams: EmptyParams(
-          text: 'empty Level', caption: '', image: ICONS.internalServerError),
-      successWidget: SliverList(
-        delegate: SliverChildBuilderDelegate(
-            childCount: 5, (context, index) => ItemContact()),
-      ),
-      retry: () {},
     );
   }
 }
@@ -101,7 +47,7 @@ class ItemContact extends StatelessWidget {
     return Container(
       margin: EdgeInsets.fromLTRB(Dimensions.paddingSize16, 0,
           Dimensions.paddingSize16, Dimensions.paddingSize10),
-      padding: EdgeInsets.symmetric(horizontal: 16,vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),

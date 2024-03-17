@@ -27,7 +27,8 @@ import 'package:shater/presentation/screens/student/exercise%20details/view/exer
 import 'package:shater/presentation/screens/student/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
-import 'package:shater/presentation/screens/student/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/student/notification%20&%20contact/notification/view/notification_screen.dart';
+import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/take%20image/binding/take_image_binding.dart';
@@ -38,7 +39,6 @@ import 'package:shater/routes/app_routes.dart';
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
-import '../presentation/screens/student/contact/view/contact_screen.dart';
 
 class AppPages {
   AppPages._();
@@ -130,12 +130,9 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.contactScreen,
-      page: () => const ContactScreen(),
+      page: () => const NotificationContactScreen(),
     ),
-    GetPage(
-      name: RoutesName.contactScreen,
-      page: () => const ContactScreen(),
-    ),
+   
     GetPage(
       name: RoutesName.notificationDetails,
       page: () => const NotificationDetails(),

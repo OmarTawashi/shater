@@ -18,7 +18,7 @@ class LeadingIconNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       backgroundColor: COLORS.secanderyColor,
-      radius: radius ?? 35,
+      radius: radius ?? 25,
       child: CustomSvgPicture(
         assetName: ICONS.logoAppt,
         height: height ?? 40,

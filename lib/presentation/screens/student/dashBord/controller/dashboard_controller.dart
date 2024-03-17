@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/user.dart';
-import 'package:shater/presentation/screens/student/contact/view/contact_screen.dart';
 import 'package:shater/presentation/screens/student/exercises/view/Exercise_screen.dart';
 import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
+import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
 import 'package:shater/presentation/screens/student/subject/view/subjects_screen.dart';
 
 import '../../teacher/view/teacher_screen.dart';
@@ -24,7 +24,7 @@ class DashBoardController extends GetxController {
     const ExerciseScreen(),
     const TeacherScreen(),
     const FirstsScreen(),
-    const ContactScreen()
+    const NotificationContactScreen()
   ];
 
   void changeIndex(int index) {

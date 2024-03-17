@@ -59,11 +59,18 @@ class APIResponse<T> extends GenericObject<T>
     status = json['status'];
     message = json['message'];
     items = [];
-
+     
     try {
-      json['items'].forEach((item) {
+      if (json.containsKey("items")) {
+        json['items'].forEach((item) {
         items?.add(genericObject(item));
       });
+      }else{
+        json['data'].forEach((item) {
+        items?.add(genericObject(item));
+      });
+      }
+      
     } catch (error) {
       log("☢️☢️☢️ Items typemismatch error ignored $error");
     }
