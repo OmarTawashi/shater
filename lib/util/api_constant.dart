@@ -31,7 +31,11 @@ class ApiConstant {
   static String contactList = '/api/$version/student/contacts/list';
   static String contactStore = '/api/$version/student/contacts/store';
   static String replayContact = '/api/$version/student/contacts';
-    
+
+  static String questionsPage =
+      '/api/$version/student/educational/questions/pages';
+  static String questionsSubject =
+      '/api/$version/student/educational/questions/subject';
 
   static String getCities = '/api/$version/main/getCities';
   static String getSchools = '/api/$version/main/getSchools';

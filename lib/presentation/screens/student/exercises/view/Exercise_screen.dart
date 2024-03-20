@@ -9,6 +9,7 @@ import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
 import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/exercise_shimmer.dart';
 import 'package:shater/presentation/screens/student/exercises/widgets/item_exercise.dart';
+import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../util/images.dart';
 import '../../../base/tap_section.dart';
@@ -71,6 +72,10 @@ class ExerciseScreen extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate(
                     childCount: controller.courseLearningModel.length,
                     (context, index) => ItemExercise(
+                      onTap: () {
+                        controller.setCourse(controller.courseLearningModel[index]);
+                        Get.toNamed(Routes.getPageSubjectScreen());
+                      },
                       imageUrl: controller.courseLearningModel[index].image,
                       subjectText: controller.courseLearningModel[index].title,
                       trainingNumber:

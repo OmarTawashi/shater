@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/routes/app_routes.dart';
 
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
@@ -12,17 +11,18 @@ class ItemExercise extends StatelessWidget {
   final String? subjectText;
   final int? trainingNumber;
   final String? imageUrl;
-  const ItemExercise({
-    super.key,
-    this.subjectText,
-    this.trainingNumber,
-    this.imageUrl,
-  });
+  final Function()? onTap;
+  const ItemExercise(
+      {super.key,
+      this.subjectText,
+      this.trainingNumber,
+      this.imageUrl,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB( 16,10,16,0),
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -35,17 +35,15 @@ class ItemExercise extends StatelessWidget {
                 height: 100,
                 width: 100,
                 clipBehavior: Clip.hardEdge,
-                padding: const EdgeInsets.all(2),
-                decoration:  BoxDecoration(
-                 border: Border.all(
-                    color: Colors.white,
-                    width: 4
-                   ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 4,strokeAlign: BorderSide.strokeAlignOutside),
                   shape: BoxShape.circle,
                 ),
                 child: CachedNetworkImageWidget(
                   imageUrl: imageUrl ?? '',
                   fit: BoxFit.cover,
+                  height: 100,
+                  width: 100,
                 ),
               ),
               const SizedBox(
@@ -82,9 +80,7 @@ class ItemExercise extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  Get.toNamed(Routes.getExerciseDetailsScreen());
-                },
+                onTap: onTap,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                   decoration: BoxDecoration(
@@ -115,8 +111,8 @@ class ItemExercise extends StatelessWidget {
               ),
             ],
           ),
-           SizedBox(
-            height: 8 ,
+          SizedBox(
+            height: 8,
           ),
           Divider(
             color: COLORS.primaryColor.withOpacity(0.15),
@@ -125,7 +121,6 @@ class ItemExercise extends StatelessWidget {
             endIndent: 80.w,
             indent: 8,
           ),
-         
         ],
       ),
     );

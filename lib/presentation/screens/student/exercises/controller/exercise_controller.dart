@@ -16,6 +16,9 @@ class ExerciseController extends BaseController {
   List<CourseLearningModel> _courseLearningModel = [];
   List<CourseLearningModel> get courseLearningModel =>_courseLearningModel;
 
+  CourseLearningModel? _selectedCourse ;
+  CourseLearningModel? get selectedCourse =>_selectedCourse ;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,6 +27,10 @@ class ExerciseController extends BaseController {
   }
   void changeSection(TabExercise tabSection) {
     selectExercise = tabSection;
+    update();
+  }
+  void setCourse(CourseLearningModel course) {
+    _selectedCourse = course;
     update();
   }
 

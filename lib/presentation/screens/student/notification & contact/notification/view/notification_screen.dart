@@ -8,7 +8,6 @@ import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 
 import '../../../../../../util/color.dart';
-import '../../../exercise subject/view/exercise_subject_screen.dart';
 import '../widgets/item_notification.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -60,9 +59,6 @@ class NotificationDetails extends StatelessWidget {
           backgroundColor: COLORS.primaryColor,
           automaticallyImplyLeading: false,
           excludeHeaderSemantics: true,
-          leading: IconTextCont(
-            text: 'notifications',
-          ),
           centerTitle: true,
           title: LeadingIconNotification(
             radius: 45,

@@ -31,6 +31,8 @@ import 'package:shater/presentation/screens/student/notification%20&%20contact/c
 import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/view/contact_me_screen.dart';
 import 'package:shater/presentation/screens/student/notification%20&%20contact/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
+import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
+import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/take%20image/binding/take_image_binding.dart';
@@ -59,10 +61,9 @@ class AppPages {
     //   page: () => const TeacherScreen(),
     // ),
     GetPage(
-      name: RoutesName.editProfileScreen,
-      page: () => const EditProfileScreen(),
-      binding: EditProfileBinding()
-    ),
+        name: RoutesName.editProfileScreen,
+        page: () => const EditProfileScreen(),
+        binding: EditProfileBinding()),
     GetPage(
       name: RoutesName.baseLoginScreen,
       page: () => const BaseLoginScreen(),
@@ -72,20 +73,17 @@ class AppPages {
       page: () => const ExerciseDetailsScreen(),
     ),
     GetPage(
-      name: RoutesName.profileScreen,
-      page: () => const ProfileScreen(),
-      binding: ProfileBinding()
-    ),
+        name: RoutesName.profileScreen,
+        page: () => const ProfileScreen(),
+        binding: ProfileBinding()),
     GetPage(
-      name: RoutesName.createNameScreen,
-      page: () => CreateNameScreen(),
-      binding: RegisterBinding()
-    ),
+        name: RoutesName.createNameScreen,
+        page: () => CreateNameScreen(),
+        binding: RegisterBinding()),
     GetPage(
-      name: RoutesName.takeImageScreen,
-      page: () => TakeImageScreen(),
-      binding: TakeImageBinding()
-    ),
+        name: RoutesName.takeImageScreen,
+        page: () => TakeImageScreen(),
+        binding: TakeImageBinding()),
     GetPage(
       name: RoutesName.gridViewAvatar,
       page: () => GridViewAvatar(),
@@ -135,11 +133,13 @@ class AppPages {
       page: () => const NotificationContactScreen(),
     ),
     GetPage(
-      name: RoutesName.contactMeScreen,
-      page: () => const ContactMeScreen(),
-      binding: ContactMeBinding()
-    ),
-   
+        name: RoutesName.contactMeScreen,
+        page: () => const ContactMeScreen(),
+        binding: ContactMeBinding()),
+    GetPage(
+        name: RoutesName.pageSubjectScreen,
+        page: () => const PageSubjectScreen(),
+        binding: PageSubjectBinding()),
     GetPage(
       name: RoutesName.notificationDetails,
       page: () => const NotificationDetails(),

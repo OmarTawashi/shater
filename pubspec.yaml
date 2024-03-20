@@ -54,6 +54,7 @@ dependencies:
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
   image_picker: ^1.0.7
+  numberpicker: ^2.1.2
   # webview_flutter: ^4.7.0
   # device_info_plus: ^2.0.3
 
