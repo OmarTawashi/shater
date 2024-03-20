@@ -27,14 +27,16 @@ abstract class GenericObject<T> {
 ///Used it as return object of APIController to handle any kind of response.
 
 class ResponseWrapper<T> extends GenericObject<T> {
-  
   T? data;
   Response? response;
 
-  ResponseWrapper({required Create<Decodable> create,this.response}) : super(create: create);
+  ResponseWrapper({required Create<Decodable> create, this.response})
+      : super(create: create);
 
   factory ResponseWrapper.init(
-      {required Create<Decodable> create, required dynamic data,Response? response}) {
+      {required Create<Decodable> create,
+      required dynamic data,
+      Response? response}) {
     final wrapper = ResponseWrapper<T>(create: create);
     wrapper.data = wrapper.genericObject(data);
     // wrapper.response = response;
@@ -59,18 +61,17 @@ class APIResponse<T> extends GenericObject<T>
     status = json['status'];
     message = json['message'];
     items = [];
-     
+
     try {
       if (json.containsKey("items")) {
         json['items'].forEach((item) {
-        items?.add(genericObject(item));
-      });
-      }else{
+          items?.add(genericObject(item));
+        });
+      } else {
         json['data'].forEach((item) {
-        items?.add(genericObject(item));
-      });
+          items?.add(genericObject(item));
+        });
       }
-      
     } catch (error) {
       log("☢️☢️☢️ Items typemismatch error ignored $error");
     }
@@ -78,6 +79,8 @@ class APIResponse<T> extends GenericObject<T>
     try {
       if (json is Map<String, dynamic> && json.containsKey("items")) {
         item = genericObject(json["items"]);
+      } else if (json is Map<String, dynamic>) {
+        item = genericObject(json);
       } else {
         item = genericObject(json);
       }
@@ -87,7 +90,7 @@ class APIResponse<T> extends GenericObject<T>
 
     try {
       errors = [];
-      if(json['errors'] != null){
+      if (json['errors'] != null) {
         json['errors'].forEach((e) => errors?.add(ErrorModel.fromJson(e)));
       }
     } catch (error) {

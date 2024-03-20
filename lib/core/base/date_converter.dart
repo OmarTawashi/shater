@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class DateConverter {
@@ -10,9 +11,9 @@ class DateConverter {
     if (difference.inMinutes < 1) {
       return 'just now';
     } else if (difference.inMinutes < 60) {
-      return '${difference.inMinutes} m';
+      return '${difference.inMinutes}' + 'm'.tr;
     } else if (difference.inHours < 24) {
-      return '${difference.inHours} h';
+      return '${difference.inHours}' + 'h'.tr;
     } else if (difference.inDays < 7) {
       return 'last week';
     } else {

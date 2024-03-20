@@ -27,6 +27,7 @@ import 'package:shater/presentation/screens/student/exercise%20details/view/exer
 import 'package:shater/presentation/screens/student/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
+import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/binding/contact_me_binding.dart';
 import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/view/contact_me_screen.dart';
 import 'package:shater/presentation/screens/student/notification%20&%20contact/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
@@ -136,6 +137,7 @@ class AppPages {
     GetPage(
       name: RoutesName.contactMeScreen,
       page: () => const ContactMeScreen(),
+      binding: ContactMeBinding()
     ),
    
     GetPage(
