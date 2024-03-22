@@ -61,7 +61,7 @@ class QuestionPageModel extends Decodable<QuestionPageModel> {
     title = json['title'];
     pageNo = json['page_no'];
     countQuestions = json['count_questions'];
-     if (json['questions'] != null) {
+    if (json['questions'] != null) {
       questions = [];
       json['questions'].forEach((value) {
         questions?.add(QuestionModel.fromJson(value));
@@ -130,7 +130,13 @@ class QuestionModel {
     answerIsNumber = json['answer_is_number'];
     orderBy = json['order_by'];
     media = json['media'];
-    answer = json['answer'];
+    if (json['answer'] is String ||
+        json['answer'] is int ||
+        json['answer'] is bool) {
+      answer?.add(json['answer']);
+    } else {
+      answer = json['answer'];
+    }
     valid = json['valid'];
     urls = json['urls'];
     updatedAt = json['updated_at'];

@@ -25,7 +25,10 @@ class TabBarQuestion extends StatelessWidget {
                     width: Dimensions.paddingSize16,
                   ),
                   Container(
-                    padding: EdgeInsets.all(18),
+                    padding: EdgeInsets.all(
+                        (controller?.countQuestions ?? 0 > 9) != true
+                            ? 15
+                            : 18),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         color: COLORS.primaryColor,
@@ -35,7 +38,7 @@ class TabBarQuestion extends StatelessWidget {
                             width: 2,
                             strokeAlign: BorderSide.strokeAlignOutside)),
                     child: CustomText(
-                      text: '0',
+                      text: '${controller?.countQuestions}',
                       color: Colors.white,
                       fontSize: Dimensions.fontSize16,
                     ),

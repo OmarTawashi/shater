@@ -13,21 +13,24 @@ class QuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<QuestionController>(
-      builder: (controller) => 
-       SliverToBoxAdapter(
-        child: Column(
-          children: [
-            HeaderQuestionSection(
-              titleQuestion: controller.questions[1].title,
-              subTitleQuestion: "كم يوجد في الصورة من عناصر",
-            ),
-            ImageQuestionSection(
-              imageUrl: '',
-            ),
-            QuestionAnwserSection()
-          ],
-        ),
+    return SliverToBoxAdapter(
+      child: GetBuilder<QuestionController>(
+        builder: (controller) =>
+        //  PageView.builder(
+        //   itemBuilder: (context, index) => 
+           Column(
+            children: [
+              HeaderQuestionSection(
+                titleQuestion: 'controller.questions.first.title ??' '',
+                subTitleQuestion: "كم يوجد في الصورة من عناصر",
+              ),
+              ImageQuestionSection(
+                imageUrl: '',
+              ),
+              QuestionAnwserSection()
+            ],
+          ),
+        // ),
       ),
     );
   }
