@@ -9,7 +9,14 @@ class TapSection extends StatelessWidget {
   final bool? isSelected;
   final String? text;
   final Color? selectColor;
-  const TapSection({super.key, this.isSelected,this.selectColor = COLORS.secanderyColor, this.onTap, this.text});
+  final Color unSelectTextColor;
+  const TapSection(
+      {super.key,
+      this.isSelected,
+      this.selectColor = COLORS.secanderyColor,
+      this.unSelectTextColor = Colors.white,
+      this.onTap,
+      this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +24,15 @@ class TapSection extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding:const EdgeInsets.all(16),
-          margin:const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(
-              color: isSelected ?? false
-                  ? selectColor
-                  : Colors.transparent,
+              color: isSelected ?? false ? selectColor : Colors.transparent,
               borderRadius: BorderRadius.circular(80)),
           child: CustomText(
             text: text ?? '',
             textAlign: TextAlign.center,
-            color: Colors.white,
+            color: isSelected ?? false ? Colors.white : unSelectTextColor,
             fontWeight: FontWeight.bold,
             fontSize: Dimensions.fontSize16,
           ),

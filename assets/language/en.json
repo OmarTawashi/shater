@@ -19,6 +19,8 @@
     "skip": "Skip",
     "class": "Class",
     "city": "City",
+    "question": "Question",
+    "lesson": "Lesson",
     "from_page_number": "From Page Number",
     "to_page_number": "To Page Number",
     "study_todays_lesson_or_practice_for_future_lessons_by_specifying_the_page_numbers_that_contain_your_lessons": "Study today's lesson or practice for future lessons by specifying\nthe page numbers that contain your lessons",

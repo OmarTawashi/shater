@@ -24,6 +24,8 @@
     "use": "استخدام",
     "name": "الاسم",
     "class": "الصف",
+    "question": "التمارين",
+    "lesson": "الدرس",
     "from_page_number": "من الصفحة رقم",
     "to_page_number": "الى الصفحة رقم",
     "study_todays_lesson_or_practice_for_future_lessons_by_specifying_the_page_numbers_that_contain_your_lessons": "ذاكر درس اليوم أو تمرن لدروس قادمة بتحديد\nأرقام الصفحات التي فيها دروسك",

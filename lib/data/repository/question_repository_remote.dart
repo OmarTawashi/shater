@@ -45,9 +45,9 @@ class QuestionRepositoryRemote extends QuestionRepository {
   }
 
   @override
-  Future<Either<ApiException, List<QuestionSubjectModel>>?> fetchQuestionSubject(
+  Future<Either<ApiException, List<QuestionPageModel>>?> fetchQuestionSubject(
       int? subjectID, int? pageFrom, int? pageTo) async {
-    final completer = Completer<Either<ApiException, List<QuestionSubjectModel>>?>();
+    final completer = Completer<Either<ApiException, List<QuestionPageModel>>?>();
     final param = {
       "subject_id": subjectID,
       "pageFrom": pageFrom,
@@ -58,8 +58,8 @@ class QuestionRepositoryRemote extends QuestionRepository {
         endpoint: ApiConstant.questionsSubject,
         requestType: RequestType.get,
         queryParams: param,
-        create: () => APIResponse<QuestionSubjectModel>(
-          create: () => QuestionSubjectModel(),
+        create: () => APIResponse<QuestionPageModel>(
+          create: () => QuestionPageModel(),
         ),
         onSuccess: (response) {
           final data = response.data?.items;

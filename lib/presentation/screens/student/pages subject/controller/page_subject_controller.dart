@@ -5,6 +5,7 @@ import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/data/repository/question_repository_remote.dart';
 import 'package:shater/domain/usecase/question_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 
 class PageSubjectController extends GetxController {
   QuestionUseCaseImp? _questionUseCaseImp;
@@ -12,8 +13,8 @@ class PageSubjectController extends GetxController {
   PageModel? _pageModel;
   PageModel? get pageModel => _pageModel;
 
-  List<QuestionSubjectModel> _questionSubject = [];
-  List<QuestionSubjectModel> get questionSubject => _questionSubject;
+  List<QuestionPageModel> _questionSubject = [];
+  List<QuestionPageModel> get questionSubject => _questionSubject;
 
   int? _fromValue;
   int? get fromValue => _fromValue;
@@ -78,6 +79,7 @@ class PageSubjectController extends GetxController {
         .then((value) {
       value?.fold((l) {}, (r) {
         _questionSubject = r;
+        Get.toNamed(Routes.getBaseQuestionScreen());
       });
       setLoadButton(false);
 

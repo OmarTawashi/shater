@@ -1,81 +1,78 @@
 import 'package:shater/core/network/decodable.dart';
 
-class QuestionSubjectModel extends Decodable<QuestionSubjectModel> {
+class QuestionPageModel extends Decodable<QuestionPageModel> {
   int? id;
-  String? title;
   String? image;
   int? subjectId;
+  String? title;
   int? pageNo;
   bool? isExplain;
   String? explainUrl;
   int? countQuestions;
-  List<Questions>? questions;
+  List<QuestionModel?>? questions;
 
-  QuestionSubjectModel(
-      {this.id,
-      this.title,
-      this.image,
-      this.subjectId,
-      this.pageNo,
-      this.isExplain,
-      this.explainUrl,
-      this.countQuestions,
-      this.questions});
+  QuestionPageModel({
+    this.id,
+    this.image,
+    this.subjectId,
+    this.title,
+    this.explainUrl,
+    this.pageNo,
+    this.isExplain,
+    this.countQuestions,
+    this.questions,
+  });
 
-  QuestionSubjectModel.fromJson(Map<String, dynamic> json) {
+  QuestionPageModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    title = json['title'];
     image = json['image'];
     subjectId = json['subject_id'];
-    pageNo = json['page_no'];
     isExplain = json['is_explain'];
     explainUrl = json['explain_url'];
+    title = json['title'];
+    pageNo = json['page_no'];
     countQuestions = json['count_questions'];
     if (json['questions'] != null) {
-      questions = <Questions>[];
-      json['questions'].forEach((v) {
-        questions!.add(new Questions.fromJson(v));
+      questions = [];
+      json['questions'].forEach((value) {
+        questions?.add(QuestionModel.fromJson(value));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['subject_id'] = this.subjectId;
-    data['page_no'] = this.pageNo;
-    data['is_explain'] = this.isExplain;
-    data['explain_url'] = this.explainUrl;
-    data['count_questions'] = this.countQuestions;
-    if (this.questions != null) {
-      data['questions'] = this.questions!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return {
+      'id': id,
+      'image': image,
+      'subject_id': subjectId,
+      'title': title,
+      'page_no': pageNo,
+      'questions': questions?.map((e) => e?.toJson()).toList(),
+    };
   }
 
   @override
-  QuestionSubjectModel decode(json) {
+  QuestionPageModel decode(json) {
     id = json['id'];
-    title = json['title'];
     image = json['image'];
     subjectId = json['subject_id'];
-    pageNo = json['page_no'];
     isExplain = json['is_explain'];
     explainUrl = json['explain_url'];
+    title = json['title'];
+    pageNo = json['page_no'];
     countQuestions = json['count_questions'];
-    if (json['questions'] != null) {
-      questions = <Questions>[];
-      json['questions'].forEach((v) {
-        questions!.add(new Questions.fromJson(v));
+     if (json['questions'] != null) {
+      questions = [];
+      json['questions'].forEach((value) {
+        questions?.add(QuestionModel.fromJson(value));
       });
     }
+
     return this;
   }
 }
 
-class Questions {
+class QuestionModel {
   int? id;
   int? typeId;
   int? classId;
@@ -85,11 +82,11 @@ class Questions {
   String? titleExtra;
   String? hint;
   String? answerIsNumber;
-  List<String>? answer;
-  List<String>? valid;
-  String? orderBy;
+  List<dynamic>? answer;
+  List<dynamic>? valid;
+  Map<String, dynamic>? orderBy;
   String? media;
-  String? details;
+  List<dynamic>? urls;
   String? updatedAt;
   int? isTemplate;
   int? isActive;
@@ -98,7 +95,7 @@ class Questions {
   String? titleAudio;
   String? optionStyle;
 
-  Questions(
+  QuestionModel(
       {this.id,
       this.typeId,
       this.classId,
@@ -112,7 +109,7 @@ class Questions {
       this.valid,
       this.orderBy,
       this.media,
-      this.details,
+      this.urls,
       this.updatedAt,
       this.isTemplate,
       this.isActive,
@@ -121,7 +118,7 @@ class Questions {
       this.titleAudio,
       this.optionStyle});
 
-  Questions.fromJson(Map<String, dynamic> json) {
+  QuestionModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     typeId = json['type_id'];
     classId = json['class_id'];
@@ -131,11 +128,11 @@ class Questions {
     titleExtra = json['title_extra'];
     hint = json['hint'];
     answerIsNumber = json['answer_is_number'];
-    answer = json['answer'].cast<String>();
-    valid = json['valid'].cast<String>();
     orderBy = json['order_by'];
     media = json['media'];
-    details = json['details'];
+    answer = json['answer'];
+    valid = json['valid'];
+    urls = json['urls'];
     updatedAt = json['updated_at'];
     isTemplate = json['is_template'];
     isActive = json['is_active'];
@@ -160,7 +157,9 @@ class Questions {
     data['valid'] = this.valid;
     data['order_by'] = this.orderBy;
     data['media'] = this.media;
-    data['details'] = this.details;
+    if (this.urls != null) {
+      data['urls'] = this.urls;
+    }
     data['updated_at'] = this.updatedAt;
     data['is_template'] = this.isTemplate;
     data['is_active'] = this.isActive;

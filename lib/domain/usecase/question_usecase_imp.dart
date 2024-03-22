@@ -16,7 +16,7 @@ class QuestionUseCaseImp extends QuestionUseCase {
     return _questionRepository.fetchQuestionPage(subjectID);
   }
   @override
-  Future<Either<ApiException, List<QuestionSubjectModel>>?> fetchQuestionSubject(int? subjectID,int? pageFrom,int? pageTo) {
+  Future<Either<ApiException, List<QuestionPageModel>>?> fetchQuestionSubject(int? subjectID,int? pageFrom,int? pageTo) {
     return _questionRepository.fetchQuestionSubject(subjectID,pageFrom,pageTo);
   }
 

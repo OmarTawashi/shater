@@ -21,6 +21,8 @@ import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
+import 'package:shater/presentation/screens/student/base%20questions/base/binding/base_question_binding.dart';
+import 'package:shater/presentation/screens/student/base%20questions/base/view/base_question_screen.dart';
 import 'package:shater/presentation/screens/student/dashBord/bindings/bindings_dashbord.dart';
 import 'package:shater/presentation/screens/student/dashBord/view/dashbord_screen.dart';
 import 'package:shater/presentation/screens/student/exercise%20details/view/exercise_details_screen.dart';
@@ -131,6 +133,12 @@ class AppPages {
     GetPage(
       name: RoutesName.contactScreen,
       page: () => const NotificationContactScreen(),
+    ),
+    
+    GetPage(
+      name: RoutesName.baseQuestionScreen,
+      page: () => const BaseQuestionScreen(),
+      binding: BaseQuestionBinding()
     ),
     GetPage(
         name: RoutesName.contactMeScreen,
