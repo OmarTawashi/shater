@@ -13,7 +13,7 @@ class CachedNetworkImageWidget extends StatelessWidget {
     required this.imageUrl,
     this.width,
     this.height,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
   }) : super(key: key);
 
   @override

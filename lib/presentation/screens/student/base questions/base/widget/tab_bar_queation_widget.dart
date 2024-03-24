@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/tap_section.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/controller/base_question_controller.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
@@ -26,12 +28,14 @@ class TabBarQuestion extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(
-                        (controller?.countQuestions ?? 0 > 9) != true
+                        (controller?.countQuestions ?? 0 > 9) == true
                             ? 15
                             : 18),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: COLORS.primaryColor,
+                        color: Get.find<QuestionController>()
+                            .questionStatus
+                            .getBgButtColor(),
                         shape: BoxShape.circle,
                         border: Border.all(
                             color: Colors.white,

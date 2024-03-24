@@ -6,6 +6,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/error_response.dart' as errorRes;
@@ -102,7 +103,7 @@ class ApiClient {
 
     if (error.response?.statusCode == 500) {
       exception = ApiException(
-        message: 'Server Error',
+        message: 'server_error'.tr,
         statusCode: 500,
       );
     }
@@ -116,7 +117,7 @@ class ApiClient {
       return onError(exception);
     } else {
       return _handleError(
-        'Server Error',
+        'server_error'.tr,
       );
     }
 
@@ -153,7 +154,7 @@ class ApiClient {
     if (!result) {
       onError!(
         ApiException(
-          message: 'no_internet_connection',
+          message: 'no_internet_connection'.tr,
           type: ApiExceptions.noInternetConnection,
         ),
       );
@@ -211,14 +212,14 @@ class ApiClient {
       } on TimeoutException {
         onError!(
           ApiException(
-            message: 'time_out_connection',
+            message: 'time_out_connection'.tr,
             type: ApiExceptions.noInternetConnection,
           ),
         );
       } on SocketException {
         onError!(
           ApiException(
-            message: 'no_internet_connection',
+            message: 'no_internet_connection'.tr,
             type: ApiExceptions.noInternetConnection,
           ),
         );

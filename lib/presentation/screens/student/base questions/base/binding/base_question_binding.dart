@@ -5,7 +5,7 @@ import 'package:shater/presentation/screens/student/base%20questions/question/co
 class BaseQuestionBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(BaseQuestionController());
     Get.put(QuestionController());
+    Get.put(BaseQuestionController());
   }
 }

@@ -71,7 +71,7 @@ class AnimatorContainer extends StatelessWidget {
       return EmptyView(
         onRetry: retry,
         emptyParams: EmptyParams(
-          text: 'no_internet'.tr,
+          text: 'no_internet_connection'.tr,
           caption: 'check_connection'.tr,
           image: ICONS.internalServerError,
         ),

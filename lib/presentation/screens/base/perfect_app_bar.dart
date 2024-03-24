@@ -22,6 +22,7 @@ class PerfectAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: COLORS.primaryColor,
         primary: true,
         elevation: 0,
+        titleSpacing: 1,
         centerTitle: false,
         automaticallyImplyLeading: false,
         title: CustomText(

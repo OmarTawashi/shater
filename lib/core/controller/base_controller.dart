@@ -45,7 +45,7 @@ class BaseController extends GetxController {
         updateViewType(ViewType.internalServarError);
         break;
       default:
-        if (response.message == 'no_internet_connection') {
+        if (response.message == 'no_internet_connection'.tr) {
           updateViewType(ViewType.noInternet);
         } else {
           updateViewType(ViewType.error);
