@@ -26,25 +26,26 @@ class TabBarQuestion extends StatelessWidget {
                   SizedBox(
                     width: Dimensions.paddingSize16,
                   ),
-                  Container(
-                    padding: EdgeInsets.all(
-                        (controller?.countQuestions ?? 0 > 9) == true
-                            ? 15
-                            : 18),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Get.find<QuestionController>()
-                            .questionStatus
-                            .getBgButtColor(),
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                            color: Colors.white,
-                            width: 2,
-                            strokeAlign: BorderSide.strokeAlignOutside)),
-                    child: CustomText(
-                      text: '${controller?.countQuestions}',
-                      color: Colors.white,
-                      fontSize: Dimensions.fontSize16,
+                  GetBuilder<QuestionController>(
+                    builder: (questionController) => Container(
+                      padding: EdgeInsets.all(
+                          (controller?.countQuestions ?? 0 > 9) == true
+                              ? 15
+                              : 18),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: questionController.questionStatus
+                              .getBgButtColor(),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                              color: Colors.white,
+                              width: 2,
+                              strokeAlign: BorderSide.strokeAlignOutside)),
+                      child: CustomText(
+                        text: '${questionController.answerNumValid}',
+                        color: Colors.white,
+                        fontSize: Dimensions.fontSize16,
+                      ),
                     ),
                   ),
                   Expanded(

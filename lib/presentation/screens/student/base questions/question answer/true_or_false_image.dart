@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
-import 'package:shater/presentation/screens/student/base%20questions/question/widget/header_question_section.dart';
-import 'package:shater/presentation/screens/student/base%20questions/question/widget/image_question_section.dart';
 import 'package:shater/util/dimensions.dart';
 
-class TrueOrFalse extends StatelessWidget {
+class TrueOrFalseImage extends StatelessWidget {
   final QuestionController? controller;
-  TrueOrFalse({super.key, this.controller});
+  TrueOrFalseImage({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderQuestionSection(
-          titleQuestion: controller?.questionPage
-                  ?.questions?[controller!.questionIndex]?.title ??
-              '',
-          subTitleQuestion: controller?.questionPage
-                  ?.questions?[controller!.questionIndex]?.titleExtra ??
-              '',
-        ),
-        ImageQuestionSection(
-            media: controller
-                ?.questionPage?.questions?[controller!.questionIndex]?.media,
-            url: controller?.questionPage?.questions?[controller!.questionIndex]
-                ?.questionMedia),
         SizedBox(
           height: 100.h,
         ),
@@ -36,8 +22,9 @@ class TrueOrFalse extends StatelessWidget {
             children: [
               Expanded(
                 child: WidgetTrueOrFalseTap(
-                  isSelect: controller?.selectAnswer == 'true',
+                  isSelect: controller?.selectAnswer.contains('true') ?? false,
                   icon: Icons.check_sharp,
+                  selectColor: controller?.questionStatus.getBgButtColor(),
                   onTap: () {
                     controller?.setAnswer('true');
                   },
@@ -45,8 +32,9 @@ class TrueOrFalse extends StatelessWidget {
               ),
               Expanded(
                 child: WidgetTrueOrFalseTap(
-                  isSelect: controller?.selectAnswer == 'false',
+                  isSelect: controller?.selectAnswer.contains('false') ?? false,
                   icon: Icons.close_sharp,
+                  selectColor: controller?.questionStatus.getBgButtColor(),
                   onTap: () {
                     controller?.setAnswer('false');
                   },
@@ -64,10 +52,14 @@ class WidgetTrueOrFalseTap extends StatelessWidget {
   final Function()? onTap;
   final bool isSelect;
   final IconData? icon;
+  final Color? selectColor;
   WidgetTrueOrFalseTap(
-      {super.key, this.onTap, this.isSelect = false, this.icon});
+      {super.key,
+      this.onTap,
+      this.selectColor,
+      this.isSelect = false,
+      this.icon});
   final unSelectColor = Color.fromRGBO(228, 228, 228, 1);
-  final selectColor = Color.fromRGBO(3, 90, 154, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +71,7 @@ class WidgetTrueOrFalseTap extends StatelessWidget {
             shape: BoxShape.circle,
             color: isSelect ? selectColor : Colors.transparent,
             border: Border.all(
-                width: 8, color: isSelect ? selectColor : unSelectColor)),
+                width: 5, color: isSelect ? selectColor! : unSelectColor)),
         child: Icon(
           icon,
           color: isSelect ? Colors.white : unSelectColor,

@@ -21,7 +21,7 @@ enum QType {
   OrderWithImage,
   ImageCount,
   MathOperations,
-  Combine,
+  VideoSkip,
   ComprehensiveSelectImage,
   ComprehensiveAttachmentsInput,
   WritingDrawing,
@@ -91,7 +91,7 @@ class QuestionType {
       case "22":
         return QType.MathOperations;
       case "23":
-        return QType.Combine;
+        return QType.VideoSkip;
       case "24":
         return QType.ComprehensiveSelectImage;
       case "25":

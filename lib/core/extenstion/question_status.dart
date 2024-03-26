@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shater/util/color.dart';
 
-enum QuestionStatusEnum { success, failure, select, none }
+enum QuestionStatusEnum { success, failure, select,skip, none }
 
-extension QuestionStatusExt on int {
-  QuestionStatusEnum toOrderStatusEnum() {
-    switch (this) {
-      case 0:
-        return QuestionStatusEnum.failure;
-      case 1:
-        return QuestionStatusEnum.success;
-      default:
-        return QuestionStatusEnum.none;
-    }
-  }
-}
 
 extension QuestionStatusColorExt on QuestionStatusEnum {
   Color getGridItemColor() {
@@ -24,6 +12,8 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
       case QuestionStatusEnum.success:
         return const Color.fromRGBO(106, 209, 0, 1);
       case QuestionStatusEnum.select:
+        return COLORS.primaryColor;
+      case QuestionStatusEnum.skip:
         return COLORS.primaryColor;
       case QuestionStatusEnum.none:
         return Colors.transparent;
@@ -38,6 +28,8 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
         return const Color.fromRGBO(106, 209, 0, 1);
       case QuestionStatusEnum.select:
         return COLORS.primaryColor;
+      case QuestionStatusEnum.skip:
+        return COLORS.primaryColor;
       case QuestionStatusEnum.none:
         return Colors.grey;
     }
@@ -50,6 +42,8 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
       case QuestionStatusEnum.success:
         return 'true';
       case QuestionStatusEnum.select:
+        return '';
+      case QuestionStatusEnum.skip:
         return '';
       case QuestionStatusEnum.none:
         return '';
@@ -65,8 +59,47 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
         return successWidget;
       case QuestionStatusEnum.select:
         return stableWidget;
+      case QuestionStatusEnum.skip:
+        return stableWidget;
       case QuestionStatusEnum.none:
         return stableWidget;
     }
   }
+
+  Function()? getOnPressButton({
+      Function()? onPressedSuccess,
+      Function()? onPressedFailure,
+      Function()? onPressedStable,
+      Function()? onPressNone}) {
+    switch (this) {
+      case QuestionStatusEnum.failure:
+        return onPressedFailure;
+      case QuestionStatusEnum.success:
+        return onPressedSuccess;
+      case QuestionStatusEnum.skip:
+        return onPressedSuccess;
+      case QuestionStatusEnum.select:
+        return onPressedStable;
+      case QuestionStatusEnum.none:
+        return onPressNone;
+    }
+  }
+
+   String getButtonTextStatus() {
+    switch (this) {
+      case QuestionStatusEnum.failure:
+        return 'next';
+      case QuestionStatusEnum.success:
+        return 'next';
+      case QuestionStatusEnum.skip:
+        return 'next';
+      case QuestionStatusEnum.select:
+        return 'check';
+      case QuestionStatusEnum.none:
+        return 'check';
+    }
+  }
 }
+
+
+

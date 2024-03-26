@@ -2,9 +2,12 @@ import 'package:get/get.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/data/model/question_subject_model.dart';
+import 'package:shater/data/model/typing_answer.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 
 class QuestionController extends GetxController {
+ 
+
   List<QuestionPageModel> _questions = [];
   List<QuestionPageModel> get questions => _questions;
 
@@ -20,11 +23,20 @@ class QuestionController extends GetxController {
   int _questionNo = 0;
   int get questionNo => _questionNo;
 
-  int _questionIndex = 1;
+  int _questionIndex = 0;
   int get questionIndex => _questionIndex;
 
   QuestionType? _questionType;
   QuestionType? get questionType => _questionType;
+
+  QuestionModel? _questionModel;
+  QuestionModel? get questionModel => _questionModel;
+
+  int _answerNumValid = 0;
+  int get answerNumValid => _answerNumValid;
+
+  TypingAnswer? _typingAnswer;
+  TypingAnswer? get typingAnswer => _typingAnswer;
 
   List _selectAnswer = [];
   List get selectAnswer => _selectAnswer;
@@ -39,11 +51,16 @@ class QuestionController extends GetxController {
   void onInit() {
     super.onInit();
     _questions = Get.find<PageSubjectController>().questionSubject;
-    getFirstQuestion();
+    getQuestionPage();
   }
 
   void setQuestionNo(int number) {
     _questionNo = number;
+    update();
+  }
+
+  void setQuestion(QuestionModel? questionModel) {
+    _questionModel = questionModel;
     update();
   }
 
@@ -67,13 +84,16 @@ class QuestionController extends GetxController {
     update();
   }
 
-  void setSelectIndex(int index) {
+  void setSelectIndex(int? index) {
     _selectIndex = index;
     setQuestionStatus(QuestionStatusEnum.select);
     update();
   }
 
   void setAnswer(dynamic answer) {
+    if (questionType?.qtype == QType.TrueOrFalseImage) {
+      _selectAnswer = [];
+    }
     if (_selectAnswer.contains(answer)) {
       _selectAnswer.remove(answer);
     } else {
@@ -82,8 +102,9 @@ class QuestionController extends GetxController {
     update();
   }
 
-  void getFirstQuestion() {
+  void getQuestionPage() {
     _questionPage = _questions[_questionNo];
+    setQuestion(_questionPage?.questions?[_questionIndex]);
     getType();
     update();
   }
@@ -91,19 +112,29 @@ class QuestionController extends GetxController {
   void getType() {
     int? type = _questionPage?.questions?[questionIndex]?.typeId;
     _questionType = QuestionType.fromString(type.toString() ?? '');
+    if (_questionType?.qtype == QType.VideoSkip) {
+      setQuestionStatus(QuestionStatusEnum.skip);
+    }
+    update();
   }
 
   void getSecandQuestion() {
-    if (_questions.indexed.last.$1 == _questionNo) {
+    if (_questions.indexed.last.$1 != _questionNo) {
       if (_questionPage?.questions?.indexed.last.$1 == _questionIndex) {
-        _questionNo + 1;
+        _questionNo += 1;
         _questionIndex = 0;
-      } else if (_questions.indexed.last.$1 != _questionIndex) {
-        _questionIndex + 1;
+      } else if (_questionPage?.questions?.indexed.last.$1 != _questionIndex) {
+        _questionIndex += 1;
       }
+      _selectAnswer = [];
+      setNumberTime(0);
+      changeAnswer(false);
+      setSelectIndex(null);
+      getQuestionPage();
     } else {
       print('Finish Question of subject');
     }
+    setQuestionStatus(QuestionStatusEnum.none);
 
     update();
   }
@@ -127,9 +158,11 @@ class QuestionController extends GetxController {
 
   void checkAnswer() {
     final valid = questionPage?.questions?[questionIndex]?.valid ?? [];
+
     final checked = listsAreEqual(valid, _selectAnswer);
     if (checked) {
       setQuestionStatus(QuestionStatusEnum.success);
+      _answerNumValid += 1;
     } else {
       setQuestionStatus(QuestionStatusEnum.failure);
     }

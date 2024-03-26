@@ -28,6 +28,7 @@ abstract class RoutesName {
   static const gridViewAvatar = '/grid-view-avatar-screen';
   static const pageSubjectScreen = '/page-subject-screen';
   static const baseQuestionScreen = '/base-question-screen';
+  static const failureQuestionScrren = '/failure-question-screen';
 }
 
 abstract class Routes {
@@ -58,4 +59,5 @@ abstract class Routes {
   static String getSubjectTeacherScreen() => RoutesName.subjectTeacherScreen;
   static String getCreateNameScreen() => RoutesName.createNameScreen;
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
+  static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
 }

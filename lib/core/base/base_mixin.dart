@@ -30,6 +30,18 @@ mixin BaseMixin {
           ),
         ),
       );
+   static showBottomSheet(Widget child, {double? heightFactor}) =>
+      Get.bottomSheet(
+        child,
+        enableDrag: true,
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(8),
+            topLeft: Radius.circular(8),
+          ),
+        ),
+      );
 
   static void bottomSheetChildern() {
     Get.bottomSheet(

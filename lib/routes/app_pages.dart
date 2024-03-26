@@ -23,6 +23,8 @@ import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/binding/base_question_binding.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/view/base_question_screen.dart';
+import 'package:shater/presentation/screens/student/base%20questions/failure%20question/binding/failure_question_binding.dart';
+import 'package:shater/presentation/screens/student/base%20questions/failure%20question/view/failure_question_screen.dart';
 import 'package:shater/presentation/screens/student/dashBord/bindings/bindings_dashbord.dart';
 import 'package:shater/presentation/screens/student/dashBord/view/dashbord_screen.dart';
 import 'package:shater/presentation/screens/student/exercise%20details/view/exercise_details_screen.dart';
@@ -134,12 +136,17 @@ class AppPages {
       name: RoutesName.contactScreen,
       page: () => const NotificationContactScreen(),
     ),
-    
+
     GetPage(
-      name: RoutesName.baseQuestionScreen,
-      page: () => const BaseQuestionScreen(),
-      binding: BaseQuestionBinding()
-    ),
+        name: RoutesName.baseQuestionScreen,
+        page: () => const BaseQuestionScreen(),
+        binding: BaseQuestionBinding()),
+    GetPage(
+        name: RoutesName.failureQuestionScrren,
+        page: () => const FailureQuestionScrren(),
+        binding: FailureQuestionBinding(),
+        transition: Transition.downToUp,
+        transitionDuration: Duration.zero),
     GetPage(
         name: RoutesName.contactMeScreen,
         page: () => const ContactMeScreen(),
