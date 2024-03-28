@@ -8,7 +8,7 @@ import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
-import 'package:shater/presentation/screens/student/teacher/widget/item_teacher.dart';
+import 'package:shater/presentation/screens/student/teacher/widget/teacher_list.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
@@ -102,7 +102,7 @@ class TeacherScreen extends StatelessWidget {
                     text: 'soon'.tr,
                     caption: 'find_account_teacher'.tr,
                     image: ICONS.decriptionTop),
-                successWidget: teacherList(controller),
+                successWidget: TeacherList(controller:  controller),
                 retry: () {
                   controller.getTeachers();
                 },
@@ -119,18 +119,5 @@ class TeacherScreen extends StatelessWidget {
     );
   }
 
-  SliverList teacherList(TeacherController controller) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-          childCount: controller.teachers.length,
-          (context, index) => ItemTeacher(
-                imageUrl:
-                    controller.teachers[index].image,
-                name:controller.teachers[index].name,
-                subject:controller.courseSelected?.title,
-                imageSubjectUrl:controller.courseSelected?.image ,
-                teacherStar: controller.teachers[index].rate.toString(),
-              )),
-    );
-  }
+  
 }

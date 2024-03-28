@@ -23,7 +23,9 @@ class TapSection extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.linear,
           padding: const EdgeInsets.all(16),
           margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(

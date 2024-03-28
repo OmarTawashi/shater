@@ -28,10 +28,7 @@ class TabBarQuestion extends StatelessWidget {
                   ),
                   GetBuilder<QuestionController>(
                     builder: (questionController) => Container(
-                      padding: EdgeInsets.all(
-                          (controller?.countQuestions ?? 0 > 9) == true
-                              ? 15
-                              : 18),
+                      padding: EdgeInsets.all(17),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: questionController.questionStatus

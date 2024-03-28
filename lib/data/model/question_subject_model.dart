@@ -78,6 +78,7 @@ class QuestionModel {
   int? classId;
   int? subjectId;
   int? pageId;
+  bool? isValid;
   String? title;
   String? titleExtra;
   String? hint;
@@ -108,6 +109,7 @@ class QuestionModel {
       this.answer,
       this.valid,
       this.orderBy,
+      this.isValid,
       this.media,
       this.urls,
       this.updatedAt,
@@ -133,6 +135,7 @@ class QuestionModel {
     if (json['answer'] is String ||
         json['answer'] is int ||
         json['answer'] is bool) {
+          answer = [];
       answer?.add(json['answer']);
     } else {
       answer = json['answer'];

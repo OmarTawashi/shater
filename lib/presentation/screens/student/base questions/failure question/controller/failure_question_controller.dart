@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+
+
 class FailureQuestionController extends GetxController{
    List<String> _reasonFailed = [
     'answer_correct',

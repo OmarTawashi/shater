@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
 import 'package:shater/util/dimensions.dart';
 
 class HeaderFailureStatus extends StatelessWidget {
-  const HeaderFailureStatus({super.key});
+  final QuestionController? controller;
+  const HeaderFailureStatus({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +16,20 @@ class HeaderFailureStatus extends StatelessWidget {
         children: [
           SelectTapFailure(
             text: 'show_explain',
-            isSelect: false,
-            onTap: () {},
+            isSelect: controller?.failureTap == FailureEnum.showExpalin,
+            onTap: () {
+              controller?.changeFailuerTap(FailureEnum.showExpalin);
+            },
           ),
           SizedBox(
             width: Dimensions.paddingSize16,
           ),
           SelectTapFailure(
             text: 'true',
-            isSelect: false,
-            onTap: () {},
+            isSelect: controller?.failureTap == FailureEnum.trueAnswer,
+            onTap: () {
+              controller?.changeFailuerTap(FailureEnum.trueAnswer);
+            },
           ),
         ],
       ),
