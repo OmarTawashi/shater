@@ -53,7 +53,7 @@ class QuestionType {
       case "3":
         return QType.OrderWord;
       case "4":
-        return QType.MultiChoiceImage;
+        return QType.ComprehensiveSelectImage;
       case "5":
         return QType.ConnectSentence;
       case "6":
@@ -93,9 +93,9 @@ class QuestionType {
       case "23":
         return QType.VideoSkip;
       case "24":
-        return QType.ComprehensiveSelectImage;
+        return QType.MultiChoiceImage;
       case "25":
-        return QType.ComprehensiveAttachmentsInput;
+        return QType.CompleteValue;
       case "26":
         return QType.WritingDrawing;
       case "27":

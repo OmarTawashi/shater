@@ -22,14 +22,15 @@ class MultiChoiceText extends StatelessWidget {
             mainAxisSpacing: 16,
           ),
           itemBuilder: (context, index) {
-            final isSelect = controller?.selectIndex == index;
+            final isSelect = controller?.selectAnswer
+                .contains(controller?.questionModel?.answer?[index]);
             return GestureDetector(
               onTap: () {
                 controller
                     ?.setAnswer(controller?.questionModel?.answer?[index]);
-                controller?.setSelectIndex(index);
               },
               child: Container(
+                padding: EdgeInsets.all(Dimensions.paddingSize16),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(13),
                       color: isSelect == true
@@ -45,6 +46,7 @@ class MultiChoiceText extends StatelessWidget {
                     child: CustomText(
                       text: controller?.questionModel?.answer?[index],
                       fontSize: Dimensions.fontSize16,
+                      textAlign: TextAlign.center,
                       color: isSelect == true
                           ? Colors.white
                           : Color.fromRGBO(96, 96, 96, 1),

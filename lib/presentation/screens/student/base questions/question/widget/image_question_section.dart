@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/cached_video_player_widget.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/api_constant.dart';
 import 'package:shater/util/dimensions.dart';
 
 class ImageQuestionSection extends StatelessWidget {
   final String? url;
+  final String? text;
   final String? media;
-  const ImageQuestionSection({super.key, this.url, this.media});
+  const ImageQuestionSection({super.key, this.url, this.text, this.media});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,13 @@ class ImageQuestionSection extends StatelessWidget {
       case 'image':
         return CachedNetworkImageWidget(
             imageUrl: "${ApiConstant.baseUrl}${"/${url}"}");
+      case 'text':
+        return CustomText(
+          text: text ?? '',
+          fontSize: Dimensions.fontSize15,
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        );
       default:
         return CachedNetworkImageWidget(imageUrl: url);
     }

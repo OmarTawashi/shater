@@ -43,9 +43,6 @@ class QuestionController extends GetxController {
   List _selectAnswer = [];
   List get selectAnswer => _selectAnswer;
 
-  int? _selectIndex;
-  int? get selectIndex => _selectIndex;
-
   QuestionStatusEnum _questionStatus = QuestionStatusEnum.none;
   QuestionStatusEnum get questionStatus => _questionStatus;
 
@@ -87,12 +84,6 @@ class QuestionController extends GetxController {
     update();
   }
 
-  void setSelectIndex(int? index) {
-    _selectIndex = index;
-    setQuestionStatus(QuestionStatusEnum.select);
-    update();
-  }
-
   void setAnswer(dynamic answer) {
     setQuestionStatus(QuestionStatusEnum.select);
     if (questionType?.qtype == QType.TrueOrFalseImage) {
@@ -101,7 +92,7 @@ class QuestionController extends GetxController {
     if (_selectAnswer.contains(answer)) {
       _selectAnswer.remove(answer);
     } else {
-      _selectAnswer.clear();
+      // _selectAnswer.clear();
       _selectAnswer.add(answer);
     }
     update();
@@ -121,7 +112,9 @@ class QuestionController extends GetxController {
     setQuestion(_questionsGet?[questionIndex]);
     int? type = _questionsGet?[questionIndex].typeId;
     _questionType = QuestionType.fromString(type.toString());
-    if (_questionType?.qtype == QType.VideoSkip) {
+    if (_questionType?.qtype != QType.MultiChoiceText ||
+        _questionType?.qtype != QType.TrueOrFalseImage ||
+        _questionType?.qtype != QType.MultiChoiceImage) {
       setQuestionStatus(QuestionStatusEnum.skip);
     }
     update();
@@ -136,8 +129,8 @@ class QuestionController extends GetxController {
     _selectAnswer = [];
     setNumberTime(0);
     changeAnswer(false);
-    setSelectIndex(null);
     getType();
+    completeValueController.clear();
 
     if (_questionType?.qtype != QType.VideoSkip) {
       setQuestionStatus(QuestionStatusEnum.none);
@@ -165,20 +158,23 @@ class QuestionController extends GetxController {
 
   void checkAnswer() {
     List<dynamic> valid = [];
-    if (questionType?.qtype == QType.TrueOrFalseImage) {
-      valid = _questionsGet?[questionIndex].answer ?? [];
-    } else {
-      valid = _questionsGet?[questionIndex].valid ?? [];
+    if (questionType?.qtype == QType.CompleteValue) {
+      setAnswer(completeValueController.text);
+      valid = _questionModel?.answer ?? [];
     }
-
+    if (questionType?.qtype == QType.TrueOrFalseImage) {
+      valid = _questionModel?.answer ?? [];
+    } else {
+      valid = _questionModel?.valid ?? [];
+    }
     final checked = listsAreEqual(valid, _selectAnswer);
     if (checked) {
       setQuestionStatus(QuestionStatusEnum.success);
       _answerNumValid += 1;
-      _questionsGet?[questionIndex].isValid = true;
+      _questionModel?.isValid = true;
     } else {
       setQuestionStatus(QuestionStatusEnum.failure);
-      _questionsGet?[questionIndex].isValid = false;
+      _questionModel?.isValid = false;
     }
     changeAnswer(true);
   }

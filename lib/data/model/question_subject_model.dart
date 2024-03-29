@@ -91,6 +91,7 @@ class QuestionModel {
   String? updatedAt;
   int? isTemplate;
   int? isActive;
+  List<dynamic>? details;
   String? questionMedia;
   int? teacherId;
   String? titleAudio;
@@ -113,6 +114,7 @@ class QuestionModel {
       this.media,
       this.urls,
       this.updatedAt,
+      this.details,
       this.isTemplate,
       this.isActive,
       this.questionMedia,
@@ -130,12 +132,16 @@ class QuestionModel {
     titleExtra = json['title_extra'];
     hint = json['hint'];
     answerIsNumber = json['answer_is_number'];
-    orderBy = json['order_by'];
+    if (json['order_by'] is List) {
+      orderBy = json['order_by'].first;
+    } else {
+      orderBy = json['order_by'];
+    }
     media = json['media'];
     if (json['answer'] is String ||
         json['answer'] is int ||
         json['answer'] is bool) {
-          answer = [];
+      answer = [];
       answer?.add(json['answer']);
     } else {
       answer = json['answer'];
@@ -145,6 +151,7 @@ class QuestionModel {
     updatedAt = json['updated_at'];
     isTemplate = json['is_template'];
     isActive = json['is_active'];
+    details = json['details'];
     questionMedia = json['question_media'];
     teacherId = json['teacher_id'];
     titleAudio = json['title_audio'];
@@ -170,6 +177,7 @@ class QuestionModel {
       data['urls'] = this.urls;
     }
     data['updated_at'] = this.updatedAt;
+    data['details'] = this.details;
     data['is_template'] = this.isTemplate;
     data['is_active'] = this.isActive;
     data['question_media'] = this.questionMedia;

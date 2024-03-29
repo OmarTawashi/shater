@@ -23,12 +23,14 @@ class MultiChoiceImage extends StatelessWidget {
             mainAxisSpacing: 16,
           ),
           itemBuilder: (context, index) {
-            final isSelect = controller?.selectIndex == index;
+            final isSelect = controller?.selectAnswer
+                .contains(controller?.questionModel?.answer?[index]);
+
             return GestureDetector(
               onTap: () {
                 controller
                     ?.setAnswer(controller?.questionModel?.answer?[index]);
-                controller?.setSelectIndex(index);
+                // controller?.setSelectIndex(index);
               },
               child: Container(
                   decoration: BoxDecoration(

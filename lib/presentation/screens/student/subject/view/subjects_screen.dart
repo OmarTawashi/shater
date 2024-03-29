@@ -57,8 +57,8 @@ class SubjectsSCreen extends StatelessWidget {
                   itemShimmer: SubjectShimmer(),
                 ),
                 emptyParams: EmptyParams(
-                    text: 'subjects',
-                    caption: 'empty_subject',
+                    text: 'subjects'.tr,
+                    caption: 'empty_subject'.tr,
                     image: ICONS.decriptionTop),
                 successWidget: SubjectList(controller),
                 retry: () {

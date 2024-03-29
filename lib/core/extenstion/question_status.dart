@@ -19,6 +19,20 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
         return Colors.transparent;
     }
   }
+  Color getBorderFieldColor() {
+    switch (this) {
+      case QuestionStatusEnum.failure:
+        return Color.fromRGBO(233, 103, 111, 1);
+      case QuestionStatusEnum.success:
+        return const Color.fromRGBO(106, 209, 0, 1);
+      case QuestionStatusEnum.select:
+        return COLORS.primaryColor;
+      case QuestionStatusEnum.skip:
+        return COLORS.primaryColor;
+      case QuestionStatusEnum.none:
+        return COLORS.primaryColor;
+    }
+  }
 
   Color getBgButtColor() {
     switch (this) {
