@@ -6,6 +6,7 @@ import 'package:shater/data/model/user.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _user = SharedPrefs.user;
-    Future.delayed(const Duration(seconds: 1)).then((value) {
+    Future.delayed(const Duration(seconds: 3)).then((value) {
       if (_user == null) {
         Get.offAllNamed(Routes.getBaseLoginScreen());
       } else {
@@ -38,12 +39,22 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double width = size.width * 0.9;
+    double height = size.height * 0.7;
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
+          Lottie.asset(
+            'assets/animate/batreq.json',
+            repeat: true,
+            width: width,//0.9
+            height: height,//0.7
+            fit: BoxFit.fill,
+          ),
           Align(
             alignment: Alignment.center,
             child: Text(
