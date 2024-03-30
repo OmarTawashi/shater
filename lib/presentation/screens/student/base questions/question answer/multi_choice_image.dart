@@ -33,20 +33,29 @@ class MultiChoiceImage extends StatelessWidget {
                 // controller?.setSelectIndex(index);
               },
               child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13),
-                      color: isSelect == true
-                          ? controller?.questionStatus.getGridItemColor()
-                          : Colors.transparent,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            blurRadius: 0,
-                            offset: Offset(0, 0))
-                      ]),
-                  child: CachedNetworkImageWidget(
-                      imageUrl: ApiConstant.baseUrl +
-                          "/${controller?.questionModel?.urls?[index]}")),
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(13),
+                    border: Border.all(
+                        strokeAlign: BorderSide.strokeAlignOutside,
+                        color: isSelect == true
+                            ? controller!.questionStatus.getGridItemColor()
+                            : Colors.transparent,
+                        width: 2.5),
+                    color: Colors.transparent,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromRGBO(0, 0, 0, 0.16),
+                          blurRadius: 6,
+                          spreadRadius: 0,
+                          offset: Offset(4, 4))
+                    ]),
+                child: CachedNetworkImageWidget(
+                  imageUrl: ApiConstant.baseUrl +
+                      "/${controller?.questionModel?.urls?[index]["$index"]}",
+                  fit: BoxFit.cover,
+                ),
+              ),
             );
           },
         )

@@ -5,14 +5,14 @@ import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 
-enum FailureEnum { showExpalin, trueAnswer }
+enum FailureEnum { showExpalin, trueAnswer, stable }
 
 class QuestionController extends GetxController {
   List<QuestionPageModel> _questionsPages = [];
   List<QuestionPageModel> get questionsPages => _questionsPages;
 
-  FailureEnum? _failureTap;
-  FailureEnum? get failureTap => _failureTap;
+  FailureEnum _failureTap = FailureEnum.stable;
+  FailureEnum get failureTap => _failureTap;
 
   TextEditingController completeValueController = TextEditingController();
 
@@ -120,6 +120,21 @@ class QuestionController extends GetxController {
     update();
   }
 
+  void getAnswerSuccss() {
+    _selectAnswer = [];
+    if (questionType?.qtype == QType.CompleteValue) {
+      setAnswer(completeValueController.text);
+      _selectAnswer = _questionModel?.answer ?? [];
+    } else if (questionType?.qtype == QType.TrueOrFalseImage) {
+      _selectAnswer = _questionModel?.answer ?? [];
+    } else {
+      _selectAnswer = _questionModel?.valid ?? [];
+    }
+    setQuestionStatus(QuestionStatusEnum.success);
+
+    update();
+  }
+
   void getSecandQuestion() {
     if (_questionsGet?.indexed.last.$1 == _questionIndex) {
       _questionIndex = 0;
@@ -131,6 +146,8 @@ class QuestionController extends GetxController {
     changeAnswer(false);
     getType();
     completeValueController.clear();
+    changeFailuerTap(FailureEnum.stable);
+
 
     if (_questionType?.qtype != QType.VideoSkip) {
       setQuestionStatus(QuestionStatusEnum.none);
@@ -161,8 +178,7 @@ class QuestionController extends GetxController {
     if (questionType?.qtype == QType.CompleteValue) {
       setAnswer(completeValueController.text);
       valid = _questionModel?.answer ?? [];
-    }
-    if (questionType?.qtype == QType.TrueOrFalseImage) {
+    } else if (questionType?.qtype == QType.TrueOrFalseImage) {
       valid = _questionModel?.answer ?? [];
     } else {
       valid = _questionModel?.valid ?? [];

@@ -1,11 +1,14 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/widget/header_failure_status.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/widget/header_sucss_failure.dart';
+import 'package:shater/presentation/screens/student/base%20questions/failure%20question/widget/show_expalin_widget.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/complete_value.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_text.dart';
@@ -36,16 +39,28 @@ class QuestionView extends StatelessWidget {
                   subTitleQuestion: controller.questionModel?.titleExtra ?? '',
                 ),
               ),
-              ImageQuestionSection(
-                  media: controller.questionModel?.media,
-                  text: controller.questionModel?.hint,
-                  url: controller.questionModel?.media == 'video'
-                      ? controller
-                          .questionModel?.urls?.first.entries.first.value
-                      : controller.questionModel?.questionMedia),
-              IgnorePointer(
-                ignoring: controller.isAnswer,
-                child: getWidget(controller),
+              controller.failureTap.getBodyForQuestion(
+                  explainWidget: ShowExpalinWidget(),
+                  stable: ImageQuestionSection(
+                      media: controller.questionModel?.media,
+                      text: controller.questionModel?.hint,
+                      url: controller.questionModel?.media == 'video'
+                          ? controller
+                              .questionModel?.urls?.first.entries.first.value
+                          : controller.questionModel?.questionMedia),
+                  success: ImageQuestionSection(
+                      media: controller.questionModel?.media,
+                      text: controller.questionModel?.hint,
+                      url: controller.questionModel?.media == 'video'
+                          ? controller
+                              .questionModel?.urls?.first.entries.first.value
+                          : controller.questionModel?.questionMedia)),
+              Visibility(
+                visible: controller.failureTap != FailureEnum.showExpalin,
+                child: IgnorePointer(
+                  ignoring: controller.isAnswer,
+                  child: getWidget(controller),
+                ),
               ),
             ],
           );
