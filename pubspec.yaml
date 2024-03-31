@@ -101,6 +101,9 @@ flutter:
     - assets/language/
     - assets/privacy.html
     - assets/terms.html
+    - assets/5.mov
+    - assets/10.mov
+    - assets/20.mov
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

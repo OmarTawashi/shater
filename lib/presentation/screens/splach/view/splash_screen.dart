@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
-import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
