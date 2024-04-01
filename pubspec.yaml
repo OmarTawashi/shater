@@ -56,6 +56,11 @@ dependencies:
   image_picker: ^1.0.7
   numberpicker: ^2.1.2
   video_player: ^2.8.3
+<<<<<<< Updated upstream
+=======
+  lottie: ^3.1.0
+  reorderables: ^0.6.0
+>>>>>>> Stashed changes
   # webview_flutter: ^4.7.0
   # device_info_plus: ^2.0.3
 

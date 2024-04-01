@@ -3,9 +3,10 @@ enum QType {
   TrueOrFalse,
   OrderWord,
   MultiChoiceImage,
+  MultiChoiceVirtical,
   ConnectSentence,
   ConnectImageTextSentence,
-  ConnectImageSentence,
+  MatchImage,
   CompleteSentence,
   WhoConic,
   MakingNumber,
@@ -57,9 +58,9 @@ class QuestionType {
       case "5":
         return QType.ConnectSentence;
       case "6":
-        return QType.ConnectImageTextSentence;
+        return QType.MatchImage;
       case "7":
-        return QType.ConnectImageSentence;
+        return QType.ConnectImageTextSentence;
       case "8":
         return QType.CompleteSentence;
       case "9":
@@ -104,6 +105,8 @@ class QuestionType {
         return QType.FractionsType;
       case "29":
         return QType.CalculationsType;
+      case "30":
+        return QType.MultiChoiceVirtical;
       default:
         return QType.None;
     }

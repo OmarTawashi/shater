@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
@@ -27,6 +28,15 @@
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/subject/view/subjects_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/subject/view/subjects_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/api_constant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/images.dart" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/extenstion/question_extention.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/extenstion/question_extention.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question answer/multi_choice_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question answer/multi_choice_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question/view/question_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question/view/question_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question/widget/header_question_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question/widget/header_question_section.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/view/page_subject_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/view/page_subject_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +79,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -82,6 +93,23 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "omar-dev",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+  }
+}]]></component>
+>>>>>>> Stashed changes
   <component name="RunManager" selected="Android App.main_dev.dart">
     <list>
       <item itemvalue="Android App.main_dev.dart" />
