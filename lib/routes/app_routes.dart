@@ -28,6 +28,7 @@ abstract class RoutesName {
   static const gridViewAvatar = '/grid-view-avatar-screen';
   static const pageSubjectScreen = '/page-subject-screen';
   static const baseQuestionScreen = '/base-question-screen';
+  static const congrlateScreen = '/congrlate-screen';
   static const failureQuestionScrren = '/failure-question-screen';
 }
 
@@ -36,6 +37,7 @@ abstract class Routes {
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;
+  static String getCongrlateScreen() => RoutesName.congrlateScreen;
   static String getBaseLoginScreen() => RoutesName.baseLoginScreen;
   static String getSignInScreen() => RoutesName.signInScreen;
   static String getForgetPasswordScreen() => RoutesName.forgetPasswordScreen;

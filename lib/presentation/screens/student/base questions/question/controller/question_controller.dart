@@ -4,6 +4,8 @@ import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
+import 'package:shater/routes/app_routes.dart';
+import 'package:shater/util/images.dart';
 
 enum FailureEnum { showExpalin, trueAnswer, stable }
 
@@ -18,6 +20,9 @@ class QuestionController extends GetxController {
 
   int _timeNumber = 0;
   int get timeNumber => _timeNumber;
+
+  String? _congrlateText;
+  String? get congrlateText => _congrlateText;
 
   bool _isAnswer = false;
   bool get isAnswer => _isAnswer;
@@ -39,6 +44,9 @@ class QuestionController extends GetxController {
 
   // TypingAnswer? _typingAnswer;
   // TypingAnswer? get typingAnswer => _typingAnswer;
+
+  List<QuestionModel> _questionsAnswer = [];
+  List<QuestionModel> get questionsAnswer => _questionsAnswer;
 
   List _selectAnswer = [];
   List get selectAnswer => _selectAnswer;
@@ -84,6 +92,15 @@ class QuestionController extends GetxController {
     update();
   }
 
+  void setQuestionAnswer(QuestionModel? question) {
+    if (_questionsAnswer.contains(question)) {
+      _selectAnswer.remove(question);
+    } else {
+      _selectAnswer.add(question);
+    }
+    update();
+  }
+
   void setAnswer(dynamic answer) {
     setQuestionStatus(QuestionStatusEnum.select);
     if (questionType?.qtype == QType.TrueOrFalseImage) {
@@ -109,7 +126,9 @@ class QuestionController extends GetxController {
   }
 
   void getType() {
-    setQuestion(_questionsGet?[questionIndex]);
+    if (_questionsGet?[questionIndex].id != questionModel?.id) {
+      setQuestion(_questionsGet?[questionIndex]);
+    }
     int? type = _questionsGet?[questionIndex].typeId;
     _questionType = QuestionType.fromString(type.toString());
     if (_questionType?.qtype != QType.MultiChoiceText ||
@@ -190,8 +209,29 @@ class QuestionController extends GetxController {
       _questionModel?.isValid = true;
     } else {
       setQuestionStatus(QuestionStatusEnum.failure);
+      _answerNumValid = 0;
       _questionModel?.isValid = false;
     }
     changeAnswer(true);
+    setQuestionAnswer(questionModel);
+    showCongrlate();
+  }
+
+  void showCongrlate() {
+    switch (_answerNumValid) {
+      case 5:
+        _congrlateText = VIDEO.answer5;
+        Get.toNamed(Routes.getCongrlateScreen());
+        break;
+      case 10:
+        _congrlateText = VIDEO.answer10;
+        Get.toNamed(Routes.getCongrlateScreen());
+        break;
+
+      case 20:
+        _congrlateText = VIDEO.answer20;
+        Get.toNamed(Routes.getCongrlateScreen());
+        break;
+    }
   }
 }
