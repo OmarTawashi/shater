@@ -37,11 +37,12 @@ class HeaderQuestionSection extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: Dimensions.paddingSize5,
+            height: Dimensions.paddingSize10,
           ),
           CustomText(
             text: subTitleQuestion ?? '',
-            fontSize: Dimensions.fontSize18,
+            fontSize: Dimensions.fontSize16,
+             textAlign: TextAlign.start,
             fontWeight: FontWeight.w500,
             color: Color.fromRGBO(123, 123, 123, 1),
           ),

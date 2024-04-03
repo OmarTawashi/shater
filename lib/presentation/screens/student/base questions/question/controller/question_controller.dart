@@ -167,6 +167,7 @@ class QuestionController extends GetxController {
     completeValueController.clear();
     changeFailuerTap(FailureEnum.stable);
 
+
     if (_questionType?.qtype != QType.VideoSkip) {
       setQuestionStatus(QuestionStatusEnum.none);
     }
