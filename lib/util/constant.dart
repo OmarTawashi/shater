@@ -16,6 +16,14 @@ class APPCONSTANT {
     "top",
     "contacts",
   ];
+
+  static const List<String> teacherLabelTab = [
+    "My lessons",
+    "Practice",
+    "Explanations",
+    "Subscribers",
+    "contacts",
+  ];
   static List<LanguageModel> languages = [
     LanguageModel(
         // imageUrl: IMAGES.english,

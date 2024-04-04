@@ -32,7 +32,7 @@ class BaseLoginScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Get.toNamed(Routes.getProfileScreen());
+                  // Get.toNamed(Routes.getProfileScreen());
                 },
                 child: CircleLogoApp(),
               ),
@@ -80,7 +80,7 @@ class BaseLoginScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   controller.changeAuthType(AuthType.teacher);
-                  Get.toNamed(Routes.getSignInScreen());
+                  Get.toNamed(Routes.getSignUpScreen());
                 },
               ),
               const SizedBox(
@@ -96,7 +96,7 @@ class BaseLoginScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   controller.changeAuthType(AuthType.student);
-                  Get.toNamed(Routes.getSignInScreen());
+                  Get.toNamed(Routes.getSignUpScreen());
                 },
               ),
             ],

@@ -13,6 +13,7 @@ import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
 import 'package:shater/presentation/screens/classe/view/classe_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/binding/edit_profile_binding.dart';
+import 'package:shater/presentation/screens/edit%20profile/take%20image/widget/grid_avatar_view.dart';
 import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
 import 'package:shater/presentation/screens/level/bindings/level_bindings.dart';
 import 'package:shater/presentation/screens/level/view/level_screen.dart';
@@ -39,9 +40,8 @@ import 'package:shater/presentation/screens/student/pages%20subject/binding/page
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
-import 'package:shater/presentation/screens/take%20image/binding/take_image_binding.dart';
-import 'package:shater/presentation/screens/take%20image/view/take_image_screen.dart';
-import 'package:shater/presentation/screens/take%20image/widget/grid_avatar_view.dart';
+import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
+import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';

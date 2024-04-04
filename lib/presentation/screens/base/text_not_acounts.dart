@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/util/color.dart';
 
 import '../../../util/dimensions.dart';
 
@@ -10,6 +11,7 @@ class TextNotAcount extends StatelessWidget {
   final Function()? onTap;
   final bool isShowIcon;
   final MainAxisAlignment mainAxisAlignment ;
+  final Color color ;
 
   const TextNotAcount(
       {super.key,
@@ -17,7 +19,8 @@ class TextNotAcount extends StatelessWidget {
       required this.lastText,
       this.isShowIcon = true,
       this.mainAxisAlignment = MainAxisAlignment.center,
-      this.onTap});
+      this.onTap,
+        this.color = COLORS.whiteColor});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class TextNotAcount extends StatelessWidget {
       mainAxisAlignment: mainAxisAlignment,
       children: [
         CustomText(
-          text: startText.tr + "\t",
+          text: startText.tr ,
           color: const Color.fromRGBO(159, 191, 216, 1),
           fontSize: Dimensions.fontSize14,
           fontWeight: FontWeight.w400,
@@ -33,7 +36,7 @@ class TextNotAcount extends StatelessWidget {
         InkWell(
             onTap: onTap,
             child: CustomText(
-              text: lastText.tr,
+              text: " " + lastText.tr + " " ,
               color: Color.fromRGBO(0, 207, 254, 1),
               fontSize: Dimensions.fontSize14,
               fontWeight: FontWeight.w400,
@@ -41,7 +44,7 @@ class TextNotAcount extends StatelessWidget {
         isShowIcon
             ? Icon(
                 Icons.arrow_forward_ios_sharp,
-                color: Colors.white,
+                color: color,
                 size: 18,
               )
             : SizedBox()

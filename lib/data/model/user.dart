@@ -43,13 +43,13 @@ class User extends Decodable<User> {
   int? teacherRate;
   int? unreadNotification;
   Subject? subject;
-  List<Null>? teacherClass;
+  List<Classes>? teacherClass;
   Classes? classes;
   Country? country;
-  List<Null>? level;
+  List<PublicModel>? level;
   School? school;
   PublicModel? city;
-  List<Null>? children;
+  List<User>? children;
 
   User(
       {this.id,
@@ -136,14 +136,23 @@ class User extends Decodable<User> {
     unreadNotification = json['unread_notification'];
     subject =
         json['subject'] != null ? new Subject.fromJson(json['subject']) : null;
-    // if (json['teacher_class'] != null) {
-    //   teacherClass = new List<Null>();
-    //   json['teacher_class'].forEach((v) {
-    //     teacherClass?.add(new Null.fromJson(v));
-    //   });
-    // }
-    classes =
-        json['classes'] != null ? new Classes.fromJson(json['classes']) : null;
+    if (json['teacher_class'] != null) {
+      teacherClass = [];
+      json['teacher_class'].forEach((v) {
+        teacherClass?.add(new Classes.fromJson(v));
+      });
+    }
+    if (json['classes'] is List){
+      // teacherClass = [];
+      // json['classes'].forEach((v) {
+      //   teacherClass?.add(new Classes.fromJson(v));
+      // });
+    }
+    else{
+      classes =
+      json['classes'] != null ? new Classes.fromJson(json['classes']) : null;
+    }
+
     country =
         json['country'] != null ? new Country.fromJson(json['country']) : null;
     // if (json['level'] != null) {

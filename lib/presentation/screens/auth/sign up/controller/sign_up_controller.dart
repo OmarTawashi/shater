@@ -78,8 +78,8 @@ class SignUpController extends GetxController {
     _authUseCaseImp = AuthUseCaseImp(AuthRepositoryRemote(ApiClient()));
   }
 
-  void changeAgree(bool isagree) {
-    _isAgree = isagree;
+  void changeAgree() {
+    _isAgree = !_isAgree;
     update();
   }
 

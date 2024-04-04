@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="animate view splash screen">
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/splach/view/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/splach/view/splash_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/controller/base_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/controller/base_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/model/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/model/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/view/base_login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/view/base_login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/forget password/controller/forget_password_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/forget password/controller/forget_password_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/forget password/view/forget_password_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/forget password/view/forget_password_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/resgister/controller/register_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/resgister/controller/register_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/controller/sign_up_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/text_not_acounts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/text_not_acounts.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/failure question/widget/show_expalin_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/failure question/widget/show_expalin_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller/teacher_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/view/teacher_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/widget/item_teacher.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/widget/teacher_list.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/take image/binding/take_image_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/binding/take_image_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/take image/controller/take_image_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/controller/take_image_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/take image/view/take_image_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/view/take_image_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/take image/widget/grid_avatar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/widget/grid_avatar_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/dimensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/dimensions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shater.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shater.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +75,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/lib/core/controller/localization_controller.dart" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2cdktjJ7WwM0WG1TATMFb8GaeCS" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -78,9 +106,15 @@
     "git-widget-placeholder": "mohamed-dev-v1",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller" />
+    </key>
+  </component>
   <component name="RunManager" selected="Flutter.main.dart">
     <list>
       <item itemvalue="Android App.main_dev.dart" />
@@ -96,6 +130,23 @@
       <option name="presentableId" value="Default" />
       <updated>1708449060028</updated>
     </task>
+    <task id="LOCAL-00001" summary="animate view splash screen">
+      <option name="closed" value="true" />
+      <created>1711761819152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711761819152</updated>
+    </task>
+    <task id="LOCAL-00002" summary="animate view splash screen">
+      <option name="closed" value="true" />
+      <created>1711761850760</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711761850760</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -103,5 +154,48 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/omar-dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="animate view splash screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="animate view splash screen" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart</url>
+          <line>57</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart</url>
+          <line>61</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
