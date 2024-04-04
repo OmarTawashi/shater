@@ -29,6 +29,7 @@ class HeaderFailureStatus extends StatelessWidget {
             isSelect: controller?.failureTap == FailureEnum.trueAnswer,
             onTap: () {
               controller?.changeFailuerTap(FailureEnum.trueAnswer);
+              controller?.getAnswerSuccss();
             },
           ),
         ],
@@ -61,7 +62,7 @@ class SelectTapFailure extends StatelessWidget {
                   color: text == 'true'
                       ? Color.fromRGBO(106, 209, 0, 1)
                       : Color.fromRGBO(8, 202, 254, 1),
-                  width: 2.5),
+                  width: 4),
               borderRadius: BorderRadius.circular(8)),
           child: CustomText(
             text: text ?? '',

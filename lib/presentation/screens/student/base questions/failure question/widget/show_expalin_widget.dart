@@ -16,25 +16,35 @@ class ShowExpalinWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: Get.height * 0.585,
+      margin: EdgeInsets.only(top: Dimensions.paddingSize10),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
-          color: COLORS.secanderyColor,
-          borderRadius: BorderRadius.circular(Dimensions.radius15)),
+          color: COLORS.secanderyColor, borderRadius: BorderRadius.circular(4)),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            padding: EdgeInsets.all(14),
+            padding: EdgeInsets.symmetric(
+                horizontal: Dimensions.paddingSize16,
+                vertical: Dimensions.paddingSize8),
             margin: EdgeInsets.symmetric(
-                vertical: Dimensions.paddingSize8,
-                horizontal: Dimensions.paddingSize25),
+              vertical: Dimensions.paddingSize8,
+            ),
             decoration: BoxDecoration(
                 color: COLORS.primaryColor,
                 borderRadius: BorderRadius.circular(24)),
-            child: CustomText(
-              text: 'this_page_is_explain_of' + '\t\t' "0",
-              fontSize: Dimensions.fontSize14,
-              color: Colors.white,
-              maxLine: 1,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomText(
+                  text: 'this_page_is_explain_of'.tr + '\t\t' "0",
+                  fontSize: Dimensions.fontSize14,
+                  color: Colors.white,
+                  maxLine: 1,
+                ),
+              ],
             ),
           ),
           SizedBox(
@@ -43,7 +53,7 @@ class ShowExpalinWidget extends StatelessWidget {
           GetBuilder<TeacherController>(
             builder: (controller) => AnimatorContainer(
               viewType: controller.viewType,
-              isSliver: true,
+              isSliver: false,
               errorWidget: CustomEmptyView(
                 assetName: ICONS.teacherWhite,
                 primaryText: 'soon',
@@ -63,4 +73,4 @@ class ShowExpalinWidget extends StatelessWidget {
       ),
     );
   }
-}
+}//

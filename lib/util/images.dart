@@ -70,3 +70,11 @@ class ICONS {
     contactActive,
   ];
 }
+
+class VIDEO{
+
+    static const String answer5 = 'assets/5.mov';
+    static const String answer10 = 'assets/10.mov';
+    static const String answer20 = 'assets/20.mov';
+    
+}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 
-enum QuestionStatusEnum { success, failure, select,skip, none }
-
+enum QuestionStatusEnum { success, failure, select, skip, none }
 
 extension QuestionStatusColorExt on QuestionStatusEnum {
   Color getGridItemColor() {
@@ -19,6 +19,7 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
         return Colors.transparent;
     }
   }
+
   Color getBorderFieldColor() {
     switch (this) {
       case QuestionStatusEnum.failure:
@@ -80,8 +81,8 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
     }
   }
 
-  Function()? getOnPressButton({
-      Function()? onPressedSuccess,
+  Function()? getOnPressButton(
+      {Function()? onPressedSuccess,
       Function()? onPressedFailure,
       Function()? onPressedStable,
       Function()? onPressNone}) {
@@ -99,7 +100,7 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
     }
   }
 
-   String getButtonTextStatus() {
+  String getButtonTextStatus() {
     switch (this) {
       case QuestionStatusEnum.failure:
         return 'next';
@@ -116,4 +117,19 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
 }
 
 
-
+extension QuestionStatusBodyExt on FailureEnum {
+  Widget getBodyForQuestion({
+    Widget? explainWidget,
+    Widget? success,
+    Widget? stable,
+  }) {
+    switch (this) {
+      case FailureEnum.stable:
+        return stable!;
+      case FailureEnum.showExpalin:
+        return explainWidget!;
+      case FailureEnum.trueAnswer:
+        return success!;
+    }
+  }
+}

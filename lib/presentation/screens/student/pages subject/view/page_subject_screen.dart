@@ -41,38 +41,46 @@ class PageSubjectScreen extends StatelessWidget {
       appBar: AppBar(
         leadingWidth: 130.w,
         backgroundColor: COLORS.primaryColor,
-        leading: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-                color: COLORS.backGroundColor,
-                borderRadius: BorderRadius.circular(32)),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.arrow_back_ios_new_sharp,
-                  size: 20,
-                  color: Colors.white,
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                    color: COLORS.backGroundColor,
+                    borderRadius: BorderRadius.circular(32)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios_new_sharp,
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: Dimensions.paddingSize5,
+                    ),
+                    CustomText(
+                      text: Get.find<ExerciseController>()
+                              .selectedCourse
+                              ?.title ??
+                          '',
+                      color: Colors.white,
+                      textAlign: TextAlign.start,
+                      fontWeight: FontWeight.bold,
+                      fontSize: Dimensions.fontSize12,
+                    )
+                  ],
                 ),
-                SizedBox(
-                  width: Dimensions.paddingSize5,
-                ),
-                CustomText(
-                  text: Get.find<ExerciseController>().selectedCourse?.title ??
-                      '',
-                  color: Colors.white,
-                  textAlign: TextAlign.start,
-                  fontWeight: FontWeight.bold,
-                  fontSize: Dimensions.fontSize12,
-                )
-              ],
+              ),
             ),
-          ),
+          ],
         ),
         actions: [
           SemesterTypeWidget(
