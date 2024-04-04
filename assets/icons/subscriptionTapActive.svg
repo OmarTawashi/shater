@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Group_9128" data-name="Group 9128" transform="translate(-109 -822)">
+    <g id="Group_9127" data-name="Group 9127" transform="translate(-251)">
+      <g id="Group_9002" data-name="Group 9002" transform="translate(0.094 0.094)">
+        <g id="Rectangle_4972" data-name="Rectangle 4972" transform="translate(359.906 821.906)" fill="#01508a" stroke="#01508a" stroke-width="3">
+          <rect width="28" height="28" rx="5" stroke="none"/>
+          <rect x="1.5" y="1.5" width="25" height="25" rx="3.5" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_9128-2" data-name="Group 9128" transform="translate(0.501)">
+      <path id="Union_533" data-name="Union 533" d="M-4612.5-.244a1.743,1.743,0,0,1,1.743,1.743V14.015a1.743,1.743,0,0,1-1.743,1.743,1.743,1.743,0,0,1-1.743-1.743V1.5A1.743,1.743,0,0,1-4612.5-.244Z" transform="translate(4735 828)" fill="#fff"/>
+      <path id="Union_534" data-name="Union 534" d="M-4612.5-.244a1.743,1.743,0,0,1,1.743,1.743V14.015a1.743,1.743,0,0,1-1.743,1.743,1.743,1.743,0,0,1-1.743-1.743V1.5A1.743,1.743,0,0,1-4612.5-.244Z" transform="translate(130.257 5448.256) rotate(90)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

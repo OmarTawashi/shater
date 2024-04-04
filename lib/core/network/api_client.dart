@@ -4,9 +4,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:shater/config/api_constant.dart';
+import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/error_response.dart' as errorRes;
+import 'package:shater/util/api_constant.dart';
 
 import 'api_exceptions.dart';
 import 'api_response.dart';
@@ -26,8 +30,11 @@ class ApiClient {
     headers: {
       HttpHeaders.contentTypeHeader: 'application/json',
       HttpHeaders.acceptHeader: 'application/json',
-      // 'Authorization':
-      //     SharedPrefs.user == null ? '' : 'Bearer ${SharedPrefs.user?.token}'
+      "device-type": "ios",
+      "site_country": "",
+      "Accept-Language": "ar",
+      "Authorization":
+          SharedPrefs.user == null ? "" : "Bearer ${SharedPrefs.user?.apiToken}"
 
       // 'X-Client-Device-Name': DeviceInfo.deviceName,
       // 'X-Client-Device-Type': DeviceInfo.manufacturerName,
@@ -37,9 +44,9 @@ class ApiClient {
     receiveTimeout: const Duration(milliseconds: 60 * 1000), // 1 minute
   );
 
-  // static void updateHeader() {
-  //   _options.headers['Authorization'] = 'Bearer ${SharedPrefs.user?.token}';
-  // }
+  static void updateHeader() {
+    _options.headers['Authorization'] = 'Bearer ${SharedPrefs.user?.apiToken}';
+  }
 
   static final Dio _dio = Dio(_options)
     ..interceptors.add(
@@ -55,7 +62,7 @@ class ApiClient {
     );
 
   static _handleDioError({
-    required DioError error,
+    required DioException error,
     Function(ApiException)? onError,
   }) async {
     final _response = error.response;
@@ -87,28 +94,32 @@ class ApiClient {
         message: _response?.data['message'] ?? '',
       );
     }
-
-    if (error.response?.statusCode == 500) {
-      var exception = ApiException(
-        message: 'Server Error',
-        statusCode: 500,
+    if (error.response?.statusCode == 403) {
+      exception = ApiException(
+        message: _response?.data['message'] ?? '',
+        statusCode: 403,
       );
-
-      if (onError != null) {
-        return onError(exception);
-      } else {
-        return _handleError(
-          'Server Error',
-        );
-      }
     }
 
-    // if (error.response?.statusCode == 403) {
-    //   exception = ApiException(
-    //     message: _response?.data['message'] ?? '',
-    //     statusCode: 403,
-    //   );
-    // }
+    if (error.response?.statusCode == 500) {
+      exception = ApiException(
+        message: 'server_error'.tr,
+        statusCode: 500,
+      );
+    }
+    exception = ApiException(
+      message: error.message ?? '',
+      response: error.response,
+      statusCode: error.response?.statusCode,
+    );
+
+    if (onError != null) {
+      return onError(exception);
+    } else {
+      return _handleError(
+        'server_error'.tr,
+      );
+    }
 
     // if (error.response?.statusCode == 401) {
     //   SharedPrefs.removeUser();
@@ -116,26 +127,14 @@ class ApiClient {
     //   Get.offAllNamed(Routes.getSignInScreen());
 
     // }
-
-    // var exception = ApiException(
-    //   message: error.message ?? '',
-    //   response: error.response,
-    //   statusCode: error.response?.statusCode,
-    // );
-
-    if (onError != null) {
-      return onError(exception);
-    } else {
-      return _handleError(exception.message);
-    }
   }
 
   static _handleError(String msg) {
-    // Fluttertoast.showToast(
-    //   msg: msg,
-    //   backgroundColor: Colors.red[500],
-    //   textColor: Colors.white,
-    // );
+    Fluttertoast.showToast(
+      msg: msg,
+      backgroundColor: Colors.red[500],
+      textColor: Colors.white,
+    );
   }
 
   static requestData<T extends Decodable>({
@@ -155,7 +154,7 @@ class ApiClient {
     if (!result) {
       onError!(
         ApiException(
-          message: 'no_internet_connection',
+          message: 'no_internet_connection'.tr,
           type: ApiExceptions.noInternetConnection,
         ),
       );
@@ -164,13 +163,13 @@ class ApiClient {
         late dio.Response response;
         if (requestType == RequestType.get) {
           response = await _dio.get(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             queryParameters: queryParams,
             options: Options(headers: headers),
           );
         } else if (requestType == RequestType.post) {
           response = await _dio.post(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             data: data,
             queryParameters: queryParams,
             onSendProgress: onSendProgress,
@@ -178,7 +177,7 @@ class ApiClient {
           );
         } else if (requestType == RequestType.put) {
           response = await _dio.put(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             data: data,
             queryParameters: queryParams,
             onSendProgress: onSendProgress,
@@ -186,7 +185,7 @@ class ApiClient {
           );
         } else {
           response = await _dio.delete(
-            '${ApiConfig.baseUrl}$endpoint',
+            '${ApiConstant.baseUrl}$endpoint',
             queryParameters: queryParams,
             options: Options(headers: headers),
           );
@@ -204,23 +203,23 @@ class ApiClient {
           if (onSuccessdynamic != null) {
             onSuccessdynamic(response.data);
           }
-        } on DioError catch (err) {
-          throw ErrorResponse(message: err.message);
+        } on DioException catch (err) {
+          _handleDioError(error: err, onError: onError);
         }
-      } on DioError catch (error) {
+      } on DioException catch (error) {
         // final data = ResponseWrapper.init(create: create, data: error.response?.data);
         _handleDioError(error: error, onError: onError);
       } on TimeoutException {
         onError!(
           ApiException(
-            message: 'no_internet_connection',
+            message: 'time_out_connection'.tr,
             type: ApiExceptions.noInternetConnection,
           ),
         );
       } on SocketException {
         onError!(
           ApiException(
-            message: 'no_internet_connection',
+            message: 'no_internet_connection'.tr,
             type: ApiExceptions.noInternetConnection,
           ),
         );

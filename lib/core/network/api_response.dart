@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../model/error_model.dart';
+import '../../data/model/error_model.dart';
 import 'decodable.dart';
 
 ///A function that creates an object of type [T]
@@ -27,14 +27,16 @@ abstract class GenericObject<T> {
 ///Used it as return object of APIController to handle any kind of response.
 
 class ResponseWrapper<T> extends GenericObject<T> {
-  
   T? data;
   Response? response;
 
-  ResponseWrapper({required Create<Decodable> create,this.response}) : super(create: create);
+  ResponseWrapper({required Create<Decodable> create, this.response})
+      : super(create: create);
 
   factory ResponseWrapper.init(
-      {required Create<Decodable> create, required dynamic data,Response? response}) {
+      {required Create<Decodable> create,
+      required dynamic data,
+      Response? response}) {
     final wrapper = ResponseWrapper<T>(create: create);
     wrapper.data = wrapper.genericObject(data);
     // wrapper.response = response;
@@ -45,6 +47,8 @@ class ResponseWrapper<T> extends GenericObject<T> {
 class APIResponse<T> extends GenericObject<T>
     implements Decodable<APIResponse<T>> {
   String? error;
+  bool? status;
+  String? message;
   List<T>? items;
   T? item;
   List<ErrorModel>? errors;
@@ -54,19 +58,29 @@ class APIResponse<T> extends GenericObject<T>
   @override
   APIResponse<T> decode(dynamic json) {
     error = json['error'];
+    status = json['status'];
+    message = json['message'];
     items = [];
 
     try {
-      json['data'].forEach((item) {
-        items?.add(genericObject(item));
-      });
+      if (json.containsKey("items")) {
+        json['items'].forEach((item) {
+          items?.add(genericObject(item));
+        });
+      } else {
+        json['data'].forEach((item) {
+          items?.add(genericObject(item));
+        });
+      }
     } catch (error) {
       log("☢️☢️☢️ Items typemismatch error ignored $error");
     }
 
     try {
-      if (json is Map<String, dynamic> && json.containsKey("data")) {
-        item = genericObject(json["data"]);
+      if (json is Map<String, dynamic> && json.containsKey("items")) {
+        item = genericObject(json["items"]);
+      } else if (json is Map<String, dynamic>) {
+        item = genericObject(json);
       } else {
         item = genericObject(json);
       }
@@ -76,7 +90,7 @@ class APIResponse<T> extends GenericObject<T>
 
     try {
       errors = [];
-      if(json['errors'] != null){
+      if (json['errors'] != null) {
         json['errors'].forEach((e) => errors?.add(ErrorModel.fromJson(e)));
       }
     } catch (error) {

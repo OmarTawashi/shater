@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
+import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/util/dimensions.dart';
+
+class ItemSubscribSubject extends StatelessWidget {
+  const ItemSubscribSubject({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
+      padding:
+          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              Color.fromRGBO(8, 202, 254, 0.8),
+              Color.fromRGBO(226, 91, 242, 0.6),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Container(
+            height: 80,
+            width: 80,
+            clipBehavior: Clip.hardEdge,
+            padding: const EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              border:
+                  Border.all(color: Colors.white, width: 2),
+              shape: BoxShape.circle,
+            ),
+            child: CachedNetworkImageWidget(
+              imageUrl: '',
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(
+            width: Dimensions.paddingSize16,
+          ),
+          Expanded(
+              child: Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: 'subscription_date',
+                      color: Colors.grey,
+                      fontSize: Dimensions.fontSize12,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    CustomText(
+                      text: "23/3/2024",
+                      color: Colors.white,
+                      fontSize: Dimensions.fontSize13,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: Dimensions.paddingSize20,
+                ),
+                Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: 'expires_in',
+                      color: Colors.grey,
+                      fontSize: Dimensions.fontSize12,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    CustomText(
+                      text: "23/3/2024",
+                      color: Colors.white,
+                      fontSize: Dimensions.fontSize13,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ],
+                ),
+              ])),
+          SizedBox(
+            width: Dimensions.paddingSize16,
+          ),
+          Icon(
+            Icons.arrow_forward_ios_sharp,
+            color: Colors.white60,
+            weight: 20,
+            applyTextScaling: true,
+          )
+        ],
+      ),
+    );
+  }
+}

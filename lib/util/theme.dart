@@ -17,6 +17,9 @@ class ThemeApp {
           primary: color,
           secondary: color,
         ),
+        chipTheme: ChipThemeData(
+          color: MaterialStatePropertyAll(Colors.white)
+        ),        
         textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom()),
       );
 }
