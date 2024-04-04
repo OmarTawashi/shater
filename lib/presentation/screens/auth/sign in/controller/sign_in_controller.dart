@@ -80,6 +80,7 @@ class SignInController extends GetxController {
       switch (user.isTeacher) {
         case 1:
           BaseMixin.showToastFlutter(messsage: 'the login is teacher');
+          defTeacher(user);
           break;
         case 0:
           defStudent(user);
@@ -95,6 +96,15 @@ class SignInController extends GetxController {
     if (user?.children == null || user!.children!.isEmpty) {
       //this is mean the father not have any child
       Get.offAllNamed(Routes.getDashBoardScreen());
+    } else {
+      // in this the father select what the child login
+      BaseMixin.bottomSheetChildern();
+    }
+  }
+  void defTeacher(User? user) {
+    if (user?.children == null || user!.children!.isEmpty) {
+      //this is mean the father not have any child
+      Get.offAllNamed(Routes.getTeacherDashBoardScreen());
     } else {
       // in this the father select what the child login
       BaseMixin.bottomSheetChildern();

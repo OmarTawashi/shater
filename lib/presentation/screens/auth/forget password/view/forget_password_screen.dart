@@ -48,34 +48,43 @@ class ForgetPasswordScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: Dimensions.paddingSize16,
-                  ),
-                  CircleLogoApp(),
-                  SizedBox(
-                    height: Dimensions.paddingSize20,
-                  ),
-                  CustomTextFormField(
-                    controller: controller.emailController,
-                    hintText: 'email'.tr,
-                    keyboardType: TextInputType.emailAddress,
-                    onChanged: (value) {
-                      // controller.checkEmail();
-                      controller.validEmail(value);
-                    },
-                    textValidation: 'please_enter_email'.tr,
-                  ),
-                  const SizedBox(
-                    height: Dimensions.paddingSize20,
-                  ),
-                  CustomCupertinoButton(
-                    text: 'enter',
-                    onPressed: controller.isEnable
-                        ? () {
-                            // Get.toNamed(Routes.getDashBoardScreen());
-                            _submit(controller);
-                          }
-                        : null,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: Dimensions.paddingSize25),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: Dimensions.paddingSize25,
+                        ),
+                        CircleLogoApp(),
+                        SizedBox(
+                          height: Dimensions.paddingSize80,
+                        ),
+                        CustomTextFormField(
+                          controller: controller.emailController,
+                          hintText: 'email'.tr,
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (value) {
+                            // controller.checkEmail();
+                            controller.validEmail(value);
+                          },
+                          textValidation: 'please_enter_email'.tr,
+                        ),
+                        const SizedBox(
+                          height: Dimensions.paddingSize20,
+                        ),
+                        CustomCupertinoButton(
+                          text: 'forget_password',
+                          isLoading: controller.isloading,
+                          onPressed: controller.isEnable
+                              ? () {
+                                  // Get.toNamed(Routes.getDashBoardScreen());
+                                  _submit(controller);
+                                }
+                              : null,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

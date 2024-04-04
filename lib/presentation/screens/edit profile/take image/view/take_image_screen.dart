@@ -7,7 +7,7 @@ import 'package:shater/presentation/screens/auth/sign%20in/widgets/item_childern
 import 'package:shater/presentation/screens/base/body_select_photo.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/take%20image/controller/take_image_controller.dart';
+import 'package:shater/presentation/screens/edit%20profile/take%20image/controller/take_image_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
@@ -33,11 +33,15 @@ class TakeImageScreen extends StatelessWidget {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: CustomText(
-                  text: 'skip',
-                  fontSize: Dimensions.fontSize16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
+                child: Row(
+                  children: [
+                    CustomText(
+                      text: 'skip',
+                      fontSize: Dimensions.fontSize16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
                 ),
               ),
             )),

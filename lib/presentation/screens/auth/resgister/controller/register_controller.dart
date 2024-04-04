@@ -70,7 +70,7 @@ class RegisterController extends GetxController {
             signUpController.classSelected.first.countryId ?? countryId,
             signUpController.citySelected?.id ?? -1,
             "${signUpController.classIDS}",
-            image ?? File(''))
+            image)
         .then((value) {
       value?.fold((l) {
         BaseMixin.showToastFlutter(messsage: l.message);
@@ -103,7 +103,7 @@ class RegisterController extends GetxController {
             countryId,
             signUpController.citySelected?.id ?? -1,
             signUpController.classStudSelected?.id ?? '',
-            image ?? File(''))
+            image)
         .then((value) {
       value?.fold((l) {
         BaseMixin.showToastFlutter(messsage: l.message);

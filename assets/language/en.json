@@ -131,5 +131,10 @@
     "forget_passwords": "Forget Passwords?",
     "enter_acounts": "Enter Acounts",
     "have_an_account": "Have An Account?",
-    "create_new_acounts": "Create new Acounts"
+    "create_new_acounts": "Create new Acounts",
+
+    "my lessons": "My lessons",
+    "practice" : "Practice",
+    "explanations" : "Explanations",
+    "subscribers" : "Subscribers"
 }
