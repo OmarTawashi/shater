@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
-import 'package:shater/presentation/screens/teacher/widget/teacher_list.dart';
+import 'package:shater/presentation/screens/student/teacher/widget/teacher_list.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';

@@ -44,11 +44,13 @@ import 'package:shater/presentation/screens/student/subject%20teacher/binding/su
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
+import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
+import '../presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart';
 
 class AppPages {
   AppPages._();
@@ -62,6 +64,10 @@ class AppPages {
         name: RoutesName.dashBoardScreen,
         page: () => const DashBoardScreen(),
         binding: DashBoardBindings()),
+    GetPage(
+        name: RoutesName.teacherDashBoardScreen,
+        page: () => const TeacherDashBoardScreen(),
+        binding: TeacherDashBoardBindings()),
     // GetPage(
     //   name: RoutesName.TeacherScreen,
     //   page: () => const TeacherScreen(),

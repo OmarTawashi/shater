@@ -9,7 +9,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="issue files teacher_controller.dart screen" />
+    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="issue files teacher_controller.dart screen">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/splach/view/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/splach/view/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/failure question/widget/show_expalin_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/failure question/widget/show_expalin_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question answer/multi_choice_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/base questions/question answer/multi_choice_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/constant.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712203243706</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="issue files teacher_controller.dart screen">
+      <option name="closed" value="true" />
+      <created>1712203432575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712203432575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">

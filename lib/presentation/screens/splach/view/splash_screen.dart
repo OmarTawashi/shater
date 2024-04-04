@@ -25,7 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
       if (_user == null) {
         Get.offAllNamed(Routes.getBaseLoginScreen());
       } else {
-        Get.offAllNamed(Routes.getDashBoardScreen());
+        if (true){
+          Get.offAllNamed(Routes.getTeacherDashBoardScreen());
+        }
+        else{
+          Get.offAllNamed(Routes.getDashBoardScreen());
+        }
       }
     });
   }

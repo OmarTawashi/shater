@@ -30,6 +30,11 @@ abstract class RoutesName {
   static const baseQuestionScreen = '/base-question-screen';
   static const congrlateScreen = '/congrlate-screen';
   static const failureQuestionScrren = '/failure-question-screen';
+
+  static const teacherDashBoardScreen = '/teacher-dash-board-screen';
+
+
+
 }
 
 abstract class Routes {
@@ -62,4 +67,7 @@ abstract class Routes {
   static String getCreateNameScreen() => RoutesName.createNameScreen;
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
   static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
+
+  static String getTeacherDashBoardScreen() => RoutesName.teacherDashBoardScreen;
+
 }

@@ -18,10 +18,10 @@ class APPCONSTANT {
   ];
 
   static const List<String> teacherLabelTab = [
-    "My lessons",
-    "Practice",
-    "Explanations",
-    "Subscribers",
+    "my lessons",
+    "practice",
+    "explanations",
+    "subscribers",
     "contacts",
   ];
   static List<LanguageModel> languages = [
