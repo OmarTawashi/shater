@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:reorderables/reorderables.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
@@ -117,34 +116,34 @@ class OrderText extends StatelessWidget {
   }
 }
 
-class ReorderableListExample extends StatefulWidget {
-  @override
-  _ReorderableListExampleState createState() => _ReorderableListExampleState();
-}
+// class ReorderableListExample extends StatefulWidget {
+//   @override
+//   _ReorderableListExampleState createState() => _ReorderableListExampleState();
+// }
 
-class _ReorderableListExampleState extends State<ReorderableListExample> {
-  List<String> items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+// class _ReorderableListExampleState extends State<ReorderableListExample> {
+//   List<String> items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
-  @override
-  Widget build(BuildContext context) {
-    return  ReorderableColumn(
-        children: items.map((item) {
-          return ListTile(
-            key: Key(item),
-            title: Text(item),
-            leading: Icon(Icons.drag_handle),
-          );
-        }).toList(),
-        onReorder: (oldIndex, newIndex) {
-          setState(() {
-            if (oldIndex < newIndex) {
-              newIndex -= 1;
-            }
-            final String item = items.removeAt(oldIndex);
-            items.insert(newIndex, item);
-          });
-        },
+//   @override
+//   Widget build(BuildContext context) {
+//     return  ReorderableColumn(
+//         children: items.map((item) {
+//           return ListTile(
+//             key: Key(item),
+//             title: Text(item),
+//             leading: Icon(Icons.drag_handle),
+//           );
+//         }).toList(),
+//         onReorder: (oldIndex, newIndex) {
+//           setState(() {
+//             if (oldIndex < newIndex) {
+//               newIndex -= 1;
+//             }
+//             final String item = items.removeAt(oldIndex);
+//             items.insert(newIndex, item);
+//           });
+//         },
   
-    );
-  }
-}
+//     );
+//   }
+// }

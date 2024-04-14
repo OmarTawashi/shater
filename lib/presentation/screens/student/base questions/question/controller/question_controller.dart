@@ -7,6 +7,8 @@ import 'package:shater/presentation/screens/student/pages%20subject/controller/p
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 
+import '../../../../../../data/model/typing_answer.dart';
+
 enum FailureEnum { showExpalin, trueAnswer, stable }
 
 class QuestionController extends GetxController {
@@ -18,11 +20,17 @@ class QuestionController extends GetxController {
 
   TextEditingController completeValueController = TextEditingController();
 
+  List<TypingAnswer?> _inputComperhensiveImage = [];
+  List<TypingAnswer?> get inputComperhensiveImage => _inputComperhensiveImage;
+
   int _timeNumber = 0;
   int get timeNumber => _timeNumber;
 
   String? _congrlateText;
   String? get congrlateText => _congrlateText;
+
+  String? _comprehensiveKey;
+  String? get comprehensiveKey => _comprehensiveKey;
 
   bool _isAnswer = false;
   bool get isAnswer => _isAnswer;
@@ -42,8 +50,8 @@ class QuestionController extends GetxController {
   int _answerNumValid = 0;
   int get answerNumValid => _answerNumValid;
 
-  // TypingAnswer? _typingAnswer;
-  // TypingAnswer? get typingAnswer => _typingAnswer;
+  // List<TypingAnswer> _typingAnswer = [];
+  // List<TypingAnswer> get typingAnswer => _typingAnswer;
 
   List<QuestionModel> _questionsAnswer = [];
   List<QuestionModel> get questionsAnswer => _questionsAnswer;
@@ -69,6 +77,29 @@ class QuestionController extends GetxController {
 
   void changeAnswer(bool isAns) {
     _isAnswer = isAns;
+    update();
+  }
+
+  void setInputControllerComperhensiveImage(int index) {
+    final lenghtCheck = _questionModel?.answer?.length ?? 0;
+    _questionModel?.answer?.forEach((element) {
+      if (lenghtCheck > _inputComperhensiveImage.length) {
+        if (element == 'space') {
+          _inputComperhensiveImage.add(TypingAnswer(
+              index: index, textEditingController: TextEditingController()));
+        } else {
+          _inputComperhensiveImage.add(null);
+        }
+      }
+    });
+  }
+
+  void changeInputValueComperhensiveImage(String value, int index) {
+    setQuestionStatus(QuestionStatusEnum.select);
+    final indexCheck = _inputComperhensiveImage.firstWhere(
+      (element) => element?.index == index,
+    );
+    indexCheck?.input = indexCheck.textEditingController?.text;
     update();
   }
 
@@ -166,12 +197,14 @@ class QuestionController extends GetxController {
     getType();
     completeValueController.clear();
     changeFailuerTap(FailureEnum.stable);
-
-
-    if (_questionType?.qtype != QType.VideoSkip) {
-      setQuestionStatus(QuestionStatusEnum.none);
+    setQuestionStatus(QuestionStatusEnum.none);
+    if (questionType?.qtype == QType.ComprehensiveImage) {
+       _inputComperhensiveImage = [];
+      if (_questionModel?.answer?.contains('<skip>') == true) {
+        setQuestionStatus(QuestionStatusEnum.skip);
+      }
     }
-
+   
     update();
   }
 
@@ -194,15 +227,31 @@ class QuestionController extends GetxController {
 
   void checkAnswer() {
     List<dynamic> valid = [];
+    bool checked = false;
     if (questionType?.qtype == QType.CompleteValue) {
       setAnswer(completeValueController.text);
       valid = _questionModel?.answer ?? [];
     } else if (questionType?.qtype == QType.TrueOrFalseImage) {
       valid = _questionModel?.answer ?? [];
+    } else if (questionType?.qtype == QType.ComprehensiveImage) {
+      for (int i = 0; i < _inputComperhensiveImage.length; i++) {
+        if (_inputComperhensiveImage[i] == null) {
+          _selectAnswer.add("null");
+        } else {
+          _selectAnswer
+              .add(_inputComperhensiveImage[i]?.textEditingController?.text);
+        }
+      }
+      valid = _questionModel?.valid ?? [];
     } else {
       valid = _questionModel?.valid ?? [];
     }
-    final checked = listsAreEqual(valid, _selectAnswer);
+    if (questionType?.qtype == QType.ComprehensiveImage) {
+      checked = (valid.length == _selectAnswer.length && _selectAnswer.every((element) => valid.contains(element)));
+    } else {
+      checked = listsAreEqual(valid, _selectAnswer);
+    }
+
     if (checked) {
       setQuestionStatus(QuestionStatusEnum.success);
       _answerNumValid += 1;

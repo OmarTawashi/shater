@@ -1,4 +1,5 @@
 import 'package:shater/core/network/decodable.dart';
+import 'package:shater/data/model/typing_answer.dart';
 
 class QuestionPageModel extends Decodable<QuestionPageModel> {
   int? id;
@@ -91,6 +92,7 @@ class QuestionModel {
   String? updatedAt;
   int? isTemplate;
   int? isActive;
+   TypingAnswer? typingAnswer;
   List<dynamic>? details;
   String? questionMedia;
   int? teacherId;
@@ -112,6 +114,7 @@ class QuestionModel {
       this.orderBy,
       this.isValid,
       this.media,
+      this.typingAnswer,
       this.urls,
       this.updatedAt,
       this.details,

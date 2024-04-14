@@ -6,7 +6,6 @@ import 'package:shater/core/controller/root_binding.dart';
 import 'package:shater/flavors/env_config.dart';
 
 import '../routes/app_pages.dart';
-import '../routes/app_routes.dart';
 import '../util/constant.dart';
 import '../util/messages.dart';
 import '../util/theme.dart';
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeApp.materialLightTheme(),
             defaultTransition: Transition.cupertino,
             initialBinding: RootBinding(),
-            initialRoute: RoutesName.spalshScreen,
+            // initialRoute: RoutesName.spalshScreen,
             locale: Get.find<LocalizationController>().locale,
             translations: Messages(languages: languages),
             fallbackLocale: Locale(APPCONSTANT.languages[1].languageCode!,

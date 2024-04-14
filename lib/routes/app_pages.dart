@@ -22,9 +22,9 @@ import 'package:shater/presentation/screens/school/binding/school_bindings.dart'
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/binding/base_question_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/base/congrlate/binding/congrlate_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/base/congrlate/view/congrlate_screen.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/view/base_question_screen.dart';
+import 'package:shater/presentation/screens/student/base%20questions/congrlate/binding/congrlate_binding.dart';
+import 'package:shater/presentation/screens/student/base%20questions/congrlate/view/congrlate_screen.dart';
 import 'package:shater/presentation/screens/student/base%20questions/failure%20question/binding/failure_question_binding.dart';
 import 'package:shater/presentation/screens/student/base%20questions/failure%20question/view/failure_question_screen.dart';
 import 'package:shater/presentation/screens/student/dashBord/bindings/bindings_dashbord.dart';

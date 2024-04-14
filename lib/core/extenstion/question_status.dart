@@ -100,14 +100,18 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
     }
   }
 
-  String getButtonTextStatus() {
+  String getButtonTextStatus({QuestionController? controller}) {
     switch (this) {
       case QuestionStatusEnum.failure:
         return 'next';
       case QuestionStatusEnum.success:
         return 'next';
       case QuestionStatusEnum.skip:
-        return 'next';
+        if (controller?.questionModel?.answer?.contains('<skip>') == true) {
+          return '${controller?.questionModel?.valid?.first}';
+        } else {
+          return 'next';
+        }
       case QuestionStatusEnum.select:
         return 'check';
       case QuestionStatusEnum.none:
@@ -115,7 +119,6 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
     }
   }
 }
-
 
 extension QuestionStatusBodyExt on FailureEnum {
   Widget getBodyForQuestion({

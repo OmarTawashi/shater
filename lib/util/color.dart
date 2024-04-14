@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class COLORS {
   static const Color primaryColor = Color.fromRGBO(1, 80, 139, 1);
-  static const Color secanderyColor = Color.fromRGBO(9, 203, 255, 1);
+  static const Color secanderyColor = Color.fromRGBO(93, 199, 249, 1);
   static const Color backGroundColor = Color.fromRGBO(72, 131, 196, 1);
   static const Color strokeColor = Color.fromRGBO(72, 131, 196, 1);
   static const Color disabledColor = Color(0xFFBABFC4);

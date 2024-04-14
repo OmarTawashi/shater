@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum QType {
   MultiChoiceText,
   TrueOrFalse,
@@ -22,7 +24,7 @@ enum QType {
   OrderWithImage,
   ImageCount,
   MathOperations,
-  VideoSkip,
+  ComprehensiveImage,
   ComprehensiveSelectImage,
   ComprehensiveAttachmentsInput,
   WritingDrawing,
@@ -92,7 +94,7 @@ class QuestionType {
       case "22":
         return QType.MathOperations;
       case "23":
-        return QType.VideoSkip;
+        return QType.ComprehensiveImage;
       case "24":
         return QType.MultiChoiceImage;
       case "25":
@@ -109,6 +111,31 @@ class QuestionType {
         return QType.MultiChoiceVirtical;
       default:
         return QType.None;
+    }
+  }
+}
+
+extension QuestionComprehensiveImageExt on String {
+  Widget getComprehensiveImageWidget({
+    required Widget inputField,
+    required Widget skipWidget,
+    required Widget newLine,
+    required Widget operator,
+    required Widget stable,
+  }) {
+    switch (this) {
+      case 'space':
+        return inputField;
+      case '<skip>':
+        return skipWidget;
+      case '<full>':
+        return newLine;
+      default:
+        if ("=-+!*%<>&|^~?×÷%−(),.،".contains(this)) {
+          return operator;
+        } else {
+          return stable;
+        }
     }
   }
 }

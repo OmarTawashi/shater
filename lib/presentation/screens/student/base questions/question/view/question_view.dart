@@ -10,6 +10,7 @@ import 'package:shater/presentation/screens/student/base%20questions/base/widget
 import 'package:shater/presentation/screens/student/base%20questions/base/widget/header_sucss_failure.dart';
 import 'package:shater/presentation/screens/student/base%20questions/failure%20question/widget/show_expalin_widget.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/complete_value.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question%20answer/comprehensive_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/match_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_text.dart';
@@ -77,13 +78,14 @@ class QuestionView extends StatelessWidget {
         return MultiChoiceText(
           controller: controller,
         );
-
       case QType.TrueOrFalseImage:
         return TrueOrFalseImage(
           controller: controller,
         );
-      case QType.VideoSkip:
-        return SizedBox();
+      case QType.ComprehensiveImage:
+        return ComprehensiveImage(
+          controller: controller,
+        ); /*getComprehensiveImageWidget*/
       case QType.CompleteValue:
         return CompleteValue(
           controller: controller,
@@ -100,6 +102,10 @@ class QuestionView extends StatelessWidget {
         return MatchImage(
           controller: controller,
         );
+      // case QType.ComprehensiveImage:
+      //   return MatchImage(
+      //     controller: controller,
+      //   );
       default:
         return SizedBox();
     }
