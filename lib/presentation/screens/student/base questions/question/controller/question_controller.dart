@@ -199,12 +199,12 @@ class QuestionController extends GetxController {
     changeFailuerTap(FailureEnum.stable);
     setQuestionStatus(QuestionStatusEnum.none);
     if (questionType?.qtype == QType.ComprehensiveImage) {
-       _inputComperhensiveImage = [];
+      _inputComperhensiveImage = [];
       if (_questionModel?.answer?.contains('<skip>') == true) {
         setQuestionStatus(QuestionStatusEnum.skip);
       }
     }
-   
+
     update();
   }
 
@@ -247,7 +247,8 @@ class QuestionController extends GetxController {
       valid = _questionModel?.valid ?? [];
     }
     if (questionType?.qtype == QType.ComprehensiveImage) {
-      checked = (valid.length == _selectAnswer.length && _selectAnswer.every((element) => valid.contains(element)));
+      checked = (valid.length == _selectAnswer.length &&
+          _selectAnswer.every((element) => valid.contains(element)));
     } else {
       checked = listsAreEqual(valid, _selectAnswer);
     }

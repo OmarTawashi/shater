@@ -9,6 +9,7 @@ import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/widget/header_failure_status.dart';
 import 'package:shater/presentation/screens/student/base%20questions/base/widget/header_sucss_failure.dart';
 import 'package:shater/presentation/screens/student/base%20questions/failure%20question/widget/show_expalin_widget.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question%20answer/arithmetic_text.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/complete_value.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/comprehensive_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/match_image.dart';
@@ -98,14 +99,12 @@ class QuestionView extends StatelessWidget {
         return MultiChoiceVirtical(
           controller: controller,
         );
-      case QType.MatchImage:
-        return MatchImage(
+      case QType.ArithmeticText:
+        return ArithmeticText(
           controller: controller,
         );
-      // case QType.ComprehensiveImage:
-      //   return MatchImage(
-      //     controller: controller,
-      //   );
+      case QType.MatchImage:
+        return MatcherQuizScreen();
       default:
         return SizedBox();
     }

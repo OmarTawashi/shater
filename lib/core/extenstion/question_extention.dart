@@ -24,6 +24,7 @@ enum QType {
   OrderWithImage,
   ImageCount,
   MathOperations,
+  ArithmeticText,
   ComprehensiveImage,
   ComprehensiveSelectImage,
   ComprehensiveAttachmentsInput,
@@ -102,7 +103,7 @@ class QuestionType {
       case "26":
         return QType.WritingDrawing;
       case "27":
-        return QType.LongDivisionType;
+        return QType.ArithmeticText;
       case "28":
         return QType.FractionsType;
       case "29":

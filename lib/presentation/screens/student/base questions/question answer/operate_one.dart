@@ -140,27 +140,3 @@ class ItemStable extends StatelessWidget {
     );
   }
 }
-
-class ItemUnit extends StatelessWidget {
-  final String? itemUnit;
-  const ItemUnit({super.key, this.itemUnit});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxHeight: 49, maxWidth: 56),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: COLORS.secanderyColor,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: CustomText(
-        text: itemUnit ?? '',
-        fontSize: Dimensions.fontSize18,
-        textAlign: TextAlign.center,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}

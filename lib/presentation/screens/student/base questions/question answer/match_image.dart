@@ -143,3 +143,92 @@ class MyWidget extends StatelessWidget {
     );
   }
 }
+
+class MatcherQuizScreen extends StatefulWidget {
+  @override
+  _MatcherQuizScreenState createState() => _MatcherQuizScreenState();
+}
+
+class _MatcherQuizScreenState extends State<MatcherQuizScreen> {
+  List<String> items1 = ['A', 'B', 'C'];
+  List<String> items2 = ['1', '2', '3'];
+  Map<String, String> matching = {};
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 250,
+      child: Column(
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: items1.map((item) {
+                    return Draggable<String>(
+                      data: item,
+                      child: _buildItem(item),
+                      feedback: _buildItem(item, isFeedback: true),
+                      childWhenDragging: _buildItem(item),
+                    );
+                  }).toList(),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: items2.map((item) {
+                    return DragTarget<String>(
+                      builder: (BuildContext context, List<String?> candidateData,
+                          List<dynamic> rejectedData) {
+                        return Container(
+                          width: 100,
+                          height: 100,
+                          color: Colors.grey,
+                          child: Center(
+                            child: Text(matching.containsValue(item)
+                                ? matching.keys
+                                    .firstWhere((key) => matching[key] == item)
+                                : ''),
+                          ),
+                        );
+                      },
+                      onWillAccept: (data) => true,
+                      onAccept: (data) {
+                        setState(() {
+                          matching[data!] = item;
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                matching.clear();
+              });
+            },
+            child: Text('Reset'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildItem(String item, {bool isFeedback = false}) {
+    return Container(
+      width: 100,
+      height: 100,
+      color: isFeedback ? Colors.blue.withOpacity(0.5) : Colors.blue,
+      child: Center(
+        child: Text(
+          item,
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
