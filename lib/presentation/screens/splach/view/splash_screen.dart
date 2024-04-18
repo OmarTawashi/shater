@@ -25,11 +25,16 @@ class _SplashScreenState extends State<SplashScreen> {
       if (_user == null) {
         Get.offAllNamed(Routes.getBaseLoginScreen());
       } else {
-        if (true){
-          Get.offAllNamed(Routes.getTeacherDashBoardScreen());
-        }
-        else{
-          Get.offAllNamed(Routes.getDashBoardScreen());
+        switch (_user?.isTeacher) {
+          case 1:
+            Get.offAllNamed(Routes.getTeacherDashBoardScreen());
+            break;
+          case 0:
+            Get.offAllNamed(Routes.getDashBoardScreen());
+            break;
+          default:
+            Get.offAllNamed(Routes.getDashBoardScreen());
+            break;
         }
       }
     });
@@ -56,8 +61,8 @@ class _SplashScreenState extends State<SplashScreen> {
           Lottie.asset(
             'assets/animate/batreq.json',
             repeat: true,
-            width: width,//0.9
-            height: height,//0.7
+            width: width, //0.9
+            height: height, //0.7
             fit: BoxFit.fill,
           ),
           Align(

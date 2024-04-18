@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shater/core/network/decodable.dart';
 import 'package:shater/data/model/typing_answer.dart';
 
@@ -92,7 +94,7 @@ class QuestionModel {
   String? updatedAt;
   int? isTemplate;
   int? isActive;
-   TypingAnswer? typingAnswer;
+  TypingAnswer? typingAnswer;
   List<dynamic>? details;
   String? questionMedia;
   int? teacherId;
@@ -147,7 +149,11 @@ class QuestionModel {
       answer = [];
       answer?.add(json['answer']);
     } else {
-      answer = json['answer'];
+      if (id == 27) {
+        answer = jsonDecode(answer = json['answer']);
+      } else {
+        answer = json['answer'];
+      }
     }
     valid = json['valid'];
     urls = json['urls'];
