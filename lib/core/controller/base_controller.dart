@@ -22,11 +22,18 @@ class BaseController extends GetxController {
   ViewType viewType = ViewType.initial;
   String errorStr = '';
 
+  bool _isLoading = false;
+  bool get isloading => _isLoading;
+
   updateViewType(ViewType vt) {
     viewType = vt;
     update();
   }
 
+  void changeLoading(bool isLoad) {
+    _isLoading = isLoad;
+    update();
+  }
   handelError(ApiException response) {
     errorStr = response.message;
     switch (response.statusCode) {

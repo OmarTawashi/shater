@@ -18,7 +18,7 @@ abstract class BaseAuthRepository {
     int countryId,
     int cityId,
     String classId,
-    File imageFile
+    File? imageFile
   );
   Future<Either<ApiException, User>?> registerTeacher(
       String email,
@@ -30,7 +30,7 @@ abstract class BaseAuthRepository {
       int countryId,
       int cityId,
       String classIDS,
-      File imageFile
+      File? imageFile
       );
 
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);

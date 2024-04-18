@@ -47,10 +47,10 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             )));
           } else {
             final user = response.data?.item;
-            completer.complete(Right(user ?? User()));
             if (user != null) {
               SharedPrefs.saveUser(user);
               ApiClient.updateHeader();
+              completer.complete(Right(user!));
             }
           }
         },
@@ -74,7 +74,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
       int countryId,
       int cityId,
       String classId,
-      File imageFile) async {
+      File? imageFile) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
@@ -144,7 +144,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     int countryId,
     int cityId,
     String classesId,
-    File imageFile,
+    File? imageFile,
   ) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';

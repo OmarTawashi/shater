@@ -10,7 +10,7 @@ import '../../../../data/repository/public_repository_remote.dart';
 enum SchoolGender { male, female }
 
 class SchoolController extends BaseController {
-  publicUseCaseImp? _publicUseCaseImp;
+  PublicUseCaseImp? _publicUseCaseImp;
 
   List<School> _schools = [];
   List<School> get schools => _schools;
@@ -21,7 +21,7 @@ class SchoolController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    _publicUseCaseImp = publicUseCaseImp(PublicRepositoryRemote(ApiClient()));
+    _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
     getSchools();
   }
 

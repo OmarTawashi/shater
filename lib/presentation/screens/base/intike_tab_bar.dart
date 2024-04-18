@@ -22,10 +22,12 @@ class IntikeTapBar extends StatelessWidget {
           children: [
             Container(
                 margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(color: COLORS.backGroundColor,borderRadius:BorderRadius.circular(15)),
                 child: CustomSvgPicture(
                   assetName: assetName,
-                  height: 60,
-                  width: 60,
+                  height: 40,
+                  width: 40,
                 )),
             child == null
                 ? const SizedBox()

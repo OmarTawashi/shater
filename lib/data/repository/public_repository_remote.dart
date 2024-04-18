@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:fpdart/src/either.dart';
+import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/network/api_response.dart';
@@ -96,6 +97,7 @@ class PublicRepositoryRemote extends PublicRepository {
         onSuccess: (response) {
           final data = response.data?.item;
           if (data != null) {
+            SharedPrefs.saveDataForUserRegistration(data!);
             completer.complete(right(data));
           }
         },

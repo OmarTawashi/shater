@@ -133,5 +133,10 @@
     "email": "البريد الالكتروني",
     "enter_acounts": "دخول بحسابي",
     "have_an_account": "ليس لديك حساب؟",
-    "create_new_acounts": "قم بانشاء حساب جديد"
+    "create_new_acounts": "قم بانشاء حساب جديد",
+    "my lessons": "دروسي",
+    "practice" : "التدريب",
+    "explanations" : "الشروح",
+    "subscribers" : "المشتركين"
+
 }

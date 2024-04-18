@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.655" height="27.888" viewBox="0 0 27.655 27.888">
+  <g id="Group_9377" data-name="Group 9377" transform="translate(-317 -822)">
+    <g id="Group_9376" data-name="Group 9376" transform="translate(316 821.137)">
+      <g id="Group_8819" data-name="Group 8819" transform="translate(1 0.863)">
+        <g id="Rectangle_5473" data-name="Rectangle 5473" transform="translate(3.661)" fill="#fff" stroke="#bebebe" stroke-width="3">
+          <rect width="23.994" height="20.247" rx="3" stroke="none"/>
+          <rect x="1.5" y="1.5" width="20.994" height="17.247" rx="1.5" fill="none"/>
+        </g>
+        <g id="Rectangle_5474" data-name="Rectangle 5474" transform="translate(0 6.058)" fill="#fff" stroke="#bebebe" stroke-width="3">
+          <rect width="24.005" height="21.83" rx="4" stroke="none"/>
+          <rect x="1.5" y="1.5" width="21.005" height="18.83" rx="2.5" fill="none"/>
+        </g>
+        <g id="Group_8817" data-name="Group 8817" transform="translate(8.444 11.525)">
+          <g id="Group_7002" data-name="Group 7002" transform="translate(0 0)">
+            <g id="Group_7003" data-name="Group 7003">
+              <path id="Polygon_26" data-name="Polygon 26" d="M3.715,3.523a2,2,0,0,1,3.568,0L9.528,7.955a2,2,0,0,1-1.784,2.9H3.255a2,2,0,0,1-1.784-2.9Z" transform="translate(10.859) rotate(90)" fill="#bebebe"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

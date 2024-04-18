@@ -6,13 +6,15 @@ class Subject  extends Decodable<Subject>{
   int? countQuestions;
   int? teacherCountVideo;
   int? pagesCount;
+  String? image;
 
   Subject(
       {this.title,
       this.isActiveLearning,
       this.countQuestions,
       this.teacherCountVideo,
-      this.pagesCount});
+      this.pagesCount,
+      this.image});
 
   Subject.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -20,6 +22,7 @@ class Subject  extends Decodable<Subject>{
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];
     pagesCount = json['pages_count'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -29,6 +32,7 @@ class Subject  extends Decodable<Subject>{
     data['count_questions'] = this.countQuestions;
     data['teacher_count_video'] = this.teacherCountVideo;
     data['pages_count'] = this.pagesCount;
+    data['image'] = this.image;
     return data;
   }
   
@@ -39,6 +43,8 @@ class Subject  extends Decodable<Subject>{
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];
     pagesCount = json['pages_count'];
-    return this;
+    image = json['image'];
+
+  return this;
   }
 }

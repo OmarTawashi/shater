@@ -15,12 +15,12 @@ class LevelController extends BaseController {
 
 
 
-  publicUseCaseImp? _publicUseCaseImp;
+  PublicUseCaseImp? _publicUseCaseImp;
 
   @override
   void onInit() {
     super.onInit();
-    _publicUseCaseImp = publicUseCaseImp(PublicRepositoryRemote(ApiClient()));
+    _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
     getLevel();
   }
 

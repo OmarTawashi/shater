@@ -45,7 +45,7 @@ class AuthUseCaseImp extends AuthUseCase {
       int countryId,
       int cityId,
       String classId,
-      File imageFile
+      File? imageFile
       ) {
     return _authRepository.registerStudent(email, password,
         passwordConfirmation, schoolId, name, countryId, cityId, classId,imageFile);
@@ -62,7 +62,7 @@ class AuthUseCaseImp extends AuthUseCase {
       int countryId,
       int cityId,
       String classIDS,
-      File imageFile
+      File? imageFile
       ) {
     return _authRepository.registerTeacher(
         email,

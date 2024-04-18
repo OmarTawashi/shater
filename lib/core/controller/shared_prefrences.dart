@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shater/data/model/config_model.dart';
 import 'package:shater/data/model/user.dart';
 
+import '../../data/model/data_register_model.dart';
 import '../../util/shared_constant.dart';
 
 
@@ -59,4 +60,20 @@ class SharedPrefs {
   static Future<void> setStoreLogoBase64(String value) async {
     await sharedPreferences.setString(SharedConstant.storeLogoBase64, value);
   }
+
+  static Future<void> saveDataForUserRegistration(DataRegisterModel data) async {
+    await sharedPreferences.setString(
+        SharedConstant.dataForUserRegistrationKey, jsonEncode(data.toJson()));
+  }
+
+
+  static DataRegisterModel? get dataRegister {
+    final str = sharedPreferences.getString(SharedConstant.dataForUserRegistrationKey);
+    if (str == null || str.isEmpty) {
+      return null;
+    }
+    Map<String, dynamic> map = jsonDecode(str) as Map<String, dynamic>;
+    return DataRegisterModel().decode(map);
+  }
+
 }

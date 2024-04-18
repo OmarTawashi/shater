@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
@@ -16,8 +17,10 @@ import '../../../base/text_not_acounts.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
+
   final formKey = GlobalKey<FormState>();
   final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,37 +97,49 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(
                     height: Dimensions.paddingSize5,
                   ),
-                  Visibility(
-                    visible: controller.passwordController.text !=
-                        controller.againPasswordController.text,
-                    child: CustomText(
-                      text: 'please_enter_the_same_password',
-                      color: COLORS.secanderyColor,
-                      fontWeight: FontWeight.w400,
-                      fontSize: Dimensions.fontSize14,
-                    ),
+                  Row(
+                    children: [
+                      Visibility(
+                        visible: controller.passwordController.text !=
+                            controller.againPasswordController.text,
+                        child: CustomText(
+                          text: 'please_enter_the_same_password',
+                          color: COLORS.secanderyColor,
+                          fontWeight: FontWeight.w200,
+                          fontSize: Dimensions.fontSize12,
+                        ),
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.start,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   Row(
                     children: [
-                      Checkbox.adaptive(
-                        value: controller.isAgree,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        fillColor:
-                            const MaterialStatePropertyAll(Colors.transparent),
-                        activeColor: Colors.amber,
-                        side: const BorderSide(color: Colors.white, width: 1.5),
-                        checkColor: COLORS.secanderyColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                          side:
-                              const BorderSide(color: Colors.white, width: 1.5),
-                        ),
-                        onChanged: (value) {
-                          controller.changeAgree(value ?? false);
+                      GestureDetector(
+                        onTap: () {
+                          controller.changeAgree();
                         },
+                        child: Container(
+                            width: 25,
+                            height: 25,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                                borderRadius: BorderRadius.circular(4)),
+                            child: controller.isAgree
+                                ? Icon(
+                                    Icons.check,
+                                    size: 17,
+                                    color: Colors.white,
+                                    weight: 6,
+                                  )
+                                : SizedBox()),
+                      ),
+                      SizedBox(
+                        width: Dimensions.paddingSize5 + 1,
                       ),
                       TextNotAcount(
                         startText: 'ok_to',
