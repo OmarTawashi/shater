@@ -38,9 +38,9 @@ class TeacherDashBoardScreen extends StatelessWidget {
                 5,
                 (index) => navigationBarItem(
                     label: APPCONSTANT.teacherLabelTab[index].tr,
-                    activeAssets: ICONS.activeTab[index],
+                    activeAssets: ICONS.teacherActiveTab[index],
                     isSelected: (controller.selectedIndex == index),
-                    unActiveAssets: ICONS.unActiveTab[index]),
+                    unActiveAssets: ICONS.teacherUnActiveTab[index]),
               ),
             ),
           ),

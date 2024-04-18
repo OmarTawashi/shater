@@ -6,7 +6,7 @@ import 'package:shater/domain/usecase/public_usecase_imp.dart';
 
 
 class CityController extends BaseController {
-  publicUseCaseImp? _publicUseCaseImp;
+  PublicUseCaseImp? _publicUseCaseImp;
 
   List<PublicModel> _cities = [];
   List<PublicModel> get cities => _cities;
@@ -14,7 +14,7 @@ class CityController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    _publicUseCaseImp = publicUseCaseImp(PublicRepositoryRemote(ApiClient()));
+    _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
     getCities();
   }
 

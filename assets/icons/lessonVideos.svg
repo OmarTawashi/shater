@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44.064" height="43.31" viewBox="0 0 44.064 43.31">
+  <g id="Group_10463" data-name="Group 10463" transform="translate(-318.297 -820)">
+    <g id="Group_9376" data-name="Group 9376" transform="translate(318.297 820)">
+      <g id="Group_8819" data-name="Group 8819" transform="translate(0 0)">
+        <g id="Rectangle_5473" data-name="Rectangle 5473" transform="translate(7.394)" fill="#005699" stroke="#fff" stroke-width="3">
+          <rect width="36.67" height="30.943" rx="8" stroke="none"/>
+          <rect x="1.5" y="1.5" width="33.67" height="27.943" rx="6.5" fill="none"/>
+        </g>
+        <g id="Rectangle_5704" data-name="Rectangle 5704" transform="translate(0 12.366)" fill="#fff" stroke="#fff" stroke-width="3">
+          <rect width="36.67" height="30.943" rx="8" stroke="none"/>
+          <rect x="1.5" y="1.5" width="33.67" height="27.943" rx="6.5" fill="none"/>
+        </g>
+        <g id="Group_8817" data-name="Group 8817" transform="translate(12.591 20.356)">
+          <g id="Group_7002" data-name="Group 7002" transform="translate(0 0)">
+            <g id="Group_7003" data-name="Group 7003">
+              <path id="Polygon_26" data-name="Polygon 26" d="M6.62,3.523a2,2,0,0,1,3.568,0l5.15,10.168a2,2,0,0,1-1.784,2.9H3.255a2,2,0,0,1-1.784-2.9Z" transform="translate(16.595) rotate(90)" fill="#01508a"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

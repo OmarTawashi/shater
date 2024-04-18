@@ -1,4 +1,5 @@
 import 'package:shater/core/network/decodable.dart';
+import 'package:shater/data/model/class_model.dart';
 
 class CourseLearningModel extends Decodable<CourseLearningModel> {
   int? id;
@@ -15,6 +16,8 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
   int? isNotify;
   int? pagesCount;
 
+  Classes? classes;
+
   CourseLearningModel(
       {this.id,
       this.title,
@@ -28,7 +31,8 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
       this.teacherCountVideo,
       this.countTeacher,
       this.isNotify,
-      this.pagesCount});
+      this.pagesCount,
+      this.classes});
 
   CourseLearningModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -44,6 +48,10 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
     countTeacher = json['count_teacher'];
     isNotify = json['is_notify'];
     pagesCount = json['pages_count'];
+
+    if (json['classes'] != null) {
+      classes = new Classes.fromJson(json['classes']);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -61,6 +69,7 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
     data['count_teacher'] = this.countTeacher;
     data['is_notify'] = this.isNotify;
     data['pages_count'] = this.pagesCount;
+    data['classes'] = this.classes;
     return data;
   }
 
@@ -79,6 +88,9 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
     countTeacher = json['count_teacher'];
     isNotify = json['is_notify'];
     pagesCount = json['pages_count'];
+    if (json['classes'] != null) {
+      classes = new Classes.fromJson(json['classes']);
+    }
     return this;
   }
 }

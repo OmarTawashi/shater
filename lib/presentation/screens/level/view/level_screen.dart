@@ -8,6 +8,7 @@ import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/edit%20profile/widgets/custom_border_text.dart';
 import 'package:shater/presentation/screens/level/controller/level_controller.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
+import 'package:shater/presentation/screens/teacher/teacher%20dashborad/controller/teacher_dashboard_controller.dart';
 import 'package:shater/util/images.dart';
 
 import '../../../../../util/color.dart';
@@ -94,6 +95,9 @@ class LevelScreen extends StatelessWidget {
                         controller.changeIndex(index);
                         Get.find<DashBoardController>().changeLevel(
                             controller.dataRegisterModels?.level?[index]);
+                        Get.find<TeacherDashBoardController>().changeLevel(
+                            controller.dataRegisterModels?.level?[index]);
+
                       },
                       borderColor:
                           isSelected ? Colors.transparent : COLORS.strokeColor,

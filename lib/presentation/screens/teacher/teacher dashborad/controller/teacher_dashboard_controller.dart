@@ -9,6 +9,9 @@ import 'package:shater/presentation/screens/student/notification%20&%20contact/v
 import 'package:shater/presentation/screens/student/subject/view/subjects_screen.dart';
 
 import '../../../student/teacher/view/teacher_screen.dart';
+import '../../Explanation/teacher_explanation_screen.dart';
+import '../../My Explanation/teacher_my_lessons_screen.dart';
+import '../../practice/practice_screen.dart';
 
 class TeacherDashBoardController extends GetxController {
   User? _user = SharedPrefs.user;
@@ -20,11 +23,15 @@ class TeacherDashBoardController extends GetxController {
   PublicModel? get level => _level;
 
   List<Widget> screens = [
-    const SubjectsSCreen(),
-    const ExerciseScreen(),
-    const TeacherScreen(),
-    const FirstsScreen(),
-    const NotificationContactScreen()
+    const TeacherMyLessonsScreen(),
+    const PracticeScreen(),
+    const TeacherExplanationScreen(),
+    const TeacherMyLessonsScreen(),
+    const TeacherMyLessonsScreen(),
+    // const PracticeScreen(),
+    // const TeacherScreen(),
+    // const FirstsScreen(),
+    // const NotificationContactScreen()
   ];
 
   void changeIndex(int index) {

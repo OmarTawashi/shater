@@ -8,6 +8,7 @@ import 'package:shater/util/api_constant.dart';
 
 import '../../core/network/api_client.dart';
 import '../../core/network/api_response.dart';
+import '../model/course_learning_model.dart';
 
 class DashBoardRepositoryRemote extends DashBoardRepository {
   final ApiClient _apiClient;
@@ -23,6 +24,58 @@ class DashBoardRepositoryRemote extends DashBoardRepository {
         requestType: RequestType.get,
         create: () => APIResponse<Subject>(
           create: () => Subject(),
+        ),
+        onSuccess: (response) {
+          final data = response.data?.items;
+          if (data != null) {
+            completer.complete(right(data));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, List<CourseLearningModel>>?> fetchTeacherCoursesLesson(int level) async {
+    final completer = Completer<Either<ApiException, List<CourseLearningModel>>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.getTeacherCoursesLesson + "${level}" ,
+        requestType: RequestType.get,
+        create: () => APIResponse<CourseLearningModel>(
+          create: () => CourseLearningModel(),
+        ),
+        onSuccess: (response) {
+          final data = response.data?.items;
+          if (data != null) {
+            completer.complete(right(data));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, List<CourseLearningModel>>?> teacherCoursesList(int level) async {
+    final completer = Completer<Either<ApiException, List<CourseLearningModel>>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.teacherCoursesList + "${level}" ,
+        requestType: RequestType.get,
+        create: () => APIResponse<CourseLearningModel>(
+          create: () => CourseLearningModel(),
         ),
         onSuccess: (response) {
           final data = response.data?.items;
