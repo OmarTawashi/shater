@@ -51,7 +51,7 @@ class PerfectAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
-        actions: [SemesterTypeWidget(semester: controller.level?.title)],
+        actions: [SemesterTypeWidget(semester: controller.level?.title ?? 'sdsd')],
       ),
     );
   }

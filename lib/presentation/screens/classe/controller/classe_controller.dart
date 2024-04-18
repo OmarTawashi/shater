@@ -10,7 +10,7 @@ import '../../../../core/network/api_client.dart';
 import '../../../../data/repository/public_repository_remote.dart';
 
 class ClasseController extends BaseController {
-  publicUseCaseImp? _publicUseCaseImp;
+  PublicUseCaseImp? _publicUseCaseImp;
 
   DataRegisterModel? _dataRegisterModels;
   DataRegisterModel? get dataRegisterModels => _dataRegisterModels;
@@ -21,7 +21,7 @@ class ClasseController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    _publicUseCaseImp = publicUseCaseImp(PublicRepositoryRemote(ApiClient()));
+    _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
     getFunUserType(Get.find<AuthController>().userType);
   }
 

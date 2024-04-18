@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Group_9489" data-name="Group 9489" transform="translate(-140 -822)">
+    <g id="Group_9490" data-name="Group 9490">
+      <g id="Group_9128" data-name="Group 9128" transform="translate(31)">
+        <g id="Group_9127" data-name="Group 9127" transform="translate(-251)">
+          <g id="Group_9002" data-name="Group 9002" transform="translate(0.094 0.094)">
+            <rect id="Rectangle_4972" data-name="Rectangle 4972" width="28" height="28" rx="5" transform="translate(359.906 821.906)" fill="#005699"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_9489-2" data-name="Group 9489">
+        <g id="Rectangle_5624" data-name="Rectangle 5624" transform="translate(142.5 833.842)" fill="#005699" stroke="#fff" stroke-width="2">
+          <rect width="14.964" height="12.376" rx="5" stroke="none"/>
+          <rect x="1" y="1" width="12.964" height="10.376" rx="4" fill="none"/>
+        </g>
+        <g id="Rectangle_5625" data-name="Rectangle 5625" transform="translate(146.071 825)" fill="none" stroke="#fff" stroke-width="2">
+          <rect width="7.146" height="7.146" rx="3.573" stroke="none"/>
+          <rect x="1" y="1" width="5.146" height="5.146" rx="2.573" fill="none"/>
+        </g>
+        <g id="Rectangle_5624-2" data-name="Rectangle 5624" transform="translate(150.538 833.712)" fill="#fff" stroke="#fff" stroke-width="2">
+          <rect width="14.964" height="12.376" rx="5" stroke="none"/>
+          <rect x="1" y="1" width="12.964" height="10.376" rx="4" fill="none"/>
+        </g>
+        <g id="Rectangle_5625-2" data-name="Rectangle 5625" transform="translate(154.109 824.87)" fill="none" stroke="#fff" stroke-width="2">
+          <rect width="7.146" height="7.146" rx="3.573" stroke="none"/>
+          <rect x="1" y="1" width="5.146" height="5.146" rx="2.573" fill="none"/>
+        </g>
+        <g id="Group_9818" data-name="Group 9818">
+          <rect id="Rectangle_5635" data-name="Rectangle 5635" width="8.132" height="1.386" rx="0.693" transform="translate(158.692 835.815) rotate(90)" fill="#005699"/>
+          <rect id="Rectangle_5635-2" data-name="Rectangle 5635" width="8.314" height="1.386" rx="0.693" transform="translate(162.157 840.574) rotate(180)" fill="#005699"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

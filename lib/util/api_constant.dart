@@ -44,5 +44,8 @@ class ApiConstant {
   static String getDataForUserRegistration =
       '/api/$version/getDataForUserRegistration';
 
+  static String getTeacherCoursesLesson = '/api/$version/teacher/lesson/index?level=';
+  static String teacherCoursesList = '/api/$version/teacher/lesson/index2?level=';
+
   static const String topic = 'all_zone_customer';
 }

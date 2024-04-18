@@ -55,6 +55,25 @@ class ICONS {
   static const String exerciseTop = 'assets/icons/exerciseTop.svg';
   static const String firstsTop = 'assets/icons/firstsTop.svg';
   static const String book = 'assets/images/book.png';
+  static const String lessonVideos = 'assets/icons/lessonVideos.svg';
+
+  static const String myLessonsTabActive = 'assets/icons/myLessonsTabActive.svg';
+  static const String myLessonsTabUnActive = 'assets/icons/myLessonsTabUnActive.svg';
+
+  static const String practiceTabActive = 'assets/icons/practiceTabActive.svg';
+  static const String practiceTabUnActive = 'assets/icons/practiceTabUnActive.svg';
+
+  static const String explanationTabActive = 'assets/icons/explanationTabActive.svg';
+  static const String explanationTabUnActive = 'assets/icons/explanationTabUnActive.svg';
+
+  static const String studentsSubscriptionTabActive = 'assets/icons/studentsSubscriptionTabActive.svg';
+  static const String studentsSubscriptionTabUnActive = 'assets/icons/studentsSubscriptionTabUnActive.svg';
+
+  static const String practiceTop = 'assets/icons/practiceTop.svg';
+  static const String explanationTop = 'assets/icons/explanationTop.svg';
+
+
+
   static const List<String> unActiveTab = [
     subjectUnActive,
     exerciseTab,
@@ -68,6 +87,21 @@ class ICONS {
     teacherActive,
     firstsTapActive,
     contactActive,
+  ];
+
+  static const List<String> teacherActiveTab = [
+    myLessonsTabActive,
+    practiceTabActive,
+    explanationTabActive,
+    studentsSubscriptionTabActive,
+    contactActive,
+  ];
+  static const List<String> teacherUnActiveTab = [
+    myLessonsTabUnActive,
+    practiceTabUnActive,
+    explanationTabUnActive,
+    studentsSubscriptionTabUnActive,
+    contactUnActive,
   ];
 }
 

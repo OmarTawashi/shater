@@ -8,10 +8,10 @@ import 'package:shater/data/model/public_model.dart';
 
 import '../../data/model/school_model.dart';
 
-class publicUseCaseImp extends PublicUseCase {
+class PublicUseCaseImp extends PublicUseCase {
   final PublicRepository _publicRepository;
 
-  publicUseCaseImp(this._publicRepository);
+  PublicUseCaseImp(this._publicRepository);
 
   @override
   Future<Either<ApiException, List<PublicModel>>?> fetchCity(int countryId) {

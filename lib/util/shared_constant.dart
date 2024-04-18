@@ -5,5 +5,6 @@ class SharedConstant{
   // static const imageStoreKey = 'store_image_key';
   static const config = 'config';
   static const storeLogoBase64 = 'storeLogoBase64';
+  static const dataForUserRegistrationKey = 'data_for_user_registration_key';
 
 }
