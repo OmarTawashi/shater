@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/student/base%20questions/base/congrlate/controller/congrlate_controller.dart';
+import 'package:shater/presentation/screens/student/base%20questions/congrlate/controller/congrlate_controller.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';

@@ -22,15 +22,19 @@ class MultiChoiceText extends StatelessWidget {
             mainAxisSpacing: 16,
           ),
           itemBuilder: (context, index) {
+            // final typeAns =
+            //     TypingAnswer(input: controller?.questionModel?.answer?[index]);
+            // final isSelect = controller?.selectAnswer.contains(typeAns);
             final isSelect = controller?.selectAnswer
                 .contains(controller?.questionModel?.answer?[index]);
+
             return GestureDetector(
               onTap: () {
                 controller
                     ?.setAnswer(controller?.questionModel?.answer?[index]);
               },
               child: Container(
-                padding: EdgeInsets.all(Dimensions.paddingSize16),
+                  padding: EdgeInsets.all(Dimensions.paddingSize16),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(13),
                       color: isSelect == true

@@ -41,7 +41,9 @@ class BaseController extends GetxController {
         updateViewType(ViewType.noInternet);
         break;
       case 401:
-        Get.offAllNamed(Routes.getBaseLoginScreen());
+        if (Get.currentRoute != Routes.getBaseLoginScreen()) {
+          Get.offAllNamed(Routes.getBaseLoginScreen());
+        }
         break;
       case 403:
         return const Text('UnauthorisedException');

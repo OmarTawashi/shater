@@ -33,6 +33,7 @@ class MultiChoiceImage extends StatelessWidget {
                 // controller?.setSelectIndex(index);
               },
               child: Container(
+
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(13),

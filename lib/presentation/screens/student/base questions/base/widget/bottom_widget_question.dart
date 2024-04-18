@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,8 +34,7 @@ class BottomWidgetQuestions extends StatelessWidget {
                         child: Icon(
                           Icons.insert_comment_outlined,
                           size: 30,
-                          color:
-                              controller.questionStatus.getBgButtColor(),
+                          color: controller.questionStatus.getBgButtColor(),
                         ),
                       )
                     : SizedBox(),
@@ -51,8 +49,8 @@ class BottomWidgetQuestions extends StatelessWidget {
                 Expanded(
                   child: CupertinoButton(
                     child: CustomText(
-                      text:
-                          controller.questionStatus.getButtonTextStatus(),
+                      text: controller.questionStatus
+                          .getButtonTextStatus(controller: controller),
                       fontSize: Dimensions.fontSize16,
                       color: Colors.white,
                     ),
