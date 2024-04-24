@@ -104,7 +104,9 @@ class QuestionView extends StatelessWidget {
           controller: controller,
         );
       case QType.MatchImage:
-        return MatcherQuizScreen();
+        return MatchImagew(
+          controller: controller,
+        );
       default:
         return SizedBox();
     }

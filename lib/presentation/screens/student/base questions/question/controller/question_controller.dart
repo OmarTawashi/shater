@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
+import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 import 'package:shater/routes/app_routes.dart';
@@ -38,8 +41,14 @@ class QuestionController extends GetxController {
   int _questionIndex = 0;
   int get questionIndex => _questionIndex;
 
+  int _arithmiticIndex = 0;
+  int get arithmiticIndex => _arithmiticIndex;
+
   QuestionType? _questionType;
   QuestionType? get questionType => _questionType;
+
+  ArithmeticTextModel? _arithmeticTextModel;
+  ArithmeticTextModel? get arithmeticTextModel => _arithmeticTextModel;
 
   List<QuestionModel>? _questionsGet = [];
   List<QuestionModel>? get questionsGet => _questionsGet;
@@ -78,6 +87,16 @@ class QuestionController extends GetxController {
   void changeAnswer(bool isAns) {
     _isAnswer = isAns;
     update();
+  }
+
+  void getObjetArithmitic() {
+    final str = _questionModel?.answer?.first;
+    Map<String, dynamic> obj = jsonDecode(str);
+    _arithmeticTextModel = ArithmeticTextModel.fromJson(obj);
+  }
+
+  void setIndexArithmitic(int index) {
+    _arithmiticIndex = index;
   }
 
   void setInputControllerComperhensiveImage(int index) {

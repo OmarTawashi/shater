@@ -40,7 +40,7 @@ class ComprehensiveImage extends StatelessWidget {
                       width: 14,
                       height: 27,
                       child: CustomText(
-                        text: controller!.questionModel!.answer![index]!,
+                        text: controller?.questionModel?.answer?[index],
                         fontSize: Dimensions.fontSize24,
                         color: COLORS.secanderyColor,
                         fontWeight: FontWeight.bold,
