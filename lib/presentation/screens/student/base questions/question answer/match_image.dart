@@ -155,10 +155,10 @@ class MatchImagew extends StatelessWidget {
               ],
             ),
           ),
-          CustomPaint(
-            size: Size.infinite,
-            painter: LinePainter(),
-          ),
+          // CustomPaint(
+          //   size: Size.infinite,
+          //   painter: LinePainter(),
+          // ),
         ],
       ),
     );

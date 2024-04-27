@@ -18,6 +18,17 @@ class QuestionController extends GetxController {
   List<QuestionPageModel> _questionsPages = [];
   List<QuestionPageModel> get questionsPages => _questionsPages;
 
+  // Define observables for the lists
+  var oldList = ['الاول', 'الثاني', "الثالث", "الرابع"];
+  var newList = [];
+
+  void dragItem(int oldIndex, int newIndex) {
+    var item = oldList[oldIndex];
+    oldList.removeAt(oldIndex);
+    newList.insert(newIndex, item);
+    update();
+  }
+
   FailureEnum _failureTap = FailureEnum.stable;
   FailureEnum get failureTap => _failureTap;
 

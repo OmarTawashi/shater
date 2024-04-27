@@ -12,10 +12,10 @@ import 'package:shater/presentation/screens/student/base%20questions/failure%20q
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/arithmetic_text.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/complete_value.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/comprehensive_image.dart';
-import 'package:shater/presentation/screens/student/base%20questions/question%20answer/match_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_text.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/multi_choice_virtical.dart';
+import 'package:shater/presentation/screens/student/base%20questions/question%20answer/order_text.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question%20answer/true_or_false_image.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/base%20questions/question/widget/header_question_section.dart';
@@ -104,7 +104,7 @@ class QuestionView extends StatelessWidget {
           controller: controller,
         );
       case QType.MatchImage:
-        return MatchImagew(
+        return OrderText(
           controller: controller,
         );
       default:
