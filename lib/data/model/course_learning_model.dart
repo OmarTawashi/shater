@@ -2,6 +2,7 @@ import 'package:shater/core/network/decodable.dart';
 import 'package:shater/data/model/class_model.dart';
 
 class CourseLearningModel extends Decodable<CourseLearningModel> {
+
   int? id;
   String? title;
   String? image;

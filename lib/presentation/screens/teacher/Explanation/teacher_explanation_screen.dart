@@ -6,7 +6,7 @@ import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart';
-import 'package:shater/presentation/screens/teacher/My%20Explanation/view/teacher_item_subject.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_item_subject.dart';
 import 'package:shater/util/images.dart';
 
 
@@ -28,7 +28,7 @@ class TeacherExplanationScreen extends StatelessWidget {
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
-            controller.fetchTeacherCoursesLesson();
+            controller.teacherCoursesList();
           },
           child: CustomScrollView(
             slivers: [
@@ -65,7 +65,7 @@ class TeacherExplanationScreen extends StatelessWidget {
                     image: ICONS.decriptionTop),
                 successWidget: SubjectList(controller),
                 retry: () {
-                  controller.fetchTeacherCoursesLesson();
+                  controller.teacherCoursesList();
                 },
               ),
               SliverToBoxAdapter(

@@ -30,7 +30,7 @@ class CachedNetworkImageWidget extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       errorWidget: (context, url, error) => Image.asset(
-        IMAGES.loadingGif,
+        IMAGES.logoLuncher,
         width: 90,
         height: 90,
         fit: BoxFit.cover,

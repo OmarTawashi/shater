@@ -38,25 +38,23 @@ class TeacherItemSubject extends StatelessWidget {
             children: [
               Container(
                 clipBehavior: Clip.hardEdge,
+                height: 107,
+                width: 81,
+                // padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 3,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: Container(
+                    borderRadius: BorderRadius.circular(7),
+                    color: Colors.white),
+                child:Container(
                   clipBehavior: Clip.hardEdge,
-                  height: 100,
-                  width: 100,
-                  padding: const EdgeInsets.all(2),
+                  height: 107,
+                  width: 81,
+                  padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
+                      borderRadius: BorderRadius.circular(7)),
                   child: CachedNetworkImageWidget(
-                    imageUrl: imageUrl ?? '',
-                    fit: BoxFit.cover,
-                  ),
+                  imageUrl: imageUrl ?? '',
+                  fit: BoxFit.cover,
+                ),
                 ),
               ),
               const SizedBox(
@@ -74,19 +72,16 @@ class TeacherItemSubject extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(
-                      height: Dimensions.paddingSize20,
+                      height: Dimensions.paddingSize10,
                     ),
                     Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: Dimensions.paddingSize12,
                             vertical: Dimensions.paddingSize8),
-                        decoration: BoxDecoration(
-                            color: COLORS.primaryColor,
-                            borderRadius: BorderRadius.circular(16)),
                         child: CustomText(
                           text: '$teacherCountVideo' '\t' + 'درس'.tr,
-                          color: COLORS.whiteColor,
-                          fontSize: Dimensions.fontSize12,
+                          color: COLORS.subTitleColor,
+                          fontSize: Dimensions.fontSize16,
                           fontWeight: FontWeight.bold,
                         ))
                     ,
@@ -96,18 +91,28 @@ class TeacherItemSubject extends StatelessWidget {
               GestureDetector(
                 onTap: onTap,
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                  padding: const EdgeInsets.fromLTRB(14, 18, 24, 18),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(32),
-                      color: Colors.white),
+                      color: COLORS.primaryColor),
                   child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      CustomText(
+                        text: 'أضف درس',
+                        color: COLORS.whiteColor,
+                        fontSize: Dimensions.fontSize16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
                       Icon(
                         Icons.arrow_forward_ios_sharp,
-                        color: COLORS.primaryColor,
-                        size: 16,
+                        color: COLORS.whiteColor,
+                        size: 20,
+                        weight: 40,
                       )
                     ],
                   ),

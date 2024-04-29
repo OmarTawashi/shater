@@ -31,49 +31,18 @@ class TeacherExplanationController  extends BaseController{
         DashBaoardUseCaseImp(DashBoardRepositoryRemote(ApiClient()));
     _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
 
-    getClassesStudent();
-    fetchTeacherCoursesLesson();
+    teacherCoursesList();
   }
+
   Classes? getClassForItem(int? id){
     return this.classes?.firstWhere((element) => element.id == '$id');
   }
 
-  void getClassesStudent() async {
-    final dashController = Get.find<TeacherDashBoardController>();
-    final cityId = dashController.user?.city?.id;
-    final schoolId = dashController.user?.school?.id;
-    final dataRegister = SharedPrefs.dataRegister;
-
-   if(dataRegister?.country?.first != null){
-     _classes = dataRegister?.country?.first.classes ?? [];
-     this.populateData();
-     update();
-   }
-   else{
-     await _publicUseCaseImp
-         ?.fetchClassStudent(cityId ?? -1, schoolId ?? -1)
-         .then((value) {
-       value?.fold((l) {
-         updateViewType(ViewType.error);
-       }, (r) {
-         if (r == null) {
-           updateViewType(ViewType.empty);
-         } else {
-           updateViewType(ViewType.success);
-           _classes = r.country?.first.classes ?? [];
-           this.populateData();
-         }
-       });
-
-       update();
-     });
-   }
-  }
-  void fetchTeacherCoursesLesson() async {
+  void teacherCoursesList() async {
     final dashController = Get.find<TeacherDashBoardController>();
 
     updateViewType(ViewType.loading);
-    await _dashBaoardUseCaseImp?.fetchTeacherCoursesLesson(dashController.level?.id ?? -1).then((value) {
+    await _dashBaoardUseCaseImp?.teacherCoursesList(dashController.level?.id ?? -1).then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (s) {
@@ -82,18 +51,10 @@ class TeacherExplanationController  extends BaseController{
         } else {
           updateViewType(ViewType.success);
           _subjects = s;
-          this.populateData();
         }
       });
       update();
     });
   }
-  void populateData(){
-    var isEmpty = (this.classes ?? []).isEmpty;
-    _subjects.forEach((element) {
-      if(!isEmpty){
-        element.classes = this.getClassForItem(element.classId);
-      }
-    });
-  }
+
 }
