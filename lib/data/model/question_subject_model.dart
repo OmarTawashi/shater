@@ -92,7 +92,7 @@ class QuestionModel {
   String? updatedAt;
   int? isTemplate;
   int? isActive;
-   TypingAnswer? typingAnswer;
+  TypingAnswer? typingAnswer;
   List<dynamic>? details;
   String? questionMedia;
   int? teacherId;

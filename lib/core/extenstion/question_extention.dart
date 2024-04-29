@@ -140,3 +140,23 @@ extension QuestionComprehensiveImageExt on String {
     }
   }
 }
+
+extension QuestionArithmicitcTextExt on String {
+  Widget getQuestionArithmicitcTextWidget({
+    required Widget fraction,
+    required Widget numberWithFraction,
+    required Widget other,
+    required Widget stable,
+  }) {
+    switch (this) {
+      case 'fraction':
+        return fraction;
+      case 'numberWithFraction':
+        return numberWithFraction;
+      case 'other':
+        return other;
+      default:
+        return stable;
+    }
+  }
+}
