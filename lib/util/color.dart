@@ -15,7 +15,11 @@ class COLORS {
   static const Color dividerColor = Color.fromRGBO(239, 239, 239, 1);
   static const Color inputBackGround = Color(0xFFFCFCFC);
   static const Color errorColor = Color.fromARGB(255, 242, 81, 78);
+  static const Color subTitleColor = Color.fromRGBO(198, 235, 245, 1);
 
   static const grayFont = Color(0xff6A6D7C);
   static const whiteColor = Color(0xffFFFFFF);
+  static const textLightColor = Color.fromRGBO(205, 223, 235, 1);
+
+
 }

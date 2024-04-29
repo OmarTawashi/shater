@@ -71,6 +71,7 @@ class ICONS {
 
   static const String practiceTop = 'assets/icons/practiceTop.svg';
   static const String explanationTop = 'assets/icons/explanationTop.svg';
+  static const String subscribersTop = 'assets/icons/subscribersTop.svg';
 
 
 
