@@ -1,5 +1,3 @@
-
-
 abstract class RoutesName {
   static const spalshScreen = '/';
   static const dashBoardScreen = '/dash-board-screen';
@@ -7,6 +5,7 @@ abstract class RoutesName {
   static const profileScreen = '/profile-screen';
   static const baseLoginScreen = '/base-login-screen';
   static const editProfileScreen = '/edit-profile-screen';
+  static const resultSubjectScreen = '/result-subject-screen';
   static const signUpScreen = '/sign-up-screen';
   static const signInScreen = '/sign-in-screen';
   static const firstsScreen = '/firsts-screen';
@@ -32,9 +31,6 @@ abstract class RoutesName {
   static const failureQuestionScrren = '/failure-question-screen';
 
   static const teacherDashBoardScreen = '/teacher-dash-board-screen';
-
-
-
 }
 
 abstract class Routes {
@@ -42,6 +38,7 @@ abstract class Routes {
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;
+  static String getResultSubjectScreen() => RoutesName.resultSubjectScreen;
   static String getCongrlateScreen() => RoutesName.congrlateScreen;
   static String getBaseLoginScreen() => RoutesName.baseLoginScreen;
   static String getSignInScreen() => RoutesName.signInScreen;
@@ -68,6 +65,6 @@ abstract class Routes {
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
   static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
 
-  static String getTeacherDashBoardScreen() => RoutesName.teacherDashBoardScreen;
-
+  static String getTeacherDashBoardScreen() =>
+      RoutesName.teacherDashBoardScreen;
 }

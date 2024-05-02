@@ -40,6 +40,7 @@ import 'package:shater/presentation/screens/student/notification%20&%20contact/n
 import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
+import 'package:shater/presentation/screens/student/result%20subject/view/result_subject_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
@@ -76,6 +77,10 @@ class AppPages {
         name: RoutesName.editProfileScreen,
         page: () => const EditProfileScreen(),
         binding: EditProfileBinding()),
+    GetPage(
+      name: RoutesName.resultSubjectScreen,
+      page: () => const ResultSubjectScreen(),
+    ),
     GetPage(
       name: RoutesName.baseLoginScreen,
       page: () => const BaseLoginScreen(),

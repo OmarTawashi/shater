@@ -28,6 +28,33 @@ class QuestionController extends GetxController {
     newList.insert(newIndex, item);
     update();
   }
+  // void addNewItem(int index) {
+  //   // Check if the index is within bounds
+  //   if (index >= 0 && index < oldList.length) {
+  //     newList.add(oldList[index]);
+  //     // Remove the item from oldList
+  //     oldList.removeAt(index);
+  //   }
+  //   update();
+  // }
+
+  // void removeNewItem(int index) {
+  //   // Check if the index is within bounds
+  //   if (index >= 0 && index < newList.length) {
+  //     // Remove the item from newList
+  //     newList.removeAt(index);
+  //   }
+  //   update();
+  // }
+
+  void removeOldItem(int index) {
+    // Check if the index is within bounds
+    if (index >= 0 && index < oldList.length) {
+      // Remove the item from oldList
+      oldList.removeAt(index);
+    }
+    update();
+  }
 
   FailureEnum _failureTap = FailureEnum.stable;
   FailureEnum get failureTap => _failureTap;

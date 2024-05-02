@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/auth/base%20login/widgets/rate_app.dart';
@@ -76,8 +77,13 @@ class ProfileScreen extends StatelessWidget {
                                 fontSize: Dimensions.fontSize15 + 1.sp,
                               ),
                             ),
-                            ImageUser(
-                              imageUrl: controller.user?.image ?? '',
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(Routes.getResultSubjectScreen());
+                              },
+                              child: ImageUser(
+                                imageUrl: controller.user?.image ?? '',
+                              ),
                             ),
                             TextNumber(
                               text: 'points',
@@ -89,8 +95,9 @@ class ProfileScreen extends StatelessWidget {
                                     width: Dimensions.paddingSize5,
                                   ),
                                   CustomText(
-                                    text: controller.user?.rateStar.toString() ??
-                                        "",
+                                    text:
+                                        controller.user?.rateStar.toString() ??
+                                            "",
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     fontSize: Dimensions.fontSize13 + 1.sp,
