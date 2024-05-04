@@ -28,6 +28,8 @@ class ApiConstant {
       '/api/$version/student/educational/videos/get-teachers-for-subject';
 
   static String notifications = '/api/$version/student/notifications/list';
+  static String teacherAsRead =
+      '/api/$version/student/notifications/mark-as-read';
   static String contactList = '/api/$version/student/contacts/list';
   static String contactStore = '/api/$version/student/contacts/store';
   static String replayContact = '/api/$version/student/contacts';
@@ -44,8 +46,12 @@ class ApiConstant {
   static String getDataForUserRegistration =
       '/api/$version/getDataForUserRegistration';
 
-  static String getTeacherCoursesLesson = '/api/$version/teacher/lesson/index?level=';
-  static String teacherCoursesList = '/api/$version/teacher/lesson/index2?level=';
+  static String getTeacherCoursesLesson =
+      '/api/$version/teacher/lesson/index?level=';
+  static String teacherCoursesList =
+      '/api/$version/teacher/lesson/index2?level=';
+  static String getVideoOfSubject =
+      '/api/v2/student/educational/videos/get-videos-for-subject';
 
   static const String topic = 'all_zone_customer';
 }

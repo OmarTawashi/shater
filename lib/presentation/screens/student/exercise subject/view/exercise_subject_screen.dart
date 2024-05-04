@@ -48,7 +48,7 @@ class ExerciseSubjectScreen extends StatelessWidget {
             crossAxisCount: 3,
             childAspectRatio: 0.5,
             mainAxisSpacing: Dimensions.paddingSize16,
-            mainAxisExtent: 190,
+            mainAxisExtent: 150,
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {

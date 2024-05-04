@@ -41,10 +41,14 @@ import 'package:shater/presentation/screens/student/notification%20&%20contact/v
 import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
 import 'package:shater/presentation/screens/student/result%20subject/view/result_subject_screen.dart';
+import 'package:shater/presentation/screens/student/subcription%20teacher%20details/bindings/subcription_teacher_details_binding.dart';
+import 'package:shater/presentation/screens/student/subcription%20teacher%20details/view/subcription_teacher_details_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
+import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
+import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
 import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
@@ -66,17 +70,25 @@ class AppPages {
         page: () => const DashBoardScreen(),
         binding: DashBoardBindings()),
     GetPage(
-        name: RoutesName.teacherDashBoardScreen,
-        page: () => const TeacherDashBoardScreen(),
-        binding: TeacherDashBoardBindings()),
-    // GetPage(
-    //   name: RoutesName.TeacherScreen,
-    //   page: () => const TeacherScreen(),
-    // ),
+      name: RoutesName.teacherDashBoardScreen,
+      page: () => const TeacherDashBoardScreen(),
+      binding: TeacherDashBoardBindings(),
+    ),
     GetPage(
-        name: RoutesName.editProfileScreen,
-        page: () => const EditProfileScreen(),
-        binding: EditProfileBinding()),
+      name: RoutesName.subcriptionTeacherDetailsScreen,
+      page: () => const SubcriptionTeacherDetailsScreen(),
+      binding: SubcriptionTeacherDetailsBinding(),
+    ),
+    GetPage(
+      name: RoutesName.teacherDetailsScreen,
+      page: () => const TeacherDetailsScreen(),
+      binding: TeacherDetailsBinding(),
+    ),
+    GetPage(
+      name: RoutesName.editProfileScreen,
+      page: () => const EditProfileScreen(),
+      binding: EditProfileBinding(),
+    ),
     GetPage(
       name: RoutesName.resultSubjectScreen,
       page: () => const ResultSubjectScreen(),
@@ -149,7 +161,6 @@ class AppPages {
       name: RoutesName.contactScreen,
       page: () => const NotificationContactScreen(),
     ),
-
     GetPage(
         name: RoutesName.baseQuestionScreen,
         page: () => const BaseQuestionScreen(),

@@ -13,10 +13,12 @@ class ItemTeacher extends StatelessWidget {
   final String? name;
   final String? subject;
   final String? teacherStar;
+  final Function()? onTap;
   const ItemTeacher(
       {super.key,
       this.imageUrl,
       this.name,
+      this.onTap,
       this.subject,
       this.teacherStar,
       this.imageSubjectUrl});
@@ -111,6 +113,7 @@ class ItemTeacher extends StatelessWidget {
             ),
           ),
           GestureDetector(
+            onTap: onTap,
             child: Container(
               padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
               decoration: BoxDecoration(

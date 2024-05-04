@@ -38,7 +38,7 @@ class TeacherModel extends Decodable<TeacherModel> {
   int? isFav;
   int? teacherRate;
   int? unreadNotification;
-  List<School>? school;
+  School? school;
   String? story;
 
   TeacherModel(
@@ -119,10 +119,9 @@ class TeacherModel extends Decodable<TeacherModel> {
     teacherRate = json['teacher_rate'];
     unreadNotification = json['unread_notification'];
     if (json['school'] != null) {
-      school = <School>[];
-      json['school'].forEach((v) {
-        school!.add(new School.fromJson(v));
-      });
+      if (json['school'] is Map) {
+        school = School.fromJson(json['school']);
+      }
     }
     story = json['story'];
   }
@@ -165,16 +164,16 @@ class TeacherModel extends Decodable<TeacherModel> {
     data['is_fav'] = this.isFav;
     data['teacher_rate'] = this.teacherRate;
     data['unread_notification'] = this.unreadNotification;
-    if (this.school != null) {
-      data['school'] = this.school!.map((v) => v.toJson()).toList();
-    }
+    // if (this.school != null) {
+    //   data['school'] = this.school!.map((v) => v.toJson()).toList();
+    // }
     data['story'] = this.story;
     return data;
   }
-  
+
   @override
   TeacherModel decode(json) {
-     id = json['id'];
+    id = json['id'];
     name = json['name'];
     email = json['email'];
     classId = json['class_id'];
@@ -211,10 +210,9 @@ class TeacherModel extends Decodable<TeacherModel> {
     teacherRate = json['teacher_rate'];
     unreadNotification = json['unread_notification'];
     if (json['school'] != null) {
-      school = <School>[];
-      json['school'].forEach((v) {
-        school?.add(new School.fromJson(v));
-      });
+      if (json['school'] is Map) {
+        school = School.fromJson(json['school']);
+      }
     }
     story = json['story'];
     return this;

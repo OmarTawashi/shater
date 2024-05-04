@@ -38,7 +38,7 @@ class TeacherScreen extends StatelessWidget {
                       ),
                       child: GetBuilder<SubjectController>(
                         builder: (subjetController) {
-                          controller.iniGetSubject(subjetController);
+                          controller.iniGetSubject();
                           return ListView.separated(
                               physics: const BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
@@ -49,7 +49,6 @@ class TeacherScreen extends StatelessWidget {
                                   onTap: () {
                                     controller.changeTapIndex(index);
                                     controller.getCourseSelected(index);
-                                    print(controller.courseSelected?.id);
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
@@ -61,16 +60,16 @@ class TeacherScreen extends StatelessWidget {
                                             color: isSelected
                                                 ? Colors.transparent
                                                 : COLORS.primaryColor
-                                                .withOpacity(0.4)),
+                                                    .withOpacity(0.4)),
                                         color: isSelected
                                             ? COLORS.primaryColor
                                             : Colors.transparent,
                                         borderRadius:
-                                        BorderRadius.circular(32)),
+                                            BorderRadius.circular(32)),
                                     child: Center(
                                       child: CustomText(
                                           text:
-                                          controller.subjects[index] ?? '',
+                                              controller.subjects[index] ?? '',
                                           color: Colors.white,
                                           fontSize: Dimensions.fontSize14,
                                           fontWeight: FontWeight.bold),
@@ -79,9 +78,9 @@ class TeacherScreen extends StatelessWidget {
                                 );
                               },
                               separatorBuilder: (context, index) =>
-                              const SizedBox(
-                                width: Dimensions.paddingSize5,
-                              ),
+                                  const SizedBox(
+                                    width: Dimensions.paddingSize5,
+                                  ),
                               itemCount: controller.subjects.length);
                         },
                       ),
@@ -102,7 +101,7 @@ class TeacherScreen extends StatelessWidget {
                     text: 'soon'.tr,
                     caption: 'find_account_teacher'.tr,
                     image: ICONS.decriptionTop),
-                successWidget: TeacherList(controller:  controller),
+                successWidget: TeacherList(controller: controller),
                 retry: () {
                   controller.getTeachers();
                 },
@@ -118,6 +117,4 @@ class TeacherScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }
