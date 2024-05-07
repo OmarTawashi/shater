@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/date_converter.dart';
@@ -32,7 +33,11 @@ class ContactMeScreen extends StatelessWidget {
             margin: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: FormWriteMessage(
-              controller: controller,
+              hintText: 'write_me',
+              controller: controller.messageController,
+              onTap: () {
+                controller.addMessage();
+              },
             )),
       ),
       body: GetBuilder<ContactMeController>(
@@ -87,8 +92,18 @@ class ContactMeScreen extends StatelessWidget {
 }
 
 class FormWriteMessage extends StatelessWidget {
-  final ContactMeController? controller;
-  const FormWriteMessage({super.key, this.controller});
+  final Function()? onTap;
+  final String? hintText;
+  final Color fontColor;
+  final bool isLoading;
+  final TextEditingController? controller;
+  const FormWriteMessage(
+      {super.key,
+      this.onTap,
+      this.isLoading = false,
+      this.fontColor = Colors.white,
+      this.hintText,
+      this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -101,21 +116,23 @@ class FormWriteMessage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               GestureDetector(
-                onTap: () {
-                  controller?.addMessage();
-                },
+                onTap: onTap,
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(72, 131, 196, 1),
                       borderRadius: BorderRadius.circular(13)),
-                  child: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: Colors.white,
-                    size: 20,
-                    weight: 5,
-                  ),
+                  child: isLoading
+                      ? CupertinoActivityIndicator(
+                          color: Colors.white70,
+                        )
+                      : Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.white,
+                          size: 20,
+                          weight: 5,
+                        ),
                 ),
               ),
               SizedBox(
@@ -123,13 +140,13 @@ class FormWriteMessage extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
-                  controller: controller?.messageController,
+                  controller: controller,
                   keyboardType: TextInputType.text,
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
-                  cursorColor: Colors.white,
+                  cursorColor: COLORS.primaryColor,
                   style: FontStyleConstant.hNLTRegular.copyWith(
-                      color: Colors.white,
+                      color: fontColor,
                       fontWeight: FontWeight.bold,
                       fontSize: Dimensions.fontSize15,
                       locale: Locale(
@@ -153,7 +170,7 @@ class FormWriteMessage extends StatelessWidget {
                         horizontal: 16, vertical: 12),
                     filled: true,
                     fillColor: Colors.transparent,
-                    hintText: 'write_me'.tr,
+                    hintText: '${hintText}'.tr,
                     disabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(13),
                       borderSide: const BorderSide(

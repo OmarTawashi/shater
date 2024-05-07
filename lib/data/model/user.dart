@@ -1,5 +1,6 @@
 import 'package:shater/core/network/decodable.dart';
 import 'package:shater/data/model/class_model.dart';
+import 'package:shater/data/model/comment_model.dart';
 import 'package:shater/data/model/country_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';
@@ -142,15 +143,15 @@ class User extends Decodable<User> {
         teacherClass?.add(new Classes.fromJson(v));
       });
     }
-    if (json['classes'] is List){
+    if (json['classes'] is List) {
       // teacherClass = [];
       // json['classes'].forEach((v) {
       //   teacherClass?.add(new Classes.fromJson(v));
       // });
-    }
-    else{
-      classes =
-      json['classes'] != null ? new Classes.fromJson(json['classes']) : null;
+    } else {
+      classes = json['classes'] != null
+          ? new Classes.fromJson(json['classes'])
+          : null;
     }
 
     country =
@@ -172,6 +173,81 @@ class User extends Decodable<User> {
     // }
 
     return this;
+  }
+
+  User.fromJson(json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    classId = json['class_id'];
+    levelId = json['level_id'];
+    countryId = json['country_id'];
+    image = json['image'];
+    fCMToken = json['FCM_token'];
+    deviceType = json['device_type'];
+    apiToken = json['api_token'];
+    videoNotification = json['video_notification'];
+    status = json['status'];
+    rateStar = json['rate_star'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    isNew = json['is_new'];
+    isTeacher = json['is_teacher'];
+    subjectId = json['subject_id'];
+    accountTypeId = json['account_type_id'];
+    about = json['about'];
+    canCreateQuestion = json['can_create_question'];
+    cityId = json['city_id'];
+    schoolId = json['school_id'];
+    canEditQuestion = json['can_edit_question'];
+    loginAt = json['login_at'];
+    parentId = json['parent_id'];
+    canComment = json['can_comment'];
+    isOnline = json['is_online'];
+    countVideo = json['count_video'];
+    countQuestions = json['count_questions'];
+    countStar = json['count_star'];
+    rate = "${json['rate']}";
+    isNotify = json['is_notify'];
+    isFav = json['is_fav'];
+    teacherRate = json['teacher_rate'];
+    unreadNotification = json['unread_notification'];
+    subject =
+        json['subject'] != null ? new Subject.fromJson(json['subject']) : null;
+    if (json['teacher_class'] != null) {
+      teacherClass = [];
+      json['teacher_class'].forEach((v) {
+        teacherClass?.add(new Classes.fromJson(v));
+      });
+    }
+    if (json['classes'] is List) {
+      // teacherClass = [];
+      // json['classes'].forEach((v) {
+      //   teacherClass?.add(new Classes.fromJson(v));
+      // });
+    } else {
+      classes = json['classes'] != null
+          ? new Classes.fromJson(json['classes'])
+          : null;
+    }
+
+    country =
+        json['country'] != null ? new Country.fromJson(json['country']) : null;
+    // if (json['level'] != null) {
+    //   level = new List<Null>();
+    //   json['level'].forEach((v) {
+    //     level?.add(new Null.fromJson(v));
+    //   });
+    // }
+    school =
+        json['school'] != null ? new School.fromJson(json['school']) : null;
+    city = json['city'] != null ? new PublicModel.fromJson(json['city']) : null;
+    // if (json['children'] != null) {
+    //   children = new List<Null>();
+    //   json['children'].forEach((v) {
+    //     children?.add(new Null.fromJson(v));
+    //   });
+    // }
   }
 
   Map<String, dynamic> toJson() {

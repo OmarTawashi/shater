@@ -23,9 +23,23 @@ class QuestionController extends GetxController {
   var newList = [];
 
   void dragItem(int oldIndex, int newIndex) {
+    // Check if oldIndex and newIndex are valid
+    if (oldIndex < 0 ||
+        oldIndex >= oldList.length ||
+        newIndex < 0 ||
+        newIndex >= newList.length) {
+      return; // Invalid indices
+    }
+
     var item = oldList[oldIndex];
+
+    // Remove the item from the old list
     oldList.removeAt(oldIndex);
+
+    // Insert the item into the new list at the specified newIndex
     newList.insert(newIndex, item);
+
+    // Ensure you call update to notify the listeners about the change in lists
     update();
   }
   // void addNewItem(int index) {
@@ -112,9 +126,11 @@ class QuestionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _questionsPages = Get.find<PageSubjectController>().questionSubject;
-    // getQuestionPage();
-    getAllQuestion();
+    if (Get.previousRoute == Routes.getPageSubjectScreen()) {
+      _questionsPages = Get.find<PageSubjectController>().questionSubject;
+      // getQuestionPage();
+      getAllQuestion();
+    }
   }
 
   void setQuestion(QuestionModel? questionModel) {

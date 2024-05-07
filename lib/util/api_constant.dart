@@ -24,6 +24,8 @@ class ApiConstant {
   static String schoolsRates = '/api/$version/student/rates/schools';
   static String studentRates = '/api/$version/student/rates/students';
   static String profile = '/api/$version/student/profile/my-profile';
+  static String commentsList = '/api/$version/student/comments/list';
+  static String commentStore = '/api/$version/student/comments/store';
   static String teacherOfStudent =
       '/api/$version/student/educational/videos/get-teachers-for-subject';
 

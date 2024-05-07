@@ -13,6 +13,9 @@ class SubcriptionTeacherDetailsController extends BaseController {
   List<SubjectVideo> _subjectVideos = [];
   List<SubjectVideo> get subjectVideos => _subjectVideos;
 
+  SubjectVideo? _subjectVideoSelected;
+  SubjectVideo? get subjectVideoSelected => _subjectVideoSelected;
+
   @override
   void onInit() {
     super.onInit();
@@ -20,6 +23,11 @@ class SubcriptionTeacherDetailsController extends BaseController {
     _teacherUseCaseImp =
         TeacherUseCaseImp(TeacherRepositoryRemote(ApiClient()));
     fetchVideoOfSubject();
+  }
+
+  void setSubjectVideo(SubjectVideo subjectVideo) {
+    _subjectVideoSelected = subjectVideo;
+    update();
   }
 
   void fetchVideoOfSubject() async {

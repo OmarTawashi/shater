@@ -195,6 +195,11 @@ class SubcriptionTeacherDetailsScreen extends StatelessWidget {
                   (BuildContext context, int index) {
                     return ItemExerciseSubject(
                       index: index,
+                      onTap: () {
+                        controller
+                            .setSubjectVideo(controller.subjectVideos[index]);
+                        Get.toNamed(Routes.getBaseQuestionScreen());
+                      },
                       subjectVideo: controller.subjectVideos[index],
                     );
                   },
