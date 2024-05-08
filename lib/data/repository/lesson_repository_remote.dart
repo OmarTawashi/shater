@@ -73,4 +73,33 @@ class LessonRepositoryRemote extends LessonRepository {
     }
     return completer.future;
   }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> sendRatingVideo(
+      int? teacherID, int? videoID, double? rate) async {
+    final completer = Completer<Either<ApiException, EmptyModel>?>();
+    final data = {"video_id": videoID, "teacher_id": teacherID, "rate": rate};
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.rateVideo,
+        requestType: RequestType.post,
+        create: () => APIResponse<EmptyModel>(
+          create: () => EmptyModel(),
+        ),
+        data: data,
+        onSuccess: (response) {
+          final data = response.data?.item;
+          if (data != null) {
+            completer.complete(right(data));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
 }

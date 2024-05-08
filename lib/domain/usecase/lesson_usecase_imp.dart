@@ -20,4 +20,10 @@ class LessonUseCaseImp extends LessonUseCase {
       int? videoID, String? comment) {
     return _lessonRepository.sendComment(videoID, comment);
   }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> sendRatingVideo(
+      int? teacherID, int? videoID, double? rate) {
+    return _lessonRepository.sendRatingVideo(teacherID, videoID, rate);
+  }
 }

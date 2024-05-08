@@ -7,4 +7,6 @@ abstract class LessonUseCase {
   Future<Either<ApiException, List<CommentModel>>?> fetchComment(int? videoID);
   Future<Either<ApiException, EmptyModel>?> sendComment(
       int? videoID, String? comment);
+  Future<Either<ApiException, EmptyModel>?> sendRatingVideo(
+      int? teacherID, int? videoID, double? rate);
 }

@@ -19,54 +19,16 @@ class QuestionController extends GetxController {
   List<QuestionPageModel> get questionsPages => _questionsPages;
 
   // Define observables for the lists
-  var oldList = ['الاول', 'الثاني', "الثالث", "الرابع"];
-  var newList = [];
+  List<dynamic> oldList = ['الاول', 'الثاني', "الثالث", "الرابع"];
+  List<dynamic> newList = [];
 
   void dragItem(int oldIndex, int newIndex) {
-    // Check if oldIndex and newIndex are valid
-    if (oldIndex < 0 ||
-        oldIndex >= oldList.length ||
-        newIndex < 0 ||
-        newIndex >= newList.length) {
-      return; // Invalid indices
-    }
+    if (oldIndex < 0 || oldIndex >= oldList.length) return;
+    if (newIndex < 0 || newIndex >= newList.length) return;
 
-    var item = oldList[oldIndex];
-
-    // Remove the item from the old list
-    oldList.removeAt(oldIndex);
-
-    // Insert the item into the new list at the specified newIndex
+    var item = oldList.removeAt(oldIndex);
     newList.insert(newIndex, item);
 
-    // Ensure you call update to notify the listeners about the change in lists
-    update();
-  }
-  // void addNewItem(int index) {
-  //   // Check if the index is within bounds
-  //   if (index >= 0 && index < oldList.length) {
-  //     newList.add(oldList[index]);
-  //     // Remove the item from oldList
-  //     oldList.removeAt(index);
-  //   }
-  //   update();
-  // }
-
-  // void removeNewItem(int index) {
-  //   // Check if the index is within bounds
-  //   if (index >= 0 && index < newList.length) {
-  //     // Remove the item from newList
-  //     newList.removeAt(index);
-  //   }
-  //   update();
-  // }
-
-  void removeOldItem(int index) {
-    // Check if the index is within bounds
-    if (index >= 0 && index < oldList.length) {
-      // Remove the item from oldList
-      oldList.removeAt(index);
-    }
     update();
   }
 

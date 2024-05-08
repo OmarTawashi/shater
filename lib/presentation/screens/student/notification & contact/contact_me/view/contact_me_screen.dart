@@ -95,7 +95,7 @@ class FormWriteMessage extends StatelessWidget {
   final Function()? onTap;
   final String? hintText;
   final Color fontColor;
-  final bool isLoading;
+  final bool? isLoading;
   final TextEditingController? controller;
   const FormWriteMessage(
       {super.key,
@@ -123,7 +123,7 @@ class FormWriteMessage extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(72, 131, 196, 1),
                       borderRadius: BorderRadius.circular(13)),
-                  child: isLoading
+                  child: isLoading!
                       ? CupertinoActivityIndicator(
                           color: Colors.white70,
                         )

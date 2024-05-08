@@ -29,6 +29,9 @@ class LessonController extends BaseController {
   List<CommentModel> _comments = [];
   List<CommentModel> get comments => _comments;
 
+  double _ratingVideo = 0;
+  double get ratingVideo => _ratingVideo;
+
   @override
   void onInit() {
     super.onInit();
@@ -52,6 +55,11 @@ class LessonController extends BaseController {
 
   void changeLoad(bool isLoading) {
     _isLoadingMessage = isLoading;
+    update();
+  }
+
+  void setRate(double rate) {
+    _ratingVideo = rate;
     update();
   }
 
@@ -104,5 +112,20 @@ class LessonController extends BaseController {
       messageController.clear();
     }
     update();
+  }
+
+  void sendRateVideo() async {
+    final videoID = _subcriptionTeVideController?.subjectVideoSelected?.id;
+    final teacherID =
+        _subcriptionTeVideController?.subjectVideoSelected?.user?.id;
+    final rate = ratingVideo;
+    await _lessonUseCaseImp
+        ?.sendRatingVideo(teacherID, videoID, rate)
+        .then((value) {
+      value?.fold((l) {}, (r) {
+        Get.back();
+        setRate(0);
+      });
+    });
   }
 }

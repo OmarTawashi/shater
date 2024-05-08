@@ -12,98 +12,95 @@ import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
 
 class CommentWidget extends StatelessWidget {
-  const CommentWidget({
-    super.key,
-  });
+  final LessonController? controller;
+  const CommentWidget({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LessonController>(
-      builder: (controller) => Container(
-        height: 700.h,
-        padding: EdgeInsets.only(top: Dimensions.paddingSize10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: Icon(
-                            Icons.close,
-                            size: 23,
-                            color: Colors.black,
-                          ),
+    return Container(
+      height: 700.h,
+      padding: EdgeInsets.only(top: Dimensions.paddingSize10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Icon(
+                          Icons.close,
+                          size: 23,
+                          color: Colors.black,
                         ),
-                        Expanded(
-                          child: CustomText(
-                            text: '${controller.comments.length}' +
-                                '\t' +
-                                'commentting'.tr,
-                            textAlign: TextAlign.center,
-                            fontSize: Dimensions.fontSize16,
-                            color: Color.fromRGBO(128, 127, 127, 1),
-                          ),
+                      ),
+                      Expanded(
+                        child: CustomText(
+                          text: '${controller?.comments.length}' +
+                              '\t' +
+                              'commentting'.tr,
+                          textAlign: TextAlign.center,
+                          fontSize: Dimensions.fontSize16,
+                          color: Color.fromRGBO(128, 127, 127, 1),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: Dimensions.paddingSize20,
-                  ),
-                  CommentList(controller),
-                  // AnimatorContainer(
-                  //   viewType: controller.viewType,
-                  //   isSliver: false,
-                  //   errorWidget: CustomEmptyView(
-                  //     assetName: ICONS.decriptionTop,
-                  //     primaryText: 'subjects',
-                  //     secanderyText: 'error_for_get_subject',
-                  //   ),
-                  //   emptyParams: EmptyParams(
-                  //       text: 'subjects'.tr,
-                  //       caption: 'empty_subject'.tr,
-                  //       image: ICONS.decriptionTop),
-                  //   successWidget: CommentList(controller),
-                  //   retry: () {
-                  //     controller.fetchComments();
-                  //   },
-                  // ),
-                  SizedBox(
-                    height: 100.h,
-                  )
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: Dimensions.paddingSize20,
+                ),
+                CommentList(controller!),
+                // AnimatorContainer(
+                //   viewType: controller.viewType,
+                //   isSliver: false,
+                //   errorWidget: CustomEmptyView(
+                //     assetName: ICONS.decriptionTop,
+                //     primaryText: 'subjects',
+                //     secanderyText: 'error_for_get_subject',
+                //   ),
+                //   emptyParams: EmptyParams(
+                //       text: 'subjects'.tr,
+                //       caption: 'empty_subject'.tr,
+                //       image: ICONS.decriptionTop),
+                //   successWidget: CommentList(controller),
+                //   retry: () {
+                //     controller.fetchComments();
+                //   },
+                // ),
+                SizedBox(
+                  height: 100.h,
+                )
+              ],
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: AnimatedContainer(
-                  duration: Duration(microseconds: 0),
-                  color: Colors.white,
-                  child: FormWriteMessage(
-                    hintText: 'write_comment',
-                    fontColor: COLORS.primaryColor,
-                    isLoading: controller.isLoadingMessage,
-                    controller: controller.messageController,
-                    onTap: () {
-                      controller.sendMessage();
-                    },
-                  )),
-            ),
-          ],
-        ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: AnimatedContainer(
+                duration: Duration(microseconds: 0),
+                color: Colors.white,
+                child: FormWriteMessage(
+                  hintText: 'write_comment',
+                  fontColor: COLORS.primaryColor,
+                  isLoading: controller?.isLoadingMessage,
+                  controller: controller?.messageController,
+                  onTap: () {
+                    controller?.sendMessage();
+                  },
+                )),
+          ),
+        ],
       ),
     );
   }
