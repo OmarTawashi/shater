@@ -104,7 +104,6 @@ class LessonController extends BaseController {
       }, (r) {
         comments.add(comment);
         changeLoad(false);
-
         messageController.clear();
       });
     });
@@ -119,12 +118,17 @@ class LessonController extends BaseController {
     final teacherID =
         _subcriptionTeVideController?.subjectVideoSelected?.user?.id;
     final rate = ratingVideo;
+    changeLoad(true);
+
     await _lessonUseCaseImp
         ?.sendRatingVideo(teacherID, videoID, rate)
         .then((value) {
-      value?.fold((l) {}, (r) {
-        Get.back();
+      value?.fold((l) {
+        changeLoad(false);
+      }, (r) {
+        changeLoad(false);
         setRate(0);
+        Get.back();
       });
     });
   }

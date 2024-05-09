@@ -59,9 +59,9 @@ class LessonRepositoryRemote extends LessonRepository {
           create: () => EmptyModel(),
         ),
         onSuccess: (response) {
-          final data = response.data?.item;
-          if (data != null) {
-            completer.complete(right(data));
+          final data = response.data;
+          if (data?.status == true) {
+            completer.complete(right(EmptyModel(message: data?.message)));
           }
         },
         onError: (error) {
@@ -88,9 +88,9 @@ class LessonRepositoryRemote extends LessonRepository {
         ),
         data: data,
         onSuccess: (response) {
-          final data = response.data?.item;
-          if (data != null) {
-            completer.complete(right(data));
+          final data = response.data;
+          if (data?.status == true) {
+            completer.complete(right(EmptyModel(message: data?.message)));
           }
         },
         onError: (error) {

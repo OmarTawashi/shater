@@ -17,38 +17,32 @@ class BottomWidgetLesson extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LessonController>(
-      builder: (controller) => Container(
-        padding: EdgeInsets.symmetric(
-            horizontal: Dimensions.paddingSize16,
-            vertical: Dimensions.paddingSize20),
-        decoration: BoxDecoration(
-          color: COLORS.secanderyColor,
-        ),
-        child: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ItemBottomLesson(
-                text: 'rated',
-                onTap: () {
-                  BaseMixin.showBottomSheet(RatingLesson(
-                    controller: controller,
-                  ));
-                },
-                iconData: Icons.favorite_sharp,
-              ),
-              ItemBottomLesson(
-                text: 'commented',
-                iconData: Icons.comment_rounded,
-                onTap: () {
-                  BaseMixin.showBottomSheet(CommentWidget(
-                    controller: controller,
-                  ));
-                },
-              ),
-            ],
-          ),
+    return Container(
+      padding: EdgeInsets.symmetric(
+          horizontal: Dimensions.paddingSize16,
+          vertical: Dimensions.paddingSize20),
+      decoration: BoxDecoration(
+        color: COLORS.secanderyColor,
+      ),
+      child: Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ItemBottomLesson(
+              text: 'rated',
+              onTap: () {
+                BaseMixin.showBottomSheet(RatingLesson());
+              },
+              iconData: Icons.favorite_sharp,
+            ),
+            ItemBottomLesson(
+              text: 'commented',
+              iconData: Icons.comment_rounded,
+              onTap: () {
+                BaseMixin.showBottomSheet(CommentWidget());
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -56,103 +50,106 @@ class BottomWidgetLesson extends StatelessWidget {
 }
 
 class RatingLesson extends StatelessWidget {
-  final LessonController? controller;
-  const RatingLesson({super.key, this.controller});
+  const RatingLesson({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-          top: Dimensions.paddingSize10,
-          left: Dimensions.paddingSize16,
-          right: Dimensions.paddingSize16),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.5),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.close,
-                    color: COLORS.whiteColor,
-                    grade: 80,
-                    weight: 50,
-                    size: 28,
-                  ),
-                ),
-              )
-            ],
-          ),
-          SizedBox(height: 25),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RatingBar.builder(
-                initialRating: controller?.ratingVideo ?? 0.0,
-                minRating: 0,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                glow: false,
-                wrapAlignment: WrapAlignment.spaceAround,
-                itemCount: 5,
-                itemSize: 45,
-                unratedColor: Colors.grey.withOpacity(0.28), // Empty color
-                itemPadding: EdgeInsets.symmetric(horizontal: 12),
-                itemBuilder: (context, _) => Icon(
-                  Icons
-                      .star_rounded, // You can replace this with your custom star icon
-                  color: Color.fromRGBO(93, 199, 249, 1), // Filled color
-                ),
-                onRatingUpdate: (rating) {
-                  controller?.setRate(rating);
-                },
-                updateOnDrag: true,
-                ignoreGestures: false,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                    color: COLORS.secanderyColor,
-                    borderRadius: BorderRadius.circular(32)),
-                padding: EdgeInsets.symmetric(horizontal: 60.w),
-                child: CustomCupertinoButton(
-                  color: COLORS.secanderyColor,
-                  isLoading: controller?.isLoadingMessage ?? false,
-                  onPressed: () {
-                    controller?.sendRateVideo();
+    return GetBuilder<LessonController>(
+      builder: (controller) => Container(
+        padding: EdgeInsets.only(
+            top: Dimensions.paddingSize10,
+            left: Dimensions.paddingSize16,
+            right: Dimensions.paddingSize16),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
                   },
-                  text: 'rate_teacher'.tr,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.5),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.close,
+                      color: COLORS.whiteColor,
+                      grade: 80,
+                      weight: 50,
+                      size: 28,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RatingBar.builder(
+                  initialRating: controller.ratingVideo ?? 0.0,
+                  minRating: 0,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  glow: false,
+                  wrapAlignment: WrapAlignment.spaceAround,
+                  itemCount: 5,
+                  itemSize: 45,
+                  unratedColor: Colors.grey.withOpacity(0.28), // Empty color
+                  itemPadding: EdgeInsets.symmetric(horizontal: 12),
+                  itemBuilder: (context, _) => Icon(
+                    Icons
+                        .star_rounded, // You can replace this with your custom star icon
+                    color: Color.fromRGBO(93, 199, 249, 1), // Filled color
+                  ),
+                  onRatingUpdate: (rating) {
+                    controller.setRate(rating);
+                  },
+                  updateOnDrag: true,
+                  ignoreGestures: false,
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: Dimensions.paddingSize25,
-          ),
-        ],
+              ],
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                      color: COLORS.secanderyColor,
+                      borderRadius: BorderRadius.circular(32)),
+                  padding: EdgeInsets.symmetric(horizontal: 60.w),
+                  child: CustomCupertinoButton(
+                    color: COLORS.secanderyColor,
+                    isLoading: controller.isLoadingMessage ?? false,
+                    onPressed: () {
+                      controller.sendRateVideo();
+                    },
+                    text: 'rate_teacher'.tr,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: Dimensions.paddingSize25,
+            ),
+          ],
+        ),
       ),
     );
   }
