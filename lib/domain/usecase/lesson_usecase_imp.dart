@@ -4,6 +4,7 @@ import 'package:shater/core/repository/lesson_repository.dart';
 import 'package:shater/core/usecase/lesson_usecase.dart';
 import 'package:shater/data/model/comment_model.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/data/model/teacher_exercise_model.dart';
 
 class LessonUseCaseImp extends LessonUseCase {
   final LessonRepository _lessonRepository;
@@ -25,5 +26,11 @@ class LessonUseCaseImp extends LessonUseCase {
   Future<Either<ApiException, EmptyModel>?> sendRatingVideo(
       int? teacherID, int? videoID, double? rate) {
     return _lessonRepository.sendRatingVideo(teacherID, videoID, rate);
+  }
+
+  @override
+  Future<Either<ApiException, List<TeacherExerciseModel>>?> fetchVideoPage(
+      int? pageID, int? subjectID) {
+    return _lessonRepository.fetchVideoPage(pageID, subjectID);
   }
 }

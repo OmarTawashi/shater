@@ -24,6 +24,8 @@ class ApiConstant {
   static String schoolsRates = '/api/$version/student/rates/schools';
   static String studentRates = '/api/$version/student/rates/students';
   static String profile = '/api/$version/student/profile/my-profile';
+  static String examSubject = '/api/$version/student/educational/exams/subject';
+  static String shareExam = '/api/$version/student/educational/exams/result';
   static String commentsList = '/api/$version/student/comments/list';
   static String commentStore = '/api/$version/student/comments/store';
   static String rateVideo = '/api/rateVideo';
@@ -55,6 +57,8 @@ class ApiConstant {
       '/api/$version/teacher/lesson/index2?level=';
   static String getVideoOfSubject =
       '/api/v2/student/educational/videos/get-videos-for-subject';
+  static String getVideoOfPage =
+      '/api/v2/student/educational/videos/get-videos-for-page';
 
   static const String topic = 'all_zone_customer';
 }

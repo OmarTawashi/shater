@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
 import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
@@ -40,6 +41,8 @@ import 'package:shater/presentation/screens/student/notification%20&%20contact/n
 import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
+import 'package:shater/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart';
+import 'package:shater/presentation/screens/student/result%20subject/binding/result_subject_binding.dart';
 import 'package:shater/presentation/screens/student/result%20subject/view/result_subject_screen.dart';
 import 'package:shater/presentation/screens/student/subcription%20teacher%20details/bindings/subcription_teacher_details_binding.dart';
 import 'package:shater/presentation/screens/student/subcription%20teacher%20details/view/subcription_teacher_details_screen.dart';
@@ -80,6 +83,12 @@ class AppPages {
       binding: SubcriptionTeacherDetailsBinding(),
     ),
     GetPage(
+      name: RoutesName.lessonTeacherView,
+      page: () => LessonTeacherView(),
+      transition: Transition.downToUp,
+      curve: Curves.fastLinearToSlowEaseIn,
+    ),
+    GetPage(
       name: RoutesName.teacherDetailsScreen,
       page: () => const TeacherDetailsScreen(),
       binding: TeacherDetailsBinding(),
@@ -90,9 +99,9 @@ class AppPages {
       binding: EditProfileBinding(),
     ),
     GetPage(
-      name: RoutesName.resultSubjectScreen,
-      page: () => const ResultSubjectScreen(),
-    ),
+        name: RoutesName.resultSubjectScreen,
+        page: () => const ResultSubjectScreen(),
+        binding: ResultSubjectBinding()),
     GetPage(
       name: RoutesName.baseLoginScreen,
       page: () => const BaseLoginScreen(),

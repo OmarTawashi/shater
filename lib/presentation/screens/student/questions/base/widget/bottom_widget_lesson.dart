@@ -3,15 +3,41 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
+import 'package:shater/core/extenstion/lesson_extention.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/base/widget/comment_widget.dart';
 import 'package:shater/presentation/screens/student/questions/lesson/controller/lesson_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class BottomWidgetLesson extends StatelessWidget {
   const BottomWidgetLesson({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<LessonController>(
+      builder: (controller) => getBottomWidget(controller.route),
+    );
+  }
+
+  Widget getBottomWidget(route) {
+    switch (route) {
+      case RoutesName.pageSubjectScreen:
+        return SizedBox();
+      case RoutesName.subcriptionTeacherDetailsScreen:
+        return BottomTeacherWidget();
+      default:
+        return SizedBox();
+    }
+  }
+}
+
+class BottomTeacherWidget extends StatelessWidget {
+  const BottomTeacherWidget({
     super.key,
   });
 

@@ -19,9 +19,9 @@ class RateApp extends StatelessWidget {
       direction: Axis.horizontal,
       allowHalfRating: true,
       itemCount: 5,
-      itemSize: 30,
+      itemSize: 27,
       unratedColor: const Color.fromRGBO(0, 208, 254, 1),
-      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+      itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
       ratingWidget: RatingWidget(
           full: const CustomSvgPicture(assetName: ICONS.starRatingFull),
           half: const CustomSvgPicture(assetName: ICONS.starRatingFull),

@@ -6,8 +6,8 @@ import 'package:shater/presentation/screens/student/questions/question/controlle
 class BaseQuestionBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => BaseQuestionController());
     Get.put(QuestionController());
     Get.put(LessonController());
-    Get.put(BaseQuestionController());
   }
 }

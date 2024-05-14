@@ -6,6 +6,7 @@ import 'package:shater/core/repository/lesson_repository.dart';
 import 'package:shater/core/repository/profile_repository.dart';
 import 'package:shater/data/model/comment_model.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/data/model/teacher_exercise_model.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/util/api_constant.dart';
 
@@ -91,6 +92,38 @@ class LessonRepositoryRemote extends LessonRepository {
           final data = response.data;
           if (data?.status == true) {
             completer.complete(right(EmptyModel(message: data?.message)));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, List<TeacherExerciseModel>>?> fetchVideoPage(
+      int? pageID, int? subjectID) async {
+    final completer =
+        Completer<Either<ApiException, List<TeacherExerciseModel>>?>();
+    final param = {"page_id": pageID, "subject_id": subjectID};
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.getVideoOfPage,
+        requestType: RequestType.get,
+        queryParams: param,
+        create: () => APIResponse<TeacherExerciseModel>(
+          create: () => TeacherExerciseModel(),
+        ),
+        onSuccess: (response) {
+          final data = response.data?.items;
+          if (data != null) {
+            completer.complete(right(data));
+          } else {
+            completer.complete(left(ApiException(message: 'Empty_view')));
           }
         },
         onError: (error) {

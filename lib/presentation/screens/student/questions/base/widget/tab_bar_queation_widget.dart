@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/extenstion/lesson_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/section_header_delegate.dart';
@@ -46,27 +47,8 @@ class TabBarQuestion extends StatelessWidget {
                                 color: Colors.white,
                                 width: 2,
                                 strokeAlign: BorderSide.strokeAlignOutside)),
-                        child: controller?.routeGIT ==
-                                Routes.getPageSubjectScreen()
-                            ? CustomText(
-                                text: '${questionController.answerNumValid}',
-                                color: Colors.white,
-                                fontSize: Dimensions.fontSize16,
-                              )
-                            : CachedNetworkImage(
-                                height: 52,
-                                width: 52,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) =>
-                                    Image.asset(IMAGES.firstImages),
-                                errorWidget: (BuildContext, String, Object) =>
-                                    Image.asset(IMAGES.firstImages),
-                                imageUrl: controller
-                                        ?.subcriptionTeVideController
-                                        ?.subjectVideoSelected
-                                        ?.user
-                                        ?.image ??
-                                    '')),
+                        child: getLeadingWidget(
+                            questionController, controller?.routeGIT)),
                   ),
                   Expanded(
                     child: Container(
@@ -104,5 +86,37 @@ class TabBarQuestion extends StatelessWidget {
                 ],
               ),
             )));
+  }
+
+  Widget getLeadingWidget(QuestionController controller, route) {
+    switch (route) {
+      case RoutesName.pageSubjectScreen:
+        return exerciseWidget(controller);
+      case RoutesName.subcriptionTeacherDetailsScreen:
+        return leadingTeacherWidget();
+      default:
+        return exerciseWidget(controller);
+    }
+  }
+
+  Widget exerciseWidget(QuestionController questionController) {
+    return CustomText(
+      text: '${questionController.answerNumValid}',
+      color: Colors.white,
+      fontSize: Dimensions.fontSize16,
+    );
+  }
+
+  Widget leadingTeacherWidget() {
+    return CachedNetworkImage(
+        height: 52,
+        width: 52,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => Image.asset(IMAGES.firstImages),
+        errorWidget: (BuildContext, String, Object) =>
+            Image.asset(IMAGES.firstImages),
+        imageUrl: controller?.subcriptionTeVideController?.subjectVideoSelected
+                ?.user?.image ??
+            '');
   }
 }

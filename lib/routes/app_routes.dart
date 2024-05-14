@@ -29,6 +29,7 @@ abstract class RoutesName {
   static const baseQuestionScreen = '/base-question-screen';
   static const congrlateScreen = '/congrlate-screen';
   static const teacherDetailsScreen = '/teacher-details-screen';
+  static const lessonTeacherView = '/lesson-teacher-view';
   static const subcriptionTeacherDetailsScreen =
       '/subcription-teacher-details-screen';
   static const failureQuestionScrren = '/failure-question-screen';
@@ -40,6 +41,7 @@ abstract class Routes {
   static String getSpalshScreen() => RoutesName.spalshScreen;
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
+  static String getLessonTeacherView() => RoutesName.lessonTeacherView;
   static String getSubcriptionTeacherDetailsScreen() =>
       RoutesName.subcriptionTeacherDetailsScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;

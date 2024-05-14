@@ -145,7 +145,7 @@ class TextStudentInfo extends StatelessWidget {
         CustomText(
           text: title!.tr + ":\t",
           fontWeight: FontWeight.bold,
-          fontSize: Dimensions.fontSize10.sp,
+          fontSize: Dimensions.fontSize13,
           maxLine: 1,
           color: titleColor,
           overFlow: TextOverflow.ellipsis,
@@ -155,7 +155,7 @@ class TextStudentInfo extends StatelessWidget {
           fontWeight: FontWeight.bold,
           overFlow: TextOverflow.ellipsis,
           maxLine: 1,
-          fontSize: Dimensions.fontSize11.sp,
+          fontSize: Dimensions.fontSize14,
           color: textTitleColor ?? Color.fromRGBO(205, 223, 235, 1),
         )
       ],

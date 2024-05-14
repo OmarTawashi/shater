@@ -23,11 +23,16 @@ class BaseQuestionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _routeGIT = Get.previousRoute;
+    setRoute(Get.previousRoute);
     if (_routeGIT == Routes.getPageSubjectScreen()) {
     } else {
       _subcriptionTeVideController =
           Get.find<SubcriptionTeacherDetailsController>();
     }
+  }
+
+  void setRoute(String route) {
+    _routeGIT = route;
+    update();
   }
 }

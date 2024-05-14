@@ -69,12 +69,12 @@ class SubjectVideo extends Decodable<SubjectVideo> {
 
 class Page {
   int? id;
-  Null? title;
+  String? title;
   String? image;
   int? subjectId;
   int? pageNo;
   bool? isExplain;
-  Null? explainUrl;
+  String? explainUrl;
   int? countQuestions;
 
   Page(

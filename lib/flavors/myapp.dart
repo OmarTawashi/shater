@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final EnvConfig _envConfig = BuildConfig.instance.config;
     return ScreenUtilInit(
-        designSize: const Size(414, 905),//Size(768, 1024) is sized ipad 
+        designSize: const Size(414, 905), //Size(768, 1024) is sized ipad
         splitScreenMode: true,
         builder: (BuildContext context, child) => GetMaterialApp(
             debugShowCheckedModeBanner: false,
