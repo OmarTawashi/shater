@@ -7,13 +7,14 @@ import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/profile_repository_remote.dart';
 import 'package:shater/domain/usecase/profile_usecase_imp.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
+import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
 import 'package:shater/util/api_constant.dart';
 
 class ResultSubjectController extends GetxController {
   ProfileUseCaseImp? _profileUseCaseImp;
 
-  ProfileController? _profileController;
-  ProfileController? get profileController => _profileController;
+  ResultController? _resultController;
+  ResultController? get resultController => _resultController;
 
   ResultExam? _resultExam;
   ResultExam? get resultExam => _resultExam;
@@ -28,11 +29,11 @@ class ResultSubjectController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    _profileController = Get.find<ProfileController>();
+    _resultController = Get.find<ResultController>();
     _profileUseCaseImp =
         ProfileUseCaseImp(ProfileRepositoryRemote(ApiClient()));
-    _user = _profileController?.user;
-    _resultExam = _profileController?.resultExamSelected;
+    _user = SharedPrefs.user;
+    _resultExam = _resultController?.resultExamSelected;
     print(_resultExam);
   }
 
@@ -54,7 +55,9 @@ class ResultSubjectController extends GetxController {
     final name = SharedPrefs.user?.name;
     final examTitle = _resultExam?.title;
     final textView = "view_results".tr + "\t$name" "\t$examTitle";
-    final share = await Share.shareUri(Uri.parse('${ApiConstant.baseUrl}'));
+    // final share = await Share.shareUri(Uri.parse('${ApiConstant.baseUrl}'));
+    final share = await Share.shareUri(Uri.parse(
+        '${ApiConstant.baseUrl + '/shareExamResult/${_resultExam?.lastExam?.id}/${_resultExam?.lastExam?.studentId}'}'));
     // final share = await Share.share(textView);
     if (share.status == ShareResultStatus.success) {
     } else if (share.status == ShareResultStatus.dismissed) {

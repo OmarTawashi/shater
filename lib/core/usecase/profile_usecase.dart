@@ -6,6 +6,5 @@ import 'package:shater/data/model/user.dart';
 
 abstract class ProfileUseCase {
   Future<Either<ApiException, User>?> fetchProfile();
-  Future<Either<ApiException, List<ResultExam>>?> fetchResultSubject();
   Future<Either<ApiException, EmptyModel>?> shareExam(exam);
 }

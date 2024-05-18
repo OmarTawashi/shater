@@ -5,7 +5,7 @@ import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/view/contact_me_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/view/contact_me_screen.dart';
 import 'package:shater/presentation/screens/student/questions/lesson/controller/lesson_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';

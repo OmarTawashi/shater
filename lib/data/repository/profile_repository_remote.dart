@@ -43,32 +43,6 @@ class ProfileRepositoryRemote extends ProfileRepository {
   }
 
   @override
-  Future<Either<ApiException, List<ResultExam>>?> fetchResultSubject() async {
-    final completer = Completer<Either<ApiException, List<ResultExam>>?>();
-    try {
-      await ApiClient.requestData(
-        endpoint: ApiConstant.examSubject,
-        requestType: RequestType.get,
-        create: () => APIResponse<ResultExam>(
-          create: () => ResultExam(),
-        ),
-        onSuccess: (response) {
-          final data = response.data?.items;
-          if (data != null) {
-            completer.complete(right(data));
-          }
-        },
-        onError: (error) {
-          completer.complete(left(error));
-        },
-      );
-    } on ApiException catch (error) {
-      completer.complete(left(error));
-    }
-    return completer.future;
-  }
-
-  @override
   Future<Either<ApiException, EmptyModel>?> shareExam(exam) async {
     final completer = Completer<Either<ApiException, EmptyModel>?>();
     final param = {'exam': exam};

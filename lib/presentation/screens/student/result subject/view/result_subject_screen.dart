@@ -154,10 +154,15 @@ class ResultSubjectScreen extends StatelessWidget {
                                     transform: Matrix4.rotationY(pi),
                                     alignment: Alignment.center,
                                     child: FAProgressBar(
-                                      currentValue: controller.resultExam
-                                              ?.lastExam?.totalCorrect
-                                              ?.toDouble() ??
-                                          0,
+                                      currentValue: ((controller
+                                                      .resultExam
+                                                      ?.lastExam
+                                                      ?.totalCorrect ??
+                                                  0) +
+                                              (controller.resultExam?.lastExam
+                                                      ?.totalFalse ??
+                                                  0))
+                                          .toDouble(),
                                       borderRadius: BorderRadius.circular(30),
                                       backgroundColor:
                                           Color.fromRGBO(235, 241, 246, 1),
@@ -214,9 +219,14 @@ class ResultSubjectScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SimpleCircularProgressBar(
-                            valueNotifier: ValueNotifier(50),
-                            maxValue: 100,
-                            size: 150,
+                            valueNotifier: ValueNotifier(controller
+                                    .resultExam?.lastExam?.total
+                                    ?.toDouble() ??
+                                0),
+                            maxValue: controller.resultExam?.countQuestions
+                                    ?.toDouble() ??
+                                0,
+                            size: 140,
                             backColor: Color.fromRGBO(235, 241, 246, 1),
                             progressColors: [COLORS.secanderyColor],
                             fullProgressColor: COLORS.secanderyColor,

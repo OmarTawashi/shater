@@ -23,6 +23,7 @@ import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/view/exercise_contact_screen.dart';
 import 'package:shater/presentation/screens/student/questions/base/binding/base_question_binding.dart';
 import 'package:shater/presentation/screens/student/questions/base/view/base_question_screen.dart';
 import 'package:shater/presentation/screens/student/questions/congrlate/binding/congrlate_binding.dart';
@@ -35,10 +36,9 @@ import 'package:shater/presentation/screens/student/exercise%20details/view/exer
 import 'package:shater/presentation/screens/student/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/binding/contact_me_binding.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/view/contact_me_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/notification/view/notification_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/binding/contact_me_binding.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/view/contact_me_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
 import 'package:shater/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart';
@@ -168,7 +168,7 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.contactScreen,
-      page: () => const NotificationContactScreen(),
+      page: () => const ExerciseContactScreen(),
     ),
     GetPage(
         name: RoutesName.baseQuestionScreen,

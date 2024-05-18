@@ -8,11 +8,16 @@ import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 
+enum TeacherTap { teachers, subscriptions }
+
 class TeacherController extends BaseController {
   TeacherUseCaseImp? _teacherUseCaseImp;
 
   SubjectController subjectController = Get.find<SubjectController>();
   int selectedTapIndex = 0;
+
+  TeacherTap _teacherTapSelected = TeacherTap.teachers;
+  TeacherTap get teacherTapSelected => _teacherTapSelected;
 
   List<String> _subjects = ['all'];
   List<String> get subjects => _subjects;
@@ -34,7 +39,13 @@ class TeacherController extends BaseController {
     super.onInit();
     _teacherUseCaseImp =
         TeacherUseCaseImp(TeacherRepositoryRemote(ApiClient()));
-    getTeachers();
+    // getTeachers();
+    getData(_teacherTapSelected);
+  }
+
+  void changeTap(TeacherTap tap) {
+    _teacherTapSelected = tap;
+    update();
   }
 
   void changeTapIndex(int index) {
@@ -69,6 +80,18 @@ class TeacherController extends BaseController {
       }
     });
     update();
+  }
+
+  void getData(TeacherTap tap) {
+    switch (tap) {
+      case TeacherTap.teachers:
+        return getTeachers();
+      case TeacherTap.subscriptions:
+      // return fetchCourseLearning();
+
+      default:
+        return getTeachers();
+    }
   }
 
   void getTeachers() async {

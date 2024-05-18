@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
+import 'package:shater/presentation/screens/student/subject/widgets/exercise_widget.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
+import 'package:shater/presentation/screens/student/subject/widgets/subject_widget.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 
@@ -26,7 +29,7 @@ class SubjectsSCreen extends StatelessWidget {
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
-            controller.fetchCourseLearning();
+            controller.getData(controller.subjectTapSelected);
           },
           child: CustomScrollView(
             slivers: [
@@ -35,8 +38,22 @@ class SubjectsSCreen extends StatelessWidget {
                 child: Row(
                   children: [
                     TapSection(
-                      isSelected: true,
+                      isSelected:
+                          controller.subjectTapSelected == SubjectTap.lessons,
+                      onTap: () {
+                        controller.changeTap(SubjectTap.lessons);
+                        controller.getData(controller.subjectTapSelected);
+                      },
                       text: 'subjects'.tr,
+                    ),
+                    TapSection(
+                      isSelected:
+                          controller.subjectTapSelected == SubjectTap.execise,
+                      onTap: () {
+                        controller.changeTap(SubjectTap.execise);
+                        controller.getData(controller.subjectTapSelected);
+                      },
+                      text: 'exercise'.tr,
                     ),
                   ],
                 ),
@@ -46,26 +63,7 @@ class SubjectsSCreen extends StatelessWidget {
                   height: 16,
                 ),
               ),
-              AnimatorContainer(
-                viewType: controller.viewType,
-                isSliver: true,
-                errorWidget: CustomEmptyView(
-                  assetName: ICONS.decriptionTop,
-                  primaryText: 'subjects',
-                  secanderyText: 'error_for_get_subject',
-                ),
-                shimmerWidget: CustomShimmerList(
-                  itemShimmer: SubjectShimmer(),
-                ),
-                emptyParams: EmptyParams(
-                    text: 'subjects'.tr,
-                    caption: 'empty_subject'.tr,
-                    image: ICONS.decriptionTop),
-                successWidget: SubjectList(controller),
-                retry: () {
-                  controller.fetchCourseLearning();
-                },
-              ),
+              getBodyView(controller),
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 100.h,
@@ -78,19 +76,15 @@ class SubjectsSCreen extends StatelessWidget {
     );
   }
 
-  SliverList SubjectList(SubjectController controller) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        childCount: controller.courseLearningModel.length,
-        (context, index) => ItemSubject(
-            textSubject: controller.courseLearningModel[index].title,
-            pageCount: controller.courseLearningModel[index].pagesCount,
-            questionCount: controller.courseLearningModel[index].countQuestions,
-            imageUrl: controller.courseLearningModel[index].image,
-            onTap: () {
-              Get.toNamed(Routes.getExerciseSubjectScreen());
-            }),
-      ),
-    );
+  Widget getBodyView(SubjectController controller) {
+    switch (controller.subjectTapSelected) {
+      case SubjectTap.lessons:
+        return SubjectWidget(controller: controller);
+      case SubjectTap.execise:
+        return ExerciseWidget(controller: controller);
+      default:
+        return SubjectWidget(controller: controller);
+        ;
+    }
   }
 }

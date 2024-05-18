@@ -178,68 +178,68 @@ class ProfileScreen extends StatelessWidget {
                   childCount: 2,
                   (context, index) => ItemSubscribSubject(),
                 )),
-                SliverToBoxAdapter(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSize16),
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: COLORS.backGroundColor,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            CustomText(
-                              text: 'results',
-                              color: Colors.white,
-                              fontSize: Dimensions.fontSize18 + 2,
-                              fontWeight: FontWeight.w300,
-                              maxLine: 1,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 40.0),
-                                child: CustomSvgPicture(
-                                  assetName: ICONS.resultTapActive,
-                                  color: Colors.white,
-                                  height: 40,
-                                  width: 40,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Row(
-                            // runAlignment: WrapAlignment.spaceBetween,
-                            // alignment: WrapAlignment.spaceBetween,
-                            // spacing: 30,
-                            // runSpacing: 16,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: List.generate(
-                              controller.resultExams.length,
-                              (index) => ItemResult(
-                                resultExam: controller.resultExams[index],
-                                onTap: () {
-                                  controller.setResultExam(
-                                      controller.resultExams[index]);
-                                  Get.toNamed(Routes.getResultSubjectScreen());
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // SliverToBoxAdapter(
+                //   child: Container(
+                //     margin: EdgeInsets.symmetric(
+                //         horizontal: Dimensions.paddingSize16),
+                //     padding: EdgeInsets.all(16),
+                //     decoration: BoxDecoration(
+                //       color: COLORS.backGroundColor,
+                //       borderRadius: BorderRadius.circular(16),
+                //     ),
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Row(
+                //           children: [
+                //             CustomText(
+                //               text: 'results',
+                //               color: Colors.white,
+                //               fontSize: Dimensions.fontSize18 + 2,
+                //               fontWeight: FontWeight.w300,
+                //               maxLine: 1,
+                //             ),
+                //             Expanded(
+                //               child: Padding(
+                //                 padding: const EdgeInsets.only(left: 40.0),
+                //                 child: CustomSvgPicture(
+                //                   assetName: ICONS.resultTapActive,
+                //                   color: Colors.white,
+                //                   height: 40,
+                //                   width: 40,
+                //                 ),
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //         SizedBox(
+                //           height: 40,
+                //         ),
+                //         Padding(
+                //           padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                //           child: Row(
+                //             // runAlignment: WrapAlignment.spaceBetween,
+                //             // alignment: WrapAlignment.spaceBetween,
+                //             // spacing: 30,
+                //             // runSpacing: 16,
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: List.generate(
+                //               controller.resultExams.length,
+                //               (index) => ItemResult(
+                //                 resultExam: controller.resultExams[index],
+                //                 onTap: () {
+                //                   controller.setResultExam(
+                //                       controller.resultExams[index]);
+                //                   Get.toNamed(Routes.getResultSubjectScreen());
+                //                 },
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 SliverToBoxAdapter(
                   child: SizedBox(
                     height: Dimensions.paddingSize20,

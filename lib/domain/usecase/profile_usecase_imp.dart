@@ -17,11 +17,6 @@ class ProfileUseCaseImp extends ProfileUseCase {
   }
 
   @override
-  Future<Either<ApiException, List<ResultExam>>?> fetchResultSubject() {
-    return _profileRepository.fetchResultSubject();
-  }
-
-  @override
   Future<Either<ApiException, EmptyModel>?> shareExam(exam) {
     return _profileRepository.shareExam(exam);
   }

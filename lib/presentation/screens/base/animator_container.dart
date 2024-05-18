@@ -40,7 +40,7 @@ class AnimatorContainer extends StatelessWidget {
     if (isSliver && viewType != ViewType.success) {
       return SliverToBoxAdapter(
           child: SizedBox(
-        height: Get.height * 0.6.h,
+        height: Get.height * 0.7.h,
         child: _getChild(context),
       ));
     } else if (isSliver && viewType == ViewType.success) {
