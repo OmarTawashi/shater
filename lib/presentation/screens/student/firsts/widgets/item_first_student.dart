@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -52,7 +53,9 @@ class ItemFirstStudents extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: Container(
                       clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          shape: BoxShape.circle),
                       child: CircleAvatar(
                         child: CachedNetworkImageWidget(
                           imageUrl: student?.student?.image ?? '',

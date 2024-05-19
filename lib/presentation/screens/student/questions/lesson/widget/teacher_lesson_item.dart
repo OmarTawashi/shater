@@ -65,23 +65,30 @@ class TeacherExercise extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    CustomText(
-                      text: teacherEercise?.user?.name ?? '',
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
+                    Expanded(
+                      flex: 4,
+                      child: CustomText(
+                        text: teacherEercise?.user?.name ?? '',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        overFlow: TextOverflow.ellipsis,
+                        fontSize: 18,
+                        maxLine: 1,
+                      ),
                     ),
                     SizedBox(
                       width: 3,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.favorite_border_sharp,
-                          size: 26,
-                          color: Colors.red[200],
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.favorite_border_sharp,
+                            size: 26,
+                            color: Colors.red[200],
+                          ),
                         ),
                       ),
                     ),

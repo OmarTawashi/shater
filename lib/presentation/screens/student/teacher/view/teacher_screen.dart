@@ -27,6 +27,7 @@ class TeacherScreen extends StatelessWidget {
       body: GetBuilder<TeacherController>(
         builder: (controller) => RefreshIndicator.adaptive(
           onRefresh: () async {
+            controller.iniGetSubject();
             controller.getTeachers();
           },
           child: CustomScrollView(

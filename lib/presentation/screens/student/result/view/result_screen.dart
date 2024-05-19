@@ -77,10 +77,6 @@ class ResultScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: SizedBox(
                   height: 100.h,
-                  child: CustomSvgPicture(
-                    assetName: ICONS.topResult,
-                    color: Colors.white,
-                  ),
                 ),
               ),
             ],

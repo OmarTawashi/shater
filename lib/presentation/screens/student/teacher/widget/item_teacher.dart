@@ -37,13 +37,13 @@ class ItemTeacher extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.grey.withOpacity(0.5),
-                width: 5,
+                width: 3.5,
               ),
               shape: BoxShape.circle,
             ),
             child: Container(
-              height: 80,
-              width: 80,
+              height: 70,
+              width: 70,
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -115,30 +115,36 @@ class ItemTeacher extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(8, 12, 8, 12),
+              padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
-                  color: COLORS.primaryColor),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomText(
-                    text: 'اشترك',
-                    color: COLORS.whiteColor,
-                    textAlign: TextAlign.start,
-                    fontSize: Dimensions.fontSize12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  SizedBox(
-                    width: Dimensions.paddingSize5,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    color: COLORS.whiteColor,
-                    size: 16,
-                  )
-                ],
+                  gradient: COLORS.gradientContainer),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32),
+                    color: COLORS.whiteColor),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      text: 'اشترك',
+                      color: COLORS.primaryColor,
+                      textAlign: TextAlign.start,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios_sharp,
+                      color: COLORS.primaryColor,
+                      size: 16,
+                    )
+                  ],
+                ),
               ),
             ),
           ),

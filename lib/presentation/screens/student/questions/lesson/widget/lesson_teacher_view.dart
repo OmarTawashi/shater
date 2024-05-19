@@ -52,7 +52,11 @@ class LessonTeacherView extends StatelessWidget {
         ],
       ),
       body: GetBuilder<LessonController>(
-          builder: (controller) => BodyLessonTeacher(controller: controller)),
+          builder: (controller) => Column(
+                children: [
+                  BodyLessonTeacher(controller: controller),
+                ],
+              )),
     );
   }
 }

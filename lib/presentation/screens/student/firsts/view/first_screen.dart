@@ -103,7 +103,9 @@ class FirstsScreen extends StatelessWidget {
           ),
           shimmerWidget: ShimmerList(),
           emptyParams: EmptyParams(
-              text: 'school_today'.tr, caption: 'empty_school_today'.tr, image: ICONS.firstsTop),
+              text: 'school_today'.tr,
+              caption: 'empty_school_today'.tr,
+              image: ICONS.firstsTop),
           successWidget: SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: controller.school.length,
@@ -151,8 +153,8 @@ class FirstsScreen extends StatelessWidget {
           isSliver: true,
           errorWidget: CustomEmptyView(
             assetName: ICONS.firstsTop,
-            primaryText: 'subjects',
-            secanderyText: 'error_for_get_subject',
+            primaryText: 'first_student',
+            secanderyText: 'empty_first_student',
           ),
           shimmerWidget: ShimmerList(),
           emptyParams: EmptyParams(

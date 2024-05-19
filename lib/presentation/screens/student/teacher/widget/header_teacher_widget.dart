@@ -17,57 +17,54 @@ class HeaderTeacherWidget extends StatelessWidget {
         pinned: true,
         delegate: SectionHeaderDelegate(
             height: 65,
-            widget: Expanded(
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(0, 14, 16, 14),
-                decoration: const BoxDecoration(
-                  color: COLORS.strokeColor,
-                ),
-                child: GetBuilder<SubjectController>(
-                  builder: (subjetController) {
-                    controller.iniGetSubject();
-                    return ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          final isSelected =
-                              controller.selectedTapIndex == index;
-                          return GestureDetector(
-                            onTap: () {
-                              controller.changeTapIndex(index);
-                              controller.getCourseSelected(index);
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: Dimensions.paddingSize16,
-                                  vertical: 7),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 1.5,
-                                      color: isSelected
-                                          ? Colors.transparent
-                                          : COLORS.primaryColor
-                                              .withOpacity(0.4)),
-                                  color: isSelected
-                                      ? COLORS.primaryColor
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(32)),
-                              child: Center(
-                                child: CustomText(
-                                    text: controller.subjects[index] ?? '',
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold),
-                              ),
+            widget: Container(
+              padding: const EdgeInsets.fromLTRB(0, 14, 16, 14),
+              decoration: const BoxDecoration(
+                color: COLORS.strokeColor,
+              ),
+              child: GetBuilder<SubjectController>(
+                builder: (subjetController) {
+                  controller.iniGetSubject();
+                  return ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final isSelected = controller.selectedTapIndex == index;
+                        return GestureDetector(
+                          onTap: () {
+                            controller.changeTapIndex(index);
+                            controller.getCourseSelected(index);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: Dimensions.paddingSize16,
+                                vertical: 7),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 1.5,
+                                    color: isSelected
+                                        ? Colors.transparent
+                                        : COLORS.primaryColor.withOpacity(0.4)),
+                                color: isSelected
+                                    ? COLORS.primaryColor
+                                    : Colors.transparent,
+                                borderRadius: BorderRadius.circular(32)),
+                            child: Center(
+                              child: CustomText(
+                                  text: controller.subjects[index] ?? '',
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          );
-                        },
-                        separatorBuilder: (context, index) => const SizedBox(
-                              width: Dimensions.paddingSize5,
-                            ),
-                        itemCount: controller.subjects.length);
-                  },
-                ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) => const SizedBox(
+                            width: Dimensions.paddingSize5,
+                          ),
+                      itemCount: controller.subjects.length);
+                },
               ),
             )));
   }

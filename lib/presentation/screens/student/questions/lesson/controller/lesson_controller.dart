@@ -69,7 +69,8 @@ class LessonController extends BaseController {
   void setVideoPage(TeacherExerciseModel videoPG) {
     _videoPageSelected = videoPG;
     videoController = VideoPlayerController.networkUrl(
-        Uri.parse(_videoPageSelected?.url ?? ''));
+        Uri.parse(_videoPageSelected?.url ?? ''))
+      ..setVolume(1);
     initializeVideoPlayerFuture = videoController.initialize();
     update();
   }

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/extenstion/lesson_extention.dart';
@@ -43,8 +45,8 @@ class LessonView extends StatelessWidget {
               ),
             ),
             emptyParams: EmptyParams(
-                text: 'subjects'.tr,
-                caption: 'empty_subject'.tr,
+                text: 'lessons'.tr,
+                caption: 'empty_lessons'.tr,
                 image: ICONS.decriptionTop),
             successWidget: ListView.separated(
               itemCount: controller.videoPage.length,
@@ -95,37 +97,41 @@ class BodyLessonTeacher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: Get.height * 0.71,
-      width: Get.width,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          FutureBuilder(
-            future: controller.initializeVideoPlayerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return VideoPlayer(controller.videoController);
-              } else {
-                return CircularProgressIndicator();
-              }
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        FutureBuilder(
+          future: controller.initializeVideoPlayerFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return SizedBox(
+                  height: controller.route == RoutesName.pageSubjectScreen
+                      ? Get.height * 0.78
+                      : Get.height * 0.71,
+                  width: Get.width,
+                  child: VideoPlayer(controller.videoController));
+            } else {
+              return Container(
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator());
+            }
+          },
+        ),
+        Positioned(
+          top: Get.height * 0.35,
+          child: IconButton(
+            icon: Icon(
+              controller.videoController.value.isPlaying
+                  ? Icons.pause
+                  : Icons.play_arrow,
+              size: 40,
+            ),
+            onPressed: () {
+              controller.powerVideo();
             },
           ),
-          Center(
-            child: IconButton(
-              icon: Icon(
-                controller.videoController.value.isPlaying
-                    ? Icons.pause
-                    : Icons.play_arrow,
-                size: 40,
-              ),
-              onPressed: () {
-                controller.powerVideo();
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
