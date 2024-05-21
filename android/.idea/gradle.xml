@@ -20,14 +20,15 @@
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-2.30.1/android" />
-            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging-14.9.1/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core-2.31.0/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_messaging-14.9.2/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.19/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.5/android" />
-            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_android-0.8.10/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_android-0.8.11/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.2.4/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-9.0.0/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.2.2/android" />
-            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite-2.3.3/android" />
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite-2.3.3+1/android" />
             <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/video_player_android-2.4.14/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />

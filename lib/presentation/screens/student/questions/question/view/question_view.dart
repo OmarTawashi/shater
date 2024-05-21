@@ -12,6 +12,7 @@ import 'package:shater/presentation/screens/student/questions/failure%20question
 import 'package:shater/presentation/screens/student/questions/question%20answer/arithmetic_text.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/complete_value.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/comprehensive_image.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/match_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_text.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_virtical.dart';
@@ -20,6 +21,8 @@ import 'package:shater/presentation/screens/student/questions/question%20answer/
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/questions/question/widget/header_question_section.dart';
 import 'package:shater/presentation/screens/student/questions/question/widget/image_question_section.dart';
+
+import '../../question answer/order_image.dart';
 
 class QuestionView extends StatelessWidget {
   const QuestionView({
@@ -104,6 +107,13 @@ class QuestionView extends StatelessWidget {
           controller: controller,
         );
       case QType.MatchImage:
+        return OrderText(
+          controller: controller,
+        );
+      // return MatchingQuizScreen(
+      //     // controller: controller,
+      // );
+      case QType.OrderWord:
         return OrderText(
           controller: controller,
         );

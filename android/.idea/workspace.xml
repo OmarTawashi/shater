@@ -10,55 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a63835-291a-4d8e-8ce6-513c181e4a12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/core/extenstion/question_status.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/extenstion/question_status.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/main_dev.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main_dev.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/binding/base_question_binding.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/controller/base_question_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/view/base_question_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/bottom_widget_lesson.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/bottom_widget_question.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/close_question.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/header_failure_status.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/header_sucss_failure.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/base/widget/tab_bar_queation_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/congrlate/binding/congrlate_binding.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/congrlate/controller/congrlate_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/congrlate/view/congrlate_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/failure question/binding/failure_question_binding.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/failure question/controller/failure_question_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/failure question/view/failure_question_screen.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/failure question/widget/show_expalin_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/lesson/view/lesson_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/arithmetic_text.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/complete_value.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/comprehensive_image.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/match_image.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/multi_choice_image.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/multi_choice_text.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/multi_choice_virtical.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/operate_one.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/order_text.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question answer/true_or_false_image.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question/controller/question_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question/view/question_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question/widget/answer_question_section.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question/widget/header_question_section.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/question/widget/image_question_section.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/widget/painter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/base questions/widget/tab_bar_queation_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/routes/app_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/../windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/../windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/com/example/shater/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/com/example/shater/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/order_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/order_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/controller/question_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/controller/question_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +32,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\TOP\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\TOP\.android\avd\Android_14.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -120,18 +84,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ResourceManagerPrefKey.ResourceType": "MIPMAP",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "mohamed-dev-v1",
-    "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;MIPMAP&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mohamed-dev-v1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Documents/GitHub/shater&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />

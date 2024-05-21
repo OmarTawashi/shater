@@ -22,13 +22,10 @@ class QuestionController extends GetxController {
   List<dynamic> oldList = ['الاول', 'الثاني', "الثالث", "الرابع"];
   List<dynamic> newList = [];
 
-  void dragItem(int oldIndex, int newIndex) {
-    if (oldIndex < 0 || oldIndex >= oldList.length) return;
-    if (newIndex < 0 || newIndex >= newList.length) return;
-
-    var item = oldList.removeAt(oldIndex);
+  void dragItem(int data, int newIndex) {
+    String item = oldList[data];
+    oldList.removeAt(data);
     newList.insert(newIndex, item);
-
     update();
   }
 

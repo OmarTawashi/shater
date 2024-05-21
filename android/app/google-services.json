@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:491520970085:android:f3f0b4588d3df9199be58c",
+        "mobilesdk_app_id": "1:491520970085:android:f977f7e0a0fb25779be58c",
         "android_client_info": {
-          "package_name": "com.example.shater"
+          "package_name": "com.faisel.shater"
         }
       },
       "oauth_client": [
