@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 import 'package:shater/routes/app_routes.dart';
+import 'package:shater/util/api_constant.dart';
 import 'package:shater/util/images.dart';
 
 import '../../../../../../data/model/typing_answer.dart';
@@ -15,6 +18,7 @@ import '../../../../../../data/model/typing_answer.dart';
 enum FailureEnum { showExpalin, trueAnswer, stable }
 
 class QuestionController extends GetxController {
+  AudioPlayer audioPlayer = AudioPlayer();
   List<QuestionPageModel> _questionsPages = [];
   List<QuestionPageModel> get questionsPages => _questionsPages;
 
@@ -75,6 +79,9 @@ class QuestionController extends GetxController {
 
   List<QuestionModel> _questionsAnswer = [];
   List<QuestionModel> get questionsAnswer => _questionsAnswer;
+
+  List<TypingAnswer> _answerQuestion = [];
+  List<TypingAnswer> get answerQuestion => _answerQuestion;
 
   List _selectAnswer = [];
   List get selectAnswer => _selectAnswer;
@@ -164,15 +171,18 @@ class QuestionController extends GetxController {
     update();
   }
 
-  void setAnswer(dynamic answer) {
+  void setAnswer(dynamic answer, {int? index}) {
     setQuestionStatus(QuestionStatusEnum.select);
+    final typingAnswer = TypingAnswer(index: index ?? -1, input: answer);
     if (questionType?.qtype == QType.TrueOrFalseImage) {
       _selectAnswer = [];
     }
     if (_selectAnswer.contains(answer)) {
+      // _answerQuestion.remove(typingAnswer);
       _selectAnswer.remove(answer);
     } else {
       // _selectAnswer.clear();
+      // _selectAnswer.add(answer);
       _selectAnswer.add(answer);
     }
     update();
@@ -194,11 +204,7 @@ class QuestionController extends GetxController {
     }
     int? type = _questionsGet?[questionIndex].typeId;
     _questionType = QuestionType.fromString(type.toString());
-    if (_questionType?.qtype != QType.MultiChoiceText ||
-        _questionType?.qtype != QType.TrueOrFalseImage ||
-        _questionType?.qtype != QType.MultiChoiceImage) {
-      setQuestionStatus(QuestionStatusEnum.skip);
-    }
+    playAudioUrl(questionModel?.titleAudio ?? '');
     update();
   }
 
@@ -260,6 +266,38 @@ class QuestionController extends GetxController {
   void checkAnswer() {
     List<dynamic> valid = [];
     bool checked = false;
+    switch (questionType?.qtype) {
+      // case QType.MultiChoiceTextSound:
+      //   // for (int i = 0; i < _answerQuestion.length; i++) {
+      //   //   if (i == _answerQuestion[i].index) {
+      //   //     _selectAnswer.add(_answerQuestion[i].input);
+      //   //   }
+      //   // }
+      //   break;
+      case QType.CompleteValue:
+        setAnswer(completeValueController.text);
+        valid = _questionModel?.answer ?? [];
+        break;
+      case QType.TrueOrFalseImage:
+        valid = _questionModel?.answer ?? [];
+
+        break;
+      case QType.ComprehensiveImage:
+        for (int i = 0; i < _inputComperhensiveImage.length; i++) {
+          if (_inputComperhensiveImage[i] == null) {
+            _selectAnswer.add("null");
+          } else {
+            _selectAnswer
+                .add(_inputComperhensiveImage[i]?.textEditingController?.text);
+          }
+        }
+        valid = _questionModel?.valid ?? [];
+
+        break;
+      default:
+        valid = _questionModel?.valid ?? [];
+    }
+
     if (questionType?.qtype == QType.CompleteValue) {
       setAnswer(completeValueController.text);
       valid = _questionModel?.answer ?? [];
@@ -278,12 +316,12 @@ class QuestionController extends GetxController {
     } else {
       valid = _questionModel?.valid ?? [];
     }
-    if (questionType?.qtype == QType.ComprehensiveImage) {
-      checked = (valid.length == _selectAnswer.length &&
-          _selectAnswer.every((element) => valid.contains(element)));
-    } else {
-      checked = listsAreEqual(valid, _selectAnswer);
-    }
+    // if (questionType?.qtype == QType.ComprehensiveImage) {
+    //   checked = (valid.length == _selectAnswer.length &&
+    //       _selectAnswer.every((element) => valid.contains(element)));
+    // } else {
+    checked = listsAreEqual(valid, _selectAnswer);
+    // }
 
     if (checked) {
       setQuestionStatus(QuestionStatusEnum.success);
@@ -314,6 +352,21 @@ class QuestionController extends GetxController {
         _congrlateText = VIDEO.answer20;
         Get.toNamed(Routes.getCongrlateScreen());
         break;
+    }
+  }
+
+  void playAudioUrl(String? url) async {
+    final fullUrl = ApiConstant.baseUrl + '/' + (url ?? '');
+    print('Playing audio from: $fullUrl');
+    audioPlayer.stop();
+    try {
+      await audioPlayer.play(
+        UrlSource(fullUrl),
+        volume: 1.0,
+      );
+      print('Audio started playing');
+    } catch (e) {
+      print('Error playing audio: $e');
     }
   }
 }

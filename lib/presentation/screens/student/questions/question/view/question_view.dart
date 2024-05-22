@@ -42,8 +42,7 @@ class QuestionView extends StatelessWidget {
                 ),
                 getHeaderFailure(controller),
                 HeaderQuestionSection(
-                  titleQuestion: controller.questionModel?.title ?? '',
-                  subTitleQuestion: controller.questionModel?.titleExtra ?? '',
+                  controller: controller,
                 ),
               ),
               controller.failureTap.getBodyForQuestion(
@@ -107,12 +106,14 @@ class QuestionView extends StatelessWidget {
           controller: controller,
         );
       case QType.MatchImage:
-        return OrderText(
+        return MatchingQuizScreen(
+            // controller: controller,
+            );
+      case QType.OrderWithImage:
+        return OrderImage(
           controller: controller,
         );
-      // return MatchingQuizScreen(
-      //     // controller: controller,
-      // );
+
       case QType.OrderWord:
         return OrderText(
           controller: controller,

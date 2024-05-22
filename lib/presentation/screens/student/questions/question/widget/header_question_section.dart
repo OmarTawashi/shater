@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/util/dimensions.dart';
 
 class HeaderQuestionSection extends StatelessWidget {
-  final String? titleQuestion;
-  final String? subTitleQuestion;
-  const HeaderQuestionSection(
-      {super.key, this.titleQuestion, this.subTitleQuestion});
+  final QuestionController controller;
+  const HeaderQuestionSection({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -24,15 +24,21 @@ class HeaderQuestionSection extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomText(
-                  text: titleQuestion ?? '',
+                  text: controller.questionModel?.title ?? '',
                   fontSize: Dimensions.fontSize16 + 1,
                   textAlign: TextAlign.center,
                   fontWeight: FontWeight.w500,
                   color: Color.fromRGBO(96, 96, 96, 1),
                 ),
               ),
-              Icon(
-                Icons.alternate_email,
+              GestureDetector(
+                onTap: () {
+                  final linkAudio = controller.questionModel?.titleAudio ?? '';
+                  controller.playAudioUrl(linkAudio);
+                },
+                child: Icon(
+                  Icons.audio_file,
+                ),
               )
             ],
           ),
@@ -40,9 +46,9 @@ class HeaderQuestionSection extends StatelessWidget {
             height: Dimensions.paddingSize10,
           ),
           CustomText(
-            text: subTitleQuestion ?? '',
+            text: controller.questionModel?.titleExtra ?? '',
             fontSize: Dimensions.fontSize16,
-             textAlign: TextAlign.start,
+            textAlign: TextAlign.start,
             fontWeight: FontWeight.w500,
             color: Color.fromRGBO(123, 123, 123, 1),
           ),

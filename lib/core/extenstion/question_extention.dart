@@ -21,6 +21,7 @@ enum QType {
   TrueOrFalseImage,
   MultiChoiceImageTitle,
   MultiChoiceImageSound,
+  MultiChoiceTextSound,
   OrderWithImage,
   ImageCount,
   MathOperations,
