@@ -177,6 +177,18 @@ class QuestionController extends GetxController {
     if (questionType?.qtype == QType.TrueOrFalseImage) {
       _selectAnswer = [];
     }
+    // switch (questionType?.qtype) {
+    //   case QType.MultiChoiceText:
+    //     break;
+    //   case QType.CompleteValue:
+    //     break;
+    //   case QType.TrueOrFalseImage:
+    //     break;
+    //   case QType.ComprehensiveImage:
+    //     break;
+    //   default:
+    // }
+
     if (_selectAnswer.contains(answer)) {
       // _answerQuestion.remove(typingAnswer);
       _selectAnswer.remove(answer);

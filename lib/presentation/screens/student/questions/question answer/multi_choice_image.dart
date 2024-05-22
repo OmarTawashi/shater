@@ -30,7 +30,6 @@ class MultiChoiceImage extends StatelessWidget {
               onTap: () {
                 controller
                     ?.setAnswer(controller?.questionModel?.answer?[index]);
-                // controller?.setSelectIndex(index);
               },
               child: Container(
                 clipBehavior: Clip.hardEdge,
@@ -42,7 +41,7 @@ class MultiChoiceImage extends StatelessWidget {
                             ? controller!.questionStatus.getGridItemColor()
                             : Colors.transparent,
                         width: 2.5),
-                    color: Colors.transparent,
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                           color: Color.fromRGBO(0, 0, 0, 0.16),
