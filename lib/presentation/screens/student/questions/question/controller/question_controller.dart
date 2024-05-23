@@ -287,8 +287,9 @@ class QuestionController extends GetxController {
       //   // }
       //   break;
       case QType.CompleteValue:
-        setAnswer(completeValueController.text);
-        valid = _questionModel?.answer ?? [];
+        final answerValue = completeValueController.text.trim();
+        valid = _questionModel?.valid ?? [];
+        checked = valid.contains(answerValue);
         break;
       case QType.TrueOrFalseImage:
         valid = _questionModel?.answer ?? [];
@@ -308,31 +309,31 @@ class QuestionController extends GetxController {
         break;
       default:
         valid = _questionModel?.valid ?? [];
+        checked = listsAreEqual(valid, _selectAnswer);
     }
 
-    if (questionType?.qtype == QType.CompleteValue) {
-      setAnswer(completeValueController.text);
-      valid = _questionModel?.answer ?? [];
-    } else if (questionType?.qtype == QType.TrueOrFalseImage) {
-      valid = _questionModel?.answer ?? [];
-    } else if (questionType?.qtype == QType.ComprehensiveImage) {
-      for (int i = 0; i < _inputComperhensiveImage.length; i++) {
-        if (_inputComperhensiveImage[i] == null) {
-          _selectAnswer.add("null");
-        } else {
-          _selectAnswer
-              .add(_inputComperhensiveImage[i]?.textEditingController?.text);
-        }
-      }
-      valid = _questionModel?.valid ?? [];
-    } else {
-      valid = _questionModel?.valid ?? [];
-    }
+    // if (questionType?.qtype == QType.CompleteValue) {
+    //   setAnswer(completeValueController.text);
+    //   valid = _questionModel?.answer ?? [];
+    // } else if (questionType?.qtype == QType.TrueOrFalseImage) {
+    //   valid = _questionModel?.answer ?? [];
+    // } else if (questionType?.qtype == QType.ComprehensiveImage) {
+    //   for (int i = 0; i < _inputComperhensiveImage.length; i++) {
+    //     if (_inputComperhensiveImage[i] == null) {
+    //       _selectAnswer.add("null");
+    //     } else {
+    //       _selectAnswer
+    //           .add(_inputComperhensiveImage[i]?.textEditingController?.text);
+    //     }
+    //   }
+    //   valid = _questionModel?.valid ?? [];
+    // } else {
+    //   valid = _questionModel?.valid ?? [];
+    // }
     // if (questionType?.qtype == QType.ComprehensiveImage) {
     //   checked = (valid.length == _selectAnswer.length &&
     //       _selectAnswer.every((element) => valid.contains(element)));
     // } else {
-    checked = listsAreEqual(valid, _selectAnswer);
     // }
 
     if (checked) {
