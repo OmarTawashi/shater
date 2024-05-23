@@ -5,8 +5,8 @@ import 'package:shater/presentation/screens/student/questions/question/controlle
 import 'package:shater/util/dimensions.dart';
 
 class TrueOrFalseImage extends StatelessWidget {
-  final QuestionController? controller;
-  TrueOrFalseImage({super.key, this.controller});
+  final QuestionController controller;
+  TrueOrFalseImage({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +22,21 @@ class TrueOrFalseImage extends StatelessWidget {
             children: [
               Expanded(
                 child: WidgetTrueOrFalseTap(
-                  isSelect: controller?.selectAnswer.contains('true') ?? false,
+                  isSelect: controller.selectAnswerTrueFalse == true,
                   icon: Icons.check_sharp,
-                  selectColor: controller?.questionStatus.getBgButtColor(),
+                  selectColor: controller.questionStatus.getBgButtColor(),
                   onTap: () {
-                    controller?.setAnswer('true');
+                    controller.setAnswerTrueOrFalse(true);
                   },
                 ),
               ),
               Expanded(
                 child: WidgetTrueOrFalseTap(
-                  isSelect: controller?.selectAnswer.contains('false') ?? false,
+                  isSelect: controller.selectAnswerTrueFalse == false,
                   icon: Icons.close_sharp,
-                  selectColor: controller?.questionStatus.getBgButtColor(),
+                  selectColor: controller.questionStatus.getBgButtColor(),
                   onTap: () {
-                    controller?.setAnswer('false');
+                    controller.setAnswerTrueOrFalse(false);
                   },
                 ),
               )

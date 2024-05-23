@@ -74,6 +74,9 @@ class QuestionController extends GetxController {
   int _answerNumValid = 0;
   int get answerNumValid => _answerNumValid;
 
+  bool? _selectAnswerTrueFalse;
+  bool? get selectAnswerTrueFalse => _selectAnswerTrueFalse;
+
   // List<TypingAnswer> _typingAnswer = [];
   // List<TypingAnswer> get typingAnswer => _typingAnswer;
 
@@ -101,6 +104,12 @@ class QuestionController extends GetxController {
 
   void setQuestion(QuestionModel? questionModel) {
     _questionModel = questionModel;
+    update();
+  }
+
+  void setAnswerTrueOrFalse(bool answer) {
+    _selectAnswerTrueFalse = answer;
+    setQuestionStatus(QuestionStatusEnum.select);
     update();
   }
 
@@ -174,21 +183,6 @@ class QuestionController extends GetxController {
   void setAnswer(dynamic answer, {int? index}) {
     setQuestionStatus(QuestionStatusEnum.select);
     final typingAnswer = TypingAnswer(index: index ?? -1, input: answer);
-    if (questionType?.qtype == QType.TrueOrFalseImage) {
-      _selectAnswer = [];
-    }
-    // switch (questionType?.qtype) {
-    //   case QType.MultiChoiceText:
-    //     break;
-    //   case QType.CompleteValue:
-    //     break;
-    //   case QType.TrueOrFalseImage:
-    //     break;
-    //   case QType.ComprehensiveImage:
-    //     break;
-    //   default:
-    // }
-
     if (_selectAnswer.contains(answer)) {
       // _answerQuestion.remove(typingAnswer);
       _selectAnswer.remove(answer);
@@ -292,8 +286,10 @@ class QuestionController extends GetxController {
         checked = valid.contains(answerValue);
         break;
       case QType.TrueOrFalseImage:
-        valid = _questionModel?.answer ?? [];
-
+        final answerValue = _selectAnswerTrueFalse.toString().toLowerCase();
+        final validValue =
+            _questionModel?.answer?.first.toString().toLowerCase();
+        checked = (answerValue == validValue);
         break;
       case QType.ComprehensiveImage:
         for (int i = 0; i < _inputComperhensiveImage.length; i++) {
