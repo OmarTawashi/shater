@@ -86,7 +86,7 @@ class QuestionModel {
   String? answerIsNumber;
   List<dynamic>? answer;
   List<dynamic>? valid;
-  Map<String, dynamic>? orderBy;
+  dynamic orderBy;
   String? media;
   List<dynamic>? urls;
   String? updatedAt;
@@ -135,11 +135,7 @@ class QuestionModel {
     titleExtra = json['title_extra'];
     hint = json['hint'];
     answerIsNumber = json['answer_is_number'];
-    if (json['order_by'] is List) {
-      orderBy = json['order_by'].first;
-    } else {
-      orderBy = json['order_by'];
-    }
+    orderBy = json['order_by'];
     media = json['media'];
     if (json['answer'] is String ||
         json['answer'] is int ||

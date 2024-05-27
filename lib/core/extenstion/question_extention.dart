@@ -22,7 +22,7 @@ enum QType {
   MultiChoiceImageTitle,
   MultiChoiceImageSound,
   MultiChoiceTextSound,
-  OrderWithImage,
+  OrderImage,
   ImageCount,
   MathOperations,
   ArithmeticText,
@@ -90,7 +90,7 @@ class QuestionType {
       case "19":
         return QType.MultiChoiceText;
       case "20":
-        return QType.OrderWithImage;
+        return QType.OrderImage;
       case "21":
         return QType.ImageCount;
       case "22":

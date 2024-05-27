@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:shater/core/base/base_mixin.dart';
 
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
@@ -22,15 +24,111 @@ class QuestionController extends GetxController {
   List<QuestionPageModel> _questionsPages = [];
   List<QuestionPageModel> get questionsPages => _questionsPages;
 
-  // Define observables for the lists
-  List<dynamic> oldList = ['الاول', 'الثاني', "الثالث", "الرابع"];
-  List<dynamic> newList = [];
+  List<dynamic> oldListOrderImage = [];
+  List<dynamic> newListOrderImage = [];
+  List<int> orderImageIndex = [];
 
-  void dragItem(int data, int newIndex) {
-    String item = oldList[data];
-    oldList.removeAt(data);
-    newList.insert(newIndex, item);
+  void setOrderImage(int data, int newIndex, int ImageIndexCorrect) {
+    if (ImageIndexCorrect == newIndex || ImageIndexCorrect == -2) {
+      newListOrderImage[newIndex] = oldListOrderImage[data];
+      oldListOrderImage[data] = "null";
+      setQuestionStatus(QuestionStatusEnum.select);
+    } else if (ImageIndexCorrect == -1) {
+      newListOrderImage[newIndex] = "null";
+      oldListOrderImage[data] = "null";
+      BaseMixin.showToastFlutter(messsage: 'this_not_contain_of_list');
+    } else {
+      BaseMixin.showToastFlutter(messsage: 'please_drag_in_correct_index');
+    }
     update();
+  }
+
+  List<dynamic> oldListOrderText = [];
+  List<dynamic> newListOrderText = [];
+  List<int> orderTextIndex = [];
+
+  void setOrderText(int data, int newIndex, int ImageIndexCorrect) {
+    if (ImageIndexCorrect == newIndex || ImageIndexCorrect == -2) {
+      newListOrderText[newIndex] = oldListOrderText[data];
+      oldListOrderText[data] = "null";
+      setQuestionStatus(QuestionStatusEnum.select);
+    } else if (ImageIndexCorrect == -1) {
+      newListOrderText[newIndex] = "null";
+      oldListOrderText[data] = "null";
+
+      BaseMixin.showToastFlutter(messsage: 'this_not_contain_of_list');
+    } else {
+      BaseMixin.showToastFlutter(messsage: 'please_drag_in_correct_index');
+    }
+    update();
+  }
+
+  void getOldListOrderImage() {
+    oldListOrderImage = [];
+    newListOrderImage = [];
+    orderImageIndex = [];
+    final orderBy = _questionModel?.orderBy as List;
+    for (var i = 0; i < orderBy.length; i++) {
+      final image = orderBy[i] as Map<String, dynamic>;
+      final imageIndex = image.values.first;
+      if (imageIndex is String) {
+        final imageIndexConv = int.tryParse(imageIndex);
+        if ((imageIndexConv ?? -1) > 0) {
+          int imageIndexPL = (imageIndexConv ?? -2) - 1;
+          orderImageIndex.add(imageIndexPL);
+        } else if (imageIndexConv == 0) {
+          orderImageIndex.add(-2);
+        } else {
+          orderImageIndex.add(imageIndexConv ?? 0);
+        }
+      } else {
+        if (imageIndex > 0) {
+          final imageIndexPL = imageIndex - 1;
+          orderImageIndex.add(imageIndexPL);
+        } else if (imageIndex == 0) {
+          orderImageIndex.add(-2);
+        } else {
+          orderImageIndex.add(imageIndex);
+        }
+      }
+      final imageUrl = image.keys.first;
+      oldListOrderImage.add(imageUrl);
+      newListOrderImage.add('null');
+    }
+  }
+
+  void getOldListOrderText() {
+    oldListOrderText = [];
+    newListOrderText = [];
+    orderTextIndex = [];
+    final orderBy = _questionModel?.orderBy as List;
+    for (var i = 0; i < orderBy.length; i++) {
+      final image = orderBy[i] as Map<String, dynamic>;
+      final imageIndex = image.values.first;
+      if (imageIndex is String) {
+        final imageIndexConv = int.tryParse(imageIndex);
+        if ((imageIndexConv ?? -1) > 0) {
+          int imageIndexPL = (imageIndexConv ?? -2) - 1;
+          orderTextIndex.add(imageIndexPL);
+        } else if (imageIndexConv == 0) {
+          orderTextIndex.add(-2);
+        } else {
+          orderTextIndex.add(imageIndexConv ?? 0);
+        }
+      } else {
+        if (imageIndex > 0) {
+          final imageIndexPL = imageIndex - 1;
+          orderTextIndex.add(imageIndexPL);
+        } else if (imageIndex == 0) {
+          orderTextIndex.add(-2);
+        } else {
+          orderTextIndex.add(imageIndex);
+        }
+      }
+      final imageUrl = image.keys.first;
+      oldListOrderText.add(imageUrl);
+      newListOrderText.add('null');
+    }
   }
 
   FailureEnum _failureTap = FailureEnum.stable;
@@ -284,6 +382,14 @@ class QuestionController extends GetxController {
         final answerValue = completeValueController.text.trim();
         valid = _questionModel?.valid ?? [];
         checked = valid.contains(answerValue);
+        break;
+      case QType.OrderImage:
+        final answerold = oldListOrderImage;
+        checked = (answerold.every((item) => item == "null"));
+        break;
+      case QType.OrderWord:
+        final answerold = oldListOrderText;
+        checked = (answerold.every((item) => item == "null"));
         break;
       case QType.TrueOrFalseImage:
         final answerValue = _selectAnswerTrueFalse.toString().toLowerCase();

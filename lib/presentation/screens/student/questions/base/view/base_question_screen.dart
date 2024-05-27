@@ -26,6 +26,7 @@ class BaseQuestionScreen extends StatelessWidget {
       ),
       body: GetBuilder<BaseQuestionController>(
         builder: (controller) => CustomScrollView(
+          shrinkWrap: true,
           slivers: [
             TabBarQuestion(
               controller: controller,
