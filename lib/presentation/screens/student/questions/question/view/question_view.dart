@@ -18,6 +18,7 @@ import 'package:shater/presentation/screens/student/questions/question%20answer/
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_virtical.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/order_text.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/true_or_false_image.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/writing_board.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/questions/question/widget/header_question_section.dart';
 import 'package:shater/presentation/screens/student/questions/question/widget/image_question_section.dart';
@@ -91,6 +92,10 @@ class QuestionView extends StatelessWidget {
         ); /*getComprehensiveImageWidget*/
       case QType.CompleteValue:
         return CompleteValue(
+          controller: controller,
+        );
+      case QType.WritingBoard:
+        return WritingBoard(
           controller: controller,
         );
       case QType.MultiChoiceImage:

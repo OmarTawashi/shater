@@ -29,7 +29,7 @@ enum QType {
   ComprehensiveImage,
   ComprehensiveSelectImage,
   ComprehensiveAttachmentsInput,
-  WritingDrawing,
+  WritingBoard,
   LongDivisionType,
   FractionsType,
   CalculationsType,
@@ -100,9 +100,7 @@ class QuestionType {
       case "24":
         return QType.MultiChoiceImage;
       case "25":
-        return QType.CompleteValue;
-      case "26":
-        return QType.WritingDrawing;
+        return QType.WritingBoard;
       case "27":
         return QType.ArithmeticText;
       case "28":

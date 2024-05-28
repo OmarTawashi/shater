@@ -1,10 +1,15 @@
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:shater/core/base/base_mixin.dart';
+import 'package:shater/core/base/image_converter.dart';
 
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
@@ -14,6 +19,7 @@ import 'package:shater/presentation/screens/student/pages%20subject/controller/p
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/api_constant.dart';
 import 'package:shater/util/images.dart';
+import 'package:signature/signature.dart';
 
 import '../../../../../../data/model/typing_answer.dart';
 
@@ -133,6 +139,28 @@ class QuestionController extends GetxController {
 
   FailureEnum _failureTap = FailureEnum.stable;
   FailureEnum get failureTap => _failureTap;
+
+  SignatureController? signatureWriteController;
+  ui.Image? _signatureWritingImage;
+  String? _writingBoardText;
+  Future<void> performTextRecognition() async {
+    try {
+      _signatureWritingImage = await signatureWriteController?.toImage();
+      final imageBytes =
+          await ImageConverter.convertUiImageToBytes(_signatureWritingImage!);
+      final imageFile =
+          await ImageConverter.writeBytesToFile(imageBytes!, 'WritingBoard');
+      final inputImage = InputImage.fromFile(imageFile);
+      TextRecognizer _textRecognizer = TextRecognizer();
+      final recognizedText = await _textRecognizer.processImage(inputImage);
+      _writingBoardText = recognizedText.text;
+      print(_writingBoardText);
+      update();
+      _textRecognizer.close();
+    } catch (e) {
+      print('Error during text recognition: $e');
+    }
+  }
 
   TextEditingController completeValueController = TextEditingController();
 
@@ -390,6 +418,18 @@ class QuestionController extends GetxController {
       case QType.OrderWord:
         final answerold = oldListOrderText;
         checked = (answerold.every((item) => item == "null"));
+        break;
+      case QType.WritingBoard:
+        performTextRecognition().then((value) {
+          String? answer;
+          String? valid;
+          if (_writingBoardText != null) {
+            answer = questionModel?.answer?.first.toString().trim();
+            valid = _writingBoardText?.trim();
+            checked = (answer == valid);
+          }
+        });
+
         break;
       case QType.TrueOrFalseImage:
         final answerValue = _selectAnswerTrueFalse.toString().toLowerCase();
