@@ -6,7 +6,7 @@ enum QType {
   OrderWord,
   MultiChoiceImage,
   MultiChoiceVirtical,
-  ConnectSentence,
+  MatchText,
   ConnectImageTextSentence,
   MatchImage,
   CompleteSentence,
@@ -60,7 +60,7 @@ class QuestionType {
       case "4":
         return QType.ComprehensiveSelectImage;
       case "5":
-        return QType.ConnectSentence;
+        return QType.MatchText;
       case "6":
         return QType.MatchImage;
       case "7":

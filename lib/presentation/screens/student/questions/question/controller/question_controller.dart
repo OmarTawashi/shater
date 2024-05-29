@@ -254,18 +254,18 @@ class QuestionController extends GetxController {
     _arithmiticIndex = index;
   }
 
-  void setInputControllerComperhensiveImage(int index) {
-    final lenghtCheck = _questionModel?.answer?.length ?? 0;
-    _questionModel?.answer?.forEach((element) {
-      if (lenghtCheck > _inputComperhensiveImage.length) {
-        if (element == 'space') {
+  void setInputControllerComperhensiveImage() {
+    final answer = _questionModel?.answer ?? [];
+    if (_inputComperhensiveImage.length < answer.length) {
+      for (var i = 0; i < answer.length; i++) {
+        if (answer[i] == 'space') {
           _inputComperhensiveImage.add(TypingAnswer(
-              index: index, textEditingController: TextEditingController()));
+              index: i, textEditingController: TextEditingController()));
         } else {
           _inputComperhensiveImage.add(null);
         }
       }
-    });
+    }
   }
 
   void changeInputValueComperhensiveImage(String value, int index) {
@@ -337,6 +337,12 @@ class QuestionController extends GetxController {
     int? type = _questionsGet?[questionIndex].typeId;
     _questionType = QuestionType.fromString(type.toString());
     playAudioUrl(questionModel?.titleAudio ?? '');
+    if (questionType?.qtype == QType.ComprehensiveImage) {
+      _inputComperhensiveImage = [];
+      if (_questionModel?.answer?.contains('<skip>') == true) {
+        setQuestionStatus(QuestionStatusEnum.skip);
+      }
+    }
     update();
   }
 
@@ -399,13 +405,6 @@ class QuestionController extends GetxController {
     List<dynamic> valid = [];
     bool checked = false;
     switch (questionType?.qtype) {
-      // case QType.MultiChoiceTextSound:
-      //   // for (int i = 0; i < _answerQuestion.length; i++) {
-      //   //   if (i == _answerQuestion[i].index) {
-      //   //     _selectAnswer.add(_answerQuestion[i].input);
-      //   //   }
-      //   // }
-      //   break;
       case QType.CompleteValue:
         final answerValue = completeValueController.text.trim();
         valid = _questionModel?.valid ?? [];
@@ -429,7 +428,6 @@ class QuestionController extends GetxController {
             checked = (answer == valid);
           }
         });
-
         break;
       case QType.TrueOrFalseImage:
         final answerValue = _selectAnswerTrueFalse.toString().toLowerCase();
@@ -447,36 +445,13 @@ class QuestionController extends GetxController {
           }
         }
         valid = _questionModel?.valid ?? [];
+        checked = listsAreEqual(valid, _selectAnswer);
 
         break;
       default:
         valid = _questionModel?.valid ?? [];
         checked = listsAreEqual(valid, _selectAnswer);
     }
-
-    // if (questionType?.qtype == QType.CompleteValue) {
-    //   setAnswer(completeValueController.text);
-    //   valid = _questionModel?.answer ?? [];
-    // } else if (questionType?.qtype == QType.TrueOrFalseImage) {
-    //   valid = _questionModel?.answer ?? [];
-    // } else if (questionType?.qtype == QType.ComprehensiveImage) {
-    //   for (int i = 0; i < _inputComperhensiveImage.length; i++) {
-    //     if (_inputComperhensiveImage[i] == null) {
-    //       _selectAnswer.add("null");
-    //     } else {
-    //       _selectAnswer
-    //           .add(_inputComperhensiveImage[i]?.textEditingController?.text);
-    //     }
-    //   }
-    //   valid = _questionModel?.valid ?? [];
-    // } else {
-    //   valid = _questionModel?.valid ?? [];
-    // }
-    // if (questionType?.qtype == QType.ComprehensiveImage) {
-    //   checked = (valid.length == _selectAnswer.length &&
-    //       _selectAnswer.every((element) => valid.contains(element)));
-    // } else {
-    // }
 
     if (checked) {
       setQuestionStatus(QuestionStatusEnum.success);

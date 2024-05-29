@@ -1,7 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
-import 'package:painter/painter.dart';
 import 'package:shater/util/images.dart';
 
 class MatchingQuizScreen extends StatefulWidget {
@@ -18,101 +19,14 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
     IMAGES.loadingGif
   ];
 
-  Offset? start;
-  Offset? end;
+  List<Offset?> points = [];
+  Offset? startPoint;
+  Offset? endPoint;
 
-  final Map<String, Offset> leftPositions = {};
-  final Map<String, Offset> rightPositions = {};
-  final Map<String, String> matches = {};
+  Map<String, String> matchedItems = {};
 
-  PainterController? painterController;
-
-  @override
-  void initState() {
-    super.initState();
-    painterController = PainterController()
-      ..backgroundColor = Colors.transparent
-      ..eraseMode = true
-      ..thickness = 6.0
-      ..drawColor = COLORS.primaryColor;
-  }
-
-  void onPanStart(DragStartDetails details, bool isLeft) {
-    final RenderBox renderBox = context.findRenderObject() as RenderBox;
-    Offset localPosition = renderBox.globalToLocal(details.globalPosition);
-    setState(() {
-      start = localPosition;
-    });
-  }
-
-  void onPanUpdate(DragUpdateDetails details) {
-    final RenderBox renderBox = context.findRenderObject() as RenderBox;
-    setState(() {
-      end = renderBox.globalToLocal(details.globalPosition);
-      drawCurrentLine();
-    });
-  }
-
-  void onPanEnd(DragEndDetails details) {
-    if (start != null && end != null) {
-      String? matchedLeftItem;
-      String? matchedRightItem;
-
-      leftPositions.forEach((key, value) {
-        if ((value - start!).distance < 30) {
-          matchedLeftItem = key;
-        }
-      });
-
-      rightPositions.forEach((key, value) {
-        if ((value - end!).distance < 30) {
-          matchedRightItem = key;
-        }
-      });
-
-      if (matchedLeftItem != null && matchedRightItem != null) {
-        setState(() {
-          matches[matchedLeftItem!] = matchedRightItem!;
-        });
-      }
-    }
-
-    setState(() {
-      start = null;
-      end = null;
-    });
-    drawAllLines();
-  }
-
-  void drawCurrentLine() {
-    if (painterController != null && start != null && end != null) {
-      painterController!.clear();
-      painterController!.drawColor = COLORS.primaryColor;
-      painterController!.thickness = 6.0;
-      painterController!.backgroundColor = Colors.transparent;
-      // painterController!.mode = PainterMode.freeStyle;
-      // painterController!.draw(start!, end!);
-    }
-  }
-
-  void drawAllLines() {
-    if (painterController != null) {
-      painterController!.clear();
-      final List<Offset> lines = [];
-      matches.forEach((left, right) {
-        if (leftPositions[left] != null && rightPositions[right] != null) {
-          final Offset leftCircleCenter = leftPositions[left]!;
-          final Offset rightCircleCenter = rightPositions[right]!;
-          lines.add(leftCircleCenter);
-          lines.add(rightCircleCenter);
-        }
-      });
-
-      // for (int i = 0; i < lines.length; i += 2) {
-      //   painterController!.draw(lines[i], lines[i + 1]);
-      // }
-    }
-  }
+  List<GlobalKey> leftItemKeys = List.generate(4, (_) => GlobalKey());
+  List<GlobalKey> rightItemKeys = List.generate(4, (_) => GlobalKey());
 
   @override
   Widget build(BuildContext context) {
@@ -130,57 +44,24 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: leftItems.map((item) {
+                      children: leftItems.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final item = entry.value;
                         return GestureDetector(
-                          onTapDown: (details) {
-                            RenderBox box =
-                                context.findRenderObject() as RenderBox;
-                            final Offset tappedPoint =
-                                box.globalToLocal(details.globalPosition);
-                            final RenderBox itemBox =
-                                details.localPosition.dx < box.size.width / 2
-                                    ? box
-                                    : box;
-                            setState(() {
-                              leftPositions[item] =
-                                  itemBox.globalToLocal(tappedPoint) +
-                                      Offset(0, -35);
-                            });
-                          },
-                          onPanStart: (details) => onPanStart(details, true),
-                          onPanUpdate: onPanUpdate,
-                          onPanEnd: onPanEnd,
-                          child: ItemMatchImage(
-                            item: item,
-                          ),
+                          key: leftItemKeys[index],
+                          child: ItemMatchImage(item: item),
                         );
                       }).toList(),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: rightItems.map((item) {
+                      children: rightItems.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final item = entry.value;
                         return GestureDetector(
-                            onTapDown: (details) {
-                              RenderBox box =
-                                  context.findRenderObject() as RenderBox;
-                              final Offset tappedPoint =
-                                  box.globalToLocal(details.globalPosition);
-                              final RenderBox itemBox =
-                                  details.localPosition.dx > box.size.width / 2
-                                      ? box
-                                      : box;
-                              setState(() {
-                                rightPositions[item] =
-                                    itemBox.globalToLocal(tappedPoint) +
-                                        Offset(0, -35);
-                              });
-                            },
-                            onPanStart: (details) => onPanStart(details, false),
-                            onPanUpdate: onPanUpdate,
-                            onPanEnd: onPanEnd,
-                            child: ItemMatchText(
-                              item: item,
-                            ));
+                          key: rightItemKeys[index],
+                          child: ItemMatchText(item: item),
+                        );
                       }).toList(),
                     ),
                   ],
@@ -188,15 +69,76 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
               ),
             ],
           ),
-          Lines(),
-
-          // Positioned.fill(
-          //     child: Painter(
-          //   painterController!,
-          // )),
+          GestureDetector(
+            onPanStart: (details) {
+              RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+              if (renderBox != null) {
+                startPoint = renderBox.globalToLocal(details.globalPosition);
+                setState(() {
+                  points.add(startPoint!);
+                });
+              }
+            },
+            onPanUpdate: (details) {
+              RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+              if (renderBox != null && startPoint != null) {
+                setState(() {
+                  endPoint = renderBox.globalToLocal(details.globalPosition);
+                });
+              }
+            },
+            onPanEnd: (details) {
+              if (endPoint != null) {
+                int? leftIndex = getClosestItemIndex(leftItemKeys, startPoint!);
+                int? rightIndex = getClosestItemIndex(rightItemKeys, endPoint!);
+                if (leftIndex != null && rightIndex != null) {
+                  addMatch(leftIndex, rightIndex);
+                }
+                setState(() {
+                  points.add(endPoint!);
+                  startPoint = null;
+                  endPoint = null;
+                });
+              }
+            },
+            child: CustomPaint(
+              painter: LineDrawingPainter(points, startPoint, endPoint),
+              child: Container(),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  void addMatch(int leftIndex, int rightIndex) {
+    setState(() {
+      matchedItems[leftItems[leftIndex]] = rightItems[rightIndex];
+    });
+  }
+
+  int? getClosestItemIndex(List<GlobalKey> keys, Offset point) {
+    print('Point: $point');
+    for (int i = 0; i < keys.length; i++) {
+      final keyContext = keys[i].currentContext;
+      if (keyContext != null) {
+        final box = keyContext.findRenderObject() as RenderBox?;
+        if (box != null) {
+          final position = box.localToGlobal(Offset.zero);
+          final size = box.size;
+          final rect =
+              Rect.fromLTWH(position.dx, position.dy, size.width, size.height);
+          // Log the rectangle details
+          print('Rect $i: $rect');
+
+          if (rect.contains(point)) {
+            print('Point is inside rect $i');
+            return i;
+          }
+        }
+      }
+    }
+    return null;
   }
 }
 
@@ -279,57 +221,35 @@ class ItemMatchText extends StatelessWidget {
   }
 }
 
-class Lines extends StatefulWidget {
-  const Lines({Key? key}) : super(key: key);
+class LineDrawingPainter extends CustomPainter {
+  final List<Offset?> points;
+  final Offset? startPoint;
+  final Offset? endPoint;
 
-  @override
-  createState() => _LinesState();
-}
-
-class _LinesState extends State<Lines> {
-  Offset? start;
-  Offset? end;
-
-  @override
-  build(_) => GestureDetector(
-        onTap: () => print('t'),
-        onPanStart: (details) {
-          print(details.localPosition);
-          setState(() {
-            start = details.localPosition;
-            end = null;
-          });
-        },
-        onPanUpdate: (details) {
-          setState(() {
-            end = details.localPosition;
-          });
-        },
-        child: CustomPaint(
-          size: Size.infinite,
-          painter: LinesPainter(start ?? Offset(0, 0), Offset(0, 0)),
-        ),
-      );
-}
-
-class LinesPainter extends CustomPainter {
-  final Offset start, end;
-
-  LinesPainter(this.start, this.end);
+  LineDrawingPainter(this.points, this.startPoint, this.endPoint);
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (start == null || end == null) return;
-    canvas.drawLine(
-        start,
-        end,
-        Paint()
-          ..strokeWidth = 4
-          ..color = Colors.redAccent);
+    final paint = Paint()
+      ..color = COLORS.primaryColor
+      ..strokeWidth = 5.5
+      ..strokeCap = StrokeCap.round;
+
+    // Draw existing points
+    for (int i = 0; i < points.length - 1; i += 2) {
+      if (points[i] != null && points[i + 1] != null) {
+        canvas.drawLine(points[i]!, points[i + 1]!, paint);
+      }
+    }
+
+    // Draw the current line being panned
+    if (startPoint != null && endPoint != null) {
+      canvas.drawLine(startPoint!, endPoint!, paint);
+    }
   }
 
   @override
-  bool shouldRepaint(LinesPainter oldDelegate) {
-    return oldDelegate.start != start || oldDelegate.end != end;
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

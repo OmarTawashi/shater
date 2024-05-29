@@ -114,6 +114,10 @@ class QuestionView extends StatelessWidget {
         return MatchingQuizScreen(
             // controller: controller,
             );
+      case QType.MatchText:
+        return MatchingQuizScreen(
+            // controller: controller,
+            );
       case QType.OrderImage:
         return OrderImage(
           controller: controller,

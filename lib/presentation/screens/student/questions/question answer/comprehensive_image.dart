@@ -15,55 +15,52 @@ class ComprehensiveImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller?.setInputControllerComperhensiveImage();
     return Column(
       children: [
         Wrap(
-          runSpacing: Dimensions.paddingSize12,
+          runSpacing: Dimensions.paddingSize8,
           alignment: WrapAlignment.center,
-          spacing: Dimensions.paddingSize10,
+          spacing: Dimensions.paddingSize8,
           children: List.generate(
               controller?.questionModel?.answer?.length ?? 0, (index) {
             final answer = controller?.questionModel?.answer?[index];
-            return Builder(builder: (context) {
-              controller?.setInputControllerComperhensiveImage(index);
-              return answer.toString().getComprehensiveImageWidget(
-                    inputField: InputAnswerOperater(
-                      textEditingController: controller
-                          ?.inputComperhensiveImage[index]
-                          ?.textEditingController,
-                      onChanged: (value) {
-                        controller?.changeInputValueComperhensiveImage(
-                            value, index);
-                      },
+            return answer.toString().getComprehensiveImageWidget(
+                  inputField: InputAnswerOperater(
+                    textEditingController: controller
+                        ?.inputComperhensiveImage[index]?.textEditingController,
+                    onChanged: (value) {
+                      controller?.changeInputValueComperhensiveImage(
+                          value, index);
+                    },
+                  ),
+                  operator: Container(
+                    width: 14,
+                    height: 27,
+                    child: CustomText(
+                      text: controller?.questionModel?.answer?[index] ?? '',
+                      fontSize: Dimensions.fontSize24,
+                      color: COLORS.secanderyColor,
+                      fontWeight: FontWeight.bold,
                     ),
-                    operator: Container(
-                      width: 14,
-                      height: 27,
-                      child: CustomText(
-                        text: controller?.questionModel?.answer?[index],
-                        fontSize: Dimensions.fontSize24,
-                        color: COLORS.secanderyColor,
-                        fontWeight: FontWeight.bold,
+                  ),
+                  newLine: SizedBox(
+                    width: Get.width,
+                    height: 0,
+                  ),
+                  skipWidget: SizedBox(),
+                  stable: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ItemStable(
+                        text: controller?.questionModel?.answer?[index] ?? '',
+                        row: double.tryParse(controller
+                                ?.questionModel?.orderBy?['${index + 1}'] ??
+                            '1'),
                       ),
-                    ),
-                    newLine: SizedBox(
-                      width: Get.width,
-                      height: 0,
-                    ),
-                    skipWidget: SizedBox(),
-                    stable: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ItemStable(
-                          text: controller?.questionModel?.answer?[index],
-                          row: double.tryParse(controller
-                                  ?.questionModel?.orderBy?['${index + 1}'] ??
-                              '1'),
-                        ),
-                      ],
-                    ),
-                  );
-            });
+                    ],
+                  ),
+                );
           }),
         )
       ],
@@ -83,7 +80,6 @@ class InputAnswerOperater extends StatelessWidget {
       controller: textEditingController,
       textAlign: TextAlign.center,
       textInputAction: TextInputAction.done,
-      keyboardType: TextInputType.number,
       style: FontStyleConstant.hNLTBMedium.copyWith(
         fontSize: Dimensions.fontSize16,
         color: COLORS.primaryColor,
@@ -150,7 +146,18 @@ class ItemStable extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: text!.contains('uploads')
-          ? CachedNetworkImageWidget(imageUrl: ApiConstant.baseUrl + '/$text')
+          ? Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: CachedNetworkImageWidget(
+                imageUrl: ApiConstant.baseUrl + '/$text',
+                fit: BoxFit.cover,
+                width: 56 * (row ?? 1.0),
+                height: 49,
+              ),
+            )
           : CustomText(
               text: text ?? '',
               fontSize: Dimensions.fontSize18,
