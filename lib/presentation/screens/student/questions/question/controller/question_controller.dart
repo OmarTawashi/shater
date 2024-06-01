@@ -244,14 +244,33 @@ class QuestionController extends GetxController {
     update();
   }
 
+  List<ArithmiticAnswer> validArithimticText = [];
+  bool checkValidSpaces(List<ArithmiticAnswer> ans) {
+    bool check1;
+    bool check2;
+    bool check;
+    for (ArithmiticAnswer item in ans) {
+      check1 = item.isValid;
+      if (item.subAnswerArthimitc.isEmpty) {
+        return check1;
+      } else {
+        for (ArithmiticAnswer itemPriv in item.subAnswerArthimitc) {
+          check2 = itemPriv.isValid;
+          if (check1 == true && check2 == true) {
+            check = true;
+          }
+        }
+      }
+      check = check1;
+      return check;
+    }
+    return false;
+  }
+
   void getObjetArithmitic() {
     final str = _questionModel?.answer?.first;
     Map<String, dynamic> obj = jsonDecode(str);
     _arithmeticTextModel = ArithmeticTextModel.fromJson(obj);
-  }
-
-  void setIndexArithmitic(int index) {
-    _arithmiticIndex = index;
   }
 
   void setInputControllerComperhensiveImage() {
@@ -265,6 +284,50 @@ class QuestionController extends GetxController {
           _inputComperhensiveImage.add(null);
         }
       }
+    }
+  }
+
+  void setTypAnsArithmitic(QuestionContent questionContent, int index,
+      QuestionController controller) {
+    if (questionContent.title != null &&
+        questionContent.subFields?.isEmpty == true) {
+      final typingAnswer = ArithmiticAnswer(
+          index: index,
+          input: questionContent.title,
+          textEditingController:
+              questionContent.isSpace == true ? TextEditingController() : null);
+      controller.validArithimticText.add(typingAnswer);
+    } else if (questionContent.title != null &&
+        questionContent.subFields?.isNotEmpty == true) {
+      final typingAnswer = ArithmiticAnswer(
+          index: index,
+          input: questionContent.title,
+          textEditingController:
+              questionContent.isSpace == true ? TextEditingController() : null,
+          subAnswerArthimitc: [
+            ArithmiticAnswer(
+                index: 0,
+                input: questionContent.subFields?.first.title,
+                textEditingController:
+                    questionContent.subFields?.first.isSpace == true
+                        ? TextEditingController()
+                        : null),
+            ArithmiticAnswer(
+                index: 1,
+                input: questionContent.subFields?.last.title,
+                textEditingController:
+                    questionContent.subFields?.last.isSpace == true
+                        ? TextEditingController()
+                        : null),
+          ]);
+      controller.validArithimticText.add(typingAnswer);
+    } else {
+      final typingAnswer = ArithmiticAnswer(
+          index: index,
+          input: questionContent.title,
+          textEditingController:
+              questionContent.isSpace == true ? TextEditingController() : null);
+      controller.validArithimticText.add(typingAnswer);
     }
   }
 
@@ -435,6 +498,10 @@ class QuestionController extends GetxController {
             _questionModel?.answer?.first.toString().toLowerCase();
         checked = (answerValue == validValue);
         break;
+      case QType.ArithmeticText:
+        final answBool = checkValidSpaces(validArithimticText);
+        checked = answBool;
+        break;
       case QType.ComprehensiveImage:
         for (int i = 0; i < _inputComperhensiveImage.length; i++) {
           if (_inputComperhensiveImage[i] == null) {
@@ -477,7 +544,6 @@ class QuestionController extends GetxController {
         _congrlateText = VIDEO.answer10;
         Get.toNamed(Routes.getCongrlateScreen());
         break;
-
       case 20:
         _congrlateText = VIDEO.answer20;
         Get.toNamed(Routes.getCongrlateScreen());

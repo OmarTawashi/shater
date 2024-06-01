@@ -10,7 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09a63835-291a-4d8e-8ce6-513c181e4a12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/core/extenstion/question_extention.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/core/extenstion/question_extention.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/arithmetic_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/arithmetic_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/match_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question answer/match_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/controller/question_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/controller/question_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/view/question_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/view/question_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/widget/image_question_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/presentation/screens/student/questions/question/widget/image_question_section.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +27,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[emulator-5554]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RR8NA06MCXP]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -72,18 +79,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;MIPMAP&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mohamed-dev-v1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/acer/Documents/GitHub/shater&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ResourceManagerPrefKey.ResourceType": "MIPMAP",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "mohamed-dev-v1",
+    "last_opened_file_path": "C:/Users/acer/Documents/GitHub/shater",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />

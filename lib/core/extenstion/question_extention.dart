@@ -24,7 +24,7 @@ enum QType {
   MultiChoiceTextSound,
   OrderImage,
   ImageCount,
-  MathOperations,
+  MathematicalOperations,
   ArithmeticText,
   ComprehensiveImage,
   ComprehensiveSelectImage,
@@ -94,13 +94,15 @@ class QuestionType {
       case "21":
         return QType.ImageCount;
       case "22":
-        return QType.MathOperations;
+        return QType.MathematicalOperations;
       case "23":
         return QType.ComprehensiveImage;
       case "24":
         return QType.MultiChoiceImage;
       case "25":
         return QType.WritingBoard;
+      case "26":
+        return QType.MathematicalOperations;
       case "27":
         return QType.ArithmeticText;
       case "28":
@@ -145,6 +147,7 @@ extension QuestionArithmicitcTextExt on String {
     required Widget fraction,
     required Widget numberWithFraction,
     required Widget other,
+    required Widget number,
     required Widget stable,
   }) {
     switch (this) {
@@ -154,6 +157,8 @@ extension QuestionArithmicitcTextExt on String {
         return numberWithFraction;
       case 'other':
         return other;
+      case 'number':
+        return number;
       default:
         return stable;
     }

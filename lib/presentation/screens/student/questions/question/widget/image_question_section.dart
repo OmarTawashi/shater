@@ -70,12 +70,15 @@ class ImageQuestionSection extends StatelessWidget {
             })
           ],
         );
-      case 'text':
-        return CustomText(
-          text: text ?? '',
-          fontSize: Dimensions.fontSize15,
-          color: Colors.black,
-          fontWeight: FontWeight.w400,
+      case 'text' || "":
+        return Center(
+          child: CustomText(
+            text: text ?? '',
+            fontSize: Dimensions.fontSize18,
+            textAlign: TextAlign.center,
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          ),
         );
       default:
         return CachedNetworkImageWidget(
