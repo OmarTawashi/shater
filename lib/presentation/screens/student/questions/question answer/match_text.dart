@@ -1,15 +1,8 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:shater/core/extenstion/quiz_matcher_packge.dart/models/model.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
-
-import '../../../../../core/extenstion/quiz_matcher_packge.dart/flutter_quiz_matcher.dart';
 
 class MatchingQuiz extends StatefulWidget {
   @override
@@ -113,11 +106,9 @@ class _MatchingQuizState extends State<MatchingQuiz> {
     if (keyContext != null) {
       final box = keyContext.findRenderObject() as RenderBox?;
       if (box != null) {
-        final position = box.localToGlobal(Offset.zero,
-            ancestor: keyContext.findRenderObject());
+        final position = box.localToGlobal(Offset.zero, ancestor: keyContext.findRenderObject());
         setState(() {
-          startPoint = Offset(position.dx + box.size.width / 2,
-              position.dy + box.size.height / 2);
+          startPoint = Offset(position.dx + box.size.width / 2, position.dy + box.size.height / 2);
         });
       }
     }
@@ -129,11 +120,9 @@ class _MatchingQuizState extends State<MatchingQuiz> {
     if (keyContext != null) {
       final box = keyContext.findRenderObject() as RenderBox?;
       if (box != null) {
-        final position = box.localToGlobal(Offset.zero,
-            ancestor: keyContext.findRenderObject());
+        final position = box.localToGlobal(Offset.zero, ancestor: keyContext.findRenderObject());
         setState(() {
-          endPoint = Offset(position.dx + box.size.width / 2,
-              position.dy + box.size.height / 2);
+          endPoint = Offset(position.dx + box.size.width / 2, position.dy + box.size.height / 2);
         });
       }
     }
@@ -153,11 +142,9 @@ class _MatchingQuizState extends State<MatchingQuiz> {
       if (keyContext != null) {
         final box = keyContext.findRenderObject() as RenderBox?;
         if (box != null) {
-          final position = box.localToGlobal(Offset.zero,
-              ancestor: keyContext.findRenderObject());
+          final position = box.localToGlobal(Offset.zero, ancestor: keyContext.findRenderObject());
           final size = box.size;
-          final rect =
-              Rect.fromLTWH(position.dx, position.dy, size.width, size.height);
+          final rect = Rect.fromLTWH(position.dx, position.dy, size.width, size.height);
           if (rect.contains(point)) {
             return i;
           }
@@ -285,102 +272,102 @@ class LineDrawingPainter extends CustomPainter {
   }
 }
 
-class MyWidgetMatch extends StatelessWidget {
-  MyWidgetMatch({super.key});
-  List<String> listAnswerRight = ['bell', 'book', 'home', 'google'];
-  List<String> listAnswerleft = ['bell', 'book', 'home', 'google'];
+// class MyWidgetMatch extends StatelessWidget {
+//   MyWidgetMatch({super.key});
+//   List<String> listAnswerRight = ['bell', 'book', 'home', 'google'];
+//   List<String> listAnswerleft = ['bell', 'book', 'home', 'google'];
 
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(scaffoldBackgroundColor: Colors.white),
-      child: Container(
-        height: 400.h,
-        width: Get.width,
-        child: QuizMatcher(
-          questions: [
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerRight[0]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerRight[1]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerRight[2]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerRight[3]),
-            ),
-          ],
-          answers: [
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerleft[0]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerleft[1]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerleft[2]),
-            ),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.black)),
-              width: 100,
-              height: 50,
-              child: Text(listAnswerleft[3]),
-            ),
-          ],
-          defaultLineColor: Colors.red,
-          correctLineColor: Colors.green,
-          incorrectLineColor: Colors.red,
-          drawingLineColor: Colors.red,
-          onScoreUpdated: (UserScore userAnswers) {
-            if (kDebugMode) {
-              print(userAnswers.questionIndex);
-            }
-            if (kDebugMode) {
-              print(userAnswers.questionAnswer);
-            }
-          },
-          paddingAround: const EdgeInsets.all(8),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Theme(
+//       data: ThemeData(scaffoldBackgroundColor: Colors.white),
+//       child: Container(
+//         height: 400.h,
+//         width: Get.width,
+//         child: QuizMatcher(
+//           questions: [
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerRight[0]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerRight[1]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerRight[2]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerRight[3]),
+//             ),
+//           ],
+//           answers: [
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerleft[0]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerleft[1]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerleft[2]),
+//             ),
+//             Container(
+//               alignment: Alignment.center,
+//               decoration: BoxDecoration(
+//                   border: Border.all(width: 1, color: Colors.black)),
+//               width: 100,
+//               height: 50,
+//               child: Text(listAnswerleft[3]),
+//             ),
+//           ],
+//           defaultLineColor: Colors.red,
+//           correctLineColor: Colors.green,
+//           incorrectLineColor: Colors.red,
+//           drawingLineColor: Colors.red,
+//           onScoreUpdated: (UserScore userAnswers) {
+//             if (kDebugMode) {
+//               print(userAnswers.questionIndex);
+//             }
+//             if (kDebugMode) {
+//               print(userAnswers.questionAnswer);
+//             }
+//           },
+//           paddingAround: const EdgeInsets.all(8),
+//         ),
+//       ),
+//     );
+//   }
+// }

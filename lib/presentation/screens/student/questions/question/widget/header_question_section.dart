@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
@@ -23,12 +24,15 @@ class HeaderQuestionSection extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: CustomText(
-                  text: controller.questionModel?.title ?? '',
-                  fontSize: Dimensions.fontSize16 + 1,
-                  textAlign: TextAlign.center,
-                  fontWeight: FontWeight.w500,
-                  color: Color.fromRGBO(96, 96, 96, 1),
+                child: Padding(
+                  padding: EdgeInsets.only(right: 28.0.w),
+                  child: CustomText(
+                    text: controller.questionModel?.title ?? '',
+                    fontSize: Dimensions.fontSize16 + 1,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w500,
+                    color: Color.fromRGBO(96, 96, 96, 1),
+                  ),
                 ),
               ),
               GestureDetector(

@@ -106,7 +106,7 @@ class QuestionType {
       case "27":
         return QType.ArithmeticText;
       case "28":
-        return QType.FractionsType;
+        return QType.LongDivision;
       case "29":
         return QType.CalculationsType;
       case "30":

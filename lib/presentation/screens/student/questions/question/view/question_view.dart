@@ -12,6 +12,7 @@ import 'package:shater/presentation/screens/student/questions/failure%20question
 import 'package:shater/presentation/screens/student/questions/question%20answer/arithmetic_text.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/complete_value.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/comprehensive_image.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/long_division.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_text.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/mathematical_operations.dart';
@@ -54,15 +55,13 @@ class QuestionView extends StatelessWidget {
                       media: controller.questionModel?.media,
                       text: controller.questionModel?.questionMedia,
                       url: controller.questionModel?.media == 'video'
-                          ? controller
-                              .questionModel?.urls?.first.entries.first.value
+                          ? controller.questionModel?.urls?.first.entries.first.value
                           : controller.questionModel?.questionMedia),
                   success: ImageQuestionSection(
                       media: controller.questionModel?.media,
                       text: controller.questionModel?.questionMedia,
                       url: controller.questionModel?.media == 'video'
-                          ? controller
-                              .questionModel?.urls?.first.entries.first.value
+                          ? controller.questionModel?.urls?.first.entries.first.value
                           : controller.questionModel?.questionMedia)),
               Visibility(
                 visible: controller.failureTap != FailureEnum.showExpalin,
@@ -112,12 +111,16 @@ class QuestionView extends StatelessWidget {
         return ArithmeticText(
           controller: controller,
         );
+      case QType.LongDivision:
+        return LongDivision(
+          controller: controller,
+        );
       // case QType.MatchImage:
       //   return MatchingQuizScreen(
       //       // controller: controller,
       //       );
       case QType.MatchText:
-        return MyWidgetMatch(
+        return MatchingQuiz(
             // controller: controller,
             );
       case QType.OrderImage:
@@ -129,10 +132,10 @@ class QuestionView extends StatelessWidget {
         return OrderText(
           controller: controller,
         );
-      // case QType.MathematicalOperations:
-      //   return MathematicalOperations(
-      //     controller: controller,
-      //   );
+      case QType.MathematicalOperations:
+        return MathMaticalOperation(
+          controller: controller,
+        );
       default:
         return SizedBox();
     }

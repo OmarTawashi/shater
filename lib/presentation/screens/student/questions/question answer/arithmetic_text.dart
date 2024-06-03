@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
+import 'package:shater/core/extenstion/quiz_matcher_packge.dart/extension/extension.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/data/model/typing_answer.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
@@ -29,29 +30,23 @@ class _ArithmeticTextState extends State<ArithmeticText> {
   Widget build(BuildContext context) {
     // controller?.getListAndIndex();
     int indexPrimary = 0;
-    final questionContent =
-        widget.controller.arithmeticTextModel?.questionContent;
+    final questionContent = widget.controller.arithmeticTextModel?.questionContent;
 
     if (questionContent != null && questionContent.isNotEmpty) {
       for (int i = 0; i < questionContent.length; i++) {
         final element = questionContent[i];
         if (indexPrimary < questionContent.length) {
           List ans = [];
-          final questionCon = widget.controller.arithmeticTextModel
-                  ?.questionContent?[indexPrimary] ??
-              [];
+          final questionCon = widget.controller.arithmeticTextModel?.questionContent?[indexPrimary] ?? [];
           for (var i = 0; i < questionCon.length; i++) {
             ans.add(questionCon[i].fieldType);
-            if (widget.controller.validArithimticText.length <
-                questionCon.length) {
-              widget.controller
-                  .setTypAnsArithmitic(questionCon[i], i, widget.controller);
+            if (widget.controller.validArithimticText.length < questionCon.length) {
+              widget.controller.setTypAnsArithmitic(questionCon[i], i, widget.controller);
             }
           }
 
           return Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: Dimensions.paddingSize16),
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -60,11 +55,10 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                   alignment: WrapAlignment.start,
                   spacing: Dimensions.paddingSize10,
                   children: List.generate(
-                      widget.controller.arithmeticTextModel
-                              ?.questionContent?[indexPrimary].length ??
-                          0, (indexParent) {
-                    final questionContent = widget.controller
-                        .arithmeticTextModel?.questionContent?[indexPrimary];
+                      widget.controller.arithmeticTextModel?.questionContent?[indexPrimary].length ?? 0,
+                      (indexParent) {
+                    final questionContent =
+                        widget.controller.arithmeticTextModel?.questionContent?[indexPrimary];
                     widget.controller.validArithimticText;
                     final answer = ans[indexParent];
                     return answer.toString().getQuestionArithmicitcTextWidget(
@@ -74,59 +68,35 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: List.generate(
-                                  questionContent?[indexParent]
-                                          .subFields
-                                          ?.length ??
-                                      0,
+                                  questionContent?[indexParent].subFields?.length ?? 0,
                                   (index) => Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       getSwitchInputText(
-                                        questionContent?[indexParent]
-                                            .subFields?[index]
-                                            .isSpace,
+                                        questionContent?[indexParent].subFields?[index].isSpace,
                                         inputField: InputAnswerOperater(
                                           row: 1,
-                                          initValue:
-                                              questionContent?[indexParent]
-                                                  .subFields?[index]
-                                                  .title,
+                                          initValue: questionContent?[indexParent].subFields?[index].title,
                                           onChanged: (value) {
                                             setState(() {
                                               widget
                                                   .controller
-                                                  .validArithimticText[
-                                                      indexParent]
+                                                  .validArithimticText[indexParent]
                                                   .subAnswerArthimitc[index]
-                                                  .inputField = value;
-                                              widget
-                                                  .controller
-                                                  .validArithimticText[
-                                                      indexParent]
-                                                  .isValid = (widget
-                                                      .controller
-                                                      .validArithimticText[
-                                                          indexParent]
-                                                      .subAnswerArthimitc[index]
-                                                      .inputField ==
-                                                  widget
-                                                      .controller
-                                                      .validArithimticText[
-                                                          indexParent]
-                                                      .subAnswerArthimitc[index]
-                                                      .input);
+                                                  .inputField = value.arabicToEnglish();
+                                              widget.controller.validArithimticText[indexParent].isValid =
+                                                  (widget.controller.validArithimticText[indexParent]
+                                                          .subAnswerArthimitc[index].inputField ==
+                                                      widget.controller.validArithimticText[indexParent]
+                                                          .subAnswerArthimitc[index].input);
                                             });
 
-                                            widget.controller.setQuestionStatus(
-                                                QuestionStatusEnum.select);
+                                            widget.controller.setQuestionStatus(QuestionStatusEnum.select);
                                           },
                                           controller: widget.controller,
                                         ),
                                         stable: ItemStableText(
-                                          text: questionContent?[indexParent]
-                                                  .subFields?[index]
-                                                  .title ??
-                                              '0',
+                                          text: questionContent?[indexParent].subFields?[index].title ?? '0',
                                         ),
                                       ),
                                       SizedBox(
@@ -139,39 +109,24 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                               SizedBox(
                                 width: 3,
                               ),
-                              getSwitchInputText(
-                                  questionContent?[indexParent].isSpace,
+                              getSwitchInputText(questionContent?[indexParent].isSpace,
                                   inputField: InputAnswerOperater(
                                     row: 2,
-                                    initValue:
-                                        questionContent?[indexParent].title,
+                                    initValue: questionContent?[indexParent].title,
                                     // textEditingController: controller
                                     //     .validArithimticText[indexParent]
                                     //     .textEditingController,
                                     controller: widget.controller,
                                     onChanged: (value) {
                                       setState(() {
-                                        widget
-                                            .controller
-                                            .validArithimticText[indexParent]
-                                            .inputField = value;
-                                        widget
-                                            .controller
-                                            .validArithimticText[indexParent]
-                                            .isValid = (widget
-                                                .controller
-                                                .validArithimticText[
-                                                    indexParent]
-                                                .inputField ==
-                                            widget
-                                                .controller
-                                                .validArithimticText[
-                                                    indexParent]
-                                                .input);
+                                        widget.controller.validArithimticText[indexParent].inputField =
+                                            value.arabicToEnglish();
+                                        widget.controller.validArithimticText[indexParent].isValid =
+                                            (widget.controller.validArithimticText[indexParent].inputField ==
+                                                widget.controller.validArithimticText[indexParent].input);
                                       });
                                       widget.controller.validArithimticText;
-                                      widget.controller.setQuestionStatus(
-                                          QuestionStatusEnum.select);
+                                      widget.controller.setQuestionStatus(QuestionStatusEnum.select);
                                     },
                                   ),
                                   stable: ItemStableText(
@@ -183,46 +138,29 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                           fraction: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: List.generate(
-                              questionContent?[indexParent].subFields?.length ??
-                                  0,
+                              questionContent?[indexParent].subFields?.length ?? 0,
                               (index) => Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   getSwitchInputText(
-                                    questionContent?[indexParent]
-                                        .subFields?[index]
-                                        .isSpace,
+                                    questionContent?[indexParent].subFields?[index].isSpace,
                                     inputField: InputAnswerOperater(
                                       row: 1,
                                       controller: widget.controller,
-                                      initValue: questionContent?[indexParent]
-                                          .subFields?[index]
-                                          .title,
+                                      initValue: questionContent?[indexParent].subFields?[index].title,
                                       onChanged: (value) {
                                         setState(() {
-                                          widget
-                                              .controller
-                                              .validArithimticText[indexParent]
-                                              .subAnswerArthimitc[index]
-                                              .inputField = value;
-                                          widget
-                                              .controller
-                                              .validArithimticText[indexParent]
-                                              .isValid = (widget
+                                          widget.controller.validArithimticText[indexParent]
+                                              .subAnswerArthimitc[index].inputField = value.arabicToEnglish();
+                                          widget.controller.validArithimticText[indexParent].isValid = (widget
                                                   .controller
-                                                  .validArithimticText[
-                                                      indexParent]
+                                                  .validArithimticText[indexParent]
                                                   .subAnswerArthimitc[index]
                                                   .inputField ==
-                                              widget
-                                                  .controller
-                                                  .validArithimticText[
-                                                      indexParent]
-                                                  .subAnswerArthimitc[index]
-                                                  .input);
+                                              widget.controller.validArithimticText[indexParent]
+                                                  .subAnswerArthimitc[index].input);
                                         });
-                                        widget.controller.setQuestionStatus(
-                                            QuestionStatusEnum.select);
+                                        widget.controller.setQuestionStatus(QuestionStatusEnum.select);
                                       },
                                       // textEditingController: controller
                                       //     .validArithimticText[indexParent]
@@ -230,10 +168,7 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                       //     .textEditingController,
                                     ),
                                     stable: ItemStableText(
-                                      text: questionContent?[indexParent]
-                                              .subFields?[index]
-                                              .title ??
-                                          '0',
+                                      text: questionContent?[indexParent].subFields?[index].title ?? '0',
                                     ),
                                   ),
                                   SizedBox(
@@ -246,32 +181,20 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                           other: TypeOperatorText(
                             text: questionContent?[indexParent].title,
                           ),
-                          number: getSwitchInputText(
-                              questionContent?[indexParent].isSpace,
+                          number: getSwitchInputText(questionContent?[indexParent].isSpace,
                               inputField: InputAnswerOperater(
                                 row: 2,
                                 controller: widget.controller,
                                 initValue: questionContent?[indexParent].title,
                                 onChanged: (value) {
                                   setState(() {
-                                    widget
-                                        .controller
-                                        .validArithimticText[indexParent]
-                                        .inputField = value;
-                                    widget
-                                        .controller
-                                        .validArithimticText[indexParent]
-                                        .isValid = (widget
-                                            .controller
-                                            .validArithimticText[indexParent]
-                                            .inputField ==
-                                        widget
-                                            .controller
-                                            .validArithimticText[indexParent]
-                                            .input);
+                                    widget.controller.validArithimticText[indexParent].inputField =
+                                        value.arabicToEnglish();
+                                    widget.controller.validArithimticText[indexParent].isValid =
+                                        (widget.controller.validArithimticText[indexParent].inputField ==
+                                            widget.controller.validArithimticText[indexParent].input);
                                   });
-                                  widget.controller.setQuestionStatus(
-                                      QuestionStatusEnum.select);
+                                  widget.controller.setQuestionStatus(QuestionStatusEnum.select);
                                 },
                                 // textEditingController:
                                 //     .textEditingController,
@@ -342,8 +265,7 @@ class ItemStableText extends StatelessWidget {
   }
 }
 
-Widget getSwitchInputText(bool? isAnswer,
-    {required Widget inputField, required Widget stable}) {
+Widget getSwitchInputText(bool? isAnswer, {required Widget inputField, required Widget stable}) {
   if (isAnswer == true) {
     return inputField;
   } else {
@@ -358,12 +280,7 @@ class InputAnswerOperater extends StatelessWidget {
   final Function(String)? onChanged;
   final double row;
   const InputAnswerOperater(
-      {super.key,
-      this.textEditingController,
-      this.controller,
-      this.onChanged,
-      this.initValue,
-      this.row = 1});
+      {super.key, this.textEditingController, this.controller, this.onChanged, this.initValue, this.row = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -383,18 +300,13 @@ class InputAnswerOperater extends StatelessWidget {
         constraints: BoxConstraints(maxHeight: 35 * row, maxWidth: 35),
         contentPadding: EdgeInsets.all(5),
         fillColor: Color.fromRGBO(190, 190, 190, 1),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        enabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        focusedBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        disabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
         labelText: '',
       ),
     );

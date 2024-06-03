@@ -146,10 +146,8 @@ class QuestionController extends GetxController {
   Future<void> performTextRecognition() async {
     try {
       _signatureWritingImage = await signatureWriteController?.toImage();
-      final imageBytes =
-          await ImageConverter.convertUiImageToBytes(_signatureWritingImage!);
-      final imageFile =
-          await ImageConverter.writeBytesToFile(imageBytes!, 'WritingBoard');
+      final imageBytes = await ImageConverter.convertUiImageToBytes(_signatureWritingImage!);
+      final imageFile = await ImageConverter.writeBytesToFile(imageBytes!, 'WritingBoard');
       final inputImage = InputImage.fromFile(imageFile);
       TextRecognizer _textRecognizer = TextRecognizer();
       final recognizedText = await _textRecognizer.processImage(inputImage);
@@ -278,8 +276,8 @@ class QuestionController extends GetxController {
     if (_inputComperhensiveImage.length < answer.length) {
       for (var i = 0; i < answer.length; i++) {
         if (answer[i] == 'space') {
-          _inputComperhensiveImage.add(TypingAnswer(
-              index: i, textEditingController: TextEditingController()));
+          _inputComperhensiveImage
+              .add(TypingAnswer(index: i, textEditingController: TextEditingController()));
         } else {
           _inputComperhensiveImage.add(null);
         }
@@ -287,46 +285,74 @@ class QuestionController extends GetxController {
     }
   }
 
-  void setTypAnsArithmitic(QuestionContent questionContent, int index,
-      QuestionController controller) {
-    if (questionContent.title != null &&
-        questionContent.subFields?.isEmpty == true) {
+  bool checkValidityLongDivision() {
+    final questionContent = arithmeticTextModel?.questionContent;
+    if (questionContent == null) return false;
+
+    for (int i = 0; i < questionContent.length; i++) {
+      for (int j = 0; j < questionContent[i].length; j++) {
+        final item = questionContent[i][j];
+        if (item.isSpace == true && !validLongDivision[i][j].isValid) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  List<List<ArithmiticAnswer>> validLongDivision = [];
+  void setTypAnsLongDivison(List<List<QuestionContent>> questionContent) {
+    for (var indexParent = 0; indexParent < questionContent.length; indexParent++) {
+      final singleQuesContent = questionContent[indexParent];
+      while (validLongDivision.length < questionContent.length) {
+        validLongDivision.add([]);
+      }
+      for (var indexChild = 0; indexChild < singleQuesContent.length; indexChild++) {
+        if (validLongDivision[indexParent].length < questionContent[indexParent].length) {
+          final typingAnswer = ArithmiticAnswer(
+            index: indexChild,
+            input: singleQuesContent[indexChild].title,
+            textEditingController:
+                singleQuesContent[indexChild].isSpace == true ? TextEditingController() : null,
+          );
+
+          validLongDivision[indexParent].add(typingAnswer);
+        }
+      }
+    }
+    validLongDivision;
+  }
+
+  void setTypAnsArithmitic(QuestionContent questionContent, int index, QuestionController controller) {
+    if (questionContent.title != null && questionContent.subFields?.isEmpty == true) {
       final typingAnswer = ArithmiticAnswer(
           index: index,
           input: questionContent.title,
-          textEditingController:
-              questionContent.isSpace == true ? TextEditingController() : null);
+          textEditingController: questionContent.isSpace == true ? TextEditingController() : null);
       controller.validArithimticText.add(typingAnswer);
-    } else if (questionContent.title != null &&
-        questionContent.subFields?.isNotEmpty == true) {
+    } else if (questionContent.title != null && questionContent.subFields?.isNotEmpty == true) {
       final typingAnswer = ArithmiticAnswer(
           index: index,
           input: questionContent.title,
-          textEditingController:
-              questionContent.isSpace == true ? TextEditingController() : null,
+          textEditingController: questionContent.isSpace == true ? TextEditingController() : null,
           subAnswerArthimitc: [
             ArithmiticAnswer(
                 index: 0,
                 input: questionContent.subFields?.first.title,
                 textEditingController:
-                    questionContent.subFields?.first.isSpace == true
-                        ? TextEditingController()
-                        : null),
+                    questionContent.subFields?.first.isSpace == true ? TextEditingController() : null),
             ArithmiticAnswer(
                 index: 1,
                 input: questionContent.subFields?.last.title,
                 textEditingController:
-                    questionContent.subFields?.last.isSpace == true
-                        ? TextEditingController()
-                        : null),
+                    questionContent.subFields?.last.isSpace == true ? TextEditingController() : null),
           ]);
       controller.validArithimticText.add(typingAnswer);
     } else {
       final typingAnswer = ArithmiticAnswer(
           index: index,
           input: questionContent.title,
-          textEditingController:
-              questionContent.isSpace == true ? TextEditingController() : null);
+          textEditingController: questionContent.isSpace == true ? TextEditingController() : null);
       controller.validArithimticText.add(typingAnswer);
     }
   }
@@ -434,6 +460,7 @@ class QuestionController extends GetxController {
     setNumberTime(0);
     changeAnswer(false);
     getType();
+    validLongDivision = [];
     completeValueController.clear();
     changeFailuerTap(FailureEnum.stable);
     setQuestionStatus(QuestionStatusEnum.none);
@@ -494,12 +521,19 @@ class QuestionController extends GetxController {
         break;
       case QType.TrueOrFalseImage:
         final answerValue = _selectAnswerTrueFalse.toString().toLowerCase();
-        final validValue =
-            _questionModel?.answer?.first.toString().toLowerCase();
+        final validValue = _questionModel?.answer?.first.toString().toLowerCase();
         checked = (answerValue == validValue);
         break;
       case QType.ArithmeticText:
         final answBool = checkValidSpaces(validArithimticText);
+        checked = answBool;
+        break;
+      case QType.LongDivision:
+        final answBool = checkValidityLongDivision();
+        checked = answBool;
+        break;
+      case QType.MathematicalOperations:
+        final answBool = checkValidityLongDivision();
         checked = answBool;
         break;
       case QType.ComprehensiveImage:
@@ -507,8 +541,7 @@ class QuestionController extends GetxController {
           if (_inputComperhensiveImage[i] == null) {
             _selectAnswer.add("null");
           } else {
-            _selectAnswer
-                .add(_inputComperhensiveImage[i]?.textEditingController?.text);
+            _selectAnswer.add(_inputComperhensiveImage[i]?.textEditingController?.text);
           }
         }
         valid = _questionModel?.valid ?? [];

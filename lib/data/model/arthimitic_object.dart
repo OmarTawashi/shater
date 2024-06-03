@@ -1,5 +1,3 @@
-
-
 class QuestionContent {
   String? type;
   String? fieldType;
@@ -7,15 +5,18 @@ class QuestionContent {
   String? title;
   bool? isSpace;
   bool? isAnswer;
+  bool? isDivisor;
+  int? row;
 
-  QuestionContent({
-    this.type,
-    this.fieldType,
-    this.subFields,
-    this.title,
-    this.isSpace,
-    this.isAnswer,
-  });
+  QuestionContent(
+      {this.type,
+      this.fieldType,
+      this.subFields,
+      this.title,
+      this.isSpace,
+      this.isDivisor,
+      this.isAnswer,
+      this.row});
 
   factory QuestionContent.fromJson(Map<String, dynamic> json) {
     List<QuestionContent> subFields = [];
@@ -28,6 +29,8 @@ class QuestionContent {
       type: json['type'],
       fieldType: json['field_type'],
       subFields: subFields,
+      row: json['row'],
+      isDivisor: json['is_divisor'],
       title: json['title'],
       isSpace: json['is_space'],
       isAnswer: json['is_answer'],
