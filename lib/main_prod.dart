@@ -11,8 +11,7 @@ import 'core/controller/init_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-  );
+  await Firebase.initializeApp();
   final languages = await InitApp.initLanguage();
   SharedPreferences shared = await SharedPreferences.getInstance();
   Get.lazyPut(() => shared);

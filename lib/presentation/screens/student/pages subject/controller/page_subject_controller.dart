@@ -4,7 +4,8 @@ import 'package:shater/data/model/page_model.dart';
 import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/data/repository/question_repository_remote.dart';
 import 'package:shater/domain/usecase/question_usecase_imp.dart';
-import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/exercises/controller/exercise_controller.dart';
+import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 
 class PageSubjectController extends GetxController {
@@ -58,7 +59,7 @@ class PageSubjectController extends GetxController {
 
   void fetchQuestionPage() async {
     setLoad(true);
-    final subjectID = Get.find<ExerciseController>().selectedCourse?.id;
+    final subjectID = Get.find<SubjectController>().selectedCourse?.id;
     await _questionUseCaseImp?.fetchQuestionPage(subjectID).then((value) {
       value?.fold((l) {}, (r) {
         _pageModel = r;
@@ -73,7 +74,7 @@ class PageSubjectController extends GetxController {
 
   void fetchQuestionSubject() async {
     setLoadButton(true);
-    final subjectID = Get.find<ExerciseController>().selectedCourse?.id;
+    final subjectID = Get.find<SubjectController>().selectedCourse?.id;
     await _questionUseCaseImp
         ?.fetchQuestionSubject(subjectID, _fromValue, _toValue)
         .then((value) {

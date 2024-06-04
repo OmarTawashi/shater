@@ -21,7 +21,8 @@ class CustomSvgPicture extends StatelessWidget {
     return SvgPicture.asset(
       assetName,
       fit: fit,
-      // colorFilter: ColorFilter.mode(color ?? Colors.grey, BlendMode.srcIn),
+      colorFilter:
+          color == null ? null : ColorFilter.mode(color!, BlendMode.srcIn),
       width: width,
       height: height,
     );

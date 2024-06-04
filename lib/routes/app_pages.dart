@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
 import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
@@ -22,28 +23,35 @@ import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/base/binding/base_question_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/base/view/base_question_screen.dart';
-import 'package:shater/presentation/screens/student/base%20questions/congrlate/binding/congrlate_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/congrlate/view/congrlate_screen.dart';
-import 'package:shater/presentation/screens/student/base%20questions/failure%20question/binding/failure_question_binding.dart';
-import 'package:shater/presentation/screens/student/base%20questions/failure%20question/view/failure_question_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/view/exercise_contact_screen.dart';
+import 'package:shater/presentation/screens/student/questions/base/binding/base_question_binding.dart';
+import 'package:shater/presentation/screens/student/questions/base/view/base_question_screen.dart';
+import 'package:shater/presentation/screens/student/questions/congrlate/binding/congrlate_binding.dart';
+import 'package:shater/presentation/screens/student/questions/congrlate/view/congrlate_screen.dart';
+import 'package:shater/presentation/screens/student/questions/failure%20question/binding/failure_question_binding.dart';
+import 'package:shater/presentation/screens/student/questions/failure%20question/view/failure_question_screen.dart';
 import 'package:shater/presentation/screens/student/dashBord/bindings/bindings_dashbord.dart';
 import 'package:shater/presentation/screens/student/dashBord/view/dashbord_screen.dart';
 import 'package:shater/presentation/screens/student/exercise%20details/view/exercise_details_screen.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/bindings/exercise_subject_bindings.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/binding/contact_me_binding.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/contact_me/view/contact_me_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/notification/view/notification_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/binding/contact_me_binding.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/view/contact_me_screen.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/notification/view/notification_screen.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/binding/page_subject_binding.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/view/page_subject_screen.dart';
+import 'package:shater/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart';
+import 'package:shater/presentation/screens/student/result%20subject/binding/result_subject_binding.dart';
+import 'package:shater/presentation/screens/student/result%20subject/view/result_subject_screen.dart';
+import 'package:shater/presentation/screens/student/subcription%20teacher%20details/bindings/subcription_teacher_details_binding.dart';
+import 'package:shater/presentation/screens/student/subcription%20teacher%20details/view/subcription_teacher_details_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
+import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
+import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
 import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
@@ -65,17 +73,35 @@ class AppPages {
         page: () => const DashBoardScreen(),
         binding: DashBoardBindings()),
     GetPage(
-        name: RoutesName.teacherDashBoardScreen,
-        page: () => const TeacherDashBoardScreen(),
-        binding: TeacherDashBoardBindings()),
-    // GetPage(
-    //   name: RoutesName.TeacherScreen,
-    //   page: () => const TeacherScreen(),
-    // ),
+      name: RoutesName.teacherDashBoardScreen,
+      page: () => const TeacherDashBoardScreen(),
+      binding: TeacherDashBoardBindings(),
+    ),
     GetPage(
-        name: RoutesName.editProfileScreen,
-        page: () => const EditProfileScreen(),
-        binding: EditProfileBinding()),
+      name: RoutesName.subcriptionTeacherDetailsScreen,
+      page: () => const SubcriptionTeacherDetailsScreen(),
+      binding: SubcriptionTeacherDetailsBinding(),
+    ),
+    GetPage(
+      name: RoutesName.lessonTeacherView,
+      page: () => LessonTeacherView(),
+      transition: Transition.downToUp,
+      curve: Curves.fastLinearToSlowEaseIn,
+    ),
+    GetPage(
+      name: RoutesName.teacherDetailsScreen,
+      page: () => const TeacherDetailsScreen(),
+      binding: TeacherDetailsBinding(),
+    ),
+    GetPage(
+      name: RoutesName.editProfileScreen,
+      page: () => const EditProfileScreen(),
+      binding: EditProfileBinding(),
+    ),
+    GetPage(
+        name: RoutesName.resultSubjectScreen,
+        page: () => const ResultSubjectScreen(),
+        binding: ResultSubjectBinding()),
     GetPage(
       name: RoutesName.baseLoginScreen,
       page: () => const BaseLoginScreen(),
@@ -142,9 +168,8 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.contactScreen,
-      page: () => const NotificationContactScreen(),
+      page: () => const ExerciseContactScreen(),
     ),
-
     GetPage(
         name: RoutesName.baseQuestionScreen,
         page: () => const BaseQuestionScreen(),

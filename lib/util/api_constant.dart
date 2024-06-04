@@ -24,10 +24,17 @@ class ApiConstant {
   static String schoolsRates = '/api/$version/student/rates/schools';
   static String studentRates = '/api/$version/student/rates/students';
   static String profile = '/api/$version/student/profile/my-profile';
+  static String examSubject = '/api/$version/student/educational/exams/subject';
+  static String shareExam = '/api/$version/student/educational/exams/result';
+  static String commentsList = '/api/$version/student/comments/list';
+  static String commentStore = '/api/$version/student/comments/store';
+  static String rateVideo = '/api/rateVideo';
   static String teacherOfStudent =
       '/api/$version/student/educational/videos/get-teachers-for-subject';
 
   static String notifications = '/api/$version/student/notifications/list';
+  static String teacherAsRead =
+      '/api/$version/student/notifications/mark-as-read';
   static String contactList = '/api/$version/student/contacts/list';
   static String contactStore = '/api/$version/student/contacts/store';
   static String replayContact = '/api/$version/student/contacts';
@@ -44,8 +51,14 @@ class ApiConstant {
   static String getDataForUserRegistration =
       '/api/$version/getDataForUserRegistration';
 
-  static String getTeacherCoursesLesson = '/api/$version/teacher/lesson/index?level=';
-  static String teacherCoursesList = '/api/$version/teacher/lesson/index2?level=';
+  static String getTeacherCoursesLesson =
+      '/api/$version/teacher/lesson/index?level=';
+  static String teacherCoursesList =
+      '/api/$version/teacher/lesson/index2?level=';
+  static String getVideoOfSubject =
+      '/api/v2/student/educational/videos/get-videos-for-subject';
+  static String getVideoOfPage =
+      '/api/v2/student/educational/videos/get-videos-for-page';
 
   static const String topic = 'all_zone_customer';
 }

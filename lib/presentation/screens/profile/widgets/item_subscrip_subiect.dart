@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class ItemSubscribSubject extends StatelessWidget {
@@ -12,30 +13,20 @@ class ItemSubscribSubject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
-      padding:
-          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 19),
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Color.fromRGBO(8, 202, 254, 0.8),
-              Color.fromRGBO(226, 91, 242, 0.6),
-            ],
-          ),
+          gradient: COLORS.gradientContainer,
           borderRadius: BorderRadius.circular(16)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            height: 80,
-            width: 80,
+            height: 70,
+            width: 70,
             clipBehavior: Clip.hardEdge,
-            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
-              border:
-                  Border.all(color: Colors.white, width: 2),
+              border: Border.all(color: Colors.white, width: 4.5),
               shape: BoxShape.circle,
             ),
             child: CachedNetworkImageWidget(
@@ -44,30 +35,27 @@ class ItemSubscribSubject extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: Dimensions.paddingSize16,
+            width: Dimensions.paddingSize12,
           ),
           Expanded(
               child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                 Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText(
                       text: 'subscription_date',
-                      color: Colors.grey,
-                      fontSize: Dimensions.fontSize12,
+                      color: Colors.white,
+                      fontSize: Dimensions.fontSize15,
                       fontWeight: FontWeight.w300,
                     ),
                     CustomText(
                       text: "23/3/2024",
                       color: Colors.white,
-                      fontSize: Dimensions.fontSize13,
+                      fontSize: Dimensions.fontSize15,
                       fontWeight: FontWeight.w300,
                     ),
                   ],
@@ -76,21 +64,19 @@ class ItemSubscribSubject extends StatelessWidget {
                   height: Dimensions.paddingSize20,
                 ),
                 Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText(
                       text: 'expires_in',
-                      color: Colors.grey,
-                      fontSize: Dimensions.fontSize12,
+                      color: Colors.white,
+                      fontSize: Dimensions.fontSize15,
                       fontWeight: FontWeight.w300,
                     ),
                     CustomText(
                       text: "23/3/2024",
                       color: Colors.white,
-                      fontSize: Dimensions.fontSize13,
+                      fontSize: Dimensions.fontSize15,
                       fontWeight: FontWeight.w300,
                     ),
                   ],
@@ -101,7 +87,7 @@ class ItemSubscribSubject extends StatelessWidget {
           ),
           Icon(
             Icons.arrow_forward_ios_sharp,
-            color: Colors.white60,
+            color: Colors.white,
             weight: 20,
             applyTextScaling: true,
           )

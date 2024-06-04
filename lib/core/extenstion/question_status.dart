@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shater/presentation/screens/student/base%20questions/question/controller/question_controller.dart';
+import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 
 enum QuestionStatusEnum { success, failure, select, skip, none }

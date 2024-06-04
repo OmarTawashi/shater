@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -52,7 +53,9 @@ class ItemFirstStudents extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: Container(
                       clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          shape: BoxShape.circle),
                       child: CircleAvatar(
                         child: CachedNetworkImageWidget(
                           imageUrl: student?.student?.image ?? '',
@@ -145,7 +148,7 @@ class TextStudentInfo extends StatelessWidget {
         CustomText(
           text: title!.tr + ":\t",
           fontWeight: FontWeight.bold,
-          fontSize: Dimensions.fontSize10.sp,
+          fontSize: Dimensions.fontSize13,
           maxLine: 1,
           color: titleColor,
           overFlow: TextOverflow.ellipsis,
@@ -155,7 +158,7 @@ class TextStudentInfo extends StatelessWidget {
           fontWeight: FontWeight.bold,
           overFlow: TextOverflow.ellipsis,
           maxLine: 1,
-          fontSize: Dimensions.fontSize11.sp,
+          fontSize: Dimensions.fontSize14,
           color: textTitleColor ?? Color.fromRGBO(205, 223, 235, 1),
         )
       ],

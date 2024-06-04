@@ -52,7 +52,9 @@ class ItemSchoolRate extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: Container(
                       clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          shape: BoxShape.circle),
                       child: CircleAvatar(
                         child: CachedNetworkImageWidget(
                           imageUrl: school?.school?.image ?? '',

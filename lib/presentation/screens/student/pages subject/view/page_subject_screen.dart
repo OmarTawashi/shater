@@ -8,8 +8,9 @@ import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
-import 'package:shater/presentation/screens/student/exercises/controller/exercise_controller.dart';
+import 'package:shater/presentation/screens/student/exericse%20&%20contact/exercises/controller/exercise_controller.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
+import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
@@ -67,10 +68,9 @@ class PageSubjectScreen extends StatelessWidget {
                       width: Dimensions.paddingSize5,
                     ),
                     CustomText(
-                      text: Get.find<ExerciseController>()
-                              .selectedCourse
-                              ?.title ??
-                          '',
+                      text:
+                          Get.find<SubjectController>().selectedCourse?.title ??
+                              '',
                       color: Colors.white,
                       textAlign: TextAlign.start,
                       fontWeight: FontWeight.bold,
@@ -114,10 +114,9 @@ class PageSubjectScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: CachedNetworkImageWidget(
-                      imageUrl: Get.find<ExerciseController>()
-                              .selectedCourse
-                              ?.image ??
-                          '',
+                      imageUrl:
+                          Get.find<SubjectController>().selectedCourse?.image ??
+                              '',
                       fit: BoxFit.cover,
                       height: 135,
                       width: 135,

@@ -1,5 +1,3 @@
-
-
 abstract class RoutesName {
   static const spalshScreen = '/';
   static const dashBoardScreen = '/dash-board-screen';
@@ -7,6 +5,7 @@ abstract class RoutesName {
   static const profileScreen = '/profile-screen';
   static const baseLoginScreen = '/base-login-screen';
   static const editProfileScreen = '/edit-profile-screen';
+  static const resultSubjectScreen = '/result-subject-screen';
   static const signUpScreen = '/sign-up-screen';
   static const signInScreen = '/sign-in-screen';
   static const firstsScreen = '/firsts-screen';
@@ -29,19 +28,25 @@ abstract class RoutesName {
   static const pageSubjectScreen = '/page-subject-screen';
   static const baseQuestionScreen = '/base-question-screen';
   static const congrlateScreen = '/congrlate-screen';
+  static const teacherDetailsScreen = '/teacher-details-screen';
+  static const lessonTeacherView = '/lesson-teacher-view';
+  static const subcriptionTeacherDetailsScreen =
+      '/subcription-teacher-details-screen';
   static const failureQuestionScrren = '/failure-question-screen';
 
   static const teacherDashBoardScreen = '/teacher-dash-board-screen';
-
-
-
 }
 
 abstract class Routes {
   static String getSpalshScreen() => RoutesName.spalshScreen;
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
+  static String getLessonTeacherView() => RoutesName.lessonTeacherView;
+  static String getSubcriptionTeacherDetailsScreen() =>
+      RoutesName.subcriptionTeacherDetailsScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;
+  static String getTeacherDetailsScreen() => RoutesName.teacherDetailsScreen;
+  static String getResultSubjectScreen() => RoutesName.resultSubjectScreen;
   static String getCongrlateScreen() => RoutesName.congrlateScreen;
   static String getBaseLoginScreen() => RoutesName.baseLoginScreen;
   static String getSignInScreen() => RoutesName.signInScreen;
@@ -68,6 +73,6 @@ abstract class Routes {
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
   static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
 
-  static String getTeacherDashBoardScreen() => RoutesName.teacherDashBoardScreen;
-
+  static String getTeacherDashBoardScreen() =>
+      RoutesName.teacherDashBoardScreen;
 }

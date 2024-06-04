@@ -3,12 +3,6 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/user.dart';
-import 'package:shater/presentation/screens/student/exercises/view/Exercise_screen.dart';
-import 'package:shater/presentation/screens/student/firsts/view/first_screen.dart';
-import 'package:shater/presentation/screens/student/notification%20&%20contact/view/notification_contact_screen.dart';
-import 'package:shater/presentation/screens/student/subject/view/subjects_screen.dart';
-
-import '../../../student/teacher/view/teacher_screen.dart';
 import '../../Explanation/teacher_explanation_screen.dart';
 import '../../My Explanation/teacher_my_lessons_screen.dart';
 import '../../practice/practice_screen.dart';

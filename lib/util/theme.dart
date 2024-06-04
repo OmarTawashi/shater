@@ -4,12 +4,12 @@ import 'package:shater/util/font_style.dart';
 
 class ThemeApp {
   //material theme
-  static ThemeData materialLightTheme({Color color = COLORS.primaryColor}) =>
-      ThemeData(
+  static ThemeData materialLightTheme({Color color = COLORS.primaryColor}) => ThemeData(
         fontFamily: FontStyleConstant.familyFont,
         primaryColor: color,
         brightness: Brightness.light,
         hintColor: COLORS.hintColor,
+        useMaterial3: true,
         scaffoldBackgroundColor: COLORS.secanderyColor,
         canvasColor: COLORS.canvasColor,
         cardColor: COLORS.cardColor,
@@ -17,9 +17,7 @@ class ThemeApp {
           primary: color,
           secondary: color,
         ),
-        chipTheme: ChipThemeData(
-          color: MaterialStatePropertyAll(Colors.white)
-        ),        
+        chipTheme: ChipThemeData(color: MaterialStatePropertyAll(Colors.white)),
         textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom()),
       );
 }

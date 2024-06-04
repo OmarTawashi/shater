@@ -20,7 +20,6 @@ class FirstsController extends BaseController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     _rateStudentUseCaseImp =
         RateStudentUseCaseImp(RateStudentRepositoryRemote(ApiClient()));

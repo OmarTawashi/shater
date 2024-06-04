@@ -1,6 +1,6 @@
 class IMAGES {
-   //gif
-     static const String loadingGif = 'assets/animate/loading.gif';
+  //gif
+  static const String loadingGif = 'assets/animate/loading.gif';
 
   //first.png
   static const String firstImages = 'assets/images/first.png';
@@ -57,37 +57,48 @@ class ICONS {
   static const String book = 'assets/images/book.png';
   static const String lessonVideos = 'assets/icons/lessonVideos.svg';
 
-  static const String myLessonsTabActive = 'assets/icons/myLessonsTabActive.svg';
-  static const String myLessonsTabUnActive = 'assets/icons/myLessonsTabUnActive.svg';
+  static const String myLessonsTabActive =
+      'assets/icons/myLessonsTabActive.svg';
+  static const String myLessonsTabUnActive =
+      'assets/icons/myLessonsTabUnActive.svg';
+
+  static const String resultTabActive = 'assets/icons/resultTabActive.svg';
+  static const String resultTabUnActive = 'assets/icons/resultTabUnActive.svg';
 
   static const String practiceTabActive = 'assets/icons/practiceTabActive.svg';
-  static const String practiceTabUnActive = 'assets/icons/practiceTabUnActive.svg';
+  static const String practiceTabUnActive =
+      'assets/icons/practiceTabUnActive.svg';
 
-  static const String explanationTabActive = 'assets/icons/explanationTabActive.svg';
-  static const String explanationTabUnActive = 'assets/icons/explanationTabUnActive.svg';
+  static const String explanationTabActive =
+      'assets/icons/explanationTabActive.svg';
+  static const String explanationTabUnActive =
+      'assets/icons/explanationTabUnActive.svg';
 
-  static const String studentsSubscriptionTabActive = 'assets/icons/studentsSubscriptionTabActive.svg';
-  static const String studentsSubscriptionTabUnActive = 'assets/icons/studentsSubscriptionTabUnActive.svg';
+  static const String studentsSubscriptionTabActive =
+      'assets/icons/studentsSubscriptionTabActive.svg';
+  static const String studentsSubscriptionTabUnActive =
+      'assets/icons/studentsSubscriptionTabUnActive.svg';
 
   static const String practiceTop = 'assets/icons/practiceTop.svg';
   static const String explanationTop = 'assets/icons/explanationTop.svg';
+  static const String topResult = 'assets/icons/topResult.svg';
   static const String subscribersTop = 'assets/icons/subscribersTop.svg';
-
-
 
   static const List<String> unActiveTab = [
     subjectUnActive,
-    exerciseTab,
+    // exerciseTab,
     teacherUnActive,
-    firstsTap,
     contactUnActive,
+    firstsTap,
+    resultTabUnActive
   ];
   static const List<String> activeTab = [
     subjectTapActive,
-    exerciseTabActive,
+    // exerciseTabActive,
     teacherActive,
-    firstsTapActive,
     contactActive,
+    firstsTapActive,
+    resultTabActive
   ];
 
   static const List<String> teacherActiveTab = [
@@ -106,10 +117,8 @@ class ICONS {
   ];
 }
 
-class VIDEO{
-
-    static const String answer5 = 'assets/5.mov';
-    static const String answer10 = 'assets/10.mov';
-    static const String answer20 = 'assets/20.mov';
-    
+class VIDEO {
+  static const String answer5 = 'assets/5.mov';
+  static const String answer10 = 'assets/10.mov';
+  static const String answer20 = 'assets/20.mov';
 }

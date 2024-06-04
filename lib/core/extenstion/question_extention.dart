@@ -6,7 +6,7 @@ enum QType {
   OrderWord,
   MultiChoiceImage,
   MultiChoiceVirtical,
-  ConnectSentence,
+  MatchText,
   ConnectImageTextSentence,
   MatchImage,
   CompleteSentence,
@@ -21,14 +21,15 @@ enum QType {
   TrueOrFalseImage,
   MultiChoiceImageTitle,
   MultiChoiceImageSound,
-  OrderWithImage,
+  MultiChoiceTextSound,
+  OrderImage,
   ImageCount,
-  MathOperations,
+  MathematicalOperations,
   ArithmeticText,
   ComprehensiveImage,
   ComprehensiveSelectImage,
   ComprehensiveAttachmentsInput,
-  WritingDrawing,
+  WritingBoard,
   LongDivisionType,
   FractionsType,
   CalculationsType,
@@ -59,7 +60,7 @@ class QuestionType {
       case "4":
         return QType.ComprehensiveSelectImage;
       case "5":
-        return QType.ConnectSentence;
+        return QType.MatchText;
       case "6":
         return QType.MatchImage;
       case "7":
@@ -89,23 +90,23 @@ class QuestionType {
       case "19":
         return QType.MultiChoiceText;
       case "20":
-        return QType.OrderWithImage;
+        return QType.OrderImage;
       case "21":
         return QType.ImageCount;
       case "22":
-        return QType.MathOperations;
+        return QType.MathematicalOperations;
       case "23":
         return QType.ComprehensiveImage;
       case "24":
         return QType.MultiChoiceImage;
       case "25":
-        return QType.CompleteValue;
+        return QType.WritingBoard;
       case "26":
-        return QType.WritingDrawing;
+        return QType.MathematicalOperations;
       case "27":
         return QType.ArithmeticText;
       case "28":
-        return QType.FractionsType;
+        return QType.LongDivision;
       case "29":
         return QType.CalculationsType;
       case "30":
@@ -146,6 +147,7 @@ extension QuestionArithmicitcTextExt on String {
     required Widget fraction,
     required Widget numberWithFraction,
     required Widget other,
+    required Widget number,
     required Widget stable,
   }) {
     switch (this) {
@@ -155,8 +157,26 @@ extension QuestionArithmicitcTextExt on String {
         return numberWithFraction;
       case 'other':
         return other;
+      case 'number':
+        return number;
       default:
         return stable;
     }
+  }
+}
+
+extension ArabicToEnglishExtension on String {
+  String arabicToEnglish() {
+    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    String convertedText = '';
+
+    for (int i = 0; i < this.length; i++) {
+      final index = arabicDigits.indexOf(this[i]);
+      convertedText += index != -1 ? englishDigits[index] : this[i];
+    }
+
+    return convertedText;
   }
 }

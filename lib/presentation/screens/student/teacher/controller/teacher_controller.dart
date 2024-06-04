@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/course_learning_model.dart';
@@ -5,11 +6,18 @@ import 'package:shater/data/model/teacher_model.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
+import 'package:shater/routes/app_routes.dart';
+
+enum TeacherTap { teachers, subscriptions }
 
 class TeacherController extends BaseController {
   TeacherUseCaseImp? _teacherUseCaseImp;
 
+  SubjectController subjectController = Get.find<SubjectController>();
   int selectedTapIndex = 0;
+
+  TeacherTap _teacherTapSelected = TeacherTap.teachers;
+  TeacherTap get teacherTapSelected => _teacherTapSelected;
 
   List<String> _subjects = ['all'];
   List<String> get subjects => _subjects;
@@ -20,6 +28,9 @@ class TeacherController extends BaseController {
   CourseLearningModel? _courseSelected;
   CourseLearningModel? get courseSelected => _courseSelected;
 
+  TeacherModel? _teacherSelected;
+  TeacherModel? get teacherSelected => _teacherSelected;
+
   List<TeacherModel> _teachers = [];
   List<TeacherModel> get teachers => _teachers;
 
@@ -28,7 +39,13 @@ class TeacherController extends BaseController {
     super.onInit();
     _teacherUseCaseImp =
         TeacherUseCaseImp(TeacherRepositoryRemote(ApiClient()));
-    getTeachers();
+    // getTeachers();
+    getData(_teacherTapSelected);
+  }
+
+  void changeTap(TeacherTap tap) {
+    _teacherTapSelected = tap;
+    update();
   }
 
   void changeTapIndex(int index) {
@@ -36,8 +53,13 @@ class TeacherController extends BaseController {
     update();
   }
 
-  iniGetSubject(SubjectController controller) {
-    _courses = controller.courseLearningModel;
+  void setTeacher(TeacherModel teacher) {
+    _teacherSelected = teacher;
+    update();
+  }
+
+  iniGetSubject() {
+    _courses = subjectController.courseLearningModel;
     _courses.forEach((element) {
       if (!_subjects.contains(element.title)) {
         _subjects.add(element.title ?? '');
@@ -45,11 +67,31 @@ class TeacherController extends BaseController {
     });
   }
 
+  CourseLearningModel getSubjectOfEachTeacher(int? subId) {
+    return courses.firstWhere(
+      (element) => element.id == subId,
+    );
+  }
+
   void getCourseSelected(int index) {
-    final seleCourse =
-        _courses.firstWhere((element) => selectedTapIndex == index);
-    _courseSelected = seleCourse;
+    _courses.forEach((element) {
+      if (element.id == _teachers[index].subjectId) {
+        _courseSelected = element;
+      }
+    });
     update();
+  }
+
+  void getData(TeacherTap tap) {
+    switch (tap) {
+      case TeacherTap.teachers:
+        return getTeachers();
+      case TeacherTap.subscriptions:
+      // return fetchCourseLearning();
+
+      default:
+        return getTeachers();
+    }
   }
 
   void getTeachers() async {
@@ -65,6 +107,18 @@ class TeacherController extends BaseController {
           updateViewType(ViewType.success);
           _teachers = r ?? [];
         }
+      });
+
+      update();
+    });
+  }
+
+  void sendReadTeacher(int? teacherID) async {
+    await _teacherUseCaseImp?.sendTeacherRead(teacherID).then((value) {
+      value?.fold((l) {
+        handelError(l);
+      }, (r) {
+        print(r);
       });
 
       update();

@@ -15,6 +15,15 @@ class COLORS {
   static const Color dividerColor = Color.fromRGBO(239, 239, 239, 1);
   static const Color inputBackGround = Color(0xFFFCFCFC);
   static const Color errorColor = Color.fromARGB(255, 242, 81, 78);
+  static const Gradient gradientContainer = LinearGradient(
+    colors: [
+      Color.fromRGBO(8, 202, 254, 1.0),
+      Color.fromRGBO(229, 89, 241, 1.0),
+    ],
+    stops: [0.0, 1.0],
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+  );
   static const Color subTitleColor = Color.fromRGBO(198, 235, 245, 1);
 
   static const grayFont = Color(0xff6A6D7C);

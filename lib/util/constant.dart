@@ -4,17 +4,17 @@ class APPCONSTANT {
   static const String COUNTRY_CODE = 'saidBox_country_code';
   static const String LANGUAGE_CODE = 'saidBox_language_code';
 
-
-   static const int loggerLineLength = 120;
+  static const int loggerLineLength = 120;
   static const int loggerErrorMethodCount = 8;
   static const int loggerMethodCount = 2;
 
   static const List<String> labelTab = [
     "subjects",
-    "exercise",
+    // "exercise",
     "teachers",
-    "top",
     "contacts",
+    "top",
+    "results",
   ];
 
   static const List<String> teacherLabelTab = [
@@ -22,7 +22,8 @@ class APPCONSTANT {
     "practice",
     "explanations",
     "subscribers",
-    "contacts",
+    // "contacts",
+    "results",
   ];
   static List<LanguageModel> languages = [
     LanguageModel(
