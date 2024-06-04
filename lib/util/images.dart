@@ -82,6 +82,7 @@ class ICONS {
   static const String practiceTop = 'assets/icons/practiceTop.svg';
   static const String explanationTop = 'assets/icons/explanationTop.svg';
   static const String topResult = 'assets/icons/topResult.svg';
+  static const String subscribersTop = 'assets/icons/subscribersTop.svg';
 
   static const List<String> unActiveTab = [
     subjectUnActive,

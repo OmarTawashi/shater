@@ -5,8 +5,7 @@ import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
-import 'package:shater/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart';
-import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_item_subject.dart';
+import 'package:shater/presentation/screens/teacher/subscription/view/subscribers_item.dart';
 import 'package:shater/util/images.dart';
 
 
@@ -15,30 +14,32 @@ import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
 import '../../base/tap_section.dart';
 import '../../student/subject/widgets/item_subject.dart';
+import '../Explanation/view/teacher_item_subject.dart';
+import 'subscribers_controller.dart';
 
-class TeacherExplanationScreen extends StatelessWidget {
-  const TeacherExplanationScreen({super.key});
+class SubscribersScreen extends StatelessWidget {
+  const SubscribersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       appBar: PerfectAppBar(),
-      body: GetBuilder<TeacherExplanationController>(
+      body: GetBuilder<SubscribersController>(
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
-            controller.teacherCoursesList();
+            controller.fetchTeacherCoursesLesson();
           },
           child: CustomScrollView(
             slivers: [
               IntikeTapBar(
-                assetName: ICONS.explanationTop,
+                assetName: ICONS.subscribersTop,
                 child: Row(
                   children: [
                     TapSection(
                       isSelected: true,
-                      text: 'explanations'.tr,
+                      text: 'subscribers'.tr,
                     ),
                   ],
                 ),
@@ -53,7 +54,7 @@ class TeacherExplanationScreen extends StatelessWidget {
                 isSliver: true,
                 errorWidget: CustomEmptyView(
                   assetName: ICONS.decriptionTop,
-                  primaryText: 'subjects',
+                  primaryText: 'subscribers',
                   secanderyText: 'error_for_get_subject',
                 ),
                 shimmerWidget: CustomShimmerList(
@@ -63,9 +64,9 @@ class TeacherExplanationScreen extends StatelessWidget {
                     text: 'subjects'.tr,
                     caption: 'empty_subject'.tr,
                     image: ICONS.decriptionTop),
-                successWidget: SubjectList(controller),
+                successWidget: SubscribersList(controller),
                 retry: () {
-                  controller.teacherCoursesList();
+                  controller.fetchTeacherCoursesLesson();
                 },
               ),
               SliverToBoxAdapter(
@@ -80,20 +81,13 @@ class TeacherExplanationScreen extends StatelessWidget {
     );
   }
 
-  SliverList SubjectList(TeacherExplanationController controller) {
+  SliverList SubscribersList(SubscribersController controller) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: controller.subjects.length,
+        childCount: 5 ,//controller.subjects.length
             (context, index) {
-              var item = controller.subjects[index];
-              return TeacherItemSubject(
-                  textSubject: item.title,
-                  classes: item.classes,
-                  teacherCountVideo: controller.subjects[index].teacherCountVideo,
-                  imageUrl: controller.subjects[index].image,
-                  onTap: () {
-                    // Get.toNamed(Routes.getExerciseSubjectScreen());
-                  });
+              // var item = controller.subjects[index];
+              return SubscribersItem();
             },
       ),
     );

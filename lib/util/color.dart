@@ -24,7 +24,11 @@ class COLORS {
     begin: Alignment.topRight,
     end: Alignment.bottomLeft,
   );
+  static const Color subTitleColor = Color.fromRGBO(198, 235, 245, 1);
 
   static const grayFont = Color(0xff6A6D7C);
   static const whiteColor = Color(0xffFFFFFF);
+  static const textLightColor = Color.fromRGBO(205, 223, 235, 1);
+
+
 }

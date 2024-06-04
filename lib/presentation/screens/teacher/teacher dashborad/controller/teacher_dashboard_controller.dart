@@ -6,6 +6,7 @@ import 'package:shater/data/model/user.dart';
 import '../../Explanation/teacher_explanation_screen.dart';
 import '../../My Explanation/teacher_my_lessons_screen.dart';
 import '../../practice/practice_screen.dart';
+import '../../subscription/subscribers_screen.dart';
 
 class TeacherDashBoardController extends GetxController {
   User? _user = SharedPrefs.user;
@@ -20,7 +21,7 @@ class TeacherDashBoardController extends GetxController {
     const TeacherMyLessonsScreen(),
     const PracticeScreen(),
     const TeacherExplanationScreen(),
-    const TeacherMyLessonsScreen(),
+    const SubscribersScreen(),
     const TeacherMyLessonsScreen(),
     // const PracticeScreen(),
     // const TeacherScreen(),

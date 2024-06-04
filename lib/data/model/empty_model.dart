@@ -9,6 +9,7 @@ class EmptyModel extends Decodable<EmptyModel> {
   @override
   EmptyModel decode(data) {
     message = data['message'];
+    
     return this;
   }
 }
