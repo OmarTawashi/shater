@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
-import 'package:shater/core/extenstion/quiz_matcher_packge.dart/extension/extension.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/data/model/typing_answer.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';

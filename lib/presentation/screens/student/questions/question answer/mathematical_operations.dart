@@ -1,5 +1,5 @@
+import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
-import 'package:shater/core/extenstion/quiz_matcher_packge.dart/extension/extension.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/long_division.dart';
