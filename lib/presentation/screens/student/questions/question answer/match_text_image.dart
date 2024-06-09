@@ -1,26 +1,21 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shater/core/extenstion/question_status.dart';
-import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/text_custom.dart';
+
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_text.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
-import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
-class MatchImage extends StatefulWidget {
+class MatchTextWithImage extends StatefulWidget {
   final QuestionController controller;
-  const MatchImage({
+  const MatchTextWithImage({
     Key? key,
     required this.controller,
   }) : super(key: key);
   @override
-  _MatchImageState createState() => _MatchImageState();
+  _MatchTextWithImageState createState() => _MatchTextWithImageState();
 }
 
-class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
+class _MatchTextWithImageState extends State<MatchTextWithImage> with TickerProviderStateMixin {
   List<Offset?> currentLine = [];
   List<List<Offset?>> lines = [];
   Offset? startPoint;
@@ -32,7 +27,6 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
   List<GlobalKey> rightItemKeys = List.generate(4, (_) => GlobalKey());
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     widget.controller.getListMatchItems();
   }
@@ -61,7 +55,7 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
                           key: leftItemKeys[index],
                           child: ItemMatchTextR(
                             item: item,
-                            isImage: true,
+                            isImage: false,
                           ),
                         );
                       }).toList(),

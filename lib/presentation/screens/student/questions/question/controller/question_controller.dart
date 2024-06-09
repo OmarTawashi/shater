@@ -419,6 +419,33 @@ class QuestionController extends GetxController {
     getType();
   }
 
+  List<String> leftItems = [];
+  List<String> rightItems = [];
+
+  void getListMatchItems() {
+    leftItems = [];
+    rightItems = [];
+    if (questionType?.qtype == QType.MatchText) {
+      var details = questionModel!.details?.cast<List<dynamic>>();
+      if (details != null) {
+        details.first.forEach((element) {
+          leftItems.add(element);
+        });
+        details.last.forEach((element) {
+          rightItems.add(element);
+        });
+      }
+    } else if (questionType?.qtype == QType.MatchTextImage || questionType?.qtype == QType.MatchImage) {
+      final urls = questionModel?.urls?.cast<Map<dynamic, dynamic>>();
+      if (urls != null) {
+        urls.forEach((element) {
+          leftItems.add(element.entries.first.key);
+          rightItems.add(element.entries.first.value);
+        });
+      }
+    }
+  }
+
   void getType() {
     if (_questionsGet?[questionIndex].id != questionModel?.id) {
       setQuestion(_questionsGet?[questionIndex]);

@@ -29,11 +29,17 @@ class CachedNetworkImageWidget extends StatelessWidget {
         height: 90,
         fit: BoxFit.cover,
       ),
-      errorWidget: (context, url, error) => Image.asset(
-        IMAGES.logoLuncher,
-        width: 90,
-        height: 90,
-        fit: BoxFit.cover,
+      errorWidget: (context, url, error) => Container(
+        width: 50,
+        height: 50,
+        child: Center(
+          child: Image.asset(
+            IMAGES.logoLuncher,
+            width: 55,
+            height: 55,
+            fit: BoxFit.contain,
+          ),
+        ),
       ),
     );
   }
