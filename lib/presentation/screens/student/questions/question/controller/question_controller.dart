@@ -13,9 +13,16 @@ import 'package:shater/core/base/image_converter.dart';
 
 import 'package:shater/core/extenstion/question_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
+import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/arthimitic_object.dart';
+import 'package:shater/data/model/question_answer.dart';
 import 'package:shater/data/model/question_subject_model.dart';
+import 'package:shater/data/model/result_exam_model.dart';
+import 'package:shater/data/repository/question_repository_remote.dart';
+import 'package:shater/domain/usecase/question_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
+import 'package:shater/presentation/screens/student/questions/lesson/controller/lesson_controller.dart';
+import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/api_constant.dart';
 import 'package:shater/util/images.dart';
@@ -215,10 +222,12 @@ class QuestionController extends GetxController {
 
   QuestionStatusEnum _questionStatus = QuestionStatusEnum.none;
   QuestionStatusEnum get questionStatus => _questionStatus;
+  QuestionUseCaseImp? _questionUseCaseImp;
 
   @override
   void onInit() {
     super.onInit();
+    _questionUseCaseImp = QuestionUseCaseImp(QuestionRepositoryRemote(ApiClient()));
     if (Get.previousRoute == Routes.getPageSubjectScreen()) {
       _questionsPages = Get.find<PageSubjectController>().questionSubject;
       // getQuestionPage();
@@ -477,12 +486,62 @@ class QuestionController extends GetxController {
     update();
   }
 
+  List questionsAnswers = [];
+  ResultExam? _resultExam;
+  ResultExam? get resultExam => _resultExam;
+  bool _isloadingFinish = false;
+  bool get isloadingFinish => _isloadingFinish;
+  void changeLoadingFinish(bool isLoad) {
+    _isloadingFinish = isLoad;
+    update();
+  }
+
+  void fetchResultExam() async {
+    final pageSubjectController = Get.find<PageSubjectController>();
+    final subjectID = pageSubjectController.questionSubject.first.subjectId;
+    final pageFrom = pageSubjectController.fromValue;
+    final pageTo = pageSubjectController.toValue;
+    final total = _answerNumValid;
+    final data = jsonEncode(questionsAnswers);
+    final helpAnswer = 0;
+    changeLoadingFinish(true);
+    await _questionUseCaseImp
+        ?.fetchResultQuestion(
+      subjectID,
+      pageFrom,
+      pageTo,
+      total,
+      data,
+      helpAnswer,
+    )
+        .then((value) {
+      value?.fold((l) {
+        BaseMixin.showToastFlutter(messsage: l.message);
+        changeLoadingFinish(false);
+      }, (r) {
+        final result = ResultExam(lastExam: r);
+        _resultExam = result;
+        changeLoadingFinish(false);
+        Get.toNamed(Routes.getResultSubjectScreen());
+        update();
+      });
+    });
+  }
+
   void getSecandQuestion() {
+    final lessonController = Get.find<LessonController>();
+    final questionAnswer = QuestionAnswer(
+      questionId: questionModel?.id,
+      answer: '',
+      isCorrect: _questionModel?.isValid == true ? 1 : 0,
+    );
+    questionsAnswers.add(questionAnswer);
     if (_questionsGet?.indexed.last.$1 == _questionIndex) {
-      _questionIndex = 0;
+      fetchResultExam();
     } else if (_questionsGet?.indexed.last.$1 != _questionIndex) {
       _questionIndex += 1;
     }
+    lessonController.fetchVideoPage();
     _selectAnswer = [];
     setNumberTime(0);
     changeAnswer(false);

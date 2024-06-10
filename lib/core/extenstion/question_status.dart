@@ -65,8 +65,7 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
     }
   }
 
-  Widget getHeaderWidget(
-      Widget successWidget, Widget failureWidget, Widget stableWidget) {
+  Widget getHeaderWidget(Widget successWidget, Widget failureWidget, Widget stableWidget) {
     switch (this) {
       case QuestionStatusEnum.failure:
         return failureWidget;
@@ -103,12 +102,22 @@ extension QuestionStatusColorExt on QuestionStatusEnum {
   String getButtonTextStatus({QuestionController? controller}) {
     switch (this) {
       case QuestionStatusEnum.failure:
-        return 'next';
+        if (controller?.questionsGet?.indexed.last.$1 == controller?.questionIndex) {
+          return 'show_result';
+        } else {
+          return 'next';
+        }
       case QuestionStatusEnum.success:
-        return 'next';
+        if (controller?.questionsGet?.indexed.last.$1 == controller?.questionIndex) {
+          return 'show_result';
+        } else {
+          return 'next';
+        }
       case QuestionStatusEnum.skip:
         if (controller?.questionModel?.answer?.contains('<skip>') == true) {
           return '${controller?.questionModel?.valid?.first}';
+        } else if (controller?.questionsGet?.indexed.last.$1 == controller?.questionIndex) {
+          return 'show_result';
         } else {
           return 'next';
         }

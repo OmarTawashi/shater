@@ -42,11 +42,8 @@ class ResultExam extends Decodable<ResultExam> {
     levelId = json['level_id'];
     isActiveLearning = json['is_active_learning'];
     updatedAt = json['updated_at'];
-    firstExam = json['first_exam'] != null
-        ? new Exam.fromJson(json['first_exam'])
-        : null;
-    lastExam =
-        json['last_exam'] != null ? new Exam.fromJson(json['last_exam']) : null;
+    firstExam = json['first_exam'] != null ? new Exam.fromJson(json['first_exam']) : null;
+    lastExam = json['last_exam'] != null ? new Exam.fromJson(json['last_exam']) : null;
     countVideo = json['count_video'];
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];
@@ -88,11 +85,8 @@ class ResultExam extends Decodable<ResultExam> {
     levelId = json['level_id'];
     isActiveLearning = json['is_active_learning'];
     updatedAt = json['updated_at'];
-    firstExam = json['first_exam'] != null
-        ? new Exam.fromJson(json['first_exam'])
-        : null;
-    lastExam =
-        json['last_exam'] != null ? new Exam.fromJson(json['last_exam']) : null;
+    firstExam = json['first_exam'] != null ? new Exam.fromJson(json['first_exam']) : null;
+    lastExam = json['last_exam'] != null ? new Exam.fromJson(json['last_exam']) : null;
     countVideo = json['count_video'];
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];
@@ -103,7 +97,7 @@ class ResultExam extends Decodable<ResultExam> {
   }
 }
 
-class Exam {
+class Exam extends Decodable<Exam> {
   int? id;
   int? total;
   int? studentId;
@@ -173,5 +167,25 @@ class Exam {
     data['count_star'] = this.countStar;
     data['count_star_false'] = this.countStarFalse;
     return data;
+  }
+
+  @override
+  Exam decode(json) {
+    id = json['id'];
+    total = json['total'];
+    studentId = json['student_id'];
+    subjectId = json['subject_id'];
+    countryId = json['country_id'];
+    classId = json['class_id'];
+    fromPageNo = json['from_page_no'];
+    toPageNo = json['to_page_no'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    helpAnswer = json['help_answer'];
+    totalCorrect = json['total_correct'];
+    totalFalse = json['total_false'];
+    countStar = json['count_star'];
+    countStarFalse = json['count_star_false'];
+    return this;
   }
 }

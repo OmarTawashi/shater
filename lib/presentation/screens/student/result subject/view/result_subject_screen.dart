@@ -11,6 +11,7 @@ import 'package:shater/presentation/screens/base/cashed_network_image_widget.dar
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/result%20subject/controller/result_subject_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/font_style.dart';
@@ -26,7 +27,14 @@ class ResultSubjectScreen extends StatelessWidget {
       backgroundColor: COLORS.primaryColor,
       appBar: AppBar(
         backgroundColor: COLORS.primaryColor,
-        leading: ButtonBack(),
+        leading: GestureDetector(
+            onTap: () {
+              if (Get.previousRoute == RoutesName.baseQuestionScreen) {
+                Get.back(canPop: true);
+                Get.back(canPop: true);
+              }
+            },
+            child: ButtonBack()),
         centerTitle: true,
         title: CustomText(
           text: Get.find<ResultSubjectController>().user?.name ?? '',
@@ -42,9 +50,8 @@ class ResultSubjectScreen extends StatelessWidget {
             decoration: BoxDecoration(shape: BoxShape.circle),
             child: CircleAvatar(
               radius: 20,
-              child: CachedNetworkImageWidget(
-                  imageUrl:
-                      Get.find<ResultSubjectController>().user?.image ?? ''),
+              child:
+                  CachedNetworkImageWidget(imageUrl: Get.find<ResultSubjectController>().user?.image ?? ''),
             ),
           )
         ],
@@ -53,14 +60,12 @@ class ResultSubjectScreen extends StatelessWidget {
         builder: (controller) => SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 16.0, vertical: Dimensions.paddingSize10),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: Dimensions.paddingSize10),
             child: Column(
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.paddingSize12 + 2,
-                      vertical: Dimensions.paddingSize25 + 2),
+                      horizontal: Dimensions.paddingSize12 + 2, vertical: Dimensions.paddingSize25 + 2),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
@@ -75,8 +80,7 @@ class ResultSubjectScreen extends StatelessWidget {
                         decoration: BoxDecoration(shape: BoxShape.circle),
                         child: CircleAvatar(
                           radius: 33,
-                          child: CachedNetworkImageWidget(
-                              imageUrl: controller.resultExam?.image ?? ''),
+                          child: CachedNetworkImageWidget(imageUrl: controller.resultExam?.image ?? ''),
                         ),
                       ),
                       SizedBox(
@@ -114,8 +118,7 @@ class ResultSubjectScreen extends StatelessWidget {
                                       vertical: Dimensions.paddingSize10,
                                       horizontal: Dimensions.paddingSize16),
                                   decoration: BoxDecoration(
-                                      color: COLORS.secanderyColor,
-                                      borderRadius: BorderRadius.circular(24)),
+                                      color: COLORS.secanderyColor, borderRadius: BorderRadius.circular(24)),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -130,7 +133,7 @@ class ResultSubjectScreen extends StatelessWidget {
                                       ),
                                       CustomText(
                                         text:
-                                            '${controller.resultExam?.countQuestions ?? 0}' +
+                                            '${(controller.resultExam?.lastExam?.totalCorrect ?? 0) + (controller.resultExam?.lastExam?.totalFalse ?? 0)}' +
                                                 "\t" +
                                                 "exercise".tr,
                                         color: Colors.white,
@@ -154,23 +157,14 @@ class ResultSubjectScreen extends StatelessWidget {
                                     transform: Matrix4.rotationY(pi),
                                     alignment: Alignment.center,
                                     child: FAProgressBar(
-                                      currentValue: ((controller
-                                                      .resultExam
-                                                      ?.lastExam
-                                                      ?.totalCorrect ??
-                                                  0) +
-                                              (controller.resultExam?.lastExam
-                                                      ?.totalFalse ??
-                                                  0))
-                                          .toDouble(),
-                                      borderRadius: BorderRadius.circular(30),
-                                      backgroundColor:
-                                          Color.fromRGBO(235, 241, 246, 1),
+                                      currentValue:
+                                          (controller.resultExam?.lastExam?.totalCorrect ?? 0).toDouble(),
+                                      borderRadius: BorderRadius.circular(13),
+                                      backgroundColor: Color.fromRGBO(235, 241, 246, 1),
                                       progressColor: COLORS.secanderyColor,
-                                      maxValue: controller
-                                              .resultExam?.countQuestions
-                                              ?.toDouble() ??
-                                          0,
+                                      maxValue: ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                              (controller.resultExam?.lastExam?.totalFalse ?? 0))
+                                          .toDouble(),
                                       size: 13,
                                     ),
                                   ),
@@ -182,9 +176,9 @@ class ResultSubjectScreen extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 6.0),
                                   child: CustomText(
                                     text:
-                                        "${controller.resultExam?.lastExam?.totalCorrect?.toInt() ?? 0 ?? 0}"
+                                        "${((controller.resultExam?.lastExam?.totalCorrect ?? 0) + (controller.resultExam?.lastExam?.totalFalse ?? 0))}"
                                         "\t/\t"
-                                        '${controller.resultExam?.countQuestions ?? 0}',
+                                        '${(controller.resultExam?.lastExam?.totalCorrect ?? 0)}',
                                     textAlign: TextAlign.end,
                                     color: COLORS.secanderyColor,
                                     fontSize: Dimensions.fontSize18,
@@ -204,8 +198,7 @@ class ResultSubjectScreen extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.paddingSize12 + 2,
-                      vertical: Dimensions.paddingSize25 + 2),
+                      horizontal: Dimensions.paddingSize12 + 2, vertical: Dimensions.paddingSize25 + 2),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.vertical(
@@ -219,13 +212,11 @@ class ResultSubjectScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SimpleCircularProgressBar(
-                            valueNotifier: ValueNotifier(controller
-                                    .resultExam?.lastExam?.total
-                                    ?.toDouble() ??
-                                0),
-                            maxValue: controller.resultExam?.countQuestions
-                                    ?.toDouble() ??
-                                0,
+                            valueNotifier: ValueNotifier(
+                                (controller.resultExam?.lastExam?.totalCorrect?.toDouble() ?? 0)),
+                            maxValue: ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                    (controller.resultExam?.lastExam?.totalFalse ?? 0))
+                                .toDouble(),
                             size: 140,
                             backColor: Color.fromRGBO(235, 241, 246, 1),
                             progressColors: [COLORS.secanderyColor],
@@ -240,9 +231,13 @@ class ResultSubjectScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(118, 123, 127, 1),
                               );
+                              final valuePres = (value /
+                                      ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                          (controller.resultExam?.lastExam?.totalFalse ?? 0))) *
+                                  100;
 
                               return Text(
-                                '${value.toInt()}%',
+                                '${valuePres.toInt()}%',
                                 style: centerTextStyle,
                               );
                             },
@@ -259,8 +254,7 @@ class ResultSubjectScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               CustomText(
-                                text:
-                                    "${controller.resultExam?.lastExam?.fromPageNo ?? 0}",
+                                text: "${controller.resultExam?.lastExam?.fromPageNo ?? 0}",
                                 textAlign: TextAlign.end,
                                 color: Color.fromRGBO(118, 123, 127, 1),
                                 fontSize: Dimensions.fontSize18 + 2,
@@ -287,8 +281,7 @@ class ResultSubjectScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               CustomText(
-                                text:
-                                    "${controller.resultExam?.lastExam?.toPageNo ?? 0}",
+                                text: "${controller.resultExam?.lastExam?.toPageNo ?? 0}",
                                 textAlign: TextAlign.end,
                                 color: Color.fromRGBO(118, 123, 127, 1),
                                 fontSize: Dimensions.fontSize18 + 2,
@@ -316,35 +309,26 @@ class ResultSubjectScreen extends StatelessWidget {
                         children: [
                           CircleProgressWithTextWidget(
                             text: "correct_answer",
-                            currenValue: controller
-                                    .resultExam?.lastExam?.totalCorrect
-                                    ?.toDouble() ??
-                                0,
-                            maxValue: controller.resultExam?.lastExam?.total
-                                    ?.toDouble() ??
-                                0,
+                            currenValue: controller.resultExam?.lastExam?.totalCorrect?.toDouble() ?? 0,
+                            maxValue: ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                    (controller.resultExam?.lastExam?.totalFalse ?? 0))
+                                .toDouble(),
                             colorProgress: Color.fromRGBO(83, 199, 201, 1),
                           ),
                           CircleProgressWithTextWidget(
                             text: "wrong_answer",
-                            currenValue: controller
-                                    .resultExam?.lastExam?.totalFalse
-                                    ?.toDouble() ??
-                                0,
-                            maxValue: controller.resultExam?.lastExam?.total
-                                    ?.toDouble() ??
-                                0,
+                            currenValue: controller.resultExam?.lastExam?.totalFalse?.toDouble() ?? 0,
+                            maxValue: ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                    (controller.resultExam?.lastExam?.totalFalse ?? 0))
+                                .toDouble(),
                             colorProgress: Color.fromRGBO(252, 97, 79, 1),
                           ),
                           CircleProgressWithTextWidget(
                             text: "use_answer", //253, 166, 65
-                            currenValue: controller
-                                    .resultExam?.lastExam?.helpAnswer
-                                    ?.toDouble() ??
-                                0,
-                            maxValue: controller.resultExam?.lastExam?.total
-                                    ?.toDouble() ??
-                                0,
+                            currenValue: controller.resultExam?.lastExam?.helpAnswer?.toDouble() ?? 0,
+                            maxValue: ((controller.resultExam?.lastExam?.totalCorrect ?? 0) +
+                                    (controller.resultExam?.lastExam?.totalFalse ?? 0))
+                                .toDouble(),
                             colorProgress: Color.fromRGBO(253, 166, 65, 1),
                           )
                         ],
@@ -356,11 +340,9 @@ class ResultSubjectScreen extends StatelessWidget {
 
                       Container(
                           clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30)),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
                           child: CupertinoButton(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 16),
+                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             color: COLORS.secanderyColor,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -404,11 +386,7 @@ class CircleProgressWithTextWidget extends StatelessWidget {
   final double? maxValue;
   final double? currenValue;
   const CircleProgressWithTextWidget(
-      {super.key,
-      this.text,
-      this.maxValue,
-      this.currenValue,
-      this.colorProgress});
+      {super.key, this.text, this.maxValue, this.currenValue, this.colorProgress});
 
   @override
   Widget build(BuildContext context) {
@@ -446,9 +424,8 @@ class CircleProgressWithTextWidget extends StatelessWidget {
             horizontal: 8,
             vertical: 11,
           ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: Color.fromRGBO(235, 241, 246, 1)),
+          decoration:
+              BoxDecoration(borderRadius: BorderRadius.circular(30), color: Color.fromRGBO(235, 241, 246, 1)),
           child: CustomText(
             text: text!.tr,
             textAlign: TextAlign.end,
