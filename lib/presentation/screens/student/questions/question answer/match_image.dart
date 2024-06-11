@@ -113,10 +113,10 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
                 widget.controller.setQuestionStatus(QuestionStatusEnum.select);
               }
             },
-            child: CustomPaint(
-              painter: LineDrawingPainter(lines, startPoint, endPoint),
-              child: Container(),
-            ),
+            // child: CustomPaint(
+            //   painter: LineDrawingPainter(lines, startPoint, endPoint),
+            //   child: Container(),
+            // ),
           ),
         ],
       ),

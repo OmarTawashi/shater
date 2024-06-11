@@ -133,6 +133,8 @@ class LongDivision extends StatelessWidget {
               builder: (context, setState) => InputAnswerOperater(
                   initValue: obje.title,
                   row: 1,
+                  textEditingController:
+                      controller.validLongDivision[indexParent][indexChild].textEditingController,
                   isWrite: controller.validLongDivision[indexParent][indexChild].inputField != null &&
                       controller.validLongDivision[indexParent][indexChild].inputField != "",
                   controller: controller,

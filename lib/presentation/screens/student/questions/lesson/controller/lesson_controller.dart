@@ -29,8 +29,7 @@ class LessonController extends BaseController {
   late Future<void> initializeVideoPlayerFuture;
 
   SubcriptionTeacherDetailsController? _subcriptionTeVideController;
-  SubcriptionTeacherDetailsController? get subcriptionTeVideController =>
-      _subcriptionTeVideController;
+  SubcriptionTeacherDetailsController? get subcriptionTeVideController => _subcriptionTeVideController;
 
   PageSubjectController? _pageSubjectController;
   PageSubjectController? get pageSubjectController => _pageSubjectController;
@@ -68,8 +67,7 @@ class LessonController extends BaseController {
   // }
   void setVideoPage(TeacherExerciseModel videoPG) {
     _videoPageSelected = videoPG;
-    videoController = VideoPlayerController.networkUrl(
-        Uri.parse(_videoPageSelected?.url ?? ''))
+    videoController = VideoPlayerController.networkUrl(Uri.parse(_videoPageSelected?.url ?? ''))
       ..setVolume(1);
     initializeVideoPlayerFuture = videoController.initialize();
     update();
@@ -111,10 +109,9 @@ class LessonController extends BaseController {
   }
 
   void initTeacherFun() {
-    _subcriptionTeVideController =
-        Get.find<SubcriptionTeacherDetailsController>();
-    videoController = VideoPlayerController.networkUrl(Uri.parse(
-        _subcriptionTeVideController?.subjectVideoSelected?.url ?? ''));
+    _subcriptionTeVideController = Get.find<SubcriptionTeacherDetailsController>();
+    videoController = VideoPlayerController.networkUrl(
+        Uri.parse(_subcriptionTeVideController?.subjectVideoSelected?.url ?? ''));
     initializeVideoPlayerFuture = videoController.initialize();
     fetchComments();
   }
@@ -157,7 +154,8 @@ class LessonController extends BaseController {
         handelError(l);
       }, (r) {
         _videoPage = r;
-
+        final comments = r.firstWhere((element) => element.pageId == pageID);
+        _comments = comments.comments ?? [];
         updateViewType(ViewType.success);
       });
 
@@ -184,9 +182,7 @@ class LessonController extends BaseController {
     );
     changeLoad(true);
 
-    await _lessonUseCaseImp
-        ?.sendComment(videoID, comment.comment)
-        .then((value) {
+    await _lessonUseCaseImp?.sendComment(videoID, comment.comment).then((value) {
       value?.fold((l) {
         changeLoad(false);
       }, (r) {
@@ -211,17 +207,14 @@ class LessonController extends BaseController {
         break;
       case RoutesName.subcriptionTeacherDetailsScreen:
         videoID = _subcriptionTeVideController?.subjectVideoSelected?.id;
-        teacherID =
-            _subcriptionTeVideController?.subjectVideoSelected?.user?.id;
+        teacherID = _subcriptionTeVideController?.subjectVideoSelected?.user?.id;
         break;
     }
 
     final rate = ratingVideo;
     changeLoad(true);
 
-    await _lessonUseCaseImp
-        ?.sendRatingVideo(teacherID, videoID, rate)
-        .then((value) {
+    await _lessonUseCaseImp?.sendRatingVideo(teacherID, videoID, rate).then((value) {
       value?.fold((l) {
         changeLoad(false);
       }, (r) {

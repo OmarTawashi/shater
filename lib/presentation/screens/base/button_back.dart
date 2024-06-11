@@ -14,7 +14,8 @@ class ButtonBack extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.back();
-        if (Get.previousRoute == RoutesName.baseQuestionScreen) {
+        if (Get.previousRoute == RoutesName.baseQuestionScreen &&
+            Get.currentRoute == RoutesName.resultSubjectScreen) {
           Get.back();
           Get.back();
         }

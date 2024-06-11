@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class Dimensions {
   static const double paddingSize5 = 5.0;
   static const double paddingSize8 = 8.0;
@@ -6,7 +8,7 @@ class Dimensions {
   static const double paddingSize16 = 16.0;
   static const double paddingSize20 = 20.0;
   static const double paddingSize25 = 25.0;
-  static const double paddingSize80 = 80.0;
+  static double paddingSize80 = 150.0.h;
 
   static const double radius5 = 5.0;
   static const double radius8 = 8.0;

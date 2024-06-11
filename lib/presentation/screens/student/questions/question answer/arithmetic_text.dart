@@ -75,6 +75,11 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                         questionContent?[indexParent].subFields?[index].isSpace,
                                         inputField: InputAnswerOperater(
                                           row: 1,
+                                          textEditingController: widget
+                                              .controller
+                                              .validArithimticText[indexParent]
+                                              .subAnswerArthimitc[index]
+                                              .textEditingController,
                                           initValue: questionContent?[indexParent].subFields?[index].title,
                                           onChanged: (value) {
                                             setState(() {
@@ -112,9 +117,8 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                   inputField: InputAnswerOperater(
                                     row: 2,
                                     initValue: questionContent?[indexParent].title,
-                                    // textEditingController: controller
-                                    //     .validArithimticText[indexParent]
-                                    //     .textEditingController,
+                                    textEditingController: widget
+                                        .controller.validArithimticText[indexParent].textEditingController,
                                     controller: widget.controller,
                                     onChanged: (value) {
                                       setState(() {
@@ -146,6 +150,11 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                     inputField: InputAnswerOperater(
                                       row: 1,
                                       controller: widget.controller,
+                                      textEditingController: widget
+                                          .controller
+                                          .validArithimticText[indexParent]
+                                          .subAnswerArthimitc[index]
+                                          .textEditingController,
                                       initValue: questionContent?[indexParent].subFields?[index].title,
                                       onChanged: (value) {
                                         setState(() {
@@ -183,6 +192,8 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                           number: getSwitchInputText(questionContent?[indexParent].isSpace,
                               inputField: InputAnswerOperater(
                                 row: 2,
+                                textEditingController:
+                                    widget.controller.validArithimticText[indexParent].textEditingController,
                                 controller: widget.controller,
                                 initValue: questionContent?[indexParent].title,
                                 onChanged: (value) {

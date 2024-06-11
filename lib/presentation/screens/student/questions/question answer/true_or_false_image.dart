@@ -16,8 +16,7 @@ class TrueOrFalseImage extends StatelessWidget {
           height: 100.h,
         ),
         Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
+          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
           child: Row(
             children: [
               Expanded(
@@ -53,12 +52,7 @@ class WidgetTrueOrFalseTap extends StatelessWidget {
   final bool isSelect;
   final IconData? icon;
   final Color? selectColor;
-  WidgetTrueOrFalseTap(
-      {super.key,
-      this.onTap,
-      this.selectColor,
-      this.isSelect = false,
-      this.icon});
+  WidgetTrueOrFalseTap({super.key, this.onTap, this.selectColor, this.isSelect = false, this.icon});
   final unSelectColor = Color.fromRGBO(228, 228, 228, 1);
 
   @override
@@ -66,17 +60,16 @@ class WidgetTrueOrFalseTap extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isSelect ? selectColor : Colors.transparent,
-            border: Border.all(
-                width: 5, color: isSelect ? selectColor! : unSelectColor)),
+            border: Border.all(width: 5, color: isSelect ? selectColor! : unSelectColor)),
         child: Icon(
           icon,
           color: isSelect ? Colors.white : unSelectColor,
           weight: 40,
-          size: 50,
+          size: 33,
         ),
       ),
     );

@@ -10,6 +10,8 @@ import 'package:shater/presentation/screens/base/button_back.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
+import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/result%20subject/controller/result_subject_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
@@ -27,14 +29,7 @@ class ResultSubjectScreen extends StatelessWidget {
       backgroundColor: COLORS.primaryColor,
       appBar: AppBar(
         backgroundColor: COLORS.primaryColor,
-        leading: GestureDetector(
-            onTap: () {
-              if (Get.previousRoute == RoutesName.baseQuestionScreen) {
-                Get.back(canPop: true);
-                Get.back(canPop: true);
-              }
-            },
-            child: ButtonBack()),
+        leading: ButtonBack(),
         centerTitle: true,
         title: CustomText(
           text: Get.find<ResultSubjectController>().user?.name ?? '',
@@ -97,7 +92,7 @@ class ResultSubjectScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     CustomText(
-                                      text: controller.resultExam?.title ?? "",
+                                      text: controller.resultExam?.title ?? '',
                                       color: Color.fromRGBO(85, 85, 85, 1),
                                       fontSize: Dimensions.fontSize18 + 3,
                                       fontWeight: FontWeight.w400,

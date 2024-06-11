@@ -22,6 +22,7 @@ import 'package:shater/data/repository/question_repository_remote.dart';
 import 'package:shater/domain/usecase/question_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 import 'package:shater/presentation/screens/student/questions/lesson/controller/lesson_controller.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/arithmetic_text.dart';
 import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/api_constant.dart';
@@ -406,14 +407,18 @@ class QuestionController extends GetxController {
 
   void setAnswer(dynamic answer, {int? index}) {
     setQuestionStatus(QuestionStatusEnum.select);
-    final typingAnswer = TypingAnswer(index: index ?? -1, input: answer);
-    if (_selectAnswer.contains(answer)) {
-      // _answerQuestion.remove(typingAnswer);
-      _selectAnswer.remove(answer);
+    if (_selectAnswer.contains(answer) || _selectAnswer.contains("$index")) {
+      if (questionType?.qtype == QType.MultiChoiceImage) {
+        _selectAnswer.remove("$index");
+      } else {
+        _selectAnswer.remove(answer);
+      }
     } else {
-      // _selectAnswer.clear();
-      // _selectAnswer.add(answer);
-      _selectAnswer.add(answer);
+      if (questionType?.qtype == QType.MultiChoiceImage) {
+        _selectAnswer.add("$index");
+      } else {
+        _selectAnswer.add(answer);
+      }
     }
     update();
   }
@@ -430,20 +435,15 @@ class QuestionController extends GetxController {
 
   List<String> leftItems = [];
   List<String> rightItems = [];
-
+  Map<String, String> matchedItems = {};
   void getListMatchItems() {
     leftItems = [];
     rightItems = [];
     if (questionType?.qtype == QType.MatchText) {
-      var details = questionModel!.details?.cast<List<dynamic>>();
-      if (details != null) {
-        details.first.forEach((element) {
-          leftItems.add(element);
-        });
-        details.last.forEach((element) {
-          rightItems.add(element);
-        });
-      }
+      var answer = questionModel!.answer?.cast<String>();
+      var valid = questionModel!.valid?.cast<String>();
+      leftItems = answer ?? [];
+      rightItems = valid ?? [];
     } else if (questionType?.qtype == QType.MatchTextImage || questionType?.qtype == QType.MatchImage) {
       final urls = questionModel?.urls?.cast<Map<dynamic, dynamic>>();
       if (urls != null) {
@@ -473,15 +473,59 @@ class QuestionController extends GetxController {
 
   void getAnswerSuccss() {
     _selectAnswer = [];
-    if (questionType?.qtype == QType.CompleteValue) {
-      setAnswer(completeValueController.text);
-      _selectAnswer = _questionModel?.answer ?? [];
+    if (questionType?.qtype == QType.MatchTextImage ||
+        questionType?.qtype == QType.MultiChoiceText ||
+        questionType?.qtype == QType.MultiChoiceVirtical) {
+      _selectAnswer = _questionModel?.valid ?? [];
+    } else if (questionType?.qtype == QType.CompleteValue) {
+      final validText = _questionModel?.valid?.first;
+      completeValueController.text = validText;
     } else if (questionType?.qtype == QType.TrueOrFalseImage) {
-      _selectAnswer = _questionModel?.answer ?? [];
+      _selectAnswerTrueFalse = bool.tryParse(_questionModel?.answer?.first.toString().toLowerCase() ?? '');
+    } else if (questionType?.qtype == QType.ComprehensiveImage) {
+      List<dynamic> valid = _questionModel?.valid ?? [];
+      for (var i = 0; i < _inputComperhensiveImage.length; i++) {
+        _inputComperhensiveImage[i]?.textEditingController?.text = valid[i];
+      }
+    } else if (questionType?.qtype == QType.ArithmeticText) {
+      final questionContent = arithmeticTextModel?.questionContent;
+      if (questionContent != null) {
+        for (var i = 0; i < questionContent.length; i++) {
+          for (int j = 0; j < questionContent[i].length; j++) {
+            final item = questionContent[i][j];
+            if (item.isSpace == true && item.fieldType == "number") {
+              validLongDivision[i][j].textEditingController?.text = item.title ?? '';
+            } else if (item.fieldType == "fraction") {
+              validLongDivision[i][j].subAnswerArthimitc[0].textEditingController?.text =
+                  item.subFields?[0].title ?? '';
+              validLongDivision[i][j].subAnswerArthimitc[1].textEditingController?.text =
+                  item.subFields?[1].title ?? '';
+            } else if (item.fieldType == "numberWithFraction") {
+              validLongDivision[i][j].textEditingController?.text = item.title ?? '';
+              validLongDivision[i][j].subAnswerArthimitc[0].textEditingController?.text =
+                  item.subFields?[0].title ?? '';
+              validLongDivision[i][j].subAnswerArthimitc[1].textEditingController?.text =
+                  item.subFields?[1].title ?? '';
+            }
+          }
+        }
+      }
+    } else if (questionType?.qtype == QType.MathematicalOperations ||
+        questionType?.qtype == QType.LongDivision) {
+      final questionContent = arithmeticTextModel?.questionContent;
+      if (questionContent != null) {
+        for (int i = 0; i < questionContent.length; i++) {
+          for (int j = 0; j < questionContent[i].length; j++) {
+            final item = questionContent[i][j];
+            if (item.isSpace == true) {
+              validLongDivision[i][j].textEditingController?.text = item.title ?? '';
+            }
+          }
+        }
+      }
     } else {
       _selectAnswer = _questionModel?.valid ?? [];
     }
-    setQuestionStatus(QuestionStatusEnum.success);
 
     update();
   }
@@ -580,6 +624,7 @@ class QuestionController extends GetxController {
   void checkAnswer() {
     List<dynamic> valid = [];
     bool checked = false;
+    bool isModelAi = false;
     switch (questionType?.qtype) {
       case QType.CompleteValue:
         final answerValue = completeValueController.text.trim();
@@ -588,11 +633,11 @@ class QuestionController extends GetxController {
         break;
       case QType.OrderImage:
         final answerold = oldListOrderImage;
-        checked = (answerold.every((item) => item == "null"));
+        checked = (answerold.all((item) => item == "null"));
         break;
       case QType.OrderWord:
         final answerold = oldListOrderText;
-        checked = (answerold.every((item) => item == "null"));
+        checked = (answerold.all((item) => item == "null"));
         break;
       case QType.WritingBoard:
         performTextRecognition().then((value) {
@@ -602,6 +647,7 @@ class QuestionController extends GetxController {
             answer = questionModel?.answer?.first.toString().trim();
             valid = _writingBoardText?.trim();
             checked = (answer == valid);
+            isModelAi = true;
           }
         });
         break;
@@ -630,27 +676,51 @@ class QuestionController extends GetxController {
             _selectAnswer.add(_inputComperhensiveImage[i]?.textEditingController?.text);
           }
         }
-        valid = _questionModel?.valid ?? [];
-        checked = listsAreEqual(valid, _selectAnswer);
+        if (_inputComperhensiveImage.length == _selectAnswer.length) {
+          valid = _questionModel?.valid ?? [];
+          List<bool> checking = [];
+          for (int i = 0; i < valid.length; i++) {
+            if (valid[i] == _selectAnswer[i]) {
+              checking.add(true);
+            } else {
+              checking.add(false);
+            }
+          }
+          checked = checking.all((element) => element == true);
+        }
 
         break;
       default:
         valid = _questionModel?.valid ?? [];
         checked = listsAreEqual(valid, _selectAnswer);
     }
-
-    if (checked) {
-      setQuestionStatus(QuestionStatusEnum.success);
-      _answerNumValid += 1;
-      _questionModel?.isValid = true;
+    if (questionType?.qtype == QType.WritingBoard && isModelAi == true) {
+      if (checked) {
+        setQuestionStatus(QuestionStatusEnum.success);
+        _answerNumValid += 1;
+        _questionModel?.isValid = true;
+      } else {
+        setQuestionStatus(QuestionStatusEnum.failure);
+        _answerNumValid = 0;
+        _questionModel?.isValid = false;
+      }
+      changeAnswer(true);
+      setQuestionAnswer(questionModel);
+      showCongrlate();
     } else {
-      setQuestionStatus(QuestionStatusEnum.failure);
-      _answerNumValid = 0;
-      _questionModel?.isValid = false;
+      if (checked) {
+        setQuestionStatus(QuestionStatusEnum.success);
+        _answerNumValid += 1;
+        _questionModel?.isValid = true;
+      } else {
+        setQuestionStatus(QuestionStatusEnum.failure);
+        _answerNumValid = 0;
+        _questionModel?.isValid = false;
+      }
+      changeAnswer(true);
+      setQuestionAnswer(questionModel);
+      showCongrlate();
     }
-    changeAnswer(true);
-    setQuestionAnswer(questionModel);
-    showCongrlate();
   }
 
   void showCongrlate() {

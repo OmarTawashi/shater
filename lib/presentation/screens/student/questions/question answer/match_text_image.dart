@@ -107,10 +107,10 @@ class _MatchTextWithImageState extends State<MatchTextWithImage> with TickerProv
                 widget.controller.setQuestionStatus(QuestionStatusEnum.select);
               }
             },
-            child: CustomPaint(
-              painter: LineDrawingPainter(lines, startPoint, endPoint),
-              child: Container(),
-            ),
+            // child: CustomPaint(
+            //   painter: LineDrawingPainter(lines, startPoint, endPoint),
+            //   child: Container(),
+            // ),
           ),
         ],
       ),

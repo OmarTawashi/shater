@@ -1,8 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
@@ -26,11 +22,10 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
   Offset? startPoint;
   Offset? endPoint;
 
-  Map<String, String> matchedItems = {};
-
   List<GlobalKey> leftItemKeys = List.generate(4, (_) => GlobalKey());
   List<GlobalKey> rightItemKeys = List.generate(4, (_) => GlobalKey());
 
+  List<Map<String, GlobalKey>> matchedPairs = [];
   @override
   void initState() {
     super.initState();
@@ -39,7 +34,6 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    matchedItems;
     return Container(
       height: 400,
       width: MediaQuery.of(context).size.width,
@@ -106,7 +100,6 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
               if (startPoint != null && endPoint != null) {
                 setState(() {
                   lines.add([startPoint, endPoint]);
-                  _storeMatchedItems(startPoint!, endPoint!);
                   startPoint = null;
                   endPoint = null;
                 });
@@ -121,42 +114,6 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
         ],
       ),
     );
-  }
-
-  void _storeMatchedItems(Offset start, Offset end) {
-    String? leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, start);
-    String? rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, end);
-
-    if (leftItem != null && rightItem != null) {
-      setState(() {
-        matchedItems[leftItem!] = rightItem!;
-      });
-    } else {
-      // Check the reverse scenario
-      leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, end);
-      rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, start);
-      if (leftItem != null && rightItem != null) {
-        setState(() {
-          matchedItems[leftItem!] = rightItem!;
-        });
-      }
-    }
-  }
-
-  String? _getIntersectedItem(List<GlobalKey> keys, List<String> items, Offset point) {
-    for (int i = 0; i < keys.length; i++) {
-      RenderBox? box = keys[i].currentContext?.findRenderObject() as RenderBox?;
-      if (box != null) {
-        // Convert the local offset to global offset considering the entire context
-        Offset position = box.localToGlobal(Offset.zero);
-        Size size = box.size;
-        Rect rect = position & size;
-        if (rect.contains(point)) {
-          return items[i];
-        }
-      }
-    }
-    return null;
   }
 }
 
