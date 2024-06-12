@@ -6,17 +6,17 @@ import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 
-class MatchText extends StatefulWidget {
+class MatchTextImage extends StatefulWidget {
   final QuestionController controller;
-  const MatchText({
+  const MatchTextImage({
     Key? key,
     required this.controller,
   }) : super(key: key);
   @override
-  _MatchTextState createState() => _MatchTextState();
+  _MatchTextImageState createState() => _MatchTextImageState();
 }
 
-class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
+class _MatchTextImageState extends State<MatchTextImage> with TickerProviderStateMixin {
   List<Offset?> currentLine = [];
   List<List<Offset?>> lines = [];
   Offset? startPoint;
@@ -68,12 +68,16 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
                       children: widget.controller.rightItems.asMap().entries.map((entry) {
                         final index = entry.key;
                         final item = entry.value;
-                        return GestureDetector(
-                          key: rightItemKeys[index],
-                          child: ItemMatchText(
-                            item: item,
-                            isImage: false,
-                          ),
+                        return Builder(
+                          builder: (context) {
+                            return GestureDetector(
+                              key: rightItemKeys[index],
+                              child: ItemMatchText(
+                                item: item,
+                                isImage: true,
+                              ),
+                            );
+                          },
                         );
                       }).toList(),
                     ),
@@ -103,6 +107,7 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
               if (startPoint != null && endPoint != null) {
                 setState(() {
                   lines.add([startPoint, endPoint]);
+                  _storeMatchedItems(startPoint!, endPoint!, widget.controller);
                   startPoint = null;
                   endPoint = null;
                 });
@@ -117,6 +122,40 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
         ],
       ),
     );
+  }
+
+  void _storeMatchedItems(Offset start, Offset end, QuestionController controller) {
+    String? leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, start);
+    String? rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, end);
+
+    if (leftItem != null && rightItem != null) {
+      setState(() {
+        controller.matchedItems[leftItem!] = rightItem!;
+      });
+    } else {
+      leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, end);
+      rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, start);
+      if (leftItem != null && rightItem != null) {
+        setState(() {
+          controller.matchedItems[leftItem!] = rightItem!;
+        });
+      }
+    }
+  }
+
+  String? _getIntersectedItem(List<GlobalKey> keys, List<String> items, Offset point) {
+    for (int i = 0; i < keys.length; i++) {
+      RenderBox? box = keys[i].currentContext?.findRenderObject() as RenderBox?;
+      if (box != null) {
+        Offset position = box.localToGlobal(Offset.zero);
+        Size size = box.size;
+        Rect rect = position & size;
+        if (rect.contains(point)) {
+          return items[i];
+        }
+      }
+    }
+    return null;
   }
 }
 

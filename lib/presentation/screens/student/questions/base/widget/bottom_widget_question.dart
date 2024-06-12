@@ -48,12 +48,19 @@ class BottomWidgetQuestions extends StatelessWidget {
               children: [
                 Expanded(
                   child: CupertinoButton(
-                    child: CustomText(
-                      text: controller.questionStatus
-                          .getButtonTextStatus(controller: controller),
-                      fontSize: Dimensions.fontSize16,
-                      color: Colors.white,
-                    ),
+                    child: controller.isloadingFinish
+                        ? Container(
+                            width: 22,
+                            height: 22,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : CustomText(
+                            text: controller.questionStatus.getButtonTextStatus(controller: controller),
+                            fontSize: Dimensions.fontSize16,
+                            color: Colors.white,
+                          ),
                     padding: EdgeInsets.symmetric(vertical: 20),
                     borderRadius: BorderRadius.circular(80),
                     onPressed: controller.questionStatus.getOnPressButton(

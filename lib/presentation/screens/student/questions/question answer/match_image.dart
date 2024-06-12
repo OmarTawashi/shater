@@ -1,35 +1,48 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:shater/core/extenstion/question_status.dart';
+import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/match_text.dart';
+import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
-class MatchingQuizScreen extends StatefulWidget {
+class MatchImage extends StatefulWidget {
+  final QuestionController controller;
+  const MatchImage({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
   @override
-  _MatchingQuizScreenState createState() => _MatchingQuizScreenState();
+  _MatchImageState createState() => _MatchImageState();
 }
 
-class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
-  final List<String> rightItems = ['حصان', 'أرنب', 'بطة', 'فراشة'];
-  final List<String> leftItems = [
-    IMAGES.loadingGif,
-    IMAGES.loadingGif,
-    IMAGES.loadingGif,
-    IMAGES.loadingGif
-  ];
-
-  List<Offset?> points = [];
+class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
+  List<Offset?> currentLine = [];
+  List<List<Offset?>> lines = [];
   Offset? startPoint;
   Offset? endPoint;
+
+  Offset? pointLeft;
+  Offset? pointRight;
 
   Map<String, String> matchedItems = {};
 
   List<GlobalKey> leftItemKeys = List.generate(4, (_) => GlobalKey());
   List<GlobalKey> rightItemKeys = List.generate(4, (_) => GlobalKey());
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.controller.getListMatchItems();
+  }
 
   @override
   Widget build(BuildContext context) {
+    matchedItems;
     return Container(
       height: 400,
       width: MediaQuery.of(context).size.width,
@@ -44,23 +57,29 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: leftItems.asMap().entries.map((entry) {
+                      children: widget.controller.leftItems.asMap().entries.map((entry) {
                         final index = entry.key;
                         final item = entry.value;
                         return GestureDetector(
                           key: leftItemKeys[index],
-                          child: ItemMatchImage(item: item),
+                          child: ItemMatchTextR(
+                            item: item,
+                            isImage: true,
+                          ),
                         );
                       }).toList(),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: rightItems.asMap().entries.map((entry) {
+                      children: widget.controller.rightItems.asMap().entries.map((entry) {
                         final index = entry.key;
                         final item = entry.value;
                         return GestureDetector(
                           key: rightItemKeys[index],
-                          child: ItemMatchText(item: item),
+                          child: ItemMatchText(
+                            item: item,
+                            isImage: true,
+                          ),
                         );
                       }).toList(),
                     ),
@@ -73,9 +92,8 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
             onPanStart: (details) {
               RenderBox? renderBox = context.findRenderObject() as RenderBox?;
               if (renderBox != null) {
-                startPoint = renderBox.globalToLocal(details.globalPosition);
                 setState(() {
-                  points.add(startPoint!);
+                  startPoint = renderBox.globalToLocal(details.globalPosition);
                 });
               }
             },
@@ -88,168 +106,53 @@ class _MatchingQuizScreenState extends State<MatchingQuizScreen> {
               }
             },
             onPanEnd: (details) {
-              if (endPoint != null) {
-                int? leftIndex = getClosestItemIndex(leftItemKeys, startPoint!);
-                int? rightIndex = getClosestItemIndex(rightItemKeys, endPoint!);
-                if (leftIndex != null && rightIndex != null) {
-                  addMatch(leftIndex, rightIndex);
-                }
+              if (startPoint != null && endPoint != null) {
                 setState(() {
-                  points.add(endPoint!);
+                  lines.add([startPoint, endPoint]);
+                  _storeMatchedItems(startPoint!, endPoint!);
                   startPoint = null;
                   endPoint = null;
                 });
+                widget.controller.setQuestionStatus(QuestionStatusEnum.select);
               }
             },
-            child: CustomPaint(
-              painter: LineDrawingPainter(points, startPoint, endPoint),
-              child: Container(),
-            ),
           ),
         ],
       ),
     );
   }
 
-  void addMatch(int leftIndex, int rightIndex) {
-    setState(() {
-      matchedItems[leftItems[leftIndex]] = rightItems[rightIndex];
-    });
+  void _storeMatchedItems(Offset start, Offset end) {
+    String? leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, start);
+    String? rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, end);
+
+    if (leftItem != null && rightItem != null) {
+      setState(() {
+        matchedItems[leftItem!] = rightItem!;
+      });
+    } else {
+      leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, end);
+      rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, start);
+      if (leftItem != null && rightItem != null) {
+        setState(() {
+          matchedItems[leftItem!] = rightItem!;
+        });
+      }
+    }
   }
 
-  int? getClosestItemIndex(List<GlobalKey> keys, Offset point) {
-    print('Point: $point');
+  String? _getIntersectedItem(List<GlobalKey> keys, List<String> items, Offset point) {
     for (int i = 0; i < keys.length; i++) {
-      final keyContext = keys[i].currentContext;
-      if (keyContext != null) {
-        final box = keyContext.findRenderObject() as RenderBox?;
-        if (box != null) {
-          final position = box.localToGlobal(Offset.zero);
-          final size = box.size;
-          final rect =
-              Rect.fromLTWH(position.dx, position.dy, size.width, size.height);
-          // Log the rectangle details
-          print('Rect $i: $rect');
-
-          if (rect.contains(point)) {
-            print('Point is inside rect $i');
-            return i;
-          }
+      RenderBox? box = keys[i].currentContext?.findRenderObject() as RenderBox?;
+      if (box != null) {
+        Offset position = box.localToGlobal(Offset.zero);
+        Size size = box.size;
+        Rect rect = position & size;
+        if (rect.contains(point)) {
+          return items[i];
         }
       }
     }
     return null;
-  }
-}
-
-class ItemMatchImage extends StatelessWidget {
-  final dynamic item;
-  const ItemMatchImage({super.key, this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      child: Stack(
-        children: [
-          Container(
-            height: 70,
-            width: 110,
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(bottom: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13),
-              border: Border.all(width: 4, color: COLORS.primaryColor),
-            ),
-            child: Image.asset(item),
-          ),
-          Positioned(
-            left: 2,
-            top: 25,
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: COLORS.primaryColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ItemMatchText extends StatelessWidget {
-  final dynamic item;
-  const ItemMatchText({super.key, this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 120,
-      alignment: Alignment.centerLeft,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              height: 70,
-              width: 110,
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                border: Border.all(width: 4, color: COLORS.primaryColor),
-              ),
-              child: CustomText(
-                text: item,
-                fontSize: 20,
-                color: Color.fromRGBO(96, 96, 96, 1),
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Positioned(
-            right: 1.5,
-            top: 25,
-            child: CircleAvatar(
-              radius: 10,
-              backgroundColor: COLORS.primaryColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class LineDrawingPainter extends CustomPainter {
-  final List<Offset?> points;
-  final Offset? startPoint;
-  final Offset? endPoint;
-
-  LineDrawingPainter(this.points, this.startPoint, this.endPoint);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = COLORS.primaryColor
-      ..strokeWidth = 5.5
-      ..strokeCap = StrokeCap.round;
-
-    // Draw existing points
-    for (int i = 0; i < points.length - 1; i += 2) {
-      if (points[i] != null && points[i + 1] != null) {
-        canvas.drawLine(points[i]!, points[i + 1]!, paint);
-      }
-    }
-
-    // Draw the current line being panned
-    if (startPoint != null && endPoint != null) {
-      canvas.drawLine(startPoint!, endPoint!, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
   }
 }

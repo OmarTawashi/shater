@@ -7,7 +7,9 @@ import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/profile_repository_remote.dart';
 import 'package:shater/domain/usecase/profile_usecase_imp.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
+import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/api_constant.dart';
 
 class ResultSubjectController extends GetxController {
@@ -30,10 +32,13 @@ class ResultSubjectController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     _resultController = Get.find<ResultController>();
-    _profileUseCaseImp =
-        ProfileUseCaseImp(ProfileRepositoryRemote(ApiClient()));
+    _profileUseCaseImp = ProfileUseCaseImp(ProfileRepositoryRemote(ApiClient()));
     _user = SharedPrefs.user;
-    _resultExam = _resultController?.resultExamSelected;
+    if (Get.previousRoute == RoutesName.baseQuestionScreen) {
+      _resultExam = Get.find<QuestionController>().resultExam;
+    } else {
+      _resultExam = _resultController?.resultExamSelected;
+    }
     print(_resultExam);
   }
 

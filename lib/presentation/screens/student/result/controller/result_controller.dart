@@ -18,12 +18,11 @@ class ResultController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    _dashBaoardUseCaseImp =
-        DashBaoardUseCaseImp(DashBoardRepositoryRemote(ApiClient()));
+    _dashBaoardUseCaseImp = DashBaoardUseCaseImp(DashBoardRepositoryRemote(ApiClient()));
     fetchResultSubject();
   }
 
-  void setResultExam(ResultExam resultExam) {
+  void setResultExam(ResultExam? resultExam) {
     _resultExamSelected = resultExam;
     update();
   }

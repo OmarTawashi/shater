@@ -15,6 +15,7 @@ import 'package:shater/presentation/screens/student/questions/question%20answer/
 import 'package:shater/presentation/screens/student/questions/question%20answer/long_division.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_text.dart';
+import 'package:shater/presentation/screens/student/questions/question%20answer/match_text_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/mathematical_operations.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_image.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/multi_choice_text.dart';
@@ -115,14 +116,18 @@ class QuestionView extends StatelessWidget {
         return LongDivision(
           controller: controller,
         );
-      // case QType.MatchImage:
-      //   return MatchingQuizScreen(
-      //       // controller: controller,
-      //       );
+      case QType.MatchImage:
+        return MatchImage(
+          controller: controller,
+        );
       case QType.MatchText:
-        return MyWidget(
-            // controller: controller,
-            );
+        return MatchText(
+          controller: controller,
+        );
+      case QType.MatchTextImage:
+        return MatchTextImage(
+          controller: controller,
+        );
       case QType.OrderImage:
         return OrderImage(
           controller: controller,

@@ -46,9 +46,7 @@ class CommentWidget extends StatelessWidget {
                         ),
                         Expanded(
                           child: CustomText(
-                            text: '${controller?.comments.length}' +
-                                '\t' +
-                                'commentting'.tr,
+                            text: '${controller.comments.length}' + '\t' + 'commentting'.tr,
                             textAlign: TextAlign.center,
                             fontSize: Dimensions.fontSize16,
                             color: Color.fromRGBO(128, 127, 127, 1),
@@ -120,8 +118,7 @@ class CommentWidget extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.amber,
-                  child: CachedNetworkImageWidget(
-                      imageUrl: controller.comments[index].user?.image ?? ''),
+                  child: CachedNetworkImageWidget(imageUrl: controller.comments[index].user?.image ?? ''),
                 ),
               ),
               title: CustomText(

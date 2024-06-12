@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shater/routes/app_routes.dart';
 
 import '../../../util/color.dart';
 
@@ -13,6 +14,11 @@ class ButtonBack extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.back();
+        if (Get.previousRoute == RoutesName.baseQuestionScreen &&
+            Get.currentRoute == RoutesName.resultSubjectScreen) {
+          Get.back();
+          Get.back();
+        }
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),

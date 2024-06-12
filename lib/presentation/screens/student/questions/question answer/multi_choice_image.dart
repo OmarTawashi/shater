@@ -23,13 +23,11 @@ class MultiChoiceImage extends StatelessWidget {
             mainAxisSpacing: 16,
           ),
           itemBuilder: (context, index) {
-            final isSelect = controller?.selectAnswer
-                .contains(controller?.questionModel?.answer?[index]);
+            final isSelect = controller?.selectAnswer.contains("$index");
 
             return GestureDetector(
               onTap: () {
-                controller
-                    ?.setAnswer(controller?.questionModel?.answer?[index]);
+                controller?.setAnswer(controller?.questionModel?.answer?[index], index: index);
               },
               child: Container(
                 clipBehavior: Clip.hardEdge,
@@ -50,13 +48,15 @@ class MultiChoiceImage extends StatelessWidget {
                           offset: Offset(4, 4))
                     ]),
                 child: CachedNetworkImageWidget(
-                  imageUrl: ApiConstant.baseUrl +
-                      "/${controller?.questionModel?.urls?[index]["$index"]}",
+                  imageUrl: ApiConstant.baseUrl + "/${controller?.questionModel?.urls?[index]["$index"]}",
                   fit: BoxFit.cover,
                 ),
               ),
             );
           },
+        ),
+        SizedBox(
+          height: Dimensions.paddingSize80,
         )
       ],
     );

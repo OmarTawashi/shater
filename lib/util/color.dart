@@ -14,6 +14,8 @@ class COLORS {
   static const Color midNightBlueColor = Color.fromRGBO(106, 109, 124, 1);
   static const Color dividerColor = Color.fromRGBO(239, 239, 239, 1);
   static const Color inputBackGround = Color(0xFFFCFCFC);
+  static const Color trueAnswer = Color.fromRGBO(106, 209, 0, 1);
+  static const Color falseAnswer = Color.fromRGBO(233, 103, 111, 1);
   static const Color errorColor = Color.fromARGB(255, 242, 81, 78);
   static const Gradient gradientContainer = LinearGradient(
     colors: [
@@ -29,6 +31,4 @@ class COLORS {
   static const grayFont = Color(0xff6A6D7C);
   static const whiteColor = Color(0xffFFFFFF);
   static const textLightColor = Color.fromRGBO(205, 223, 235, 1);
-
-
 }

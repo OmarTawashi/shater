@@ -32,8 +32,7 @@ class PageSubjectController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _questionUseCaseImp =
-        QuestionUseCaseImp(QuestionRepositoryRemote(ApiClient()));
+    _questionUseCaseImp = QuestionUseCaseImp(QuestionRepositoryRemote(ApiClient()));
     fetchQuestionPage();
   }
 
@@ -64,7 +63,7 @@ class PageSubjectController extends GetxController {
       value?.fold((l) {}, (r) {
         _pageModel = r;
         setFormValue(r.fromPageNo ?? 0);
-        setToValue(r.toPageNo ?? 0);
+        setToValue((r.fromPageNo ?? 0) + 1);
       });
       setLoad(false);
 
@@ -75,9 +74,7 @@ class PageSubjectController extends GetxController {
   void fetchQuestionSubject() async {
     setLoadButton(true);
     final subjectID = Get.find<SubjectController>().selectedCourse?.id;
-    await _questionUseCaseImp
-        ?.fetchQuestionSubject(subjectID, _fromValue, _toValue)
-        .then((value) {
+    await _questionUseCaseImp?.fetchQuestionSubject(subjectID, _fromValue, _toValue).then((value) {
       value?.fold((l) {}, (r) {
         _questionSubject = r;
         Get.toNamed(Routes.getBaseQuestionScreen());
