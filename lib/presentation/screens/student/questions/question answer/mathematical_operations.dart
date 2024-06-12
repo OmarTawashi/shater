@@ -72,11 +72,13 @@ Widget getItemWidget(QuestionContent obje, QuestionController controller, int in
         builder: (context, setState) => InputAnswerOperater(
             initValue: obje.title,
             row: 1,
+            backGround: controller.validLongDivision[indexParent][indexChild].backgroundColor,
             textEditingController:
                 controller.validLongDivision[indexParent][indexChild].textEditingController,
             isWrite: controller.validLongDivision[indexParent][indexChild].inputField != null &&
                 controller.validLongDivision[indexParent][indexChild].inputField != "",
             controller: controller,
+            questionStatus: controller.questionStatus,
             onChanged: (value) {
               setState(
                 () {
@@ -86,6 +88,7 @@ Widget getItemWidget(QuestionContent obje, QuestionController controller, int in
                           controller.validLongDivision[indexParent][indexChild].input
                               ?.toString()
                               .arabicToEnglish());
+                  controller.validLongDivision[indexParent][indexChild].backgroundColor = COLORS.primaryColor;
                 },
               );
               controller.setQuestionStatus(QuestionStatusEnum.select);

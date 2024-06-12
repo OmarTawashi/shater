@@ -26,6 +26,9 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
   Offset? startPoint;
   Offset? endPoint;
 
+  Offset? pointLeft;
+  Offset? pointRight;
+
   Map<String, String> matchedItems = {};
 
   List<GlobalKey> leftItemKeys = List.generate(4, (_) => GlobalKey());
@@ -113,10 +116,6 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
                 widget.controller.setQuestionStatus(QuestionStatusEnum.select);
               }
             },
-            // child: CustomPaint(
-            //   painter: LineDrawingPainter(lines, startPoint, endPoint),
-            //   child: Container(),
-            // ),
           ),
         ],
       ),
@@ -132,7 +131,6 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
         matchedItems[leftItem!] = rightItem!;
       });
     } else {
-      // Check the reverse scenario
       leftItem = _getIntersectedItem(leftItemKeys, widget.controller.leftItems, end);
       rightItem = _getIntersectedItem(rightItemKeys, widget.controller.rightItems, start);
       if (leftItem != null && rightItem != null) {
@@ -147,7 +145,6 @@ class _MatchImageState extends State<MatchImage> with TickerProviderStateMixin {
     for (int i = 0; i < keys.length; i++) {
       RenderBox? box = keys[i].currentContext?.findRenderObject() as RenderBox?;
       if (box != null) {
-        // Convert the local offset to global offset considering the entire context
         Offset position = box.localToGlobal(Offset.zero);
         Size size = box.size;
         Rect rect = position & size;

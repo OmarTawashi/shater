@@ -125,7 +125,7 @@ class QuestionView extends StatelessWidget {
           controller: controller,
         );
       case QType.MatchTextImage:
-        return MatchTextWithImage(
+        return MatchTextImage(
           controller: controller,
         );
       case QType.OrderImage:

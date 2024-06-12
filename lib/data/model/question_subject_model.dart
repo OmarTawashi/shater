@@ -137,9 +137,7 @@ class QuestionModel {
     answerIsNumber = json['answer_is_number'];
     orderBy = json['order_by'];
     media = json['media'];
-    if (json['answer'] is String ||
-        json['answer'] is int ||
-        json['answer'] is bool) {
+    if (json['answer'] is String || json['answer'] is int || json['answer'] is bool) {
       answer = [];
       answer?.add(json['answer']);
     } else {
@@ -150,7 +148,12 @@ class QuestionModel {
     updatedAt = json['updated_at'];
     isTemplate = json['is_template'];
     isActive = json['is_active'];
-    details = json['details'];
+    if (json['details'] is String || json['details'] is int || json['details'] is bool) {
+      details = [];
+      details?.add(json['details']);
+    } else {
+      details = json['details'];
+    }
     questionMedia = json['question_media'];
     teacherId = json['teacher_id'];
     titleAudio = json['title_audio'];

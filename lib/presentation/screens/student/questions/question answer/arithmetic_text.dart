@@ -75,6 +75,7 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                         questionContent?[indexParent].subFields?[index].isSpace,
                                         inputField: InputAnswerOperater(
                                           row: 1,
+                                          questionStatus: widget.controller.questionStatus,
                                           textEditingController: widget
                                               .controller
                                               .validArithimticText[indexParent]
@@ -116,6 +117,7 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                               getSwitchInputText(questionContent?[indexParent].isSpace,
                                   inputField: InputAnswerOperater(
                                     row: 2,
+                                    questionStatus: widget.controller.questionStatus,
                                     initValue: questionContent?[indexParent].title,
                                     textEditingController: widget
                                         .controller.validArithimticText[indexParent].textEditingController,
@@ -149,6 +151,8 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                                     questionContent?[indexParent].subFields?[index].isSpace,
                                     inputField: InputAnswerOperater(
                                       row: 1,
+                                      questionStatus: widget.controller.questionStatus,
+
                                       controller: widget.controller,
                                       textEditingController: widget
                                           .controller
@@ -192,6 +196,7 @@ class _ArithmeticTextState extends State<ArithmeticText> {
                           number: getSwitchInputText(questionContent?[indexParent].isSpace,
                               inputField: InputAnswerOperater(
                                 row: 2,
+                                questionStatus: widget.controller.questionStatus,
                                 textEditingController:
                                     widget.controller.validArithimticText[indexParent].textEditingController,
                                 controller: widget.controller,
@@ -289,8 +294,16 @@ class InputAnswerOperater extends StatelessWidget {
   final String? initValue;
   final Function(String)? onChanged;
   final double row;
+  final QuestionStatusEnum? questionStatus;
+
   const InputAnswerOperater(
-      {super.key, this.textEditingController, this.controller, this.onChanged, this.initValue, this.row = 1});
+      {super.key,
+      this.textEditingController,
+      this.questionStatus,
+      this.controller,
+      this.onChanged,
+      this.initValue,
+      this.row = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -300,16 +313,13 @@ class InputAnswerOperater extends StatelessWidget {
       textInputAction: TextInputAction.done,
       keyboardType: TextInputType.number,
       style: FontStyleConstant.hNLTBMedium.copyWith(
-          fontSize: Dimensions.fontSize16,
-          color: COLORS.primaryColor,
-          fontWeight: FontWeight.bold,
-          height: 1),
+          fontSize: Dimensions.fontSize16, color: Colors.white, fontWeight: FontWeight.bold, height: 1),
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         constraints: BoxConstraints(maxHeight: 35 * row, maxWidth: 35),
         contentPadding: EdgeInsets.all(5),
-        fillColor: Color.fromRGBO(190, 190, 190, 1),
+        // fillColor: questionStatus?.getBgInputColor(),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
         enabledBorder:
             OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),

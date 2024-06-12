@@ -26,6 +26,7 @@ import 'package:shater/presentation/screens/student/questions/question%20answer/
 import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/api_constant.dart';
+import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 import 'package:signature/signature.dart';
 
@@ -252,6 +253,12 @@ class QuestionController extends GetxController {
     update();
   }
 
+  Color bgInputColor = Color.fromRGBO(190, 190, 190, 1);
+  void setBgColor(Color colore) {
+    bgInputColor = colore;
+    update();
+  }
+
   List<ArithmiticAnswer> validArithimticText = [];
   bool checkValidSpaces(List<ArithmiticAnswer> ans) {
     bool check1;
@@ -286,8 +293,10 @@ class QuestionController extends GetxController {
     if (_inputComperhensiveImage.length < answer.length) {
       for (var i = 0; i < answer.length; i++) {
         if (answer[i] == 'space') {
-          _inputComperhensiveImage
-              .add(TypingAnswer(index: i, textEditingController: TextEditingController()));
+          _inputComperhensiveImage.add(TypingAnswer(
+            index: i,
+            textEditingController: TextEditingController(),
+          ));
         } else {
           _inputComperhensiveImage.add(null);
         }
@@ -302,6 +311,7 @@ class QuestionController extends GetxController {
     for (int i = 0; i < questionContent.length; i++) {
       for (int j = 0; j < questionContent[i].length; j++) {
         final item = questionContent[i][j];
+
         if (item.isSpace == true && !validLongDivision[i][j].isValid) {
           return false;
         }
@@ -373,6 +383,7 @@ class QuestionController extends GetxController {
       (element) => element?.index == index,
     );
     indexCheck?.input = indexCheck.textEditingController?.text;
+    indexCheck?.backgroundColor = COLORS.primaryColor;
     update();
   }
 
@@ -662,10 +673,38 @@ class QuestionController extends GetxController {
         break;
       case QType.LongDivision:
         final answBool = checkValidityLongDivision();
+        final questionContent = arithmeticTextModel?.questionContent;
+        for (int i = 0; i < questionContent!.length; i++) {
+          for (int j = 0; j < questionContent[i].length; j++) {
+            final item = questionContent[i][j];
+            if (item.isSpace == true) {
+              if (validLongDivision[i][j].isValid == true) {
+                validLongDivision[i][j].backgroundColor = COLORS.trueAnswer;
+              } else {
+                validLongDivision[i][j].backgroundColor = COLORS.falseAnswer;
+              }
+              update();
+            }
+          }
+        }
         checked = answBool;
         break;
       case QType.MathematicalOperations:
         final answBool = checkValidityLongDivision();
+        final questionContent = arithmeticTextModel?.questionContent;
+        for (int i = 0; i < questionContent!.length; i++) {
+          for (int j = 0; j < questionContent[i].length; j++) {
+            final item = questionContent[i][j];
+            if (item.isSpace == true) {
+              if (validLongDivision[i][j].isValid == true) {
+                validLongDivision[i][j].backgroundColor = COLORS.trueAnswer;
+              } else {
+                validLongDivision[i][j].backgroundColor = COLORS.falseAnswer;
+              }
+              update();
+            }
+          }
+        }
         checked = answBool;
         break;
       case QType.ComprehensiveImage:
@@ -674,6 +713,11 @@ class QuestionController extends GetxController {
             _selectAnswer.add("null");
           } else {
             _selectAnswer.add(_inputComperhensiveImage[i]?.textEditingController?.text);
+            if (_inputComperhensiveImage[i]?.input == _questionModel?.valid?[i]) {
+              _inputComperhensiveImage[i]?.backgroundColor = Color.fromRGBO(106, 209, 0, 1);
+            } else {
+              _inputComperhensiveImage[i]?.backgroundColor = Color.fromRGBO(233, 103, 111, 1);
+            }
           }
         }
         if (_inputComperhensiveImage.length == _selectAnswer.length) {
@@ -686,6 +730,7 @@ class QuestionController extends GetxController {
               checking.add(false);
             }
           }
+
           checked = checking.all((element) => element == true);
         }
 

@@ -22,6 +22,9 @@ class _MatchTextState extends State<MatchText> with TickerProviderStateMixin {
   Offset? startPoint;
   Offset? endPoint;
 
+  Offset? pointLeft;
+  Offset? pointRight;
+
   List<GlobalKey> leftItemKeys = List.generate(4, (_) => GlobalKey());
   List<GlobalKey> rightItemKeys = List.generate(4, (_) => GlobalKey());
 

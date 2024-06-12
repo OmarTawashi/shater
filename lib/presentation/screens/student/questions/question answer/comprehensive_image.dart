@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/extenstion/question_extention.dart';
+import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
@@ -22,16 +23,15 @@ class ComprehensiveImage extends StatelessWidget {
           runSpacing: Dimensions.paddingSize8,
           alignment: WrapAlignment.center,
           spacing: Dimensions.paddingSize8,
-          children: List.generate(
-              controller?.questionModel?.answer?.length ?? 0, (index) {
+          children: List.generate(controller?.questionModel?.answer?.length ?? 0, (index) {
             final answer = controller?.questionModel?.answer?[index];
             return answer.toString().getComprehensiveImageWidget(
-                  inputField: InputAnswerOperater(
-                    textEditingController: controller
-                        ?.inputComperhensiveImage[index]?.textEditingController,
+                  inputField: InputAnswerOperaterComperhansive(
+                    textEditingController: controller?.inputComperhensiveImage[index]?.textEditingController,
+                    questionStatus: controller?.questionStatus,
+                    bg: controller?.inputComperhensiveImage[index]?.backgroundColor,
                     onChanged: (value) {
-                      controller?.changeInputValueComperhensiveImage(
-                          value, index);
+                      controller?.changeInputValueComperhensiveImage(value, index);
                     },
                   ),
                   operator: Container(
@@ -54,9 +54,7 @@ class ComprehensiveImage extends StatelessWidget {
                     children: [
                       ItemStable(
                         text: controller?.questionModel?.answer?[index] ?? '',
-                        row: double.tryParse(controller
-                                ?.questionModel?.orderBy?['${index + 1}'] ??
-                            '1'),
+                        row: double.tryParse(controller?.questionModel?.orderBy?['${index + 1}'] ?? '1'),
                       ),
                     ],
                   ),
@@ -68,11 +66,13 @@ class ComprehensiveImage extends StatelessWidget {
   }
 }
 
-class InputAnswerOperater extends StatelessWidget {
+class InputAnswerOperaterComperhansive extends StatelessWidget {
   final Function(String)? onChanged;
   final TextEditingController? textEditingController;
-  const InputAnswerOperater(
-      {super.key, this.textEditingController, this.onChanged});
+  final QuestionStatusEnum? questionStatus;
+  final Color? bg;
+  const InputAnswerOperaterComperhansive(
+      {super.key, this.questionStatus, this.bg, this.textEditingController, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +80,10 @@ class InputAnswerOperater extends StatelessWidget {
       controller: textEditingController,
       textAlign: TextAlign.center,
       textInputAction: TextInputAction.done,
+      cursorColor: Colors.white,
       style: FontStyleConstant.hNLTBMedium.copyWith(
         fontSize: Dimensions.fontSize16,
-        color: COLORS.primaryColor,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
       onChanged: onChanged,
@@ -90,19 +91,14 @@ class InputAnswerOperater extends StatelessWidget {
         filled: true,
         constraints: BoxConstraints(maxHeight: 49, maxWidth: 56),
         contentPadding: EdgeInsets.all(5),
-        fillColor: Color.fromRGBO(190, 190, 190, 1),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
-        disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: BorderSide.none),
+        fillColor: bg ?? Color.fromRGBO(190, 190, 190, 1),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        enabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        focusedBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
+        disabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
         labelText: '',
       ),
     );
@@ -135,14 +131,10 @@ class ItemStable extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: 49, maxWidth: 56 * (row ?? 1.0)),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: text!.contains('uploads')
-            ? Colors.transparent
-            : COLORS.secanderyColor,
+        color: text!.contains('uploads') ? Colors.transparent : COLORS.secanderyColor,
         border: Border.all(
             width: 2,
-            color: text!.contains('uploads')
-                ? Color.fromRGBO(190, 190, 190, 1)
-                : Colors.transparent),
+            color: text!.contains('uploads') ? Color.fromRGBO(190, 190, 190, 1) : Colors.transparent),
         borderRadius: BorderRadius.circular(5),
       ),
       child: text!.contains('uploads')

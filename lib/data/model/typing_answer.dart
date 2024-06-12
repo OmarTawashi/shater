@@ -7,6 +7,7 @@ class TypingAnswer {
   TextEditingController? textEditingController;
   List<TypingAnswer> subAnswer;
   dynamic input;
+  Color? backgroundColor;
   bool isValid = false;
   bool isNumber = false;
   String? valid;
@@ -18,6 +19,7 @@ class TypingAnswer {
     this.index = 0,
     this.subAnswer = const [],
     this.input,
+    this.backgroundColor,
     this.isValid = false,
     this.isNumber = false,
     this.valid,
@@ -69,10 +71,14 @@ class ArithmiticAnswer implements TypingAnswer {
     this.isNumber = false,
     this.text,
     this.textEditingController,
+    this.backgroundColor,
     this.valid,
     this.width = 1,
   });
 
   @override
   List<TypingAnswer> subAnswer;
+
+  @override
+  Color? backgroundColor;
 }

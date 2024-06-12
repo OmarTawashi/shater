@@ -133,6 +133,8 @@ class LongDivision extends StatelessWidget {
               builder: (context, setState) => InputAnswerOperater(
                   initValue: obje.title,
                   row: 1,
+                  questionStatus: controller.questionStatus,
+                  backGround: controller.validLongDivision[indexParent][indexChild].backgroundColor,
                   textEditingController:
                       controller.validLongDivision[indexParent][indexChild].textEditingController,
                   isWrite: controller.validLongDivision[indexParent][indexChild].inputField != null &&
@@ -148,6 +150,8 @@ class LongDivision extends StatelessWidget {
                                 controller.validLongDivision[indexParent][indexChild].input
                                     ?.toString()
                                     .arabicToEnglish());
+                        controller.validLongDivision[indexParent][indexChild].backgroundColor =
+                            COLORS.primaryColor;
                       },
                     );
                     controller.setQuestionStatus(QuestionStatusEnum.select);
@@ -255,12 +259,17 @@ class InputAnswerOperater extends StatelessWidget {
   final bool isWrite;
   final String? initValue;
   final Function(String)? onChanged;
+  final Color? backGround;
+  final QuestionStatusEnum? questionStatus;
+
   final double row;
   const InputAnswerOperater(
       {super.key,
       this.textEditingController,
       this.isWrite = false,
       this.controller,
+      this.backGround,
+      this.questionStatus,
       this.onChanged,
       this.initValue,
       this.row = 1});
@@ -272,17 +281,15 @@ class InputAnswerOperater extends StatelessWidget {
       textAlign: TextAlign.center,
       textInputAction: TextInputAction.done,
       // keyboardType: TextInputType.,
+      cursorColor: Colors.white,
       style: FontStyleConstant.hNLTBMedium.copyWith(
-          fontSize: Dimensions.fontSize16,
-          color: isWrite ? Colors.white : COLORS.primaryColor,
-          fontWeight: FontWeight.bold,
-          height: 1),
+          fontSize: Dimensions.fontSize16, color: Colors.white, fontWeight: FontWeight.bold, height: 1),
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         constraints: BoxConstraints(maxHeight: 35 * row, maxWidth: 35),
         contentPadding: EdgeInsets.all(5),
-        fillColor: isWrite ? COLORS.primaryColor : Color.fromRGBO(190, 190, 190, 1),
+        fillColor: backGround ?? Color.fromRGBO(190, 190, 190, 1),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),
         enabledBorder:
             OutlineInputBorder(borderRadius: BorderRadius.circular(5.0), borderSide: BorderSide.none),

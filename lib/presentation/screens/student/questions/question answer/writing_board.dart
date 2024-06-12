@@ -42,8 +42,7 @@ class _WritingBoardState extends State<WritingBoard> {
             Container(
               height: 300.h,
               width: Get.width,
-              decoration:
-                  BoxDecoration(color: Color.fromRGBO(172, 177, 173, 0.2)),
+              decoration: BoxDecoration(color: Color.fromRGBO(172, 177, 173, 0.2)),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -83,8 +82,7 @@ class _WritingBoardState extends State<WritingBoard> {
                   Positioned(
                     top: 110,
                     child: CustomText(
-                      text:
-                          widget.controller.questionModel?.answer?.first ?? '',
+                      text: widget.controller.questionModel?.answer?.first ?? '',
                       color: Colors.black26,
                       fontSize: 50,
                       fontWeight: FontWeight.w800,
@@ -124,6 +122,9 @@ class _WritingBoardState extends State<WritingBoard> {
             ),
           ],
         ),
+        SizedBox(
+          height: 120.h,
+        )
       ],
     );
   }
