@@ -48,7 +48,7 @@ class TeacherPagesLessonsScreen extends StatelessWidget {
                 excludeHeaderSemantics: true,
                 leading: IconTextCont(
                   text: Get.find<TeacherMyLessonsController>().selectedCourse?.title ??
-                      'sss',
+                      '333',
                 ),
                 centerTitle: true,
                 title: Container(
