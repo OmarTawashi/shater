@@ -52,26 +52,26 @@ import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
+import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_bindings.dart';
+import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/teacher_pages_lessons_binding%20.dart';
+import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/teacher_pages_lessons_screen.dart';
 import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
+import '../presentation/screens/student/dashBord/controller/dashboard_controller.dart';
+import '../presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart';
 import '../presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart';
 
 class AppPages {
   AppPages._();
 
   static List<GetPage<dynamic>> routes = [
+    GetPage(name: RoutesName.spalshScreen, page: () => const SplashScreen(), binding: SpalchBinding()),
     GetPage(
-        name: RoutesName.spalshScreen,
-        page: () => const SplashScreen(),
-        binding: SpalchBinding()),
-    GetPage(
-        name: RoutesName.dashBoardScreen,
-        page: () => const DashBoardScreen(),
-        binding: DashBoardBindings()),
+        name: RoutesName.dashBoardScreen, page: () => const DashBoardScreen(), binding: DashBoardBindings()),
     GetPage(
       name: RoutesName.teacherDashBoardScreen,
       page: () => const TeacherDashBoardScreen(),
@@ -110,18 +110,9 @@ class AppPages {
       name: RoutesName.exerciseDetailsScreen,
       page: () => const ExerciseDetailsScreen(),
     ),
-    GetPage(
-        name: RoutesName.profileScreen,
-        page: () => const ProfileScreen(),
-        binding: ProfileBinding()),
-    GetPage(
-        name: RoutesName.createNameScreen,
-        page: () => CreateNameScreen(),
-        binding: RegisterBinding()),
-    GetPage(
-        name: RoutesName.takeImageScreen,
-        page: () => TakeImageScreen(),
-        binding: TakeImageBinding()),
+    GetPage(name: RoutesName.profileScreen, page: () => const ProfileScreen(), binding: ProfileBinding()),
+    GetPage(name: RoutesName.createNameScreen, page: () => CreateNameScreen(), binding: RegisterBinding()),
+    GetPage(name: RoutesName.takeImageScreen, page: () => TakeImageScreen(), binding: TakeImageBinding()),
     GetPage(
       name: RoutesName.gridViewAvatar,
       page: () => GridViewAvatar(),
@@ -142,22 +133,10 @@ class AppPages {
       name: RoutesName.privcyPolicyScreen,
       page: () => const PrivcyPolicyScreen(),
     ),
-    GetPage(
-        name: RoutesName.classeScreen,
-        page: () => const ClasseScreen(),
-        binding: ClasseBinding()),
-    GetPage(
-        name: RoutesName.cityScreen,
-        page: () => cityScreen(),
-        binding: CityBinding()),
-    GetPage(
-        name: RoutesName.schoolScreen,
-        page: () => const SchoolScreen(),
-        binding: SchoolBinding()),
-    GetPage(
-        name: RoutesName.signUpScreen,
-        page: () => SignUpScreen(),
-        binding: SignUpBinding()),
+    GetPage(name: RoutesName.classeScreen, page: () => const ClasseScreen(), binding: ClasseBinding()),
+    GetPage(name: RoutesName.cityScreen, page: () => cityScreen(), binding: CityBinding()),
+    GetPage(name: RoutesName.schoolScreen, page: () => const SchoolScreen(), binding: SchoolBinding()),
+    GetPage(name: RoutesName.signUpScreen, page: () => SignUpScreen(), binding: SignUpBinding()),
     GetPage(
         name: RoutesName.signInScreen,
         page: () => SignInScreen(), //SignInController
@@ -187,9 +166,7 @@ class AppPages {
         transition: Transition.downToUp,
         transitionDuration: Duration.zero),
     GetPage(
-        name: RoutesName.contactMeScreen,
-        page: () => const ContactMeScreen(),
-        binding: ContactMeBinding()),
+        name: RoutesName.contactMeScreen, page: () => const ContactMeScreen(), binding: ContactMeBinding()),
     GetPage(
         name: RoutesName.pageSubjectScreen,
         page: () => const PageSubjectScreen(),
@@ -202,9 +179,17 @@ class AppPages {
         name: RoutesName.exerciseSubjectScreen,
         page: () => const ExerciseSubjectScreen(),
         binding: ExerciseSubjectBinding()),
+    GetPage(name: RoutesName.levelScreen, page: () => const LevelScreen(), binding: LevelBindings()),
     GetPage(
-        name: RoutesName.levelScreen,
-        page: () => const LevelScreen(),
-        binding: LevelBindings()),
+        name: RoutesName.teacherPagesLessonsScreen,
+        page: () => const TeacherPagesLessonsScreen(),
+        binding: TeacherPagesLessonsBinding()),
+    GetPage(
+        name: RoutesName.teacherMyLessonsScreen,
+        page: () => const TeacherMyLessonsScreen(),
+        binding: TeacherMyLessonsBinding()),
+    GetPage(
+        name: RoutesName.dashBoardScreen, page: () => const DashBoardScreen(), binding: DashBoardBindings()),
   ];
 }
+//
