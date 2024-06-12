@@ -13,6 +13,7 @@ import 'package:shater/util/images.dart';
 
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
+import '../../base/custom_empty_view.dart';
 
 class LevelScreen extends StatelessWidget {
   const LevelScreen({super.key});
@@ -85,6 +86,16 @@ class LevelScreen extends StatelessWidget {
                   caption: '',
                   image: ICONS.internalServerError,
                 ),
+                errorWidget: Column(
+                  children: [
+                    SizedBox(),
+                    CustomEmptyView(
+                      assetName: ICONS.decriptionTop,
+                      primaryText: 'classes'.tr,
+                      secanderyText: 'error_for_get_classes'.tr,
+                    ),
+                  ],
+                ) ,
                 successWidget: ListView.separated(
                   itemCount: controller.dataRegisterModels?.level?.length ?? 0,
                   shrinkWrap: true,

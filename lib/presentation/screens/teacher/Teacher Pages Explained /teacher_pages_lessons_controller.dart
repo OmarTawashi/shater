@@ -14,7 +14,7 @@ import '../../../../domain/usecase/public_usecase_imp.dart';
 import '../../student/dashBord/controller/dashboard_controller.dart';
 import '../teacher dashborad/controller/teacher_dashboard_controller.dart';
 
-class TeacherMyLessonsController  extends BaseController{
+class TeacherPagesLessonsController  extends BaseController{
   DashBaoardUseCaseImp? _dashBaoardUseCaseImp;
   PublicUseCaseImp? _publicUseCaseImp;
 
@@ -23,9 +23,6 @@ class TeacherMyLessonsController  extends BaseController{
 
   List<Classes> _classes = [];
   List<Classes> get classes => _classes;
-
-  CourseLearningModel? _selectedCourse;
-  CourseLearningModel? get selectedCourse => _selectedCourse;
 
   @override
   void onInit() {
@@ -36,11 +33,6 @@ class TeacherMyLessonsController  extends BaseController{
 
     getClassesStudent();
     fetchTeacherCoursesLesson();
-  }
-
-  void setCourse(CourseLearningModel course) {
-    _selectedCourse = course;
-    update();
   }
   Classes? getClassForItem(int? id){
     return this.classes?.firstWhere((element) => element.id == '$id');
@@ -78,23 +70,23 @@ class TeacherMyLessonsController  extends BaseController{
    }
   }
   void fetchTeacherCoursesLesson() async {
-    final dashController = Get.find<TeacherDashBoardController>();
-
-    updateViewType(ViewType.loading);
-    await _dashBaoardUseCaseImp?.fetchTeacherCoursesLesson(dashController.level?.id ?? -1).then((value) {
-      value?.fold((l) {
-        updateViewType(ViewType.error);
-      }, (s) {
-        if (s.isEmpty) {
-          updateViewType(ViewType.empty);
-        } else {
-          updateViewType(ViewType.success);
-          _subjects = s;
-          this.populateData();
-        }
-      });
-      update();
-    });
+    // final dashController = Get.find<TeacherDashBoardController>();
+    //
+    // updateViewType(ViewType.loading);
+    // await _dashBaoardUseCaseImp?.fetchTeacherCoursesLesson(dashController.level?.id ?? -1).then((value) {
+    //   value?.fold((l) {
+    //     updateViewType(ViewType.error);
+    //   }, (s) {
+    //     if (s.isEmpty) {
+    //       updateViewType(ViewType.empty);
+    //     } else {
+    //       updateViewType(ViewType.success);
+    //       _subjects = s;
+    //       this.populateData();
+    //     }
+    //   });
+    //   update();
+    // });
   }
   void populateData(){
     var isEmpty = (this.classes ?? []).isEmpty;

@@ -158,6 +158,7 @@
     "my lessons": "My lessons",
     "practice" : "Practice",
     "explanations" : "Explanations",
-    "subscribers" : "Subscribers"
-
+    "subscribers" : "Subscribers",
+    "classes" : "classes",
+    "error_for_get_classes" : "error_for_get_classes"
 }

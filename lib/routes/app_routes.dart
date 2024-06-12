@@ -35,6 +35,8 @@ abstract class RoutesName {
   static const failureQuestionScrren = '/failure-question-screen';
 
   static const teacherDashBoardScreen = '/teacher-dash-board-screen';
+  static const teacherPagesLessonsScreen = '/teacher-pages-lessons-screen';
+  static const teacherMyLessonsScreen = '/teacher-my-lessons-screen';
 }
 
 abstract class Routes {
@@ -42,8 +44,7 @@ abstract class Routes {
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
   static String getLessonTeacherView() => RoutesName.lessonTeacherView;
-  static String getSubcriptionTeacherDetailsScreen() =>
-      RoutesName.subcriptionTeacherDetailsScreen;
+  static String getSubcriptionTeacherDetailsScreen() => RoutesName.subcriptionTeacherDetailsScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;
   static String getTeacherDetailsScreen() => RoutesName.teacherDetailsScreen;
   static String getResultSubjectScreen() => RoutesName.resultSubjectScreen;
@@ -73,6 +74,11 @@ abstract class Routes {
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
   static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
 
-  static String getTeacherDashBoardScreen() =>
-      RoutesName.teacherDashBoardScreen;
+  static String getTeacherDashBoardScreen() => RoutesName.teacherDashBoardScreen;
+
+  static String getTeacherPagesLessonsScreen() => RoutesName.teacherPagesLessonsScreen;
+
+  static String getTeacherMyLessonsScreen() => RoutesName.teacherMyLessonsScreen;
+
+
 }
