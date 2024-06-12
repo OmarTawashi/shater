@@ -158,6 +158,7 @@
     "my lessons": "دروسي",
     "practice" : "التدريب",
     "explanations" : "الشروح",
-    "subscribers" : "المشتركين"
-
-}
+    "subscribers" : "المشتركين",
+    "classes" : "الفصول",
+    "error_for_get_classes" : "خطأ في الحصول على الفصل الدراسي"
+ }

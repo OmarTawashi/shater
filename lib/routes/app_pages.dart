@@ -52,12 +52,17 @@ import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
+import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_bindings.dart';
+import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained%20/teacher_pages_lessons_binding%20.dart';
 import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
+import '../presentation/screens/student/dashBord/controller/dashboard_controller.dart';
+import '../presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart';
+import '../presentation/screens/teacher/Teacher Pages Explained /teacher_pages_lessons_screen.dart';
 import '../presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart';
 
 class AppPages {
@@ -206,5 +211,19 @@ class AppPages {
         name: RoutesName.levelScreen,
         page: () => const LevelScreen(),
         binding: LevelBindings()),
+    GetPage(
+        name: RoutesName.teacherPagesLessonsScreen,
+        page: () => const TeacherPagesLessonsScreen(),
+        binding: TeacherPagesLessonsBinding()),
+    GetPage(
+        name: RoutesName.teacherMyLessonsScreen,
+        page: () => const TeacherMyLessonsScreen(),
+        binding: TeacherMyLessonsBinding()),
+    GetPage(
+        name: RoutesName.dashBoardScreen,
+        page: () => const DashBoardScreen(),
+        binding: DashBoardBindings()),
+
   ];
 }
+//

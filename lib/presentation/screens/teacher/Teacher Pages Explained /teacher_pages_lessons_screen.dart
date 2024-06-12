@@ -5,27 +5,33 @@ import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
+import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_controller.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/view/teacher_item_subject.dart';
+import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained%20/teacher_pages_lessons_controller.dart';
+import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained%20/view/teacher_item_page_lesson.dart';
 import 'package:shater/util/images.dart';
 
 
-import '../../../../routes/app_routes.dart';
+import '../../../../util/color.dart';
+import '../../../../util/dimensions.dart';
 import '../../base/animator_container.dart';
+import '../../base/back_app_bar.dart';
+import '../../base/cashed_network_image_widget.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
 import '../../base/tap_section.dart';
+import '../../student/exercise subject/view/exercise_subject_screen.dart';
 import '../../student/subject/widgets/item_subject.dart';
-import 'teacher_my_lessons_controller.dart';
 
-class TeacherMyLessonsScreen extends StatelessWidget {
-  const TeacherMyLessonsScreen({super.key});
+
+class TeacherPagesLessonsScreen extends StatelessWidget {
+  const TeacherPagesLessonsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: PerfectAppBar(),
-      body: GetBuilder<TeacherMyLessonsController>(
+      body: GetBuilder<TeacherPagesLessonsController>(
         builder: (controller) => RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
@@ -33,17 +39,30 @@ class TeacherMyLessonsScreen extends StatelessWidget {
           },
           child: CustomScrollView(
             slivers: [
-              IntikeTapBar(
-                assetName: ICONS.lessonVideos,
-                child: Row(
-                  children: [
-                    TapSection(
-                      isSelected: true,
-                      text: 'my lessons'.tr,
-                    ),
-                  ],
+              SliverAppBar(
+                pinned: true,
+                leadingWidth: 140,
+                toolbarHeight: 130,
+                backgroundColor: COLORS.primaryColor,
+                automaticallyImplyLeading: false,
+                excludeHeaderSemantics: true,
+                leading: IconTextCont(
+                  text: Get.find<TeacherMyLessonsController>().selectedCourse?.title ??
+                      'sss',
+                ),
+                centerTitle: true,
+                title: Container(
+                  margin: const EdgeInsets.only(
+                      top: 50, bottom: Dimensions.paddingSize25 + 15),
+                  clipBehavior: Clip.hardEdge,
+                  decoration: const BoxDecoration(shape: BoxShape.circle),
+                  child: Image.asset(
+                    ICONS.book,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
+
               const SliverToBoxAdapter(
                 child: SizedBox(
                   height: 16,
@@ -81,20 +100,19 @@ class TeacherMyLessonsScreen extends StatelessWidget {
     );
   }
 
-  SliverList SubjectList(TeacherMyLessonsController controller) {
+  SliverList SubjectList(TeacherPagesLessonsController controller) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: controller.subjects.length,
             (context, index) {
               var item = controller.subjects[index];
-              return TeacherItemSubject(
+              return TeacherItemPageLesson(
                   textSubject: item.title,
                   classes: item.classes,
                   teacherCountVideo: controller.subjects[index].teacherCountVideo,
                   imageUrl: controller.subjects[index].image,
                   onTap: () {
-                    controller.setCourse(item);
-                    Get.toNamed(Routes.getTeacherPagesLessonsScreen());
+                    // Get.toNamed(Routes.getExerciseSubjectScreen());
                   });
             },
       ),
