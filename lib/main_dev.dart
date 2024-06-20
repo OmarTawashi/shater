@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shater/flavors/build_config.dart';
 import 'package:shater/flavors/env_config.dart';
 import 'package:shater/flavors/myapp.dart';
-
 import 'core/controller/init_app.dart';
 import 'flavors/environment.dart';
 
