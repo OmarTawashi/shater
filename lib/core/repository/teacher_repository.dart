@@ -10,4 +10,9 @@ abstract class TeacherRepository {
   Future<Either<ApiException, EmptyModel>?> sendTeacherRead(int? teacherID);
   Future<Either<ApiException, List<SubjectVideo>>?> fetchVideoOfSubject(
       int? page, int? subjectId, int? userID, int? publishTo);
+  Future<Either<ApiException,  List<SubjectVideo>>?> fetchVideoOfSubject2({
+    required int publishTo,
+    required int subjectId,
+    required int userID,
+  });
 }

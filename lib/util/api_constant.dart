@@ -48,6 +48,8 @@ class ApiConstant {
   static String getTeacherCoursesLesson = '/api/$version/teacher/lesson/index?level=';
   static String teacherCoursesList = '/api/$version/teacher/lesson/index2?level=';
   static String getVideoOfSubject = '/api/v2/student/educational/videos/get-videos-for-subject';
+  static String getVideoOfSubjectteacher = '/api/v2/teacher/lesson/get-videos-for-subject';
+
   static String getVideoOfPage = '/api/v2/student/educational/videos/get-videos-for-page';
 
   static const String topic = 'all_zone_customer';

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_controller.dart';
+import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
+import 'package:shater/presentation/screens/student/exercise%20subject/widgets/item_exercise_subject.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 import '../../../../../util/dimensions.dart';
-import '../../../base/custom_intike_container.dart';
-import '../../../base/text_custom.dart';
 import '../../../teacher/Teacher Pages Explained/teacher_pages_lessons_controller.dart';
-import '../widgets/item_exercise_subject.dart';
 
-class ExerciseSubjectScreen extends StatelessWidget {
-  const ExerciseSubjectScreen({
+class TeacheMyExplanationScreen extends StatelessWidget {
+  const TeacheMyExplanationScreen({
     super.key,
   });
 
@@ -27,12 +25,8 @@ class ExerciseSubjectScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           excludeHeaderSemantics: true,
           leading: IconTextCont(
-              text:
-                  //  "myexplanation".tr,
-                  Get.find<TeacherMyLessonsController>()
-                          .selectedCourse
-                          ?.title ??
-                      ""),
+            text: "myexplanation".tr,
+          ),
           centerTitle: true,
           title: Container(
             margin: const EdgeInsets.only(
@@ -63,7 +57,14 @@ class ExerciseSubjectScreen extends StatelessWidget {
                 return ItemExerciseSubject(
                   index: index,
                   onTap: () {},
-                  subjectVideo: controller.vedioSubjectTeacher[index],
+                  image: controller.vedioSubjectTeacher[index].page!.image
+                      .toString(),
+                  pageNo: controller.vedioSubjectTeacher[index].page!.pageNo
+                      .toString(),
+                  subText:
+                      controller.vedioSubjectTeacher[index].page!.isExplain!
+                          ? "explan".tr
+                          : "notexplan".tr,
                 );
               },
               childCount: controller.vedioSubjectTeacher.length,
@@ -72,41 +73,5 @@ class ExerciseSubjectScreen extends StatelessWidget {
         ),
       ],
     ));
-  }
-}
-
-class IconTextCont extends StatelessWidget {
-  final String text;
-  const IconTextCont({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 62),
-      child: GestureDetector(
-        onTap: () {
-          Get.back();
-        },
-        child: CustomIntikeContainer(
-          paddingHorizontal: Dimensions.paddingSize12,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.arrow_back_ios_new_sharp,
-                  color: Colors.white, size: 18),
-              const SizedBox(
-                width: Dimensions.paddingSize10,
-              ),
-              CustomText(
-                text: text,
-                color: Colors.white,
-                fontSize: Dimensions.fontSize14,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

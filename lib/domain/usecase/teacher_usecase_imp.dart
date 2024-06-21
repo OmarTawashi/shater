@@ -5,6 +5,7 @@ import 'package:shater/core/usecase/teacher_usecase.dart';
 import 'package:shater/data/model/empty_model.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/model/teacher_model.dart';
+import 'package:shater/data/model/vedio_subject_teacher.dart';
 
 class TeacherUseCaseImp extends TeacherUseCase {
   final TeacherRepository _teacherRepository;
@@ -26,6 +27,22 @@ class TeacherUseCaseImp extends TeacherUseCase {
   Future<Either<ApiException, List<SubjectVideo>>?> fetchVideoOfSubject(
       int? page, int? subjectId, int? userID, int? publishTo) {
     return _teacherRepository.fetchVideoOfSubject(
-        page, subjectId, userID, publishTo);
+      page,
+      subjectId,
+      userID,
+      publishTo,
+    );
+  }
+
+  @override
+  Future<Either<ApiException, List<SubjectVideo>>?> fetchVideoOfSubject2(
+      {required int? subjectId,
+      required int? userID,
+      required int? publishTo}) {
+    return _teacherRepository.fetchVideoOfSubject2(
+      publishTo: publishTo!,
+      subjectId: subjectId!,
+      userID: userID!,
+    );
   }
 }

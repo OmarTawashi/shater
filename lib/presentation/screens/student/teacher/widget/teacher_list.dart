@@ -12,19 +12,20 @@ class TeacherList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-          childCount: controller.teachers.length,
-          (context, index) => ItemTeacher(
-                onTap: () {
-                  controller.setTeacher(controller.teachers[index]);
-                  controller.sendReadTeacher(controller.teachers[index].id);
-                  Get.toNamed(Routes.getSubcriptionTeacherDetailsScreen());
-                },
-                imageUrl: controller.teachers[index].image,
-                name: controller.teachers[index].name,
-                subject: '', //
-                imageSubjectUrl: controller.courseSelected?.image,
-                teacherStar: controller.teachers[index].rate.toString(),
-              )),
+        childCount: controller.teachers.length,
+        (context, index) => ItemTeacher(
+          onTap: () {
+            controller.setTeacher(controller.teachers[index]);
+            controller.sendReadTeacher(controller.teachers[index].id);
+            Get.toNamed(Routes.getSubcriptionTeacherDetailsScreen());
+          },
+          imageUrl: controller.teachers[index].image,
+          name: controller.teachers[index].name,
+          subject: '', //
+          imageSubjectUrl: controller.courseSelected?.image,
+          teacherStar: controller.teachers[index].rate.toString(),
+        ),
+      ),
     );
   }
 }

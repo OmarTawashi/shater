@@ -159,6 +159,11 @@
     "my lessons": "دروسي",
     "practice" : "التدريب",
     "explanations" : "الشروح",
-    "subscribers" : "المشتركين"
+    "subscribers" : "المشتركين",
+    "myexplanation" : "شروحي",
+    "explan":"مشروح",
+    "notexplan":"غير مشروح"
+
+
 
 }

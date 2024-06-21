@@ -61,7 +61,6 @@ import 'package:shater/routes/app_routes.dart';
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
-import '../presentation/screens/student/dashBord/controller/dashboard_controller.dart';
 import '../presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart';
 import '../presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart';
 

@@ -25,7 +25,9 @@ void main() async {
     envConfig: devConfig,
   );
 
-  runApp(MyApp(
-    languages: languages,
-  ));
+  runApp(
+    MyApp(
+      languages: languages,
+    ),
+  );
 }

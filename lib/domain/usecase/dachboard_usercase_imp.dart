@@ -33,4 +33,5 @@ class DashBaoardUseCaseImp extends DashBoardUseCase {
   Future<Either<ApiException, List<ResultExam>>?> fetchResultSubject() {
     return _dashBoardRepository.fetchResultSubject();
   }
+  
 }
