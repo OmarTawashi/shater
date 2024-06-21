@@ -9,6 +9,10 @@ import '../network/api_exceptions.dart';
 abstract class AuthUseCase {
   Future<Either<ApiException, User>?> signInWithEmailPassword(
       String email, String password);
+
+  Future<Either<ApiException, User>?> childSignIn(
+      String email, int id,  int parentId);
+
   Future<Either<ApiException, User>?> registerStudent(
     String email,
     String password,

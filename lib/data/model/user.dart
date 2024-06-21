@@ -165,12 +165,12 @@ class User extends Decodable<User> {
     school =
         json['school'] != null ? new School.fromJson(json['school']) : null;
     city = json['city'] != null ? new PublicModel.fromJson(json['city']) : null;
-    // if (json['children'] != null) {
-    //   children = new List<Null>();
-    //   json['children'].forEach((v) {
-    //     children?.add(new Null.fromJson(v));
-    //   });
-    // }
+    if (json['children'] != null) {
+      children = [];
+      json['children'].forEach((v) {
+        children?.add(new User.fromJson(v));
+      });
+    }
 
     return this;
   }

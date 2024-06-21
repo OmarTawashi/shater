@@ -19,12 +19,26 @@ class SharedPrefs {
         SharedConstant.userKey, jsonEncode(user.toJson()));
   }
 
+  static Future<void> saveChild(User child) async {
+    await sharedPreferences.setString(
+        SharedConstant.childKey, jsonEncode(child.toJson()));
+  }
+
   static Future<void> removeUser() async {
     await sharedPreferences.remove(SharedConstant.userKey);
   }
 
   static User? get user {
     final userStr = sharedPreferences.getString(SharedConstant.userKey);
+    if (userStr == null || userStr.isEmpty) {
+      return null;
+    }
+    Map<String, dynamic> map = jsonDecode(userStr) as Map<String, dynamic>;
+    return User().decode(map);
+  }
+
+  static User? get child {
+    final userStr = sharedPreferences.getString(SharedConstant.childKey);
     if (userStr == null || userStr.isEmpty) {
       return null;
     }
