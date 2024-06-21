@@ -14,6 +14,7 @@ class ApiConstant {
   static String version = 'v2';
   static String checkEmail = '/api/$version/teacher/auth/check-email';
   static String studentLogin = '/api/$version/auth/login';
+  static String childLogin = '/api/$version/auth/login-child';
   static String ForgetPassword = '/api/$version/auth/password/email';
   static String registerSudent = '/api/$version/auth/register';
   static String logout = '/api/$version/auth/logout';

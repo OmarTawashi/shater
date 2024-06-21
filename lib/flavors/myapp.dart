@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             defaultTransition: Transition.cupertino,
             initialBinding: RootBinding(),
             // home: DraggableExample(),
-            initialRoute: RoutesName.spalshScreen,
+            initialRoute: RoutesName.signInScreen,
             locale: Get.find<LocalizationController>().locale,
             translations: Messages(languages: languages),
             fallbackLocale:

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -37,7 +38,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           "email": email,
           "password": password,
           "FCM_token": fcmToken,
-          "device_type": 'ios'
+          "device_type": deviceType
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
@@ -51,6 +52,51 @@ class AuthRepositoryRemote extends BaseAuthRepository {
               SharedPrefs.saveUser(user);
               ApiClient.updateHeader();
               completer.complete(Right(user!));
+            }
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  Future<Either<ApiException, User>?> childSignIn(
+      String email, int id,  int parentId) async {
+    final completer = Completer<Either<ApiException, User>?>();
+    final fcmToken = SharedPrefs.fcmToken ?? '';
+    final deviceType = await DeviceInfoService.getDeviceType();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.childLogin,
+        requestType: RequestType.post,
+        create: () => APIResponse<User>(
+          create: () => User(),
+        ),
+        data: {
+          "FCM_token": fcmToken,
+          "device_type": deviceType,
+          "email": email,
+          "id": id,
+          "parent_id": parentId
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            log("child login success");
+            final user = response.data?.item;
+            if (user != null) {
+              SharedPrefs.saveUser(user);
+              ApiClient.updateHeader();
+              completer.complete(Right(user));
             }
           }
         },

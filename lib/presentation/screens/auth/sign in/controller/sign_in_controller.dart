@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
@@ -25,8 +27,14 @@ class SignInController extends GetxController {
 
   bool get isEnable => (_isValidEmail && _isValidPassword);
 
-  User? _user;
-  User? get user => _user;
+  User? _parentUser;
+  User? get parentUser => _parentUser;
+
+  User? _childUser;
+  User? get childUser => _childUser;
+
+  int selectedId = -1;
+
 
   AuthUseCaseImp? _authUseCaseImp;
 
@@ -56,6 +64,19 @@ class SignInController extends GetxController {
     update();
   }
 
+  bool isSelectedChild(int userId){
+    if(userId == selectedId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  void changeSelectedChild(int userId){
+    selectedId = userId;
+    update();
+  }
+
   void signInWithEmailPassword() async {
     final email = emailController.text;
     final password = passwordController.text;
@@ -66,7 +87,7 @@ class SignInController extends GetxController {
       value?.fold((l) {
         BaseMixin.showToastFlutter(messsage: l.message);
       }, (user) {
-        _user = user;
+        _parentUser = user;
         update();
         distinctUser(user);
       });
@@ -92,22 +113,44 @@ class SignInController extends GetxController {
     }
   }
 
+
   void defStudent(User? user) {
+
     if (user?.children == null || user!.children!.isEmpty) {
       //this is mean the father not have any child
       Get.offAllNamed(Routes.getDashBoardScreen());
     } else {
       // in this the father select what the child login
+      selectedId = user.children?[0].id ?? 0;
       BaseMixin.bottomSheetChildern();
     }
   }
+
   void defTeacher(User? user) {
     if (user?.children == null || user!.children!.isEmpty) {
       //this is mean the father not have any child
       Get.offAllNamed(Routes.getTeacherDashBoardScreen());
     } else {
       // in this the father select what the child login
+      selectedId = user.children?[0].id ?? 0;
       BaseMixin.bottomSheetChildern();
     }
+  }
+
+  void childSignIn(int id) async {
+    changeLoading(true);
+    await _authUseCaseImp
+        ?.childSignIn(parentUser?.email ?? '', id ,(parentUser?.id ?? 0) )
+        .then((value) {
+      value?.fold((l) {
+        BaseMixin.showToastFlutter(messsage: l.message);
+      }, (user) {
+        _childUser = user;
+        update();
+        distinctUser(user);
+      });
+      changeLoading(false);
+      update();
+    });
   }
 }

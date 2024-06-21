@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/controller/sign_in_controller.dart';
@@ -11,9 +13,11 @@ import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';
 import '../../../base/custom_cupertino_button.dart';
 import '../../../base/text_not_acounts.dart';
+import '../widgets/item_childern.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -39,7 +43,8 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Get.toNamed(Routes.getTakeImageScreen());
+                          // Get.toNamed(Routes.getTakeImageScreen());
+                          log("دخول بحسابي");
                         },
                         child: CustomIntikeContainer(
                           paddingHorizontal: 70,

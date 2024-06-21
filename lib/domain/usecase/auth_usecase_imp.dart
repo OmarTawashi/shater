@@ -20,6 +20,12 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
+  Future<Either<ApiException, User>?> childSignIn(
+      String email, int id,  int parentId) {
+    return _authRepository.childSignIn(email, id , parentId);
+  }
+
+  @override
   Future<Either<ApiException, EmptyModel>?> signOut() {
     return _authRepository.signOut();
     
