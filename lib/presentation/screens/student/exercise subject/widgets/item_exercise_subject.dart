@@ -12,9 +12,7 @@ class ItemExerciseSubject extends StatelessWidget {
   final String? image;
   final String? subText;
   final String? pageNo;
-
-
-
+  final Color? color;
   const ItemExerciseSubject({
     super.key,
     this.subjectVideo,
@@ -22,6 +20,7 @@ class ItemExerciseSubject extends StatelessWidget {
     this.image,
     this.subText,
     this.pageNo,
+    this.color,
     required this.index,
   });
 
@@ -39,7 +38,7 @@ class ItemExerciseSubject extends StatelessWidget {
           borderRadius: BorderRadius.circular(13),
           image: DecorationImage(
             image: CachedNetworkImageProvider(
-              image??"",
+              image ?? "",
               errorListener: (p0) => AssetImage(IMAGES.exerciseSubject),
             ),
             fit: BoxFit.cover,
@@ -54,10 +53,10 @@ class ItemExerciseSubject extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color.fromRGBO(1, 1, 1, 0.5),
+                  color: color ?? Colors.black.withOpacity(0.5),
                 ),
                 child: CustomText(
-                  text: pageNo??"",
+                  text: pageNo ?? "",
                   color: Colors.white,
                   textAlign: TextAlign.center,
                   fontSize: Dimensions.fontSize14,
@@ -72,10 +71,10 @@ class ItemExerciseSubject extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
-                  color: Colors.black.withOpacity(0.5),
+                  color: color ?? Colors.black.withOpacity(0.5),
                 ),
                 child: CustomText(
-                  text:subText??"",
+                  text: subText ?? "",
                   //  subjectVideo!.page!.isExplain! ? "yes" : "no",
                   //  "${subjectVideo!.page!.isExplain?""}"
                   //         '\t' +

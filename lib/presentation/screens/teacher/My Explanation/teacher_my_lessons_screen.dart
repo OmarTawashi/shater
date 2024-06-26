@@ -8,7 +8,6 @@ import 'package:shater/presentation/screens/teacher/My%20Explanation/view/teache
 import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/view/teacher_myexplanation.dart';
 import 'package:shater/util/images.dart';
 
-import '../../../../routes/app_routes.dart';
 import '../../base/animator_container.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
@@ -93,13 +92,12 @@ class TeacherMyLessonsScreen extends StatelessWidget {
             imageUrl: controller.subjects[index].image,
             onTap: () async {
               await Get.find<TeacherPagesLessonsController>()
-                  .fetchVideosforSubject3(
+                  .fetchVideosforSubject2(
                       page: controller.subjects[index].pagesCount!,
                       subjectId: controller.subjects[index].id!,
                       publishTo: 1);
               controller.setCourse(item);
               Get.to(() => TeacheMyExplanationScreen());
-
               // Get.toNamed(
               //   Routes.getExerciseSubjectScreen(),
               // );

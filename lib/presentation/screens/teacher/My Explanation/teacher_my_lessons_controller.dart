@@ -35,7 +35,7 @@ class TeacherMyLessonsController  extends BaseController{
     fetchTeacherCoursesLesson();
   }
 
-  void setCourse(CourseLearningModel course) {
+   setCourse(CourseLearningModel course) {
     _selectedCourse = course;
     update();
   }

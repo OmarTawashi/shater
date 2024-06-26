@@ -57,10 +57,12 @@ class TeacheMyExplanationScreen extends StatelessWidget {
                 return ItemExerciseSubject(
                   index: index,
                   onTap: () {},
-                  image: controller.vedioSubjectTeacher[index].page!.image
-                      .toString(),
+                  image: controller.vedioSubjectTeacher[index].url,
                   pageNo: controller.vedioSubjectTeacher[index].page!.pageNo
                       .toString(),
+
+                  // pageNo: controller.vedioSubjectTeacher[index].page!.pageNo
+                  //     .toString(),
                   subText:
                       controller.vedioSubjectTeacher[index].page!.isExplain!
                           ? "explan".tr

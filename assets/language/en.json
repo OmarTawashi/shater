@@ -161,8 +161,10 @@
     "subscribers" : "Subscribers",
     "myexplanation" : "myexplanation",
     "explan":"explan",
-    "notexplan":"not explaned"
-
+    "notexplan":"not explaned",
+   "add_explain":"add_explain ",
+    "practices":"practices",
+    "lets_explain":"lets_explain"
 
 
 

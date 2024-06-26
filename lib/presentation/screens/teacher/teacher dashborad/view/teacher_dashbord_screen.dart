@@ -17,37 +17,38 @@ class TeacherDashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<TeacherDashBoardController>(
       builder: (controller) => Scaffold(
-          extendBody: true,
-          bottomNavigationBar: Container(
-            height: 65,
-            color: Colors.transparent,
-            child: BottomNavigationBar(
-              currentIndex: controller.selectedIndex,
-              onTap: (value) {
-                controller.changeIndex(value);
-              },
-              selectedItemColor: COLORS.primaryColor,
-              unselectedItemColor: const Color.fromRGBO(190, 190, 190, 1),
-              showUnselectedLabels: true,
-              selectedLabelStyle: FontStyleConstant.hNLTBBold
-                  .copyWith(fontSize: Dimensions.fontSize12.sp),
-              unselectedLabelStyle: FontStyleConstant.hNLTBBold
-                  .copyWith(fontSize: Dimensions.fontSize12.sp),
-              type: BottomNavigationBarType.fixed,
-              items: List.generate(
-                5,
-                (index) => navigationBarItem(
-                    label: APPCONSTANT.teacherLabelTab[index].tr,
-                    activeAssets: ICONS.teacherActiveTab[index],
-                    isSelected: (controller.selectedIndex == index),
-                    unActiveAssets: ICONS.teacherUnActiveTab[index]),
-              ),
+        extendBody: true,
+        bottomNavigationBar: Container(
+          height: 65,
+          color: Colors.transparent,
+          child: BottomNavigationBar(
+            currentIndex: controller.selectedIndex,
+            onTap: (value) {
+              controller.changeIndex(value);
+            },
+            selectedItemColor: COLORS.primaryColor,
+            unselectedItemColor: const Color.fromRGBO(190, 190, 190, 1),
+            showUnselectedLabels: true,
+            selectedLabelStyle: FontStyleConstant.hNLTBBold
+                .copyWith(fontSize: Dimensions.fontSize12.sp),
+            unselectedLabelStyle: FontStyleConstant.hNLTBBold
+                .copyWith(fontSize: Dimensions.fontSize12.sp),
+            type: BottomNavigationBarType.fixed,
+            items: List.generate(
+              5,
+              (index) => navigationBarItem(
+                  label: APPCONSTANT.teacherLabelTab[index].tr,
+                  activeAssets: ICONS.teacherActiveTab[index],
+                  isSelected: (controller.selectedIndex == index),
+                  unActiveAssets: ICONS.teacherUnActiveTab[index]),
             ),
           ),
-          body: IndexedStack(
-            children: controller.screens,
-            index: controller.selectedIndex,
-          )),
+        ),
+        body: IndexedStack(
+          children: controller.screens,
+          index: controller.selectedIndex,
+        ),
+      ),
     );
   }
 
@@ -57,11 +58,12 @@ class TeacherDashBoardScreen extends StatelessWidget {
       String? unActiveAssets,
       bool? isSelected}) {
     return BottomNavigationBarItem(
-        label: label,
-        icon: CustomSvgPicture(
-          assetName: isSelected == true ? activeAssets! : unActiveAssets!,
-          height: 22,
-          width: 22,
-        ));
+      label: label,
+      icon: CustomSvgPicture(
+        assetName: isSelected == true ? activeAssets! : unActiveAssets!,
+        height: 22,
+        width: 22,
+      ),
+    );
   }
 }

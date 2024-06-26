@@ -1,6 +1,5 @@
 import 'package:shater/core/network/decodable.dart';
 import 'package:shater/data/model/class_model.dart';
-import 'package:shater/data/model/comment_model.dart';
 import 'package:shater/data/model/country_model.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/school_model.dart';

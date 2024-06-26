@@ -6,11 +6,13 @@ import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_item_subject.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 import '../../base/animator_container.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
 import '../../base/tap_section.dart';
+import '../My Explanation/teacher_my_lessons_controller.dart';
 
 class TeacherExplanationScreen extends StatelessWidget {
   const TeacherExplanationScreen({super.key});
@@ -83,13 +85,19 @@ class TeacherExplanationScreen extends StatelessWidget {
         (context, index) {
           var item = controller.subjects[index];
           return TeacherItemSubject(
-              textSubject: item.title,
-              classes: item.classes,
-              teacherCountVideo: controller.subjects[index].teacherCountVideo,
-              imageUrl: controller.subjects[index].image,
-              onTap: () {
-                // Get.toNamed(Routes.getExerciseSubjectScreen());
-              });
+            textSubject: item.title,
+            classes: item.classes,
+            teacherCountVideo: controller.subjects[index].teacherCountVideo,
+            imageUrl: controller.subjects[index].image,
+            onTap: () async {
+              await controller.getTeacherCoursesExercisesList(
+                  course_id: controller.subjects[index].id!);
+
+              await Get.find<TeacherMyLessonsController>()
+                  .setCourse(controller.subjects[index]);
+              Get.toNamed(Routes.getTeacherExerciseSubjectScreen());
+            },
+          );
         },
       ),
     );

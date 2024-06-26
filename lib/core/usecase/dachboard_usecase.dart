@@ -15,4 +15,5 @@ abstract class DashBoardUseCase {
   Future<Either<ApiException, List<CourseLearningModel>>?> teacherCoursesList(
       int level);
   Future<Either<ApiException, List<ResultExam>>?> fetchResultSubject();
+  
 }

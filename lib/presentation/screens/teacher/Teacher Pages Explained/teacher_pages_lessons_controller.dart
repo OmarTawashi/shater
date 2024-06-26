@@ -2,13 +2,14 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_client.dart';
+import 'package:shater/data/model/subject_video_model.dart';
+import 'package:shater/data/model/vedio_subject_teacher.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';
 import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
 import '../../../../data/model/class_model.dart';
 import '../../../../data/model/course_learning_model.dart';
-import '../../../../data/model/subject_video_model.dart';
 import '../../../../data/repository/public_repository_remote.dart';
 import '../../../../domain/usecase/public_usecase_imp.dart';
 import '../teacher dashborad/controller/teacher_dashboard_controller.dart';
@@ -17,12 +18,11 @@ class TeacherPagesLessonsController extends BaseController {
   DashBaoardUseCaseImp? _dashBaoardUseCaseImp;
   PublicUseCaseImp? _publicUseCaseImp;
   TeacherUseCaseImp? _teacherUseCaseImp;
-
   List<CourseLearningModel> _subjects = [];
-
   List<CourseLearningModel> get subjects => _subjects;
-List<SubjectVideo> _vedioSubjectTeacher = [];
-List<SubjectVideo> get vedioSubjectTeacher => _vedioSubjectTeacher;
+  List<SubjectVideo> _vedioSubjectTeacher = [];
+  List<SubjectVideo> get vedioSubjectTeacher => _vedioSubjectTeacher;
+  // List<VedioSubjectTeacher> get vedioSubjectTeacher => _vedioSubjectTeacher;
 
   List<Classes> _classes = [];
   List<Classes> get classes => _classes;
@@ -98,7 +98,7 @@ List<SubjectVideo> get vedioSubjectTeacher => _vedioSubjectTeacher;
 
   dynamic _user = SharedPrefs.user;
 
-  fetchVideosforSubject3({
+  fetchVideosforSubject2({
     required int page,
     required int subjectId,
     // required int userID,
@@ -117,12 +117,7 @@ List<SubjectVideo> get vedioSubjectTeacher => _vedioSubjectTeacher;
         } else {
           updateViewType(ViewType.success);
           _vedioSubjectTeacher = response;
-          print(subjects.length);
-          print(
-              "vedioSubjectTeacher***************************************************");
-          print(subjects.first);
-          print(
-              "vedioSubjectTeacher***************************************************");
+
           this.populateData();
           return _vedioSubjectTeacher;
         }

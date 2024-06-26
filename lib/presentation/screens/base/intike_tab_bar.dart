@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 
 import '../../../util/color.dart';
@@ -8,27 +9,38 @@ class IntikeTapBar extends StatelessWidget {
   final Widget? child;
   final Widget? secanderyChild;
   final String assetName;
-
+  final bool? with_picture;
+  final double? height;
   const IntikeTapBar(
-      {super.key, required this.assetName, this.secanderyChild, this.child});
+      {super.key,
+      required this.assetName,
+      this.secanderyChild,
+      this.child,
+      this.height = 170,
+      this.with_picture = true});
 
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
       pinned: true,
       delegate: SectionHeaderDelegate(
-        height: 160,
+        height: height!.h,
         widget: Column(
           children: [
-            Container(
-                margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(color: COLORS.backGroundColor,borderRadius:BorderRadius.circular(15)),
-                child: CustomSvgPicture(
-                  assetName: assetName,
-                  height: 40,
-                  width: 40,
-                )),
+            with_picture!
+                ? Container(
+                    margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: COLORS.backGroundColor,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: CustomSvgPicture(
+                      assetName: assetName,
+                      height: 40,
+                      width: 40,
+                    ),
+                  )
+                : SizedBox(),
             child == null
                 ? const SizedBox()
                 : Container(

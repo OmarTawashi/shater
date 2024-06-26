@@ -38,23 +38,23 @@ class TeacherItemSubject extends StatelessWidget {
             children: [
               Container(
                 clipBehavior: Clip.hardEdge,
-                height: 107,
-                width: 81,
+                height: 107.h,
+                width: 81.w,
                 // padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7),
                     color: Colors.white),
-                child:Container(
+                child: Container(
                   clipBehavior: Clip.hardEdge,
                   height: 107,
                   width: 81,
                   padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7)),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(7)),
                   child: CachedNetworkImageWidget(
-                  imageUrl: imageUrl ?? '',
-                  fit: BoxFit.cover,
-                ),
+                    imageUrl: imageUrl ?? '',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -75,16 +75,16 @@ class TeacherItemSubject extends StatelessWidget {
                       height: Dimensions.paddingSize10,
                     ),
                     Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.paddingSize12,
-                            vertical: Dimensions.paddingSize8),
-                        child: CustomText(
-                          text: '$teacherCountVideo' '\t' + 'درس'.tr,
-                          color: COLORS.subTitleColor,
-                          fontSize: Dimensions.fontSize16,
-                          fontWeight: FontWeight.bold,
-                        ))
-                    ,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Dimensions.paddingSize12,
+                          vertical: Dimensions.paddingSize8),
+                      child: CustomText(
+                        text: '$teacherCountVideo' '\t' + 'درس'.tr,
+                        color: COLORS.subTitleColor,
+                        fontSize: Dimensions.fontSize16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -95,7 +95,7 @@ class TeacherItemSubject extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(32),
                       color: COLORS.primaryColor),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -112,7 +112,7 @@ class TeacherItemSubject extends StatelessWidget {
                         Icons.arrow_forward_ios_sharp,
                         color: COLORS.whiteColor,
                         size: 20,
-                        weight: 40,
+                        weight: 40.w,
                       )
                     ],
                   ),
