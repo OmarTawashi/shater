@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/selected_page_exercise_controller_.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/custom_button.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 import '../../../../../util/font_style.dart';
-import '../teacher_explanation_controller.dart';
 
-class SelectedPageExercise extends StatelessWidget {
-  const SelectedPageExercise({super.key, this.selected_page});
+class SelectedPageEerciseScreen extends StatelessWidget {
+  const SelectedPageEerciseScreen({super.key, this.selected_page});
   final String? selected_page;
 
   @override
@@ -57,7 +57,7 @@ class SelectedPageExercise extends StatelessWidget {
           ),
         ],
       ),
-      body: GetBuilder<TeacherExplanationController>(
+      body: GetBuilder<SelectedPageExerciseControoler>(
         builder: (controller) => Column(
           children: [
             AnimatedContainer(
@@ -77,7 +77,8 @@ class SelectedPageExercise extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: CustomText(
-                  text: "صفحة رقم $selected_page ",
+                  text:
+                      "صفحة رقم ${controller.specificPageExercisesModel!.items!.first.pageNo!.toString()} ",
                   textAlign: TextAlign.center,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -101,13 +102,13 @@ class SelectedPageExercise extends StatelessWidget {
                                   TextStyle(fontSize: 18, color: Colors.black),
                             ),
                             Text(
-                              controller.specificPageExercisesModel
-                                      .questions![index]!.title ??
+                              controller.specificPageExercisesModel!.items!
+                                      .first.questions![index].title ??
                                   "",
                               style: FontStyleConstant.hNLTRegular,
                             ),
                             Text(
-                              " : بواسطة ${controller.specificPageExercisesModel.questions![index]!.title ?? ""}",
+                              "  بواسطة : ${controller.specificPageExercisesModel!.items!.first.questions![index].teacher!.name!}",
                               style: FontStyleConstant.hNLTRegular,
                             ),
                             SizedBox(
@@ -157,8 +158,8 @@ class SelectedPageExercise extends StatelessWidget {
                         color: COLORS.dividerColor,
                         thickness: 3,
                       ),
-                  itemCount:
-                      controller.specificPageExercisesModel.questions!.length),
+                  itemCount: controller.specificPageExercisesModel!.items!.first
+                      .questions!.length),
             )
           ],
         ),

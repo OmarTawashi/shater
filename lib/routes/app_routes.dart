@@ -14,6 +14,8 @@ abstract class RoutesName {
       '/teacher_exercise_subject_screen';
 
   static const contactScreen = '/contact-screen';
+  static const selectedPageExerciseScreen = '/selected_page_exercise_screen';
+
   static const contactMeScreen = '/contact_me-screen';
   static const notificationDetails = '/notification-details';
   static const levelScreen = '/level-screen';
@@ -49,7 +51,7 @@ abstract class RoutesName {
 
 abstract class Routes {
   static String getSpalshScreen() => RoutesName.spalshScreen;
-  static String getselectedPageExercise() => RoutesName.selectedPageExercise;
+  static String getselectedPageExerciseScreen() => RoutesName.selectedPageExerciseScreen;
 
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;

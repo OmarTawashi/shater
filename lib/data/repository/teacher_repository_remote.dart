@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/core/network/api_exceptions.dart';
@@ -7,7 +6,6 @@ import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/teacher_repository.dart';
 import 'package:shater/data/model/SubjectPagesModel.dart';
 import 'package:shater/data/model/empty_model.dart';
-import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/data/model/specific_page_exercises_model.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/model/teacher_model.dart';
@@ -17,8 +15,6 @@ class TeacherRepositoryRemote extends TeacherRepository {
   final ApiClient _apiClient;
 
   TeacherRepositoryRemote(this._apiClient);
-
-  
 
   @override
   Future<Either<ApiException, List<TeacherModel>>?> fetchTeachers(
@@ -147,7 +143,8 @@ class TeacherRepositoryRemote extends TeacherRepository {
     }
     return completer.future;
   }
-@override
+
+  @override
   Future<Either<ApiException, SubjectPagesModel>?>
       getTeacherCoursesExercisesList({required int course_id}) async {
     final completer = Completer<Either<ApiException, SubjectPagesModel>?>();
@@ -172,13 +169,15 @@ class TeacherRepositoryRemote extends TeacherRepository {
     }
     return completer.future;
   }
+
   @override
-  Future<Either<ApiException, QuestionPageModel>?>
+  Future<Either<ApiException, SpecificPageExercisesModel>?>
       getSpecificPageExercisesList(
           {required int subject_id,
           required int pageFrom,
           required int pageTo}) async {
-    final completer = Completer<Either<ApiException, QuestionPageModel>?>();
+    final completer =
+        Completer<Either<ApiException, SpecificPageExercisesModel>?>();
     final data = {
       "subject_id": subject_id,
       "pageFrom": pageFrom,
@@ -188,8 +187,7 @@ class TeacherRepositoryRemote extends TeacherRepository {
       await ApiClient.requestData(
         endpoint: ApiConstant.specificPageExercise,
         requestType: RequestType.get,
-        create: () =>  QuestionPageModel(),
-        
+        create: () => SpecificPageExercisesModel(),
         queryParams: data,
         onSuccess: (response) {
           final data = response.data;

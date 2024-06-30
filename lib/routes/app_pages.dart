@@ -52,6 +52,7 @@ import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/
 import 'package:shater/presentation/screens/edit%20profile/take%20image/view/take_image_screen.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/selected_page_exercise_controller_.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_bindings.dart';
 import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/teacher_pages_lessons_binding%20.dart';
@@ -63,7 +64,7 @@ import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
 import '../presentation/screens/teacher/Explanation/teacher_explanation_bindings.dart';
-import '../presentation/screens/teacher/Explanation/view/selected_page_exercise.dart';
+import '../presentation/screens/teacher/Explanation/view/selected_page_exercise_screen.dart';
 import '../presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart';
 import '../presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart';
 
@@ -227,14 +228,18 @@ class AppPages {
         binding: DashBoardBindings()),
     GetPage(
       name: RoutesName.teacherExerciseSubjectScreen,
-      page: () =>  TeacherExerciseSubjectScreen(),
+      page: () => TeacherExerciseSubjectScreen(),
       binding: TeacherExplanationBinding(),
     ),
-      GetPage(
-      name: RoutesName.selectedPageExercise,
-      page: () =>  SelectedPageExercise(),
-      binding: TeacherExplanationBinding(),
+    GetPage(
+      name: RoutesName.selectedPageExerciseScreen,
+      page: () => SelectedPageEerciseScreen(),
+      binding: SelectedPageExerciseBinding(),
     ),
+    GetPage(
+        name: RoutesName.selectedPageExerciseScreen,
+        page: () => const SplashScreen(),
+        binding: SpalchBinding()),
   ];
 }
 //

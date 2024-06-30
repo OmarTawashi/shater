@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart';
-import 'package:shater/presentation/screens/teacher/Explanation/view/selected_page_exercise.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/selected_page_exercise_controller_.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/custom_button.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class BottomSheetWidget extends StatelessWidget {
+  
   BottomSheetWidget(
       {required this.page_number,
       this.canCreateQuestion = 0,
@@ -18,6 +19,7 @@ class BottomSheetWidget extends StatelessWidget {
   final int canCreateQuestion;
   @override
   Widget build(BuildContext context) {
+    Get.put(SelectedPageExerciseControoler());
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(16),
@@ -52,16 +54,15 @@ class BottomSheetWidget extends StatelessWidget {
             canCreateQuestion == 1
                 ? CustomeButton(
                     onClick: () async {
-                      await Get.find<TeacherExplanationController>()
+                      await Get.find<SelectedPageExerciseControoler>()
                           .getSpecificPageExercisesModelList(
                         subject_id: subject_id,
                         pageFrom: int.parse(page_number),
                         PageTo: int.parse(page_number),
                       );
-
-                      Get.to(() => SelectedPageExercise(
-                            selected_page: page_number,
-                          ));
+                      Get.toNamed(
+                        Routes.getselectedPageExerciseScreen(),
+                      );
                     },
                     title: "practices".tr,
                     backgroundColor: COLORS.secanderyColor,

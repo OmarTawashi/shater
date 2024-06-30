@@ -30,14 +30,14 @@ class IntikeTapBar extends StatelessWidget {
             with_picture!
                 ? Container(
                     margin: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                         color: COLORS.backGroundColor,
                         borderRadius: BorderRadius.circular(15)),
                     child: CustomSvgPicture(
                       assetName: assetName,
-                      height: 40,
-                      width: 40,
+                      height: 40.h,
+                      width: 40.w,
                     ),
                   )
                 : SizedBox(),

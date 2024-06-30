@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/SubjectPagesModel.dart';
-import 'package:shater/data/model/question_subject_model.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';
@@ -23,7 +22,6 @@ class TeacherExplanationController extends BaseController {
   List<Classes> _classes = [];
   List<Classes> get classes => _classes;
   SubjectPagesModel subjectPagesModel = SubjectPagesModel();
-  QuestionPageModel specificPageExercisesModel = QuestionPageModel();
   @override
   void onInit() {
     super.onInit();
@@ -36,7 +34,7 @@ class TeacherExplanationController extends BaseController {
   }
 
   Classes? getClassForItem(int? id) {
-    return this.classes?.firstWhere((element) => element.id == '$id');
+    return this.classes.firstWhere((element) => element.id == '$id');
   }
 
   void teacherCoursesList() async {
@@ -90,32 +88,4 @@ class TeacherExplanationController extends BaseController {
     );
   }
 
-  getSpecificPageExercisesModelList(
-      {required int subject_id,
-      required int pageFrom,
-      required int PageTo}) async {
-    updateViewType(ViewType.loading);
-
-    await _teacherUseCaseImp
-        ?.getSpecificPageExercisesList(
-            subject_id: subject_id, pageFrom: pageFrom, PageTo: PageTo)
-        .then(
-      (value) {
-        value?.fold(
-          (l) {
-            updateViewType(ViewType.error);
-          },
-          (s) async {
-            if (s.questions!.isEmpty) {
-              updateViewType(ViewType.empty);
-            } else {
-              specificPageExercisesModel = await s;
-              updateViewType(ViewType.success);
-            }
-          },
-        );
-        update();
-      },
-    );
-  }
 }

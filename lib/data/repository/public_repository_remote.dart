@@ -19,11 +19,10 @@ class PublicRepositoryRemote extends PublicRepository {
   PublicRepositoryRemote(this._apiClient);
 
   @override
-  Future<Either<ApiException, List<PublicModel>>?> fetchCity(int countryId) async {
+  Future<Either<ApiException, List<PublicModel>>?> fetchCity(
+      int countryId) async {
     final completer = Completer<Either<ApiException, List<PublicModel>>?>();
-    final param ={
-      'country_id':countryId
-    };
+    final param = {'country_id': countryId};
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.getCities,
@@ -78,9 +77,10 @@ class PublicRepositoryRemote extends PublicRepository {
     }
     return completer.future;
   }
-  
+
   @override
-  Future<Either<ApiException, DataRegisterModel>?> fetchClassStudent(int cityId,int schoolId)async {
+  Future<Either<ApiException, DataRegisterModel>?> fetchClassStudent(
+      int cityId, int schoolId) async {
     final completer = Completer<Either<ApiException, DataRegisterModel>?>();
     final param = {
       "city_id": cityId,
@@ -112,12 +112,10 @@ class PublicRepositoryRemote extends PublicRepository {
   }
 
   @override
-  Future<Either<ApiException, List<Classes>>?> fetchClassTeacher(String subject, int countryId)async {
+  Future<Either<ApiException, List<Classes>>?> fetchClassTeacher(
+      String subject, int countryId) async {
     final completer = Completer<Either<ApiException, List<Classes>>?>();
-    final param = {
-      "subject": subject,
-      'country_id':countryId
-    };
+    final param = {"subject": subject, 'country_id': countryId};
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.getClasses,
@@ -141,6 +139,4 @@ class PublicRepositoryRemote extends PublicRepository {
     }
     return completer.future;
   }
-
-  
 }
