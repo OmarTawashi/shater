@@ -8,11 +8,11 @@ import 'package:shater/presentation/screens/teacher/Explanation/teacher_explanat
 import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_item_subject.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
-import '../../base/animator_container.dart';
-import '../../base/intike_tab_bar.dart';
-import '../../base/perfect_app_bar.dart';
-import '../../base/tap_section.dart';
-import '../My Explanation/teacher_my_lessons_controller.dart';
+import '../../../base/animator_container.dart';
+import '../../../base/intike_tab_bar.dart';
+import '../../../base/perfect_app_bar.dart';
+import '../../../base/tap_section.dart';
+import '../../My Explanation/teacher_my_lessons_controller.dart';
 
 class TeacherExplanationScreen extends StatelessWidget {
   const TeacherExplanationScreen({super.key});

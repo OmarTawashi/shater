@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/data/model/public_model.dart';
 import 'package:shater/data/model/user.dart';
-import '../../Explanation/teacher_explanation_screen.dart';
+import '../../Explanation/view/teacher_explanation_screen.dart';
 import '../../My Explanation/teacher_my_lessons_screen.dart';
 import '../../practice/practice_screen.dart';
 import '../../subscription/subscribers_screen.dart';

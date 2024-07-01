@@ -45,6 +45,8 @@ abstract class RoutesName {
   static const teacherPagesLessonsScreen = '/teacher-pages-lessons-screen';
   static const teacherMyLessonsScreen = '/teacher-my-lessons-screen';
   static const selectedPageExercise = '/selected-page-exercise';
+  static const teacherAddExercise = '/add_exercise_screen';
+
 
 
 }
@@ -101,4 +103,7 @@ abstract class Routes {
 
   static String getTeacherMyLessonsScreen() =>
       RoutesName.teacherMyLessonsScreen;
+      
+  static String getTeacherAddExercise() =>
+      RoutesName.teacherAddExercise;
 }

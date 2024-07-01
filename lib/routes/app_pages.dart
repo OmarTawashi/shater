@@ -53,6 +53,7 @@ import 'package:shater/presentation/screens/edit%20profile/take%20image/view/tak
 import 'package:shater/presentation/screens/student/teacher%20details/binding/teacher_details_binding.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/view/teacher_details_screen.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/selected_page_exercise_controller_.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/add_exercise_screen.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/view/teacher_exercise_subject_screen.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/teacher_my_lessons_bindings.dart';
 import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/teacher_pages_lessons_binding%20.dart';
@@ -238,7 +239,11 @@ class AppPages {
     ),
     GetPage(
         name: RoutesName.selectedPageExerciseScreen,
-        page: () => const SplashScreen(),
+        page: () => const SelectedPageEerciseScreen(),
+        binding: SpalchBinding()),
+    GetPage(
+        name: RoutesName.teacherAddExercise,
+        page: () => const AddExerciseScreen(),
         binding: SpalchBinding()),
   ];
 }

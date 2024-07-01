@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/selected_page_exercise_controller_.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/custom_button.dart';
+import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
@@ -45,13 +46,16 @@ class SelectedPageEerciseScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.only(end: 40.w),
-            child: CircleAvatar(
-              radius: 25.r,
-              backgroundColor: COLORS.primaryColor,
-              child: const Icon(
-                Icons.add,
-                size: 40,
-                color: Colors.white,
+            child: GestureDetector(
+              onTap: () => Get.toNamed(Routes.getTeacherAddExercise()),
+              child: CircleAvatar(
+                radius: 25.r,
+                backgroundColor: COLORS.primaryColor,
+                child: const Icon(
+                  Icons.add,
+                  size: 40,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -88,6 +92,7 @@ class SelectedPageEerciseScreen extends StatelessWidget {
             ),
             Expanded(
               child: ListView.separated(
+                physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.all(16),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Container(

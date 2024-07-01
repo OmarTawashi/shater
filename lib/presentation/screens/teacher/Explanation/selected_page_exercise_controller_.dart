@@ -38,13 +38,6 @@ class SelectedPageExerciseControoler extends BaseController {
             } else {
               specificPageExercisesModel = response;
               updateViewType(ViewType.success);
-              print(
-                  "*///*/*/*/*/*/*/*/*/*/*/********************************//*/////////////*");
-              print(
-                  "///////////////${specificPageExercisesModel!.items!.first.questions!.length}");
-
-              print(
-                  "*///*/*/*/*/*/*/*/*/*/*/********************************//*/////////////*");
             }
           },
         );
