@@ -3,7 +3,6 @@ import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/subject_video_model.dart';
-import 'package:shater/data/model/vedio_subject_teacher.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';

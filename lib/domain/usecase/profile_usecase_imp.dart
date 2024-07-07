@@ -3,7 +3,6 @@ import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/profile_repository.dart';
 import 'package:shater/core/usecase/profile_usecase.dart';
 import 'package:shater/data/model/empty_model.dart';
-import 'package:shater/data/model/result_exam_model.dart';
 import 'package:shater/data/model/user.dart';
 
 class ProfileUseCaseImp extends ProfileUseCase {

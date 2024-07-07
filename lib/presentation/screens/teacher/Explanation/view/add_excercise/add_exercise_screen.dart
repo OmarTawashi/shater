@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shater/flavors/environment.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/custom_add_quastion_screen.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
@@ -11,48 +13,48 @@ class AddExerciseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<CardModel> cards = [
       CardModel(
-        imageUrl: IMAGES.comprehensivetraining,
-        title: "الشامل",
-        subtitle:
-            'انشاء معادلات حسابية ، أو كتابات نصية ، أو كليهما ، أو وضع تخطي إذا كانت الصفحة ليس فيها تدريبات',
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.comprehensivetraining,
+          title: "الشامل",
+          subtitle:
+              'انشاء معادلات حسابية ، أو كتابات نصية ، أو كليهما ، أو وضع تخطي إذا كانت الصفحة ليس فيها تدريبات',
+          routeName: "routeName",
+          exerciseType: ExerciseType.ALSHAMEL),
       CardModel(
-        imageUrl: IMAGES.multiple_choice_training,
-        title: "اختيار من متعدد",
-        subtitle: "انشاء اختيارات متعددة من صور ونصوص",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.multiple_choice_training,
+          title: "اختيار من متعدد",
+          subtitle: "انشاء اختيارات متعددة من صور ونصوص",
+          routeName: "routeName",
+          exerciseType: ExerciseType.MULTIPLECHOISE),
       CardModel(
-        imageUrl: IMAGES.ranking_training,
-        title: "الترتيب",
-        subtitle: "ترتيب الصور أو النصوص",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.ranking_training,
+          title: "الترتيب",
+          subtitle: "ترتيب الصور أو النصوص",
+          routeName: "routeName",
+          exerciseType: ExerciseType.ORDARING),
       CardModel(
-        imageUrl: IMAGES.basic_answer_excercise,
-        title: "اجابة اساسية",
-        subtitle: "يمكن انشاء اكثر من اجابة مرتبطة بالاجابة الأساسية",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.basic_answer_excercise,
+          title: "اجابة اساسية",
+          subtitle: "يمكن انشاء اكثر من اجابة مرتبطة بالاجابة الأساسية",
+          routeName: "routeName",
+          exerciseType: ExerciseType.BASICQUASTION),
       CardModel(
-        imageUrl: IMAGES.true_or_false_training,
-        title: "صح و خطأ",
-        subtitle: "انشاء خيارين فقط للاجابة ",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.true_or_false_training,
+          title: "صح و خطأ",
+          subtitle: "انشاء خيارين فقط للاجابة ",
+          routeName: "routeName",
+          exerciseType: ExerciseType.TRUEORFALSE),
       CardModel(
-        imageUrl: IMAGES.matching_training,
-        title: "التوصيل",
-        subtitle: "انشاء صور أو نصوص وانشاء روابط صحيحة بينها ",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.matching_training,
+          title: "التوصيل",
+          subtitle: "انشاء صور أو نصوص وانشاء روابط صحيحة بينها ",
+          routeName: "routeName",
+          exerciseType: ExerciseType.DELEVARING),
       CardModel(
-        imageUrl: IMAGES.writting_training,
-        title: "التدريب الكتابي",
-        subtitle: "انشاء أحرف و كلمات للتدرب عليها من قبل الطالب",
-        routeName: "routeName",
-      ),
+          imageUrl: IMAGES.writting_training,
+          title: "التدريب الكتابي",
+          subtitle: "انشاء أحرف و كلمات للتدرب عليها من قبل الطالب",
+          routeName: "routeName",
+          exerciseType: ExerciseType.WRITING),
     ];
     return Scaffold(
       backgroundColor: Colors.white,
@@ -155,9 +157,17 @@ class AddExerciseScreen extends StatelessWidget {
                     Padding(
                       padding:
                           EdgeInsetsDirectional.symmetric(horizontal: 10.w),
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey,
+                      child: GestureDetector(
+                        onTap: () => Get.to(
+                          () => CustomAddQuastionScreen(
+                            appBarTitle: cards[index].title,
+                            exerciseType: cards[index].exerciseType,
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ],
@@ -171,14 +181,15 @@ class AddExerciseScreen extends StatelessWidget {
   }
 }
 
-
 class CardModel {
   final String title;
   final String subtitle;
   final String routeName;
   final String imageUrl;
+  final ExerciseType exerciseType;
 
   CardModel({
+    required this.exerciseType,
     required this.imageUrl,
     required this.title,
     required this.subtitle,

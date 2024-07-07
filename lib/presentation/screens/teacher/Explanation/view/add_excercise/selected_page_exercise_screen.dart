@@ -8,7 +8,7 @@ import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
-import '../../../../../util/font_style.dart';
+import '../../../../../../util/font_style.dart';
 
 class SelectedPageEerciseScreen extends StatelessWidget {
   const SelectedPageEerciseScreen({super.key, this.selected_page});
