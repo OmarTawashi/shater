@@ -17,11 +17,12 @@ class ProfileRepositoryRemote extends ProfileRepository {
   ProfileRepositoryRemote(this._apiClient);
 
   @override
-  Future<Either<ApiException, User>?> fetchProfile() async {
+  Future<Either<ApiException, User>?> fetchProfile(String token,{bool isTeacher = false}) async {
     final completer = Completer<Either<ApiException, User>?>();
     try {
       await ApiClient.requestData(
-        endpoint: ApiConstant.profile,
+        endpoint: isTeacher ? ApiConstant.teacherProfile : ApiConstant.studentProfile,
+        headers: ApiConstant.getHeader(token),
         requestType: RequestType.get,
         create: () => APIResponse<User>(
           create: () => User(),

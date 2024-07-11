@@ -1,5 +1,6 @@
 // import 'dart:async';
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -168,6 +169,9 @@ class ApiClient {
             options: Options(headers: headers),
           );
         } else if (requestType == RequestType.post) {
+          log("=======================================================================");
+          log("requestData post 1");
+          log("=======================================================================");
           response = await _dio.post(
             '${ApiConstant.baseUrl}$endpoint',
             data: data,
@@ -175,6 +179,9 @@ class ApiClient {
             onSendProgress: onSendProgress,
             options: Options(headers: headers),
           );
+          log("=======================================================================");
+          log("requestData post 2");
+          log("=======================================================================");
         } else if (requestType == RequestType.put) {
           response = await _dio.put(
             '${ApiConstant.baseUrl}$endpoint',
@@ -192,24 +199,37 @@ class ApiClient {
         }
         try {
           if (onSuccess != null) {
+            log("=======================================================================");
+            log("requestData onSuccess 1");
+
             ResponseWrapper<T> responseeWrapper =
                 ResponseWrapper.init(create: create, data: response.data);
+            log("requestData onSuccess 2");
             responseeWrapper.response = response;
+            log("requestData onSuccess 3");
             await onSuccess(responseeWrapper);
+            log("=======================================================================");
           }
           if (onSuccessJson != null) {
+            log("requestData onSuccessJson 1");
             onSuccessJson(response.data);
+            log("requestData onSuccessJson 2");
           }
           if (onSuccessdynamic != null) {
+            log("requestData onSuccessdynamic 1");
             onSuccessdynamic(response.data);
+            log("requestData onSuccessdynamic 2");
           }
         } on DioException catch (err) {
+          log("requestData DioException 1");
           _handleDioError(error: err, onError: onError);
         }
       } on DioException catch (error) {
+        log("requestData DioException 2");
         // final data = ResponseWrapper.init(create: create, data: error.response?.data);
         _handleDioError(error: error, onError: onError);
       } on TimeoutException {
+        log("requestData TimeoutException 1");
         onError!(
           ApiException(
             message: 'time_out_connection'.tr,
@@ -217,6 +237,7 @@ class ApiClient {
           ),
         );
       } on SocketException {
+        log("requestData SocketException 1");
         onError!(
           ApiException(
             message: 'no_internet_connection'.tr,

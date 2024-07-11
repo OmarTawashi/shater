@@ -8,11 +8,13 @@ import '/flavors/build_config.dart';
 import '/flavors/env_config.dart';
 import '/flavors/environment.dart';
 import 'core/controller/init_app.dart';
+import 'flavors/dio_manage_class.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final languages = await InitApp.initLanguage();
+  DioManagerClass.getInstance.init();
   SharedPreferences shared = await SharedPreferences.getInstance();
   Get.lazyPut(() => shared);
   EnvConfig prodConfig = EnvConfig(

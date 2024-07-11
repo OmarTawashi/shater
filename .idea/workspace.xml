@@ -9,33 +9,82 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="subscribers screen">
+    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="login || child_login">
+      <change afterPath="$PROJECT_DIR$/assets/gifs/loading_shimmer.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/add_user_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/default_user_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/flavors/dio_manage_class.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/binding/add_child_binding.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/controller/add_child_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/view/add_child_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/view/take_photo_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/custom_border_text.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/custom_edit_form.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/intike_ticket.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/base/button_settings.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/delete_account_dialog.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/student_profile_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/teacher_profile_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/add_child_button.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/brief_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/profile_children_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualification_item_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualifications_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/widgets/custom_network_image.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/app_shared_data.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/assets_manager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/controller/root_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/controller/root_binding.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/controller/shared_prefrences.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/controller/shared_prefrences.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/network/api_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/api_client.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/repository/profile_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/repository/profile_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/usecase/auth_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/usecase/auth_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/usecase/profile_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/usecase/profile_usecase.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/model/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/model/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/profile_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/profile_repository_remote.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/profile_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/profile_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/public_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/public_usecase_imp.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/flavors/myapp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flavors/myapp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_dev.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_dev.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_prod.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_prod.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/controller/auth_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/controller/auth_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/widgets/rate_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/widgets/rate_app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/childern_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/childern_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/item_childern.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/item_childern.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/button_bottom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/button_bottom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/custom_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/custom_text_form_field.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/image_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/image_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/city/view/city_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/city/view/city_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/binding/classe_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/binding/classe_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/controller/classe_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/controller/classe_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/view/classe_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/view/classe_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/controller/edit_profile_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/controller/edit_profile_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/view/take_image_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/view/take_image_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/widget/grid_avatar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/widget/grid_avatar_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/edit_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/edit_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_border_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_border_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_edit_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_edit_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/controller/profile_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/controller/profile_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/view/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/main_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/intike_profile_imoji.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/intike_profile_imoji.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/binding/school_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/binding/school_bindings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/controller/school_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/controller/school_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/view/school_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/view/school_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/api_constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/dimensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/dimensions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/shared_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/shared_constant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shater.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shater.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +94,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Eng.Anas\.android\avd\Medium_Phone_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Eng.Anas\.android\avd\Medium_Phone_API_34.avd)]" />
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
@@ -111,37 +160,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "AnalyzeApkAction.lastApkPath": "C:/Users/TOP/Documents/GitHub/shater",
-    "Flutter.main.dart.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "anas",
-    "io.flutter.reload.alreadyRun": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/TOP/Documents/GitHub/shater",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;AnalyzeApkAction.lastApkPath&quot;: &quot;C:/Users/TOP/Documents/GitHub/shater&quot;,
+    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
+    &quot;Flutter.main_dev.dart.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;anas&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/anas/programing/flutter/shater/lib/flavors&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;device.mirroring&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\anas\programing\flutter\shater\lib\flavors" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\add child" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\base" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\profile\widgets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\anas\programing\flutter\shater\assets\images" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\TeacherProfile\view" />
       <recent name="$PROJECT_DIR$/assets/icons" />
       <recent name="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Flutter.main.dart">
+  <component name="RunManager" selected="Flutter.main_dev.dart">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="shater_android" />
       <option name="DEPLOY" value="true" />
@@ -268,10 +327,20 @@
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="main_dev.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main_dev.dart" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Android App.main_dev.dart" />
       <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Flutter.main_dev.dart" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter.main_dev.dart" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -354,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714404572635</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="login || child_login">
+      <option name="closed" value="true" />
+      <created>1718987853590</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718987853590</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -391,6 +468,7 @@
     <MESSAGE value="issue files teacher_controller.dart screen" />
     <MESSAGE value="dashborad teacher_controller.dart screen" />
     <MESSAGE value="subscribers screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="subscribers screen" />
+    <MESSAGE value="login || child_login" />
+    <option name="LAST_COMMIT_MESSAGE" value="login || child_login" />
   </component>
 </project>

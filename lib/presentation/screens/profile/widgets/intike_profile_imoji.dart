@@ -1,20 +1,27 @@
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../util/dimensions.dart';
+import '../../../widgets/custom_network_image.dart';
+import '../../base/image_user.dart';
 import '../../base/text_custom.dart';
 
 class IntikeProfileImoji extends StatelessWidget {
   final String? asset;
+  final String? imageUrl;
   final String? text;
   final Function()? onTap;
   final bool isEnable;
+
   const IntikeProfileImoji({
     super.key,
     this.asset,
     this.text,
     this.onTap,
     this.isEnable = false,
+    this.imageUrl,
   });
 
   @override
@@ -24,25 +31,43 @@ class IntikeProfileImoji extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 65,
-            width: 65,
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(72, 131, 196, 1), shape: BoxShape.circle),
-            child: Image.asset(
-              asset ?? 'asset',
-              height: isEnable ? 70 : 50,
-              width: isEnable ? 70 : 50,
-              color: isEnable ? Colors.white : Color.fromRGBO(159, 191, 216, 1),
-            ),
+          Stack(
+            children: [
+              Container(
+                height: isEnable ? 65.h : 60.h,
+                width: isEnable ? 65.w : 60.w,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(72, 131, 196, 1), shape: BoxShape.circle),
+                child: ImageUser(
+                        imageUrl: imageUrl,
+                        height: isEnable ? 70.h : 50.h,
+                        width: isEnable ? 70.w : 50.w,
+                      ),
+              ),
+              !isEnable ? Container(
+                height: isEnable ? 65.h : 60.h,
+                width: isEnable ? 65.w : 60.w,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.5), shape: BoxShape.circle),
+              ) : SizedBox.shrink(),
+
+            ],
           ),
           SizedBox(
-            height: Dimensions.paddingSize5,
+            height: Dimensions.paddingSize10,
           ),
-          CustomText(
-            text: text ?? '',
-            color: isEnable ? Colors.white : Color.fromRGBO(159, 191, 216, 1),
-            fontSize: Dimensions.fontSize12,
+          SizedBox(
+            width: isEnable ? 65.w : 60.w,
+            child: CustomText(
+              text: text ?? '',
+              textAlign: TextAlign.center,
+              maxLine: 2,
+              overFlow: TextOverflow.ellipsis,
+              color: isEnable ? Colors.white : Color.fromRGBO(159, 191, 216, 1),
+              fontSize: isEnable ? Dimensions.fontSize12 : Dimensions.fontSize10,
+            ),
           )
         ],
       ),

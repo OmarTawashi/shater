@@ -24,6 +24,10 @@ abstract class AuthUseCase {
     String classId,
     File imageFile
   );
+
+  Future<Either<ApiException, ChildUser>?> addChild(int parentId,String fullName, int schoolId,
+      int cityId, String classId, File? imageFile);
+
   Future<Either<ApiException, User>?> registerTeacher(
       String email,
       String password,
@@ -41,4 +45,6 @@ abstract class AuthUseCase {
   Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
 
   Future<Either<ApiException, EmptyModel>?> signOut();
+
+  Future<Either<ApiException, EmptyModel>?> deleteAccount();
 }

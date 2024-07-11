@@ -7,6 +7,7 @@ class CustomBorderText extends StatelessWidget {
   final Widget? child;
   final double? horizontalPadding;
   final double horizontalMargin;
+
   const CustomBorderText(
       {super.key,
       this.horizontalPadding,

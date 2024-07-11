@@ -12,8 +12,9 @@ class ProfileUseCaseImp extends ProfileUseCase {
   ProfileUseCaseImp(this._profileRepository);
 
   @override
-  Future<Either<ApiException, User>?> fetchProfile() {
-    return _profileRepository.fetchProfile();
+  Future<Either<ApiException, User>?> fetchProfile(String token ,
+      {bool isTeacher = false}) {
+    return _profileRepository.fetchProfile(token , isTeacher : isTeacher);
   }
 
   @override

@@ -158,6 +158,17 @@
     "my lessons": "My lessons",
     "practice" : "Practice",
     "explanations" : "Explanations",
-    "subscribers" : "Subscribers"
+    "subscribers" : "Subscribers",
+    "add student" : "add student",
+    "full name" : "full name",
+    "add new student" : "add new student",
+    "add" : "add",
+    "choose" : "choose",
+    "updated successfully" : "updated successfully",
+    "delete_account" : "delete account",
+    "delete_my_account" : "delete my account",
+    "do_you_want_delete_account" : "Do you want to delete your Shater account?",
+    "enter_delete_my_account" : "Please enter \"Delete my account\" to confirm",
+    "back" : "back"
 
 }

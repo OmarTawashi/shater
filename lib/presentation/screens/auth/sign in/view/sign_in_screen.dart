@@ -8,6 +8,7 @@ import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/routes/app_routes.dart';
 
+import '../../../../../core/base/base_mixin.dart';
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';

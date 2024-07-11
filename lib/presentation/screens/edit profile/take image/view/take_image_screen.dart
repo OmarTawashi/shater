@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
+import 'package:shater/presentation/screens/add%20child/controller/add_child_controller.dart';
 import 'package:shater/presentation/screens/auth/resgister/controller/register_controller.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/widgets/item_childern.dart';
 import 'package:shater/presentation/screens/base/body_select_photo.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/edit%20profile/controller/edit_profile_controller.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/controller/take_image_controller.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
 
+import '../widget/grid_avatar_view.dart';
+
 class TakeImageScreen extends StatelessWidget {
-  const TakeImageScreen({super.key});
+  const TakeImageScreen({super.key, required this.typeFrom});
+
+  final int typeFrom;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +33,12 @@ class TakeImageScreen extends StatelessWidget {
             leadingWidth: 200,
             leading: GestureDetector(
               onTap: () {
-                registerController
-                    .getFunUserType(registerController.authController.userType);
+                if (typeFrom == 0) {
+                  registerController.getFunUserType(
+                      registerController.authController.userType);
+                } else {
+                  Get.back();
+                }
               },
               child: Padding(
                 padding:
@@ -36,7 +46,7 @@ class TakeImageScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     CustomText(
-                      text: 'skip',
+                      text: typeFrom == 0 ? 'skip' : 'back',
                       fontSize: Dimensions.fontSize16,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
@@ -49,8 +59,20 @@ class TakeImageScreen extends StatelessWidget {
             builder: (controller) => controller.imageFile != null
                 ? GestureDetector(
                     onTap: () {
-                      registerController.getFunUserType(
-                          registerController.authController.userType);
+                      if (typeFrom == 0) {
+                        registerController.getFunUserType(
+                            registerController.authController.userType);
+                      } else if(typeFrom == 1){
+                        AddChildController addChildController =
+                            Get.find<AddChildController>();
+                        addChildController.setImageFile(controller.imageFile);
+                        Get.back();
+                      }else{
+                        EditProfileController addChildController =
+                        Get.find<EditProfileController>();
+                        addChildController.setImageFile(controller.imageFile);
+                        Get.back();
+                      }
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(50, 0, 50, 50),
@@ -157,11 +179,19 @@ class TakeImageScreen extends StatelessWidget {
                     onTap: () {
                       if (controller.imageFile == null) {
                         controller.setTypeAvatar('male');
-                        Get.toNamed(Routes.getGridViewAvatar());
+                        typeFrom == 0
+                            ? Get.toNamed(Routes.getGridViewAvatar())
+                            : Get.to(GridViewAvatar(
+                                typeFrom: typeFrom,
+                              ));
                       } else {
                         controller.setImageFile(null);
                         controller.setTypeAvatar('male');
-                        Get.toNamed(Routes.getGridViewAvatar());
+                        typeFrom == 0
+                            ? Get.toNamed(Routes.getGridViewAvatar())
+                            : Get.to(GridViewAvatar(
+                          typeFrom: typeFrom,
+                        ));
                       }
                     },
                     image: 'assets/male/10.png',
@@ -171,11 +201,19 @@ class TakeImageScreen extends StatelessWidget {
                     onTap: () {
                       if (controller.imageFile == null) {
                         controller.setTypeAvatar('female');
-                        Get.toNamed(Routes.getGridViewAvatar());
+                        typeFrom == 0
+                            ? Get.toNamed(Routes.getGridViewAvatar())
+                            : Get.to(GridViewAvatar(
+                          typeFrom: typeFrom,
+                        ));
                       } else {
                         controller.setImageFile(null);
                         controller.setTypeAvatar('female');
-                        Get.toNamed(Routes.getGridViewAvatar());
+                        typeFrom == 0
+                            ? Get.toNamed(Routes.getGridViewAvatar())
+                            : Get.to(GridViewAvatar(
+                          typeFrom: typeFrom,
+                        ));
                       }
                     },
                     image: 'assets/female/8.png',
