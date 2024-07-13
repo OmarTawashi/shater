@@ -11,19 +11,22 @@ abstract class BaseAuthRepository {
       String email, String password);
 
   Future<Either<ApiException, User>?> childSignIn(
-      String email, int id,  int parentId);
+      String email, int id, int parentId);
 
   Future<Either<ApiException, User>?> registerStudent(
-    String email,
-    String password,
-    String passwordConfirmation,
-    int schoolId,
-    String name,
-    int countryId,
-    int cityId,
-    String classId,
-    File? imageFile
-  );
+      String email,
+      String password,
+      String passwordConfirmation,
+      int schoolId,
+      String name,
+      int countryId,
+      int cityId,
+      String classId,
+      File? imageFile);
+
+  Future<Either<ApiException, ChildUser>?> addChild(int parentId, String fullName,
+      int schoolId, int cityId, String classId, File? imageFile);
+
   Future<Either<ApiException, User>?> registerTeacher(
       String email,
       String password,
@@ -34,12 +37,13 @@ abstract class BaseAuthRepository {
       int countryId,
       int cityId,
       String classIDS,
-      File? imageFile
-      );
+      File? imageFile);
 
   Future<Either<ApiException, EmptyModel>?> checkEmail(String email);
 
   Future<Either<ApiException, EmptyModel>?> ForgetPassword(String email);
-  
+
   Future<Either<ApiException, EmptyModel>?> signOut();
+
+  Future<Either<ApiException, EmptyModel>?> deleteAccount();
 }

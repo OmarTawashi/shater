@@ -6,9 +6,11 @@ import '../../../base/svgpicture_custom.dart';
 
 class RateApp extends StatelessWidget {
   final double? initRate;
+  final double? itemSize;
   const RateApp({
     super.key,
     this.initRate,
+    this.itemSize,
   });
 
   @override
@@ -19,7 +21,7 @@ class RateApp extends StatelessWidget {
       direction: Axis.horizontal,
       allowHalfRating: true,
       itemCount: 5,
-      itemSize: 27,
+      itemSize: itemSize ?? 27,
       unratedColor: const Color.fromRGBO(0, 208, 254, 1),
       itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
       ratingWidget: RatingWidget(

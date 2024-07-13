@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shater/util/constant.dart';
 
 import '../../../util/color.dart';
@@ -8,19 +9,39 @@ import '../../../util/font_style.dart';
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
+  final TextAlign? textAlign;
+  final TextStyle? style;
+  final TextStyle? hintStyle;
   final TextInputType? keyboardType;
   final String? textValidation;
   final bool? enabledField;
   final Function(String)? onChanged;
   final Widget? suffix;
   final bool obscureText;
+  final bool filled;
   final TextInputAction? textInputAction;
+  final double? borderRadius;
+  final Color? fillColor;
+  final Color? borderColor;
+  final Color? textColor;
+  final Color? cursorColor;
+  final double? textSize;
   const CustomTextFormField(
       {super.key,
       this.hintText,
+      this.style,
+      this.hintStyle,
+      this.textColor,
+      this.cursorColor,
+      this.textSize,
+      this.borderRadius,
+      this.borderColor,
+      this.fillColor,
+      this.textAlign,
       this.controller,
       this.onChanged,
       this.enabledField = true,
+      this.filled = true,
       this.keyboardType,
       this.obscureText = false,
       this.suffix,
@@ -36,12 +57,12 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       textInputAction:textInputAction ,
       obscureText: obscureText,
-      textAlign: TextAlign.center,
-      cursorColor: Colors.white,
-      style: FontStyleConstant.hNLTRegular.copyWith(
-          color: Colors.white,
+      textAlign: textAlign ?? TextAlign.center,
+      cursorColor: cursorColor ?? Colors.white,
+      style: style ?? FontStyleConstant.hNLTRegular.copyWith(
+          color: textColor ?? Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: Dimensions.fontSize15,
+          fontSize: textSize ?? Dimensions.fontSize15,
           locale: Locale(APPCONSTANT.languages[1].languageCode ?? '',
               APPCONSTANT.languages[0].languageCode)),
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -58,28 +79,28 @@ class CustomTextFormField extends StatelessWidget {
         suffixIcon: suffix,
         suffixIconColor: COLORS.secanderyColor,
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(13),
-            borderSide: const BorderSide(color: COLORS.strokeColor, width: 2)),
-        contentPadding: const EdgeInsets.all(14),
-        filled: true,
-        fillColor: Colors.transparent,
+            borderRadius: BorderRadius.circular(borderRadius ?? 13),
+            borderSide: BorderSide(color: borderColor ?? COLORS.strokeColor, width: 2)),
+        contentPadding: EdgeInsets.symmetric(horizontal: 14.w,vertical: 14.h),
+        filled: filled,
+        fillColor: fillColor ?? Colors.transparent,
         hintText: hintText,
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(13),
-          borderSide: const BorderSide(color: COLORS.strokeColor, width: 2),
+          borderRadius: BorderRadius.circular(borderRadius ?? 13),
+          borderSide: BorderSide(color: borderColor ?? COLORS.strokeColor, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(13),
-            borderSide: const BorderSide(color: COLORS.strokeColor, width: 2)),
-        hintStyle: FontStyleConstant.hNLTRegular.copyWith(
+            borderRadius: BorderRadius.circular(borderRadius ?? 13),
+            borderSide: BorderSide(color: borderColor ?? COLORS.strokeColor, width: 2)),
+        hintStyle: hintStyle ?? FontStyleConstant.hNLTRegular.copyWith(
           color: Color.fromRGBO(159, 191, 216, 1),
           fontWeight: FontWeight.bold,
           fontSize: Dimensions.fontSize15,
         ),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(13),
-            borderSide: const BorderSide(
-                color: Color.fromARGB(255, 10, 12, 14), width: 2)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 13),
+            borderSide: BorderSide(
+                color: borderColor ?? Color.fromARGB(255, 10, 12, 14), width: 2)),
       ),
     );
   }

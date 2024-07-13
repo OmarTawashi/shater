@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
 import 'package:shater/presentation/privcy%20policy/terms/terms_condition.dart';
+import 'package:shater/presentation/screens/add%20child/view/add_child_screen.dart';
 import 'package:shater/presentation/screens/auth/base%20login/view/base_login_screen.dart';
 import 'package:shater/presentation/screens/auth/forget%20password/binding/forget_password_binding.dart';
 import 'package:shater/presentation/screens/auth/forget%20password/view/forget_password_screen.dart';
@@ -19,7 +20,7 @@ import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_scr
 import 'package:shater/presentation/screens/level/bindings/level_bindings.dart';
 import 'package:shater/presentation/screens/level/view/level_screen.dart';
 import 'package:shater/presentation/screens/profile/bindings/profile_binding.dart';
-import 'package:shater/presentation/screens/profile/view/profile_screen.dart';
+import 'package:shater/presentation/screens/profile/view/main_profile_screen.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/presentation/screens/splach/binding/spalch_binding.dart';
@@ -61,6 +62,7 @@ import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/
 import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/teacher_dashbord_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 
+import '../presentation/screens/add child/binding/add_child_binding.dart';
 import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
@@ -108,6 +110,11 @@ class AppPages {
       binding: EditProfileBinding(),
     ),
     GetPage(
+      name: RoutesName.addChildScreen,
+      page: () => const AddChildScreen(),
+      binding: AddChildBinding(),
+    ),
+    GetPage(
         name: RoutesName.resultSubjectScreen,
         page: () => const ResultSubjectScreen(),
         binding: ResultSubjectBinding()),
@@ -119,6 +126,9 @@ class AppPages {
       name: RoutesName.exerciseDetailsScreen,
       page: () => const ExerciseDetailsScreen(),
     ),
+    GetPage(name: RoutesName.profileScreen, page: () => const MainProfileScreen(), binding: ProfileBinding()),
+    GetPage(name: RoutesName.createNameScreen, page: () => CreateNameScreen(), binding: RegisterBinding()),
+    GetPage(name: RoutesName.takeImageScreen, page: () => TakeImageScreen(typeFrom: 0,), binding: TakeImageBinding()),
     GetPage(
         name: RoutesName.profileScreen,
         page: () => const ProfileScreen(),
@@ -133,7 +143,7 @@ class AppPages {
         binding: TakeImageBinding()),
     GetPage(
       name: RoutesName.gridViewAvatar,
-      page: () => GridViewAvatar(),
+      page: () => GridViewAvatar(typeFrom: 0,),
     ),
     GetPage(
         name: RoutesName.forgetPasswordScreen,
@@ -151,6 +161,10 @@ class AppPages {
       name: RoutesName.privcyPolicyScreen,
       page: () => const PrivcyPolicyScreen(),
     ),
+    GetPage(name: RoutesName.classeScreen, page: () => const ClasseScreen(typeFrom: 0,), binding: ClasseBinding(0)),
+    GetPage(name: RoutesName.cityScreen, page: () => cityScreen(typeFrom: 0,), binding: CityBinding()),
+    GetPage(name: RoutesName.schoolScreen, page: () => const SchoolScreen(typeFrom: 0,), binding: SchoolBinding(0)),
+    GetPage(name: RoutesName.signUpScreen, page: () => SignUpScreen(), binding: SignUpBinding()),
     GetPage(
         name: RoutesName.classeScreen,
         page: () => const ClasseScreen(),
@@ -170,7 +184,7 @@ class AppPages {
     GetPage(
         name: RoutesName.signInScreen,
         page: () => SignInScreen(), //SignInController
-        binding: SignInBinding()),
+        ),
     GetPage(
       name: RoutesName.firstsScreen,
       page: () => const FirstsScreen(),

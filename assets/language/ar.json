@@ -160,6 +160,18 @@
     "practice" : "التدريب",
     "explanations" : "الشروح",
     "subscribers" : "المشتركين",
+    "add student" : "أضف طالب",
+    "full name" : "الاسم الثلاثي",
+    "add new student" : "اضافة طالب جديد",
+    "add" : "أضف",
+    "choose" : "اختر",
+    "updated successfully" : "تم تحديث البيانات بنجاح",
+    "delete_account" : "حذف حساب",
+    "delete_my_account" : "حذف حسابي",
+    "do_you_want_delete_account" : "هل تريد حذف حساب شاطر الخاص بك؟",
+    "enter_delete_my_account" : "الرجاء إدخال \"حذف حسابي\" للتأكيد",
+    "back" : "رجوع"
+    "subscribers" : "المشتركين",
     "myexplanation" : "شروحي",
     "explan":"مشروح",
     "notexplan":"غير مشروح"

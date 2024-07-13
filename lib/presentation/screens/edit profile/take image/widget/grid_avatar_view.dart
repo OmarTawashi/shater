@@ -8,7 +8,9 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class GridViewAvatar extends StatelessWidget {
-  const GridViewAvatar({super.key});
+  const GridViewAvatar({super.key, required this.typeFrom});
+
+  final int typeFrom;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +33,12 @@ class GridViewAvatar extends StatelessWidget {
            GestureDetector(
             onTap: controller.imageAvatarSelect != null
                 ? () {
-                  registerController.getFunUserType(
-                       registerController.authController.userType);
+              if(typeFrom == 0){
+                registerController.getFunUserType(
+                    registerController.authController.userType);
+              }else{
+                Get.back();
+              }
                   }
                 : null,
             child: Container(

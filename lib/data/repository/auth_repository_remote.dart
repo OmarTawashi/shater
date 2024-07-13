@@ -14,6 +14,7 @@ import 'package:shater/presentation/screens/auth/base%20login/controller/auth_co
 
 import '../../core/controller/shared_prefrences.dart';
 import '../../core/network/api_client.dart';
+import '../../flavors/dio_manage_class.dart';
 import '../../util/api_constant.dart';
 import '../model/user.dart';
 
@@ -49,7 +50,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           } else {
             final user = response.data?.item;
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "signInWithEmailPassword 1");
               ApiClient.updateHeader();
               completer.complete(Right(user!));
             }
@@ -66,7 +67,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
   }
 
   Future<Either<ApiException, User>?> childSignIn(
-      String email, int id,  int parentId) async {
+      String email, int id, int parentId) async {
     final completer = Completer<Either<ApiException, User>?>();
     final fcmToken = SharedPrefs.fcmToken ?? '';
     final deviceType = await DeviceInfoService.getDeviceType();
@@ -94,7 +95,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             log("child login success");
             final user = response.data?.item;
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveSelectedChild(ChildUser.fromJson(user.toJson()));
               ApiClient.updateHeader();
               completer.complete(Right(user));
             }
@@ -164,7 +165,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "registerStudent 1");
               ApiClient.updateHeader();
             }
           }
@@ -177,6 +178,80 @@ class AuthRepositoryRemote extends BaseAuthRepository {
       completer.complete(left(error));
     }
     return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, ChildUser>?> addChild(
+      int parentId,
+      String fullName,
+      int schoolId,
+      int cityId,
+      String classId,
+      File? imageFile) async {
+    // final completer = Completer<Either<ApiException, ChildUser>?>();
+    final data = {
+      "name": fullName,
+      "school_id": schoolId,
+      "city_id": cityId,
+      "class_id": classId,
+    };
+    // dio.FormData formData = await dio.FormData.fromMap(data);
+    // if (imageFile != null) {
+    //   formData.files.add(MapEntry(
+    //     'image',
+    //     await dio.MultipartFile.fromFile(imageFile.path ?? ''),
+    //   ));
+    // }
+    try {
+      if (imageFile != null) {
+        var response = await DioManagerClass.getInstance.dioMultiPartPostMethod(
+            url: ApiConstant.registerChild(parentId),
+            header: ApiConstant.header(TypeToken.Authorization),
+            file: imageFile,
+            body: data,
+            keyName: 'image');
+      } else {
+        var response = await DioManagerClass.getInstance.dioPostFormMethod(
+          url: ApiConstant.registerChild(parentId),
+          header: ApiConstant.header(TypeToken.Authorization),
+          body: data,
+        );
+      }
+
+      // await ApiClient.requestData(
+      //   endpoint: ApiConstant.registerChild(parentId),
+      //   requestType: RequestType.post,
+      //   create: () => APIResponse<ChildUser>(
+      //     create: () => ChildUser(),
+      //   ),
+      //   data: formData,
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
+      //   },
+      //   onSuccess: (response) {
+      //     if (response.data?.status == false ?? false) {
+      //       completer.complete(left(ApiException(
+      //         message: response.data?.errors?.first.message ?? "",
+      //         response: response.response,
+      //       )));
+      //     } else {
+      //       final user = response.data?.item;
+      //       completer.complete(Right(user ?? ChildUser()));
+      //       if (user != null) {
+      //         ApiClient.updateHeader();
+      //       }
+      //     }
+      //   },
+      //   onError: (error) {
+      //     log("addChild 2 : e : ${error.message}");
+      //     completer.complete(left(error));
+      //   },
+      // );
+    } on ApiException catch (error) {
+      log("addChild 2 : Exception : ${error.message}");
+      // completer.complete(left(error));
+    }
+    return null;
   }
 
   @override
@@ -236,7 +311,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "registerTeacher 1");
               ApiClient.updateHeader();
             }
           }
@@ -325,6 +400,37 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.logout,
+        requestType: RequestType.post,
+        create: () => APIResponse<EmptyModel>(
+          create: () => EmptyModel(),
+        ),
+        onSuccess: (response) {
+          if (response.data?.status == false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? EmptyModel()));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+
+  Future<Either<ApiException, EmptyModel>?> deleteAccount() async {
+    final completer = Completer<Either<ApiException, EmptyModel>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.deleteAccount,
         requestType: RequestType.post,
         create: () => APIResponse<EmptyModel>(
           create: () => EmptyModel(),
