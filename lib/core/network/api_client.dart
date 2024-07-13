@@ -41,7 +41,7 @@ class ApiClient {
       // 'X-Client-Platform-Name': DeviceInfo.systemName,
       // 'X-Client-Platform-Version': DeviceInfo.systemVersion,
     },
-    receiveTimeout: const Duration(milliseconds: 60 * 1000), // 1 minute
+    receiveTimeout: const Duration(seconds: 20), // 1 minute
   );
 
   static void updateHeader() {

@@ -12,8 +12,8 @@
     "please_drag_in_correct_index": "Please Drag Correct Item In Correct Postion",
     "this_not_contain_of_list": "This Item Is Drag Not Contain List",
     "view_results": "View Results",
-    "of_page" :"Of page",
-    "to_page" :"To page",
+    "of_page": "Of page",
+    "to_page": "To page",
     "correct_answer": "Correct Answer",
     "wrong_answer": "Wrong Answer",
     "use_answer": "Use Answer",
@@ -154,10 +154,15 @@
     "enter_acounts": "Enter Acounts",
     "have_an_account": "Have An Account?",
     "create_new_acounts": "Create new Acounts",
-
     "my lessons": "My lessons",
-    "practice" : "Practice",
-    "explanations" : "Explanations",
-    "subscribers" : "Subscribers"
-
+    "practice": "Practice",
+    "explanations": "Explanations",
+    "subscribers": "Subscribers",
+    "myexplanation": "myexplanation",
+    "explan": "explan",
+    "notexplan": "not explaned",
+    "add_explain": "add_explain ",
+    "practices": "practices",
+    "lets_explain": "lets_explain",
+    "types_of_exercise_questions": "Types of exercise questions"
 }

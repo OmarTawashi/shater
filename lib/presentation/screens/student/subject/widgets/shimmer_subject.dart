@@ -26,6 +26,7 @@ class SubjectShimmer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -63,6 +64,7 @@ class SubjectShimmer extends StatelessWidget {
               endIndent: 80.w,
               indent: 8,
             )
+          
           ],
         ),
       ),

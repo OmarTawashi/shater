@@ -1,18 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shater/data/model/subject_video_model.dart';
-
+import 'package:shater/util/images.dart';
 import '../../../../../util/dimensions.dart';
-import '../../../../../util/images.dart';
 import '../../../base/text_custom.dart';
 
 class ItemExerciseSubject extends StatelessWidget {
   final int index;
   final Function()? onTap;
   final SubjectVideo? subjectVideo;
-  const ItemExerciseSubject(
-      {super.key, this.subjectVideo, this.onTap, required this.index});
+  final String? image;
+  final String? subText;
+  final String? pageNo;
+  final Color? color;
+  const ItemExerciseSubject({
+    super.key,
+    this.subjectVideo,
+    this.onTap,
+    this.image,
+    this.subText,
+    this.pageNo,
+    this.color,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +38,7 @@ class ItemExerciseSubject extends StatelessWidget {
           borderRadius: BorderRadius.circular(13),
           image: DecorationImage(
             image: CachedNetworkImageProvider(
-              '${subjectVideo?.page?.image}',
+              image ?? "",
               errorListener: (p0) => AssetImage(IMAGES.exerciseSubject),
             ),
             fit: BoxFit.cover,
@@ -43,10 +53,10 @@ class ItemExerciseSubject extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color.fromRGBO(1, 1, 1, 0.5),
+                  color: color ?? Colors.black.withOpacity(0.5),
                 ),
                 child: CustomText(
-                  text: "${subjectVideo?.pageNo}",
+                  text: pageNo ?? "",
                   color: Colors.white,
                   textAlign: TextAlign.center,
                   fontSize: Dimensions.fontSize14,
@@ -61,10 +71,14 @@ class ItemExerciseSubject extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32),
-                  color: Colors.black.withOpacity(0.5),
+                  color: color ?? Colors.black.withOpacity(0.5),
                 ),
                 child: CustomText(
-                  text: "${subjectVideo?.questionsCount}" '\t' + 'exercises'.tr,
+                  text: subText ?? "",
+                  //  subjectVideo!.page!.isExplain! ? "yes" : "no",
+                  //  "${subjectVideo!.page!.isExplain?""}"
+                  //         '\t' +
+                  //     'exercises'.tr,
                   color: Colors.white,
                   textAlign: TextAlign.center,
                   fontSize: Dimensions.fontSize12,

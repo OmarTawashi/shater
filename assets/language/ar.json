@@ -159,6 +159,17 @@
     "my lessons": "دروسي",
     "practice" : "التدريب",
     "explanations" : "الشروح",
-    "subscribers" : "المشتركين"
+    "subscribers" : "المشتركين",
+    "myexplanation" : "شروحي",
+    "explan":"مشروح",
+    "notexplan":"غير مشروح"
+    ,
+    "add_explain":"أضف شرح",
+    "practices":"التدريبات",
+    "lets_explain":"اشرح",
+    "types_of_exercise_questions":"أنواع أسئلة التدريبات"
+
+
+
 
 }

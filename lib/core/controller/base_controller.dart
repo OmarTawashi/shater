@@ -34,6 +34,7 @@ class BaseController extends GetxController {
     _isLoading = isLoad;
     update();
   }
+
   handelError(ApiException response) {
     errorStr = response.message;
     switch (response.statusCode) {

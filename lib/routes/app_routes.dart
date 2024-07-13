@@ -10,10 +10,17 @@ abstract class RoutesName {
   static const signInScreen = '/sign-in-screen';
   static const firstsScreen = '/firsts-screen';
   static const exerciseSubjectScreen = '/exercise-subject-screen';
+  static const teacherExerciseSubjectScreen =
+      '/teacher_exercise_subject_screen';
+
   static const contactScreen = '/contact-screen';
+  static const selectedPageExerciseScreen = '/selected_page_exercise_screen';
+
   static const contactMeScreen = '/contact_me-screen';
   static const notificationDetails = '/notification-details';
   static const levelScreen = '/level-screen';
+  static const teacheMyExplanationScreen = '/teacheMy_explanation_screen';
+
   static const exerciseDetailsScreen = '/exercise-details-screen';
   static const cityScreen = '/city-screen';
   static const schoolScreen = '/school-screen';
@@ -37,14 +44,22 @@ abstract class RoutesName {
   static const teacherDashBoardScreen = '/teacher-dash-board-screen';
   static const teacherPagesLessonsScreen = '/teacher-pages-lessons-screen';
   static const teacherMyLessonsScreen = '/teacher-my-lessons-screen';
+  static const selectedPageExercise = '/selected-page-exercise';
+  static const teacherAddExercise = '/add_exercise_screen';
+
+
+
 }
 
 abstract class Routes {
   static String getSpalshScreen() => RoutesName.spalshScreen;
+  static String getselectedPageExerciseScreen() => RoutesName.selectedPageExerciseScreen;
+
   static String getHomeScreen() => RoutesName.homeScreen;
   static String getProfileScreen() => RoutesName.profileScreen;
   static String getLessonTeacherView() => RoutesName.lessonTeacherView;
-  static String getSubcriptionTeacherDetailsScreen() => RoutesName.subcriptionTeacherDetailsScreen;
+  static String getSubcriptionTeacherDetailsScreen() =>
+      RoutesName.subcriptionTeacherDetailsScreen;
   static String getEditProfileScreen() => RoutesName.editProfileScreen;
   static String getTeacherDetailsScreen() => RoutesName.teacherDetailsScreen;
   static String getResultSubjectScreen() => RoutesName.resultSubjectScreen;
@@ -53,7 +68,13 @@ abstract class Routes {
   static String getSignInScreen() => RoutesName.signInScreen;
   static String getForgetPasswordScreen() => RoutesName.forgetPasswordScreen;
   static String getExerciseSubjectScreen() => RoutesName.exerciseSubjectScreen;
+  static String getTeacherExerciseSubjectScreen() =>
+      RoutesName.teacherExerciseSubjectScreen;
+
   static String getPageSubjectScreen() => RoutesName.pageSubjectScreen;
+  static String getTeacheMyExplanationScreen() =>
+      RoutesName.teacheMyExplanationScreen;
+
   static String getGridViewAvatar() => RoutesName.gridViewAvatar;
   static String getSignUpScreen() => RoutesName.signUpScreen;
   static String getTakeImageScreen() => RoutesName.takeImageScreen;
@@ -74,11 +95,15 @@ abstract class Routes {
   static String getBaseQuestionScreen() => RoutesName.baseQuestionScreen;
   static String getFailureQuestionScrren() => RoutesName.failureQuestionScrren;
 
-  static String getTeacherDashBoardScreen() => RoutesName.teacherDashBoardScreen;
+  static String getTeacherDashBoardScreen() =>
+      RoutesName.teacherDashBoardScreen;
 
-  static String getTeacherPagesLessonsScreen() => RoutesName.teacherPagesLessonsScreen;
+  static String getTeacherPagesLessonsScreen() =>
+      RoutesName.teacherPagesLessonsScreen;
 
-  static String getTeacherMyLessonsScreen() => RoutesName.teacherMyLessonsScreen;
-
-
+  static String getTeacherMyLessonsScreen() =>
+      RoutesName.teacherMyLessonsScreen;
+      
+  static String getTeacherAddExercise() =>
+      RoutesName.teacherAddExercise;
 }

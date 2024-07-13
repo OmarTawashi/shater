@@ -8,10 +8,22 @@ class IMAGES {
   static const String logoApp = 'assets/images/logoApp.png';
   static const String logoLuncher = 'assets/images/logoLuncher.png';
   static const String add = 'assets/images/add.png';
+  static const String comprehensivetraining =
+      'assets/images/comprehensive_training.png';
+  static const String basic_answer_excercise =
+      'assets/images/basic_answer_exercise.png';
+  static const String matching_training = 'assets/images/matching_training.png';
+  static const String multiple_choice_training =
+      'assets/images/multiple_choice_training.png';
+  static const String ranking_training = 'assets/images/ranking_training.png';
+  static const String true_or_false_training =
+      'assets/images/true_or_false_training.png';
+  static const String writting_training = 'assets/images/written_training.png';
 }
 
 class ICONS {
   static const String logoApp = 'assets/icons/logoApp.svg';
+
   static const String support = 'assets/icons/support.svg';
   static const String privcy = 'assets/icons/privcy.svg';
   static const String about = 'assets/icons/about.svg';
