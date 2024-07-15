@@ -4,6 +4,7 @@ import 'package:shater/core/repository/teacher_repository.dart';
 import 'package:shater/core/usecase/teacher_usecase.dart';
 import 'package:shater/data/model/SubjectPagesModel.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/data/model/response_model.dart';
 import 'package:shater/data/model/specific_page_exercises_model.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/model/teacher_model.dart';
@@ -62,5 +63,11 @@ class TeacherUseCaseImp extends TeacherUseCase {
           required int PageTo}) {
     return _teacherRepository.getSpecificPageExercisesList(
         subject_id: subject_id, pageFrom: pageFrom, pageTo: PageTo);
+  }
+
+  @override
+  Future<Either<ApiException, ResponseModel>?> createNewquastion(
+      {required Map<String, dynamic> body}) {
+    return _teacherRepository.createNewquastion(body: body);
   }
 }

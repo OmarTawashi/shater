@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/flavors/environment.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/custom_add_quastion_screen.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/true_false_quastion.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
@@ -13,48 +14,62 @@ class AddExerciseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<CardModel> cards = [
       CardModel(
-          imageUrl: IMAGES.comprehensivetraining,
-          title: "الشامل",
-          subtitle:
-              'انشاء معادلات حسابية ، أو كتابات نصية ، أو كليهما ، أو وضع تخطي إذا كانت الصفحة ليس فيها تدريبات',
-          routeName: "routeName",
-          exerciseType: ExerciseType.ALSHAMEL),
+        imageUrl: IMAGES.comprehensivetraining,
+        title: "الشامل",
+        subtitle:
+            'انشاء معادلات حسابية ، أو كتابات نصية ، أو كليهما ، أو وضع تخطي إذا كانت الصفحة ليس فيها تدريبات',
+        routeName: "routeName",
+        exerciseType: ExerciseType.ALSHAMEL,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.multiple_choice_training,
-          title: "اختيار من متعدد",
-          subtitle: "انشاء اختيارات متعددة من صور ونصوص",
-          routeName: "routeName",
-          exerciseType: ExerciseType.MULTIPLECHOISE),
+        imageUrl: IMAGES.multiple_choice_training,
+        title: "اختيار من متعدد",
+        subtitle: "انشاء اختيارات متعددة من صور ونصوص",
+        routeName: "routeName",
+        exerciseType: ExerciseType.MULTIPLECHOISE,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.ranking_training,
-          title: "الترتيب",
-          subtitle: "ترتيب الصور أو النصوص",
-          routeName: "routeName",
-          exerciseType: ExerciseType.ORDARING),
+        imageUrl: IMAGES.ranking_training,
+        title: "الترتيب",
+        subtitle: "ترتيب الصور أو النصوص",
+        routeName: "routeName",
+        exerciseType: ExerciseType.ORDARING,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.basic_answer_excercise,
-          title: "اجابة اساسية",
-          subtitle: "يمكن انشاء اكثر من اجابة مرتبطة بالاجابة الأساسية",
-          routeName: "routeName",
-          exerciseType: ExerciseType.BASICQUASTION),
+        imageUrl: IMAGES.basic_answer_excercise,
+        title: "اجابة اساسية",
+        subtitle: "يمكن انشاء اكثر من اجابة مرتبطة بالاجابة الأساسية",
+        routeName: "routeName",
+        exerciseType: ExerciseType.BASICQUASTION,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.true_or_false_training,
-          title: "صح و خطأ",
-          subtitle: "انشاء خيارين فقط للاجابة ",
-          routeName: "routeName",
-          exerciseType: ExerciseType.TRUEORFALSE),
+        imageUrl: IMAGES.true_or_false_training,
+        title: "صح و خطأ",
+        subtitle: "انشاء خيارين فقط للاجابة ",
+        routeName: "routeName",
+        exerciseType: ExerciseType.TRUEORFALSE,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.matching_training,
-          title: "التوصيل",
-          subtitle: "انشاء صور أو نصوص وانشاء روابط صحيحة بينها ",
-          routeName: "routeName",
-          exerciseType: ExerciseType.DELEVARING),
+        imageUrl: IMAGES.matching_training,
+        title: "التوصيل",
+        subtitle: "انشاء صور أو نصوص وانشاء روابط صحيحة بينها ",
+        routeName: "routeName",
+        exerciseType: ExerciseType.DELEVARING,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
       CardModel(
-          imageUrl: IMAGES.writting_training,
-          title: "التدريب الكتابي",
-          subtitle: "انشاء أحرف و كلمات للتدرب عليها من قبل الطالب",
-          routeName: "routeName",
-          exerciseType: ExerciseType.WRITING),
+        imageUrl: IMAGES.writting_training,
+        title: "التدريب الكتابي",
+        subtitle: "انشاء أحرف و كلمات للتدرب عليها من قبل الطالب",
+        routeName: "routeName",
+        exerciseType: ExerciseType.WRITING,
+        quastionUi: TrueOrFalseQuastion(),
+      ),
     ];
     return Scaffold(
       backgroundColor: Colors.white,
@@ -86,35 +101,40 @@ class AddExerciseScreen extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {},
-            child: CircleAvatar(
-              radius: 20.r,
-              backgroundColor: COLORS.primaryColor,
-              child: const Icon(
-                Icons.insert_drive_file_outlined,
-                size: 25,
-                color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: CircleAvatar(
+                radius: 20.r,
+                backgroundColor: COLORS.primaryColor,
+                child: const Icon(
+                  Icons.insert_drive_file_outlined,
+                  size: 25,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: GestureDetector(
-              onTap: () {},
-              child: const Icon(
-                Icons.more_vert,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: GestureDetector(
+          //     onTap: () {},
+          //     child: const Icon(
+          //       Icons.more_vert,
+          //       size: 30,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
       body: ListView.separated(
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) => Card(
                 color: Colors.white,
-                elevation: 2.0,
-                margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                elevation: 0.0,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 16.w,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0),
                 ),
@@ -162,6 +182,7 @@ class AddExerciseScreen extends StatelessWidget {
                           () => CustomAddQuastionScreen(
                             appBarTitle: cards[index].title,
                             exerciseType: cards[index].exerciseType,
+                            selectedQuastionWidget: cards[index].quastionUi,
                           ),
                         ),
                         child: Icon(
@@ -173,8 +194,9 @@ class AddExerciseScreen extends StatelessWidget {
                   ],
                 ),
               ),
-          separatorBuilder: (context, index) => SizedBox(
-                height: 5.h,
+          separatorBuilder: (context, index) => Divider(
+                color: COLORS.dividerColor,
+                indent: 10,
               ),
           itemCount: cards.length),
     );
@@ -187,12 +209,13 @@ class CardModel {
   final String routeName;
   final String imageUrl;
   final ExerciseType exerciseType;
+  final Widget quastionUi;
 
-  CardModel({
-    required this.exerciseType,
-    required this.imageUrl,
-    required this.title,
-    required this.subtitle,
-    required this.routeName,
-  });
+  CardModel(
+      {required this.exerciseType,
+      required this.imageUrl,
+      required this.title,
+      required this.subtitle,
+      required this.routeName,
+      required this.quastionUi});
 }

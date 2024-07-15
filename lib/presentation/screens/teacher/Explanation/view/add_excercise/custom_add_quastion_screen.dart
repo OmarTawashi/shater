@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shater/flavors/environment.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/record_title_audio/record_title_audio_controller_.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/add_quastion_controller.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/custom_button.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/custom_textfield.dart';
@@ -11,9 +14,11 @@ class CustomAddQuastionScreen extends StatelessWidget {
     super.key,
     required this.appBarTitle,
     required this.exerciseType,
+    required this.selectedQuastionWidget,
   });
   final String appBarTitle;
   final ExerciseType exerciseType;
+  final Widget selectedQuastionWidget;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,46 +48,60 @@ class CustomAddQuastionScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.all(10),
-        children: [
-          MainRow(
-            title: "العنوان",
-            titleTwo: "اكتب عنوان السؤال الرئيسي",
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.h),
-            child: MainRow(
-              title: " العنوان 2 ",
-              titleTwo: "اكتب عنوان السؤال الفرعي (اختياري )",
-              isRequardField: true,
+      body: GetBuilder<AddQuastionController>(builder: (controller) {
+        return ListView(
+          padding: EdgeInsets.all(10),
+          children: [
+            MainRow(
+              title: "العنوان",
+              titleTwo: "اكتب عنوان السؤال الرئيسي",
+              withVoiceButton: true,
+              textController: controller.titletextController,
             ),
-          ),
-          MainRow(
-            title: "لمحة",
-            titleTwo: "تظهر كتنبيه من أعلى الشاشة (اختياري)",
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          SliderBiulder(),
-        ],
-      ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.h),
+              child: MainRow(
+                title: " العنوان 2 ",
+                titleTwo: "اكتب عنوان السؤال الفرعي (اختياري )",
+                isRequardField: true,
+                textController: controller.extraTitletextController,
+              ),
+            ),
+            MainRow(
+              title: "لمحة",
+              titleTwo: "تظهر كتنبيه من أعلى الشاشة (اختياري)",
+              textController: controller.hinttextController,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            SliderBiulder(),
+            SizedBox(
+              height: 20.h,
+            ),
+            selectedQuastionWidget
+          ],
+        );
+      }),
     );
   }
 }
 
 class MainRow extends StatelessWidget {
-  MainRow(
-      {super.key,
-      required this.title,
-      required this.titleTwo,
-      this.isRequardField = false});
+  MainRow({
+    super.key,
+    required this.title,
+    required this.titleTwo,
+    required this.textController,
+    this.isRequardField = false,
+    this.withVoiceButton = false,
+  });
   final String title;
   final String titleTwo;
   final bool isRequardField;
+  final bool withVoiceButton;
+  final TextEditingController textController;
 
-  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -107,26 +126,68 @@ class MainRow extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             height: 50.h,
+            width: 300,
             decoration: BoxDecoration(
               border: Border.all(width: 1, color: COLORS.strokeColor),
             ),
-            child: CustomeTextField(
-              textController: textEditingController,
-              keyboardType: TextInputType.emailAddress,
-              hintText: titleTwo,
-              maxLines: 3,
-              minLines: 2,
-              validate: isRequardField
-                  ? (text) {
-                      if (text!.isEmpty) {
-                        return "الحقل مطلوب";
-                      } else {
-                        return null;
-                      }
-                    }
-                  : (text) {
-                      return null;
-                    },
+            child: Row(
+              children: [
+                Visibility(
+                  visible: withVoiceButton,
+                  child: GetBuilder<RecordController>(
+                    builder: (controller) => SizedBox(
+                      height: 30.h,
+                      width: 30.w,
+                      child: GestureDetector(
+                        onTap: () => controller.showPicker(context),
+                        child: Icon(
+                          Icons.mic,
+                          color: controller.filePath != null
+                              ? COLORS.secanderyColor
+                              : COLORS.midNightBlueColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    // width: 100,
+                    // height: 100,
+                    child: CustomeTextField(
+                      textController: textController,
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: titleTwo,
+                      maxLines: 3,
+                      minLines: 2,
+                      validate: isRequardField
+                          ? (text) {
+                              if (text!.isEmpty) {
+                                return "الحقل مطلوب";
+                              } else {
+                                return null;
+                              }
+                            }
+                          : (text) {
+                              return null;
+                            },
+                    ),
+                  ),
+                ),
+                GetBuilder<RecordController>(builder: (controller) {
+                  return Visibility(
+                    visible: withVoiceButton && controller.filePath != null,
+                    child: SizedBox(
+                      height: 30.h,
+                      width: 30.w,
+                      child: GestureDetector(
+                        onTap: () => controller.deleteFile(),
+                        child: Icon(Icons.delete_forever_outlined),
+                      ),
+                    ),
+                  );
+                })
+              ],
             ),
           ),
         ),

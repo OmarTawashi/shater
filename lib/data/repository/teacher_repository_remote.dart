@@ -6,6 +6,7 @@ import 'package:shater/core/network/api_response.dart';
 import 'package:shater/core/repository/teacher_repository.dart';
 import 'package:shater/data/model/SubjectPagesModel.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/data/model/response_model.dart';
 import 'package:shater/data/model/specific_page_exercises_model.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/model/teacher_model.dart';
@@ -189,6 +190,38 @@ class TeacherRepositoryRemote extends TeacherRepository {
         requestType: RequestType.get,
         create: () => SpecificPageExercisesModel(),
         queryParams: data,
+        onSuccess: (response) {
+          final data = response.data;
+          if (data != null) {
+            completer.complete(right(data));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, ResponseModel>?> createNewquastion(
+      {required Map<String, dynamic> body}) async {
+    final completer = Completer<Either<ApiException, ResponseModel>?>();
+    // final data = {
+    //   // "subject_id": subject_id,
+    //   // "pageFrom": pageFrom,
+    //   // "pageTo": pageTo,
+    // };
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.createquestions,
+        requestType: RequestType.post,
+        create: () => ResponseModel(),
+        // queryParams: data,
+        data: body,
         onSuccess: (response) {
           final data = response.data;
           if (data != null) {

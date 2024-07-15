@@ -63,7 +63,6 @@ class SliderBiulder extends StatelessWidget {
                                         backgroundColor: COLORS.backGroundColor,
                                         child: Center(
                                           child: IconButton(
-                                          
                                             onPressed: () =>
                                                 controller.deleteImage(),
                                             icon: Icon(
@@ -180,7 +179,80 @@ class SliderBiulder extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    color: COLORS.textColor.withOpacity(0.2),
+                    // height: 600.h,
+                    width: MediaQuery.sizeOf(context).width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () => controller.showPicker(context, false),
+                          child: Icon(
+                            Icons.video_call_rounded,
+                            color: COLORS.strokeColor,
+                            size: 40,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          "أضف تسجيل صوت",
+                          style: TextStyle(color: COLORS.textColor),
+                        ),
+                        if (controller.videoFile != null)
+                          controller.videoPlayerController != null &&
+                                  controller.videoPlayerController!.value
+                                      .isInitialized
+                              ? Expanded(
+                                  child: AspectRatio(
+                                    aspectRatio: controller
+                                        .videoPlayerController!
+                                        .value
+                                        .aspectRatio,
+                                    child: Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        //  VideoPlayer(
+                                        //     controller.videoPlayerController!),
+                                        // VideoProgressIndicator(
+                                        //   controller.videoPlayerController!,
+                                        //   allowScrubbing: true,
+                                        //   colors: VideoProgressColors(
+                                        //     playedColor: COLORS.primaryColor,
+                                        //     bufferedColor: Colors.grey,
+                                        //     backgroundColor: Colors.black,
+                                        //   ),
+                                        // ),
+
+                                        Center(
+                                          child: IconButton(
+                                              icon: Icon(
+                                                controller.isPlaying
+                                                    ? Icons
+                                                        .keyboard_voice_outlined
+                                                    : Icons.play_arrow,
+                                                color: controller.isPlaying
+                                                    ? Colors.white
+                                                    : Colors.red,
+                                                size: 50,
+                                              ),
+                                              onPressed: () =>
+                                                  controller.playVideo()),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                      ],
+                    ),
+                  ),
                 ],
                 onPageChanged: (value) => controller.changeCurrentIndex(value),
               ),
@@ -190,7 +262,7 @@ class SliderBiulder extends StatelessWidget {
               child: PageViewIndicator(
                 otherSize: 5,
                 currentSize: 8,
-                length: 3,
+                length: 4,
                 currentIndex: controller.currentIndex,
                 currentColor: COLORS.primaryColor,
                 otherColor: COLORS.strokeColor,

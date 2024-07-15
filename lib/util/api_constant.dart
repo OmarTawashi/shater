@@ -70,4 +70,7 @@ class ApiConstant {
       '/api/$version/teacher/lesson/133/get-subject-pages';
   static String specificPageExercise =
       '/api/$version/teacher/questions/subject';
+
+        static String createquestions=
+      '/api/$version/teacher/materials/:material_id/questions/create';
 }

@@ -8,7 +8,6 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class BottomSheetWidget extends StatelessWidget {
-  
   BottomSheetWidget(
       {required this.page_number,
       this.canCreateQuestion = 0,
@@ -54,14 +53,15 @@ class BottomSheetWidget extends StatelessWidget {
             canCreateQuestion == 1
                 ? CustomeButton(
                     onClick: () async {
-                      await Get.find<SelectedPageExerciseControoler>()
+                      Get.back();
+                      Get.toNamed(
+                        Routes.getselectedPageExerciseScreen(),
+                      );
+                      Get.find<SelectedPageExerciseControoler>()
                           .getSpecificPageExercisesModelList(
                         subject_id: subject_id,
                         pageFrom: int.parse(page_number),
                         PageTo: int.parse(page_number),
-                      );
-                      Get.toNamed(
-                        Routes.getselectedPageExerciseScreen(),
                       );
                     },
                     title: "practices".tr,
