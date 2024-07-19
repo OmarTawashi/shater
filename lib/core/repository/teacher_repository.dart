@@ -30,5 +30,7 @@ abstract class TeacherRepository {
     required int pageTo,
   });
 
-  Future<Either<ApiException, ResponseModel>?> createNewquastion({required Map<String,dynamic> body} );
+  Future<Either<ApiException, ResponseModel>?> createNewquastion(
+    {required Map<String,dynamic> body}
+     );
 }

@@ -15,8 +15,11 @@ class CustomAddQuastionScreen extends StatelessWidget {
     required this.appBarTitle,
     required this.exerciseType,
     required this.selectedQuastionWidget,
+    required this.page_id,
   });
   final String appBarTitle;
+  final int page_id;
+
   final ExerciseType exerciseType;
   final Widget selectedQuastionWidget;
   @override
@@ -43,46 +46,51 @@ class CustomAddQuastionScreen extends StatelessWidget {
               width: 86.w,
               height: 40.h,
               title: 'انشاء',
-              onClick: () {},
+              onClick: () {
+                Get.find<AddQuastionController>()
+                    .createNewquastion(page_id: page_id);
+              },
             ),
           ),
         ],
       ),
-      body: GetBuilder<AddQuastionController>(builder: (controller) {
-        return ListView(
-          padding: EdgeInsets.all(10),
-          children: [
-            MainRow(
-              title: "العنوان",
-              titleTwo: "اكتب عنوان السؤال الرئيسي",
-              withVoiceButton: true,
-              textController: controller.titletextController,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.h),
-              child: MainRow(
-                title: " العنوان 2 ",
-                titleTwo: "اكتب عنوان السؤال الفرعي (اختياري )",
-                isRequardField: true,
-                textController: controller.extraTitletextController,
+      body: GetBuilder<AddQuastionController>(
+        builder: (controller) {
+          return ListView(
+            padding: EdgeInsets.all(10),
+            children: [
+              MainRow(
+                title: "العنوان",
+                titleTwo: "اكتب عنوان السؤال الرئيسي",
+                withVoiceButton: true,
+                textController: controller.titletextController,
               ),
-            ),
-            MainRow(
-              title: "لمحة",
-              titleTwo: "تظهر كتنبيه من أعلى الشاشة (اختياري)",
-              textController: controller.hinttextController,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            SliderBiulder(),
-            SizedBox(
-              height: 20.h,
-            ),
-            selectedQuastionWidget
-          ],
-        );
-      }),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.h),
+                child: MainRow(
+                  title: " العنوان 2 ",
+                  titleTwo: "اكتب عنوان السؤال الفرعي (اختياري )",
+                  isRequardField: true,
+                  textController: controller.extraTitletextController,
+                ),
+              ),
+              MainRow(
+                title: "لمحة",
+                titleTwo: "تظهر كتنبيه من أعلى الشاشة (اختياري)",
+                textController: controller.hinttextController,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              SliderBiulder(),
+              SizedBox(
+                height: 20.h,
+              ),
+              selectedQuastionWidget
+            ],
+          );
+        },
+      ),
     );
   }
 }
@@ -139,10 +147,11 @@ class MainRow extends StatelessWidget {
                       height: 30.h,
                       width: 30.w,
                       child: GestureDetector(
-                        onTap: () => controller.showPicker(context),
+                        onTap: () => controller.showAudioPicker(
+                            context: context, istitle: true),
                         child: Icon(
                           Icons.mic,
-                          color: controller.filePath != null
+                          color: controller.titleAudiofilePath != null
                               ? COLORS.secanderyColor
                               : COLORS.midNightBlueColor,
                         ),
@@ -176,12 +185,13 @@ class MainRow extends StatelessWidget {
                 ),
                 GetBuilder<RecordController>(builder: (controller) {
                   return Visibility(
-                    visible: withVoiceButton && controller.filePath != null,
+                    visible: withVoiceButton &&
+                        controller.titleAudiofilePath != null,
                     child: SizedBox(
                       height: 30.h,
                       width: 30.w,
                       child: GestureDetector(
-                        onTap: () => controller.deleteFile(),
+                        onTap: () => controller.deleteFile(isTitle: true),
                         child: Icon(Icons.delete_forever_outlined),
                       ),
                     ),

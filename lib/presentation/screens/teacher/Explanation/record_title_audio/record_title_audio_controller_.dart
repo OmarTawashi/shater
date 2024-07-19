@@ -10,25 +10,39 @@ import 'package:path_provider/path_provider.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:record/record.dart';
 import 'package:shater/presentation/screens/teacher/Explanation/record_title_audio/record_audio_page.dart';
+import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/add_quastion_controller.dart';
 import 'package:shater/util/color.dart';
 
 class RecordController extends GetxController {
+  AddQuastionController addQuastionController =
+      Get.find<AddQuastionController>();
   final record = AudioRecorder();
   final audioPlayer = AudioPlayer();
-  String? filePath;
+  String? titleAudiofilePath;
+  String? quastionAudiofilePath;
+
   var isRecording = false.obs;
   var recordingDuration = 0.obs;
   Timer? _timer;
   DateTime? _startTime;
-  var fileName = ''.obs;
-  var audioDuration = ''.obs;
+  var titlefileName = ''.obs;
+  var quastionfileName = ''.obs;
+  var quastionAudioDuration = ''.obs;
+  var titleAudioDuration = ''.obs;
 
-  Future<void> startRecording() async {
+  Future<void> startRecording({required bool istitle}) async {
     if (await Permission.microphone.request().isGranted) {
       final directory = await getApplicationDocumentsDirectory();
-      filePath = '${directory.path}/recording.m4a';
-      fileName.value = 'recording.m4a';
-      await record.start(const RecordConfig(), path: filePath!);
+      if (istitle) {
+        titleAudiofilePath = '${directory.path}/recording.m4a';
+        titlefileName.value = 'recording.m4a';
+        await record.start(const RecordConfig(), path: titleAudiofilePath!);
+      } else {
+        quastionAudiofilePath = '${directory.path}/recording.m4a';
+        quastionfileName.value = 'recording.m4a';
+        await record.start(const RecordConfig(), path: quastionAudiofilePath!);
+      }
+
       isRecording.value = true;
       _startTime = DateTime.now();
 
@@ -41,29 +55,57 @@ class RecordController extends GetxController {
     await audioPlayer.stop();
   }
 
-  Future<void> pickAudioFile() async {
+  Future<void> pickAudioFile({required bool isTitleAudio}) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.audio,
     );
     if (result != null && result.files.single.path != null) {
-      filePath = result.files.single.path;
-      fileName.value = result.files.single.name;
-      await audioPlayer.setFilePath(filePath!);
-      await audioPlayer.load(); // Load the audio to get its duration
-      final duration = await audioPlayer.duration;
-      audioDuration.value = _formatDuration(duration);
+      if (isTitleAudio) {
+        titleAudiofilePath = result.files.single.path;
+        titlefileName.value = result.files.single.name;
+        await audioPlayer.setFilePath(titleAudiofilePath!);
+        await audioPlayer.load(); // Load the audio to get its duration
+        // Get.find<AddQuastionController>().getQuestionMediaFile(mediaType);
+        final duration = await audioPlayer.duration;
+        titleAudioDuration.value = _formatDuration(duration);
+      } else {
+        quastionAudiofilePath = result.files.single.path;
+        quastionfileName.value = result.files.single.name;
+        await audioPlayer.setFilePath(quastionAudiofilePath!);
+        await audioPlayer.load(); // Load the audio to get its duration
+        // Get.find<AddQuastionController>().getQuestionMediaFile(mediaType);
+        final duration = await audioPlayer.duration;
+        quastionAudioDuration.value = _formatDuration(duration);
+      }
+      addQuastionController.updateTitleHasAudio(
+          hasAudiaudioFile: true, audioFile: result.files.single);
       update();
     }
   }
 
-  Future<void> deleteFile() async {
-    if (filePath != null) {
-      File(filePath!).delete();
-      filePath = null;
-      fileName.value = '';
-      audioDuration.value = '';
+  Future<void> deleteFile({required bool isTitle} ) async {
+    if(isTitle){
+  if (titleAudiofilePath != null ) {
+      File(titleAudiofilePath!).delete();
+      titleAudiofilePath = null;
+      titlefileName.value = '';
+      titleAudioDuration.value = '';
+      addQuastionController.updateTitleHasAudio(
+          hasAudiaudioFile: false, audioFile: null);
       update();
     }
+    }else{
+  if (quastionAudiofilePath != null ) {
+      File(quastionAudiofilePath!).delete();
+      quastionAudiofilePath = null;
+      quastionfileName.value = '';
+      quastionAudioDuration.value = '';
+      // addQuastionController.updateTitleHasAudio(
+      //     hasAudiaudioFile: false, audioFile: null);
+      update();
+    }
+    }
+  
   }
 
   String getFormattedDuration() {
@@ -91,11 +133,11 @@ class RecordController extends GetxController {
   }
 
   Future<void> playRecording() async {
-    if (filePath != null) {
-      await audioPlayer.setFilePath(filePath!);
+    if (titleAudiofilePath != null) {
+      await audioPlayer.setFilePath(titleAudiofilePath!);
       await audioPlayer.load(); // Load the audio to get its duration
       final duration = await audioPlayer.duration;
-      audioDuration.value = _formatDuration(duration);
+      titleAudioDuration.value = _formatDuration(duration);
       audioPlayer.play();
     }
   }
@@ -107,29 +149,29 @@ class RecordController extends GetxController {
     if (result != null && result.files.single.path != null) {
       final videoPath = result.files.single.path;
       final directory = await getApplicationDocumentsDirectory();
-      filePath = '${directory.path}/extracted_audio.m4a';
-      fileName.value = 'extracted_audio.m4a';
+      titleAudiofilePath = '${directory.path}/extracted_audio.m4a';
+      titlefileName.value = 'extracted_audio.m4a';
 
-      await FFmpegKit.execute('-i $videoPath -q:a 0 -map a $filePath').then(
+      await FFmpegKit.execute('-i $videoPath -q:a 0 -map a $titleAudiofilePath')
+          .then(
         (session) async {
           final returnCode = await session.getReturnCode();
           if (returnCode!.isValueSuccess()) {
-            await audioPlayer.setFilePath(filePath!);
+            await audioPlayer.setFilePath(titleAudiofilePath!);
             await audioPlayer.load();
             final duration = await audioPlayer.duration;
-            audioDuration.value = _formatDuration(duration);
+            titleAudioDuration.value = _formatDuration(duration);
             debugPrint(
                 "////////////////////////////////////////////////////////");
 
             _showAudioFileDialog(context, result.files.single.name);
             debugPrint(
                 "////////////////////////${result.files.single.name}////////////////////////////////");
-
             playExtractedAudio();
           } else {
-            filePath = null;
-            fileName.value = '';
-            audioDuration.value = '';
+            titleAudiofilePath = null;
+            titlefileName.value = '';
+            titleAudioDuration.value = '';
           }
         },
       );
@@ -137,11 +179,11 @@ class RecordController extends GetxController {
   }
 
   Future<void> playExtractedAudio() async {
-    if (filePath != null) {
-      await audioPlayer.setFilePath(filePath!);
+    if (titleAudiofilePath != null) {
+      await audioPlayer.setFilePath(titleAudiofilePath!);
       await audioPlayer.load();
       final duration = await audioPlayer.duration;
-      audioDuration.value = _formatDuration(duration);
+      titleAudioDuration.value = _formatDuration(duration);
       audioPlayer.play();
     }
   }
@@ -185,7 +227,8 @@ class RecordController extends GetxController {
     );
   }
 
-  void showPicker(BuildContext context) async {
+  void showAudioPicker(
+      {required BuildContext context, required bool istitle}) async {
     // await requestPermissions();
     showModalBottomSheet(
       enableDrag: false,
@@ -209,7 +252,7 @@ class RecordController extends GetxController {
                 GestureDetector(
                   onTap: () {
                     Get.back();
-                    pickAudioFile();
+                    pickAudioFile(isTitleAudio: istitle);
                   },
                   child: Text(
                     "ملف",

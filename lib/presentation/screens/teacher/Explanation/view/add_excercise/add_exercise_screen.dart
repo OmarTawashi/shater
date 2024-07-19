@@ -8,8 +8,8 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
 class AddExerciseScreen extends StatelessWidget {
-  const AddExerciseScreen({super.key});
-
+  const AddExerciseScreen({super.key, });
+// final int page_id;
   @override
   Widget build(BuildContext context) {
     final List<CardModel> cards = [
@@ -183,6 +183,7 @@ class AddExerciseScreen extends StatelessWidget {
                             appBarTitle: cards[index].title,
                             exerciseType: cards[index].exerciseType,
                             selectedQuastionWidget: cards[index].quastionUi,
+                            page_id: 1,
                           ),
                         ),
                         child: Icon(

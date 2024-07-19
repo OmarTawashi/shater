@@ -46,9 +46,9 @@ class RecordPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   );
-                } else if (recordController.audioDuration.value.isNotEmpty) {
+                } else if (recordController.titleAudioDuration.value.isNotEmpty) {
                   return Text(
-                    '${recordController.audioDuration.value}',
+                    '${recordController.titleAudioDuration.value}',
                     style: TextStyle(fontSize: 24),
                     textAlign: TextAlign.center,
                   );
@@ -94,7 +94,7 @@ class RecordPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onLongPress: () => recordController.startRecording(),
+                    onLongPress: () => recordController.startRecording(istitle: true),
                     child: Icon(
                       Icons.circle,
                       color: COLORS.errorColor,

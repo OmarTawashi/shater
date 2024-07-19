@@ -1,8 +1,11 @@
-import 'dart:ffi';
+import 'dart:convert';
 import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/response_model.dart';
@@ -11,26 +14,31 @@ import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
 import 'package:shater/util/color.dart';
 import 'package:video_player/video_player.dart';
 
+enum MediaType { image, text, video, audio }
+
 class AddQuastionController extends BaseController {
-  TeacherUseCaseImp? _teacherUseCaseImp;
-  final TextEditingController titletextController = TextEditingController();
-  final TextEditingController extraTitletextController =
-      TextEditingController();
-  final TextEditingController hinttextController = TextEditingController();
-  bool title_has_audio = false;
   @override
   void onInit() {
-    _teacherUseCaseImp = TeacherUseCaseImp(
-      TeacherRepositoryRemote(
-        ApiClient(),
-      ),
-    );
+    _teacherUseCaseImp = TeacherUseCaseImp(TeacherRepositoryRemote(
+      ApiClient(),
+    ));
+    titletextController = TextEditingController();
+    extraTitletextController = TextEditingController();
+    hinttextController = TextEditingController();
+    descTextController = TextEditingController();
+    pageController = PageController();
     super.onInit();
   }
 
-  PageController pageController = PageController();
+  TeacherUseCaseImp? _teacherUseCaseImp;
+  late TextEditingController titletextController;
+  late TextEditingController extraTitletextController;
+  late TextEditingController hinttextController;
+  bool title_has_audio = false;
+  PlatformFile? titleAudioFile;
+  late PageController pageController;
   int currentIndex = 0;
-  TextEditingController descTextController = TextEditingController();
+  late TextEditingController descTextController;
   bool isPlaying = false;
   XFile? thecropedImage;
   CroppedFile? cropedFileimage;
@@ -41,6 +49,7 @@ class AddQuastionController extends BaseController {
   ResponseModel createquastionRes = ResponseModel();
 
   bool selectedAnswer = true;
+
   // Future<void> pickImage(ImageSource source) async {
   //   final pickedFile = await picker.pickImage(source: source);
   //   if (pickedFile != null) {
@@ -50,6 +59,12 @@ class AddQuastionController extends BaseController {
   // }
 
   Future<void> pickVideo(ImageSource source) async {
+    if (imageFile != null ||
+        titleAudioFile != null ||
+        descTextController.text.isNotEmpty) {
+      Get.snackbar('خطأ', 'يمكنك إضافة نوع واحد فقط');
+      return;
+    }
     final pickedFile = await picker.pickVideo(
       source: source,
       preferredCameraDevice: CameraDevice.rear,
@@ -59,6 +74,7 @@ class AddQuastionController extends BaseController {
 
     if (xfilePick != null) {
       videoFile = File(pickedFile!.path);
+      getQuestionMediaFile(MediaType.video);
       videoPlayerController = VideoPlayerController.file(videoFile!)
         ..initialize().then(
           (_) {
@@ -125,8 +141,13 @@ class AddQuastionController extends BaseController {
   }
 
   void pickImage(bool pickGalleryImage) async {
+    if (videoFile != null ||
+        titleAudioFile != null ||
+        descTextController.text.isNotEmpty) {
+      Get.snackbar('خطأ', 'يمكنك إضافة نوع واحد فقط');
+      return;
+    }
     final picker = ImagePicker();
-
     if (pickGalleryImage == true) {
       thecropedImage = await picker.pickImage(source: ImageSource.gallery);
     } else {
@@ -134,15 +155,8 @@ class AddQuastionController extends BaseController {
     }
     if (thecropedImage != null) {
       cropedFileimage = await cropImages(thecropedImage!);
+      getQuestionMediaFile(MediaType.image);
       update();
-      // Get.back();
-      // if (!mounted) return;
-
-      // Get.to(
-      //   () => CroppedImage(
-      //     image: croppedImage,
-      //   ),
-      // );
     }
   }
 
@@ -172,13 +186,62 @@ class AddQuastionController extends BaseController {
     update();
   }
 
-  createNewquastion({
+  transferTextTofile(String text) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/textfile.txt');
+    final bytes = utf8.encode(text);
+    await file.writeAsBytes(bytes);
+    return file;
+  }
+
+  updateTitleHasAudio({bool? hasAudiaudioFile, PlatformFile? audioFile}) {
+    title_has_audio = hasAudiaudioFile!;
+    titleAudioFile = audioFile;
+    update();
+  }
+
+  Future<dynamic> getQuestionMediaFile(MediaType mediaType) async {
+    switch (mediaType.name) {
+      case "text": // Text case
+        if (descTextController.text.isNotEmpty) {
+          return await transferTextTofile(descTextController.text);
+        }
+        break;
+      case "image": // Image case
+        if (imageFile != null) {
+          return imageFile;
+        }
+        break;
+      case "video": // Video case
+        if (videoFile != null) {
+          return videoFile;
+        }
+        break;
+      case "audio": // Audio case
+        if (titleAudioFile != null) {
+          return titleAudioFile;
+        }
+        break;
+      default:
+        return null;
+    }
+    return null;
+  }
+
+  void createNewquastion({
     required int page_id,
+    // required var mediaFileType,
   }) async {
     updateViewType(ViewType.loading);
+    File? questionMediaFile = await getQuestionMediaFile(MediaType.text);
+
+    if (questionMediaFile == null) {
+      updateViewType(ViewType.error);
+      return;
+    }
     await _teacherUseCaseImp?.createNewquastion(
       body: {
-        "question_media": "Test",
+        "question_media": 'text',
         "page_id": page_id,
         "answer": selectedAnswer,
         "title": titletextController.text,
@@ -186,8 +249,7 @@ class AddQuastionController extends BaseController {
         "title_extra": titletextController.text,
         "type_id": 17,
         "title_has_audio": title_has_audio ? 1 : 0,
-        // "option_style": "<null>",
-        "media": "text",
+        "media": "text", // تحديد نوع المرفق
       },
     ).then(
       (value) {
