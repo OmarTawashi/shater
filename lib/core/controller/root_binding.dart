@@ -13,5 +13,6 @@ class RootBinding extends Bindings {
     Get.lazyPut(() => AddQuastionController(),fenix: true);
     // Get.lazyPut(() => AudioController(),fenix: true);
     Get.lazyPut(() => RecordController(),fenix: true);
+    
   }
 }

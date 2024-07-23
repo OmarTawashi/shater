@@ -8,6 +8,8 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/custom_textfield.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../record_title_audio/record_title_audio_controller_.dart';
+
 class SliderBiulder extends StatelessWidget {
   const SliderBiulder({
     super.key,
@@ -31,7 +33,7 @@ class SliderBiulder extends StatelessWidget {
                     height: 233.h,
                     width: MediaQuery.sizeOf(context).width,
                     child: GestureDetector(
-                      onTap: () => controller.showPicker(context, true),
+                      onTap: () => controller.showMediaPicker(context, true),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,7 +94,8 @@ class SliderBiulder extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: () => controller.showPicker(context, false),
+                          onTap: () =>
+                              controller.showMediaPicker(context, false),
                           child: Icon(
                             Icons.video_call_rounded,
                             color: COLORS.strokeColor,
@@ -191,7 +194,9 @@ class SliderBiulder extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: () => controller.showPicker(context, false),
+                          onTap: () => Get.find<RecordController>()
+                              .showAudioPicker(
+                                  context: context, istitle: false),
                           child: Icon(
                             Icons.video_call_rounded,
                             color: COLORS.strokeColor,
@@ -205,51 +210,6 @@ class SliderBiulder extends StatelessWidget {
                           "أضف تسجيل صوت",
                           style: TextStyle(color: COLORS.textColor),
                         ),
-                        if (controller.videoFile != null)
-                          controller.videoPlayerController != null &&
-                                  controller.videoPlayerController!.value
-                                      .isInitialized
-                              ? Expanded(
-                                  child: AspectRatio(
-                                    aspectRatio: controller
-                                        .videoPlayerController!
-                                        .value
-                                        .aspectRatio,
-                                    child: Stack(
-                                      alignment: Alignment.bottomCenter,
-                                      children: [
-                                        //  VideoPlayer(
-                                        //     controller.videoPlayerController!),
-                                        // VideoProgressIndicator(
-                                        //   controller.videoPlayerController!,
-                                        //   allowScrubbing: true,
-                                        //   colors: VideoProgressColors(
-                                        //     playedColor: COLORS.primaryColor,
-                                        //     bufferedColor: Colors.grey,
-                                        //     backgroundColor: Colors.black,
-                                        //   ),
-                                        // ),
-
-                                        Center(
-                                          child: IconButton(
-                                              icon: Icon(
-                                                controller.isPlaying
-                                                    ? Icons
-                                                        .keyboard_voice_outlined
-                                                    : Icons.play_arrow,
-                                                color: controller.isPlaying
-                                                    ? Colors.white
-                                                    : Colors.red,
-                                                size: 50,
-                                              ),
-                                              onPressed: () =>
-                                                  controller.playVideo()),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              : Container(),
                       ],
                     ),
                   ),

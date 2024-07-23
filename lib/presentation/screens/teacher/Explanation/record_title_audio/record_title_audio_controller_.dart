@@ -29,6 +29,7 @@ class RecordController extends GetxController {
   var quastionfileName = ''.obs;
   var quastionAudioDuration = ''.obs;
   var titleAudioDuration = ''.obs;
+  
 
   Future<void> startRecording({required bool istitle}) async {
     if (await Permission.microphone.request().isGranted) {
@@ -68,6 +69,8 @@ class RecordController extends GetxController {
         // Get.find<AddQuastionController>().getQuestionMediaFile(mediaType);
         final duration = await audioPlayer.duration;
         titleAudioDuration.value = _formatDuration(duration);
+        addQuastionController.updateTitleHasAudio(
+            hasAudiaudioFile: true, audioFile: result.files.single);
       } else {
         quastionAudiofilePath = result.files.single.path;
         quastionfileName.value = result.files.single.name;
@@ -77,35 +80,33 @@ class RecordController extends GetxController {
         final duration = await audioPlayer.duration;
         quastionAudioDuration.value = _formatDuration(duration);
       }
-      addQuastionController.updateTitleHasAudio(
-          hasAudiaudioFile: true, audioFile: result.files.single);
+
       update();
     }
   }
 
-  Future<void> deleteFile({required bool isTitle} ) async {
-    if(isTitle){
-  if (titleAudiofilePath != null ) {
-      File(titleAudiofilePath!).delete();
-      titleAudiofilePath = null;
-      titlefileName.value = '';
-      titleAudioDuration.value = '';
-      addQuastionController.updateTitleHasAudio(
-          hasAudiaudioFile: false, audioFile: null);
-      update();
+  Future<void> deleteFile({required bool isTitle}) async {
+    if (isTitle) {
+      if (titleAudiofilePath != null) {
+        File(titleAudiofilePath!).delete();
+        titleAudiofilePath = null;
+        titlefileName.value = '';
+        titleAudioDuration.value = '';
+        addQuastionController.updateTitleHasAudio(
+            hasAudiaudioFile: false, audioFile: null);
+        update();
+      }
+    } else {
+      if (quastionAudiofilePath != null) {
+        File(quastionAudiofilePath!).delete();
+        quastionAudiofilePath = null;
+        quastionfileName.value = '';
+        quastionAudioDuration.value = '';
+        // addQuastionController.updateTitleHasAudio(
+        //     hasAudiaudioFile: false, audioFile: null);
+        update();
+      }
     }
-    }else{
-  if (quastionAudiofilePath != null ) {
-      File(quastionAudiofilePath!).delete();
-      quastionAudiofilePath = null;
-      quastionfileName.value = '';
-      quastionAudioDuration.value = '';
-      // addQuastionController.updateTitleHasAudio(
-      //     hasAudiaudioFile: false, audioFile: null);
-      update();
-    }
-    }
-  
   }
 
   String getFormattedDuration() {

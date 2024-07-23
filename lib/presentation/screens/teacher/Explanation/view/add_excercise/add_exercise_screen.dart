@@ -8,7 +8,9 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
 
 class AddExerciseScreen extends StatelessWidget {
-  const AddExerciseScreen({super.key, });
+  const AddExerciseScreen({
+    super.key,
+  });
 // final int page_id;
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.ALSHAMEL,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
       CardModel(
         imageUrl: IMAGES.multiple_choice_training,
@@ -29,6 +32,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.MULTIPLECHOISE,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
       CardModel(
         imageUrl: IMAGES.ranking_training,
@@ -37,6 +41,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.ORDARING,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
       CardModel(
         imageUrl: IMAGES.basic_answer_excercise,
@@ -45,6 +50,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.BASICQUASTION,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
       CardModel(
         imageUrl: IMAGES.true_or_false_training,
@@ -53,6 +59,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.TRUEORFALSE,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 17,
       ),
       CardModel(
         imageUrl: IMAGES.matching_training,
@@ -61,6 +68,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.DELEVARING,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
       CardModel(
         imageUrl: IMAGES.writting_training,
@@ -69,6 +77,7 @@ class AddExerciseScreen extends StatelessWidget {
         routeName: "routeName",
         exerciseType: ExerciseType.WRITING,
         quastionUi: TrueOrFalseQuastion(),
+        idQuastion: 1,
       ),
     ];
     return Scaffold(
@@ -184,6 +193,8 @@ class AddExerciseScreen extends StatelessWidget {
                             exerciseType: cards[index].exerciseType,
                             selectedQuastionWidget: cards[index].quastionUi,
                             page_id: 1,
+        idQuastion: cards[index].idQuastion,
+                            
                           ),
                         ),
                         child: Icon(
@@ -211,6 +222,7 @@ class CardModel {
   final String imageUrl;
   final ExerciseType exerciseType;
   final Widget quastionUi;
+  final int idQuastion;
 
   CardModel(
       {required this.exerciseType,
@@ -218,5 +230,6 @@ class CardModel {
       required this.title,
       required this.subtitle,
       required this.routeName,
-      required this.quastionUi});
+      required this.quastionUi,
+      required this.idQuastion});
 }

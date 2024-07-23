@@ -12,7 +12,7 @@ class ApiConstant {
   static String textUser = Get.find<AuthController>().userType.user;
   static bool isTeacher =
       Get.find<AuthController>().userType == AuthType.teacher;
-  static String version = 'v3';
+  static String version = 'v2';
   static String checkEmail = '/api/$version/teacher/auth/check-email';
   static String studentLogin = '/api/$version/auth/login';
   static String ForgetPassword = '/api/$version/auth/password/email';
@@ -58,12 +58,12 @@ class ApiConstant {
   static String teacherCoursesList =
       '/api/$version/teacher/lesson/index2?level=';
   static String getVideoOfSubject =
-      '/api/v2/student/educational/videos/get-videos-for-subject';
+      '/api/$version/student/educational/videos/get-videos-for-subject';
   static String getVideoOfSubjectteacher =
-      '/api/v2/teacher/lesson/get-videos-for-subject';
+      '/api/$version/teacher/lesson/get-videos-for-subject';
 
   static String getVideoOfPage =
-      '/api/v2/student/educational/videos/get-videos-for-page';
+      '/api/$version/student/educational/videos/get-videos-for-page';
 
   static const String topic = 'all_zone_customer';
   static String getTeacherCoursesExercisesList =

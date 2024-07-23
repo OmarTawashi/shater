@@ -47,9 +47,9 @@ class AddQuastionController extends BaseController {
   File? videoFile;
   VideoPlayerController? videoPlayerController;
   ResponseModel createquastionRes = ResponseModel();
-
+  dynamic fileToSentInMedia;
   bool selectedAnswer = true;
-
+  MediaType? mediaTypeToSent;
   // Future<void> pickImage(ImageSource source) async {
   //   final pickedFile = await picker.pickImage(source: source);
   //   if (pickedFile != null) {
@@ -86,7 +86,7 @@ class AddQuastionController extends BaseController {
     }
   }
 
-  void showPicker(BuildContext context, bool isImage) {
+  void showMediaPicker(BuildContext context, bool isImage) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -204,22 +204,32 @@ class AddQuastionController extends BaseController {
     switch (mediaType.name) {
       case "text": // Text case
         if (descTextController.text.isNotEmpty) {
-          return await transferTextTofile(descTextController.text);
+          mediaTypeToSent!.name != mediaType.name;
+          fileToSentInMedia = await transferTextTofile(descTextController.text);
+          return fileToSentInMedia;
         }
         break;
       case "image": // Image case
         if (imageFile != null) {
-          return imageFile;
+          mediaTypeToSent!.name != mediaType.name;
+
+          fileToSentInMedia = await imageFile;
+          return fileToSentInMedia;
         }
         break;
       case "video": // Video case
         if (videoFile != null) {
-          return videoFile;
+          mediaTypeToSent!.name != mediaType.name;
+
+          fileToSentInMedia = await videoFile;
+          return fileToSentInMedia;
         }
         break;
       case "audio": // Audio case
         if (titleAudioFile != null) {
-          return titleAudioFile;
+          mediaTypeToSent!.name != mediaType.name;
+          fileToSentInMedia = await titleAudioFile;
+          return fileToSentInMedia;
         }
         break;
       default:
@@ -228,20 +238,19 @@ class AddQuastionController extends BaseController {
     return null;
   }
 
-  void createNewquastion({
-    required int page_id,
-    // required var mediaFileType,
-  }) async {
+  createNewquastion({required int page_id, required int idQuastion
+      // required var mediaFileType,
+      }) async {
     updateViewType(ViewType.loading);
-    File? questionMediaFile = await getQuestionMediaFile(MediaType.text);
+    // File? questionMediaFile = await getQuestionMediaFile(MediaType.text);
 
-    if (questionMediaFile == null) {
-      updateViewType(ViewType.error);
-      return;
-    }
+    // if (questionMediaFile == null) {
+    //   updateViewType(ViewType.error);
+    //   return;
+    // }
     await _teacherUseCaseImp?.createNewquastion(
       body: {
-        "question_media": 'text',
+        "question_media": fileToSentInMedia,
         "page_id": page_id,
         "answer": selectedAnswer,
         "title": titletextController.text,
@@ -249,7 +258,7 @@ class AddQuastionController extends BaseController {
         "title_extra": titletextController.text,
         "type_id": 17,
         "title_has_audio": title_has_audio ? 1 : 0,
-        "media": "text", // تحديد نوع المرفق
+        "media": mediaTypeToSent!.name, // تحديد نوع المرفق
       },
     ).then(
       (value) {
@@ -270,5 +279,10 @@ class AddQuastionController extends BaseController {
         update();
       },
     );
+  }
+
+  updateSelectedAnswer() {
+    selectedAnswer = !selectedAnswer;
+    update();
   }
 }

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
-import 'package:shater/presentation/screens/teacher/Explanation/view/add_excercise/add_quastion_controller.dart';
 import 'package:shater/presentation/screens/teacher/My%20Explanation/view/teacher_item_subject.dart';
 import 'package:shater/presentation/screens/teacher/Teacher%20Pages%20Explained/view/teacher_myexplanation.dart';
 import 'package:shater/util/images.dart';
-
 import '../../base/animator_container.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
@@ -37,19 +34,9 @@ class TeacherMyLessonsScreen extends StatelessWidget {
                 assetName: ICONS.lessonVideos,
                 child: Row(
                   children: [
-                    GestureDetector(
-                      onTap: () async {
-                        //  Get.find<AddQuastionController>()
-                        // await Get.find<AddQuastionController>()
-                        //     .getQuestionMediaFile();
-                        Get.find<AddQuastionController>().createNewquastion(
-                          page_id: 1,
-                        );
-                      },
-                      child: TapSection(
-                        isSelected: true,
-                        text: 'my lessons'.tr,
-                      ),
+                    TapSection(
+                      isSelected: true,
+                      text: 'my lessons'.tr,
                     ),
                   ],
                 ),

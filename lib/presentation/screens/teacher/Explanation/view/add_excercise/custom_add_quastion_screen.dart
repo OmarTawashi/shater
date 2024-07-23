@@ -16,10 +16,11 @@ class CustomAddQuastionScreen extends StatelessWidget {
     required this.exerciseType,
     required this.selectedQuastionWidget,
     required this.page_id,
+    required this.idQuastion
   });
   final String appBarTitle;
   final int page_id;
-
+final idQuastion;
   final ExerciseType exerciseType;
   final Widget selectedQuastionWidget;
   @override
@@ -48,7 +49,7 @@ class CustomAddQuastionScreen extends StatelessWidget {
               title: 'انشاء',
               onClick: () {
                 Get.find<AddQuastionController>()
-                    .createNewquastion(page_id: page_id);
+                    .createNewquastion(page_id: page_id,idQuastion :idQuastion);
               },
             ),
           ),
