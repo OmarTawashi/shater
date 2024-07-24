@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/data/model/class_model.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 
 import '../../../../../util/color.dart';

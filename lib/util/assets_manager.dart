@@ -12,6 +12,7 @@ class AppMedia {
   //todo for general
   static const String default_user_image = "$IMAGE_PATH/default_user_image.jpg";
   static const String add_user_image = "$IMAGE_PATH/add_user_image.png";
+  static const String add_icon = "$IMAGE_PATH/add.png";
 
 
   //todo for shimmer

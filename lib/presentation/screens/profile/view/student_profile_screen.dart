@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/data/model/result_exam_model.dart';
 import 'package:shater/data/model/user.dart';
-import 'package:shater/presentation/screens/auth/base%20login/widgets/rate_app.dart';
 import 'package:shater/presentation/screens/auth/sign%20in/controller/sign_in_controller.dart';
 import 'package:shater/presentation/screens/base/button_back.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
@@ -13,7 +12,7 @@ import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
-import 'package:shater/presentation/screens/profile/widgets/item_subscrip_subiect.dart';
+import 'package:shater/presentation/screens/teacher_profile/widgets/item_subscrip_subiect.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
@@ -21,7 +20,7 @@ import 'package:shater/util/images.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 import '../../../../core/controller/shared_prefrences.dart';
-import '../widgets/profile_children_widget.dart';
+import '../../teacher_profile/widgets/profile_children_widget.dart';
 
 class StudentProfileScreen extends StatefulWidget {
   const StudentProfileScreen({super.key});
@@ -40,9 +39,10 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    if (controller.profileData == null) {
-      controller.getStudentProfile();
-    } else {}
+    controller.getStudentProfile();
+    // if (controller.profileData == null) {
+    //   controller.getStudentProfile();
+    // } else {}
   }
 
   @override

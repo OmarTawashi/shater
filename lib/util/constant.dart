@@ -4,6 +4,12 @@ class APPCONSTANT {
   static const String COUNTRY_CODE = 'saidBox_country_code';
   static const String LANGUAGE_CODE = 'saidBox_language_code';
 
+
+  static const String shattirEmail = 'shattir@yahoo.com';
+
+
+  static const String appStoreUrl = 'https://apps.apple.com/us/app/shattir-%D8%B4%D8%A7%D8%B7%D8%B1/id1434200433';
+
   static const int loggerLineLength = 120;
   static const int loggerErrorMethodCount = 8;
   static const int loggerMethodCount = 2;

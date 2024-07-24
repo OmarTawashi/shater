@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:shater/core/extenstion/question_status.dart';
 import 'package:shater/data/model/typing_answer.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';

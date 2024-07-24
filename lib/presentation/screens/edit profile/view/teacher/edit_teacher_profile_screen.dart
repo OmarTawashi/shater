@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shater/core/base/base_mixin.dart';
+import 'package:shater/presentation/privcy%20policy/privcy/privcy_screen.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/custom_intike_container.dart';
 import 'package:shater/presentation/screens/base/image_user.dart';
@@ -15,21 +17,28 @@ import 'package:shater/presentation/screens/edit%20profile/controller/edit_profi
 import 'package:shater/presentation/screens/edit%20profile/widgets/custom_border_text.dart';
 import 'package:shater/presentation/screens/edit%20profile/widgets/custom_edit_form.dart';
 import 'package:shater/presentation/screens/edit%20profile/widgets/intike_ticket.dart';
+import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/util/color.dart';
+import 'package:shater/util/constant.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
-import '../../auth/resgister/controller/register_controller.dart';
-import '../../auth/sign up/controller/sign_up_controller.dart';
-import '../../city/bindings/city_binding.dart';
-import '../../city/view/city_screen.dart';
-import '../../school/binding/school_bindings.dart';
-import '../../school/view/school_screen.dart';
-import '../take image/binding/take_image_binding.dart';
-import '../take image/view/take_image_screen.dart';
+import '../../../../about/about_screen.dart';
+import '../../../../privcy policy/terms/terms_condition.dart';
+import '../../../auth/resgister/controller/register_controller.dart';
+import '../../../auth/sign up/controller/sign_up_controller.dart';
+import '../../../city/bindings/city_binding.dart';
+import '../../../city/view/city_screen.dart';
+import '../../../school/binding/school_bindings.dart';
+import '../../../school/view/school_screen.dart';
+import '../../../student/subject teacher/view/subject_teacher_screen.dart';
+import '../../take image/binding/take_image_binding.dart';
+import '../../take image/view/take_image_screen.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+class EditTeacherProfileScreen extends StatelessWidget {
+  const EditTeacherProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +70,10 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                   actions: [
-                    controller.isEnable() ? GestureDetector(
+                    controller.isTeacherEnable() ? GestureDetector(
                       onTap: () {
                         log("Save");
-                        controller.editProfile();
+                        controller.editTeacherProfile();
                       },
                       child: Container(
                         width: 120,
@@ -82,7 +91,7 @@ class EditProfileScreen extends StatelessWidget {
                       horizontalPadding: Dimensions.paddingSize25,
                       child: CustomText(
                         text: 'save',
-                        color: controller.isEnable() ? Colors.white : COLORS.strokeColor,
+                        color: controller.isTeacherEnable() ? Colors.white : COLORS.strokeColor,
                         fontSize: Dimensions.fontSize14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -151,12 +160,12 @@ class EditProfileScreen extends StatelessWidget {
                                 height: Dimensions.paddingSize25,
                               ),
                               CustomEditForm(
-                                textLeading: controller.user?.name ?? '',
+                                textLeading: 'name',
                                 isEditIcon: true,
                                 isEnabled: true,
                                 textEditingController: controller.nameController,
                                 onChange: (value){
-                                  controller.isEnable();
+                                  controller.isTeacherEnable();
                                 },
                               ),
                               SizedBox(
@@ -167,6 +176,38 @@ class EditProfileScreen extends StatelessWidget {
                                 textEditingController:
                                     TextEditingController(text: '********'),
                                 tapTrailing: () {},
+                              ),
+                              SizedBox(
+                                height: 35.h,
+                              ),
+                              CustomEditForm(
+                                textLeading: 'subject',
+                                hintText: 'choose'.tr + " " + 'subject'.tr,
+                                textEditingController: TextEditingController(
+                                    text: controller.subjectSelected?.title),
+                                tapTrailing: () {
+                                  Get.to(
+                                      SubjectTeacherScreen(
+                                        typeFrom: 1,
+                                      ),
+                                      binding: SubjectTeacherBinding());
+                                },
+                              ),
+                              SizedBox(
+                                height: Dimensions.paddingSize16,
+                              ),
+                              CustomEditForm(
+                                textLeading: 'classes',
+                                hintText: 'choose'.tr + " " + 'classes'.tr,
+                                textEditingController: TextEditingController(
+                                    text: controller.classesText),
+                                tapTrailing: () {
+                                  Get.to(
+                                      ClasseScreen(
+                                        typeFrom: 2,
+                                      ),
+                                      binding: ClasseBinding(2));
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize16,
@@ -200,21 +241,7 @@ class EditProfileScreen extends StatelessWidget {
                                       binding: SchoolBinding(2));
                                 },
                               ),
-                              SizedBox(
-                                height: Dimensions.paddingSize16,
-                              ),
-                              CustomEditForm(
-                                textLeading: 'class',
-                                textEditingController: TextEditingController(
-                                    text: controller.classStudSelected?.title),
-                                tapTrailing: () {
-                                  Get.to(
-                                      ClasseScreen(
-                                        typeFrom: 2,
-                                      ),
-                                      binding: ClasseBinding(2));
-                                },
-                              ),
+
                             ],
                           ),
                         ),
@@ -241,7 +268,9 @@ class EditProfileScreen extends StatelessWidget {
                               IntikeTicket(
                                 assetName: ICONS.about,
                                 text: 'about_me',
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(()=> AboutScreen());
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize16,
@@ -249,7 +278,11 @@ class EditProfileScreen extends StatelessWidget {
                               IntikeTicket(
                                 assetName: ICONS.rate,
                                 text: 'rate_me',
-                                onTap: () {},
+                                onTap: () async {
+                                  if(await canLaunchUrlString(APPCONSTANT.appStoreUrl)){
+                                    launchUrlString(APPCONSTANT.appStoreUrl);
+                                  }
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize16,
@@ -257,7 +290,14 @@ class EditProfileScreen extends StatelessWidget {
                               IntikeTicket(
                                 assetName: ICONS.support,
                                 text: 'contact_me',
-                                onTap: () {},
+                                onTap: () {
+                                  final Uri emailLaunchUri = Uri(
+                                    scheme: 'mailto',
+                                    path: APPCONSTANT.shattirEmail,
+                                  );
+
+                                  launchUrl(emailLaunchUri);
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize16,
@@ -265,15 +305,22 @@ class EditProfileScreen extends StatelessWidget {
                               IntikeTicket(
                                 assetName: ICONS.callFriend,
                                 text: 'call_friend',
-                                onTap: () {},
+                                onTap: () {
+                                  Share.share(APPCONSTANT.appStoreUrl);
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize16,
                               ),
                               IntikeTicket(
                                 assetName: ICONS.privcy,
-                                text: 'privcy_policy',
-                                onTap: () {},
+                                isTwoText: true,
+                                onOtherTextTap: (){
+                                  Get.to(()=> TermsConditionScreen());
+                                },
+                                onTap: () {
+                                  Get.to(()=> PrivcyPolicyScreen());
+                                },
                               ),
                               SizedBox(
                                 height: Dimensions.paddingSize20,

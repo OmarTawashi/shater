@@ -6,7 +6,6 @@ import 'package:shater/data/model/result_exam_model.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/profile_repository_remote.dart';
 import 'package:shater/domain/usecase/profile_usecase_imp.dart';
-import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
 import 'package:shater/presentation/screens/student/result/controller/result_controller.dart';
 import 'package:shater/routes/app_routes.dart';

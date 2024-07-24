@@ -3,7 +3,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
-import 'package:shater/core/extenstion/lesson_extention.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/base/widget/comment_widget.dart';

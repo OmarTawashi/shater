@@ -142,6 +142,9 @@
     "subjects": "المناهج",
     "contacts": "التواصل",
     "privcy_policy": "شروط الإستخدام و الخصوصية",
+    "privcy": "الخصوصية",
+    "terms_conditions": "شروط الإستخدام",
+    "and_policy": " و شروط الإستخدام",
     "ok_to": "موافق على",
     "or": "أو",
     "sign_in": "تسجيل دخول",
@@ -165,11 +168,14 @@
     "add new student" : "اضافة طالب جديد",
     "add" : "أضف",
     "choose" : "اختر",
+    "classes" : "الصفوف",
     "updated successfully" : "تم تحديث البيانات بنجاح",
     "delete_account" : "حذف حساب",
     "delete_my_account" : "حذف حسابي",
     "do_you_want_delete_account" : "هل تريد حذف حساب شاطر الخاص بك؟",
     "enter_delete_my_account" : "الرجاء إدخال \"حذف حسابي\" للتأكيد",
+    "Certificates" : "الشهادات",
+    "Courses" : "الدورات",
     "back" : "رجوع"
 
 }

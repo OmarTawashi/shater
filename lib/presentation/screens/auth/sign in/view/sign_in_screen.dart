@@ -8,13 +8,11 @@ import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/routes/app_routes.dart';
 
-import '../../../../../core/base/base_mixin.dart';
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/button_back.dart';
 import '../../../base/custom_cupertino_button.dart';
 import '../../../base/text_not_acounts.dart';
-import '../widgets/item_childern.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});

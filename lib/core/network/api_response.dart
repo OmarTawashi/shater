@@ -50,6 +50,7 @@ class APIResponse<T> extends GenericObject<T>
   bool? status;
   String? message;
   List<T>? items;
+  List<T>? data;
   T? item;
   List<ErrorModel>? errors;
 
@@ -61,6 +62,7 @@ class APIResponse<T> extends GenericObject<T>
     status = json['status'];
     message = json['message'];
     items = [];
+    data = [];
 
     try {
       if (json.containsKey("items")) {
@@ -68,7 +70,9 @@ class APIResponse<T> extends GenericObject<T>
           items?.add(genericObject(item));
         });
       } else {
+        log("json['data'] : ${json['data']}");
         json['data'].forEach((item) {
+          log("item : ${item.toString()}");
           items?.add(genericObject(item));
         });
       }

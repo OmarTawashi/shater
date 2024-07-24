@@ -29,8 +29,11 @@ class ApiConstant {
   static String studentRates = '/api/$version/student/rates/students';
   static String studentProfile = '/api/$version/student/profile/my-profile';
   static String updateStudentProfile = '/api/$version/student/profile/update';
-  static String registerChild(int id) => 'api/$version/auth/register-child/$id';
+  static String updateTeacherProfile = '/api/$version/teacher/profile/update';
+  static String registerChild(int id) => '/api/$version/auth/register-child/$id';
   static String teacherProfile = '/api/$version/teacher/profile/index';
+  static String teacherQualifications(int id) => '/api/v3/teacher/profile/qualifications/$id/index';
+  static String teacherAddQualifications(int id) => '/api/v3/teacher/profile/qualifications/$id/update';
   static String examSubject = '/api/$version/student/educational/exams/subject';
   static String shareExam = '/api/$version/student/educational/exams/result';
   static String commentsList = '/api/$version/student/comments/list';

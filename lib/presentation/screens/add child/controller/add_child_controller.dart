@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:dio/dio.dart' as dio;
 import 'package:flutter/cupertino.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/base/base_mixin.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
@@ -13,34 +10,35 @@ import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/auth_repository_remote.dart';
 import 'package:shater/domain/usecase/auth_usecase_imp.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
-import 'package:shater/routes/app_routes.dart';
 
-import '../../../../core/base/device_info_sevice.dart';
-import '../../../../core/network/api_exceptions.dart';
-import '../../../../core/network/api_response.dart';
 import '../../../../data/model/class_model.dart';
 import '../../../../data/model/public_model.dart';
 import '../../../../data/model/school_model.dart';
-import '../../../../util/api_constant.dart';
 
 class AddChildController extends GetxController {
 
   File? _imageFile;
+
   File? get imageFile => _imageFile;
 
   School? _schoolSelected;
+
   School? get schoolSelected => _schoolSelected;
 
   File? _imageFileUser;
+
   File? get imageFileUser => _imageFileUser;
 
   PublicModel? _citySelected;
+
   PublicModel? get citySelected => _citySelected;
 
   List<Classes> _classSelected = [];
+
   List<Classes> get classSelected => _classSelected;
 
   Classes? _classStudSelected;
+
   Classes? get classStudSelected => _classStudSelected;
 
   TextEditingController fullNameController = TextEditingController();
@@ -84,7 +82,7 @@ class AddChildController extends GetxController {
     update();
   }
 
-  bool isValid(){
+  bool isValid() {
     bool isNameValid = fullNameController.text.isNotEmpty;
     bool isCityValid = citySelected != null;
     bool isSchoolValid = schoolSelected != null;
@@ -104,84 +102,98 @@ class AddChildController extends GetxController {
     final cityId = citySelected!.id;
     final schoolId = schoolSelected!.id;
     final classId = classStudSelected!.id;
-    isLoading = true ;
+    isLoading = true;
     update();
     int parentId = SharedPrefs.user!.id!;
-    try{
-      // await _authUseCaseImp
-      //     ?.addChild(
-      //     parentId,
-      //     fullName,
-      //     schoolId ?? -1,
-      //     cityId ?? -1,
-      //     classId ?? '',
-      //     imageFile)
-      //     .then((value) {
-      //   log("addChild 4");
-      //   value?.fold((l) {
-      //     log("addChild 5");
-      //     BaseMixin.showToastFlutter(messsage: l.message);
-      //   }, (r) {
-      //     // log("addChild : ${r.toJson()}");
-      //   });
-      //   log("addChild 6");
-      //   isLoading = true ;
-      //   update();
-      // });
+    try {
+      await _authUseCaseImp
+          ?.addChild(
+          parentId,
+          fullName,
+          schoolId ?? -1,
+          cityId ?? -1,
+          classId ?? '',
+          imageFile)
+          .then((value) {
 
-      final completer = Completer<Either<ApiException, User>?>();
-      final fcmToken = SharedPrefs.fcmToken ?? '';
-      final deviceType = await DeviceInfoService.getDeviceType();
-      final data = {
-        "name": "test1",
-        "school_id": 4,
-        "city_id": 1,
-        "class_id": 46,
-      };
-      dio.FormData formData = await dio.FormData.fromMap(data);
-      if (imageFile != null) {
-        formData.files.add(MapEntry(
-          'image',
-          await dio.MultipartFile.fromFile(imageFile!.path ?? ''),
-        ));
-      }
-      try {
-        await ApiClient.requestData(
-          endpoint: ApiConstant.registerChild(2818),
-          requestType: RequestType.post,
-          create: () => APIResponse<User>(
-            create: () => User(),
-          ),
-          data: formData,
-          headers: {
-            'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
-          },
-          queryParams: {
-            'parent_id' : 2818,
-          },
-          onSuccess: (response) {
-            if (response.data?.status == false ?? false) {
-              completer.complete(left(ApiException(
-                message: response.data?.errors?.first.message ?? "",
-                response: response.response,
-              )));
-            } else {
-              final user = response.data?.item;
-              completer.complete(Right(user ?? User()));
-              if (user != null) {
-                log("user : ${user.toJson()}");
-              }
-            }
-          },
-          onError: (error) {
-            completer.complete(left(error));
-          },
-        );
-      } on ApiException catch (error) {
-        completer.complete(left(error));
-      }
-    }catch(e){
-      log("addChild e : $e");
+            log("addChild value : ${value.toString()}");
+
+        value?.fold((l) {
+          BaseMixin.showToastFlutter(messsage: l.message);
+        }, (r) {
+          log("addChild 1");
+          ChildUser newChild = r;
+          log("addChild 2");
+          User newUser = SharedPrefs.user!;
+          log("addChild 3");
+          newUser.children?.add(newChild);
+          log("addChild 3");
+          SharedPrefs.saveSelectedChild(newChild);
+          log("addChild 3");
+          SharedPrefs.saveUser(newUser,"");
+          log("addChild 3");
+          Get.find<ProfileController>().profileData?.children?.add(newChild);
+          log("addChild 3");
+          Get.back();
+        });
+        isLoading = false;
+        update();
+      });
+
+      //   final completer = Completer<Either<ApiException, User>?>();
+      //   final fcmToken = SharedPrefs.fcmToken ?? '';
+      //   final deviceType = await DeviceInfoService.getDeviceType();
+      //   final data = {
+      //     "name": "test1 test2",
+      //     "school_id": 4,
+      //     "city_id": 1,
+      //     "class_id": 46,
+      //     "parentID": 2818,
+      //   };
+      //   dio.FormData formData = await dio.FormData.fromMap(data);
+      //   if (imageFile != null) {
+      //     formData.files.add(MapEntry(
+      //       'image',
+      //       await dio.MultipartFile.fromFile(imageFile!.path ?? '',filename: 'image.JPG'),
+      //     ));
+      //   }
+      //   try {
+      //     await ApiClient.requestData(
+      //       endpoint: ApiConstant.registerChild(2818),
+      //       requestType: RequestType.post,
+      //       create: () => APIResponse<User>(
+      //         create: () => User(),
+      //       ),
+      //       data: formData,
+      //       headers: {
+      //         'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
+      //       },
+      //       onSuccess: (response) {
+      //         if (response.data?.status == false ?? false) {
+      //           completer.complete(left(ApiException(
+      //             message: response.data?.errors?.first.message ?? "",
+      //             response: response.response,
+      //           )));
+      //         } else {
+      //           final user = response.data?.item;
+      //           completer.complete(Right(user ?? User()));
+      //           if (user != null) {
+      //             log("user : ${user.toJson()}");
+      //           }
+      //         }
+      //       },
+      //       onError: (error) {
+      //         completer.complete(left(error));
+      //       },
+      //     );
+      //   } on ApiException catch (error) {
+      //     completer.complete(left(error));
+      //   }
+      // }catch(e){
+      //   log("addChild e : $e");
+      // }
+    } catch (e) {
+      log("e : $e");
     }
   }
 }

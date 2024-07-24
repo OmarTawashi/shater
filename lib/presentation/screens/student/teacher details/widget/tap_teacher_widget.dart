@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/dimensions.dart';
 

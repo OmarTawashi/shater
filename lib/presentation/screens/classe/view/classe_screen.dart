@@ -7,23 +7,46 @@ import 'package:shater/data/model/class_model.dart';
 import 'package:shater/presentation/screens/add%20child/controller/add_child_controller.dart';
 import 'package:shater/presentation/screens/auth/base%20login/controller/auth_controller.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/widgets/item_city.dart';
-import 'package:shater/presentation/screens/auth/sign%20up/widgets/widget_data_user.dart';
 import 'package:shater/presentation/screens/base/button_bottom.dart';
 import 'package:shater/presentation/screens/classe/controller/classe_controller.dart';
 import 'package:shater/presentation/screens/edit%20profile/controller/edit_profile_controller.dart';
 import 'package:shater/routes/app_routes.dart';
-import 'package:shater/util/images.dart';
 
 import '../../../../util/color.dart';
 import '../../../../util/dimensions.dart';
 import '../../auth/sign up/controller/sign_up_controller.dart';
-import '../../base/animator_container.dart';
 import '../../base/text_custom.dart';
 
 class ClasseScreen extends StatelessWidget {
   const ClasseScreen({super.key, required this.typeFrom});
 
   final int typeFrom;
+
+  bool isSelected(Classes cls){
+    bool isSelect = false;
+    if(typeFrom == 0){
+      if(Get.find<AuthController>().userType == AuthType.teacher){
+        isSelect = Get.find<SignUpController>()
+            .classSelected
+            .contains(cls);
+      }else{
+        isSelect = Get.find<SignUpController>()
+            .classStudSelected == cls ;
+      }
+    }else if(typeFrom != 1 && typeFrom != 0){
+      log("Get.find<EditProfileController>().user?.isTeacher == 1 : ${Get.find<EditProfileController>().user?.isTeacher == 1}");
+      if(Get.find<EditProfileController>().user?.isTeacher == 1){
+        isSelect = Get.find<EditProfileController>()
+            .classSelected
+            .contains(cls);
+        log("isSelected : $isSelect");
+      }else{
+        isSelect = Get.find<EditProfileController>()
+            .classStudSelected == cls ;
+      }
+    }
+    return isSelect;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,14 +108,7 @@ class ClasseScreen extends StatelessWidget {
                   itemBuilder: (context , i){
                     return ItemCity(
                       name: controller.classes[i].title,
-                      isSelect: typeFrom == 0 ? (Get.find<AuthController>().userType == AuthType.teacher &&
-                          Get.find<SignUpController>()
-                              .classSelected
-                              .contains(controller.classes[i])) : typeFrom == 1 ? Get.find<AddChildController>()
-                          .classSelected
-                          .contains(controller.classes[i]): Get.find<EditProfileController>()
-                          .classSelected
-                          .contains(controller.classes[i]),
+                      isSelect: isSelected(controller.classes[i]),
                       onTap: () {
                         Classes? classes = controller.classes[i];
                         if(typeFrom == 0){
@@ -106,8 +122,15 @@ class ClasseScreen extends StatelessWidget {
                           Get.find<AddChildController>().setClassStud(classes);
                           Get.back();
                         }else {
-                          Get.find<EditProfileController>().setClassStud(classes);
-                          Get.back();
+                          if(Get.find<EditProfileController>().user?.isTeacher == 1){
+                            Get.find<EditProfileController>().setClasses(classes);
+                            controller.update();
+                            // Get.back();
+                          }else{
+                            Get.find<EditProfileController>().setClassStud(classes);
+                            Get.back();
+                          }
+
                         }
                       },
                     );
@@ -184,8 +207,7 @@ class ClasseScreen extends StatelessWidget {
   }
 
   void goRoutes() {
-    if (Get.find<SignUpController>().classSelected != null &&
-        Get.find<SignUpController>().classSelected.isNotEmpty) {
+    if (Get.find<SignUpController>().classSelected.isNotEmpty) {
       Get.toNamed(Routes.getCreateNameScreen());
       print('object');
     } else {

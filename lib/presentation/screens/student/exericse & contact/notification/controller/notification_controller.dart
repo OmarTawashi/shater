@@ -24,13 +24,9 @@ class NotificationController extends BaseController {
       value?.fold((l) {
         handelError(l);
       }, (r) {
-        if (r == null) {
-          updateViewType(ViewType.empty);
-        } else {
-          _notifications = r;
-          updateViewType(ViewType.success);
-        }
-      });
+        _notifications = r;
+        updateViewType(ViewType.success);
+            });
 
       update();
     });

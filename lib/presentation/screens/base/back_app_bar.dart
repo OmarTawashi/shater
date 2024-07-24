@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
-import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 
 import '../../../util/dimensions.dart';

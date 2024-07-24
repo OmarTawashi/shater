@@ -114,4 +114,11 @@ class SharedPrefs {
       return user?.apiToken ?? '';
     }
   }
+
+  static logout() async {
+    await sharedPreferences.remove(SharedConstant.childKey);
+    await sharedPreferences.remove(SharedConstant.dataForUserRegistrationKey);
+    await sharedPreferences.remove(SharedConstant.selectedChildKey);
+    await sharedPreferences.remove(SharedConstant.userKey);
+  }
 }

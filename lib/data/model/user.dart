@@ -6,42 +6,43 @@ import 'package:shater/data/model/school_model.dart';
 import 'package:shater/data/model/subject_model.dart';
 
 class User extends Decodable<User> {
-  int? id;
+  var id;
   String? name;
   String? email;
-  int? classId;
-  int? levelId;
-  int? countryId;
+  var classId;
+  var levelId;
+  var countryId;
   String? image;
   String? fCMToken;
   String? deviceType;
   String? apiToken;
-  int? videoNotification;
+  var videoNotification;
   String? status;
   String? createdAt;
   String? updatedAt;
-  int? isNew;
-  int? isTeacher;
-  int? subjectId;
-  int? accountTypeId;
+  var isNew;
+  var isTeacher;
+  var subjectId;
+  var accountTypeId;
   String? about;
-  int? canCreateQuestion;
-  int? cityId;
-  int? schoolId;
-  int? canEditQuestion;
+  var canCreateQuestion;
+  var cityId;
+  var schoolId;
+  var canEditQuestion;
   String? loginAt;
-  int? parentId;
-  int? canComment;
-  int? isOnline;
-  int? countVideo;
-  int? countQuestions;
-  int? countStar;
+  var parentId;
+  var canComment;
+  var isOnline;
+  var countVideo;
+  var countQuestions;
+  var countStar;
   String? rate;
-  int? rateStar;
-  int? isNotify;
-  int? isFav;
-  int? teacherRate;
-  int? unreadNotification;
+  var rateStar;
+  var isNotify;
+  var isFav;
+  var teacherRate;
+  var unreadNotification;
+  var experienceYears;
   Subject? subject;
   List<Classes>? teacherClass;
   Classes? classes;
@@ -81,6 +82,7 @@ class User extends Decodable<User> {
       this.isOnline,
       this.countVideo,
       this.countQuestions,
+      this.experienceYears,
       this.countStar,
       this.rate,
       this.isNotify,
@@ -133,6 +135,7 @@ class User extends Decodable<User> {
     isNotify = json['is_notify'];
     isFav = json['is_fav'];
     teacherRate = json['teacher_rate'];
+    experienceYears = json['experience_years'];
     unreadNotification = json['unread_notification'];
     subject =
         json['subject'] != null ? new Subject.fromJson(json['subject']) : null;
@@ -217,6 +220,7 @@ class User extends Decodable<User> {
     isFav = json['is_fav'];
     teacherRate = json['teacher_rate'];
     unreadNotification = json['unread_notification'];
+    experienceYears = json['experience_years'];
     subject =
         json['subject'] != null ? new Subject.fromJson(json['subject']) : null;
     if (json['teacher_class'] != null) {
@@ -298,6 +302,7 @@ class User extends Decodable<User> {
     data['is_fav'] = this.isFav;
     data['teacher_rate'] = this.teacherRate;
     data['unread_notification'] = this.unreadNotification;
+    data['experience_years'] = experienceYears;
     if (this.subject != null) {
       data['subject'] = this.subject?.toJson();
     }
@@ -332,41 +337,41 @@ class User extends Decodable<User> {
 }
 
 class ChildUser extends Decodable<ChildUser> {
-  int? id;
+  var id;
   String? name;
   String? email;
-  int? classId;
-  int? levelId;
-  int? countryId;
+  var classId;
+  var levelId;
+  var countryId;
   String? image;
   String? fCMToken;
   String? deviceType;
   String? apiToken;
-  int? videoNotification;
+  var videoNotification;
   String? status;
   String? createdAt;
   String? updatedAt;
-  int? isNew;
-  int? isTeacher;
-  int? subjectId;
-  int? accountTypeId;
+  var isNew;
+  var isTeacher;
+  var subjectId;
+  var accountTypeId;
   String? about;
-  int? canCreateQuestion;
-  int? cityId;
-  int? schoolId;
-  int? canEditQuestion;
+  var canCreateQuestion;
+  var cityId;
+  var schoolId;
+  var canEditQuestion;
   String? loginAt;
-  int? parentId;
-  int? canComment;
-  int? isOnline;
-  int? countVideo;
-  int? countQuestions;
-  int? countStar;
+  var parentId;
+  var canComment;
+  var isOnline;
+  var countVideo;
+  var countQuestions;
+  var countStar;
   String? rate;
-  int? isNotify;
-  int? isFav;
-  int? teacherRate;
-  int? unreadNotification;
+  var isNotify;
+  var isFav;
+  var teacherRate;
+  var unreadNotification;
 
 
   ChildUser(
@@ -526,3 +531,5 @@ class ChildUser extends Decodable<ChildUser> {
     return data;
   }
 }
+
+

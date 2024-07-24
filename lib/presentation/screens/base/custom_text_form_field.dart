@@ -16,7 +16,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? textValidation;
   final bool? enabledField;
   final Function(String)? onChanged;
-  final Widget? suffix;
+  final Widget? suffix,prefix;
   final bool obscureText;
   final bool filled;
   final TextInputAction? textInputAction;
@@ -26,6 +26,8 @@ class CustomTextFormField extends StatelessWidget {
   final Color? textColor;
   final Color? cursorColor;
   final double? textSize;
+  final int? maxLines;
+  final EdgeInsets? contentPadding;
   const CustomTextFormField(
       {super.key,
       this.hintText,
@@ -45,6 +47,9 @@ class CustomTextFormField extends StatelessWidget {
       this.keyboardType,
       this.obscureText = false,
       this.suffix,
+      this.prefix,
+      this.maxLines,
+      this.contentPadding,
       this.textInputAction,
       this.textValidation});
 
@@ -52,6 +57,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      maxLines: maxLines ?? 1,
       keyboardType: keyboardType,
       textDirection: TextDirection.rtl,
       onChanged: onChanged,
@@ -78,10 +84,12 @@ class CustomTextFormField extends StatelessWidget {
         alignLabelWithHint: true,
         suffixIcon: suffix,
         suffixIconColor: COLORS.secanderyColor,
+        prefixIcon: prefix,
+        prefixIconColor: COLORS.secanderyColor,
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 13),
             borderSide: BorderSide(color: borderColor ?? COLORS.strokeColor, width: 2)),
-        contentPadding: EdgeInsets.symmetric(horizontal: 14.w,vertical: 14.h),
+        contentPadding: contentPadding ??  EdgeInsets.symmetric(horizontal: 14.w,vertical: 14.h),
         filled: filled,
         fillColor: fillColor ?? Colors.transparent,
         hintText: hintText,

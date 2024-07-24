@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
 import 'package:shater/core/network/api_client.dart';
-import 'package:shater/data/model/subject_model.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';
 
@@ -11,7 +9,6 @@ import '../../../../data/model/class_model.dart';
 import '../../../../data/model/course_learning_model.dart';
 import '../../../../data/repository/public_repository_remote.dart';
 import '../../../../domain/usecase/public_usecase_imp.dart';
-import '../../student/dashBord/controller/dashboard_controller.dart';
 import '../teacher dashborad/controller/teacher_dashboard_controller.dart';
 
 class SubscribersController  extends BaseController{
@@ -35,7 +32,7 @@ class SubscribersController  extends BaseController{
     fetchTeacherCoursesLesson();
   }
   Classes? getClassForItem(int? id){
-    return this.classes?.firstWhere((element) => element.id == '$id');
+    return this.classes.firstWhere((element) => element.id == '$id');
   }
 
   void getClassesStudent() async {
@@ -56,14 +53,10 @@ class SubscribersController  extends BaseController{
        value?.fold((l) {
          updateViewType(ViewType.error);
        }, (r) {
-         if (r == null) {
-           updateViewType(ViewType.empty);
-         } else {
-           updateViewType(ViewType.success);
-           _classes = r.country?.first.classes ?? [];
-           this.populateData();
-         }
-       });
+         updateViewType(ViewType.success);
+         _classes = r.country?.first.classes ?? [];
+         this.populateData();
+              });
 
        update();
      });

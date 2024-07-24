@@ -9,82 +9,147 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="login || child_login">
-      <change afterPath="$PROJECT_DIR$/assets/gifs/loading_shimmer.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/add_user_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/default_user_image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/flavors/dio_manage_class.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/binding/add_child_binding.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/controller/add_child_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/view/add_child_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/view/take_photo_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/custom_border_text.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/custom_edit_form.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/widgets/intike_ticket.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/base/button_settings.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/delete_account_dialog.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/student_profile_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/teacher_profile_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/add_child_button.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/brief_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/profile_children_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualification_item_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualifications_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/widgets/custom_network_image.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/util/app_shared_data.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/util/assets_manager.dart" afterDir="false" />
+    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="7//11/2024">
+      <change afterPath="$PROJECT_DIR$/assets/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/model/qualification_response.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/model/qualifications_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/about/about_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/teacher/edit_teacher_profile_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/about/about_teacher_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/bindings/qualifications_binding.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/controller/qualifications_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/view/qualifications_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/view/widgets/local_qualifications_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/view/widgets/qualifications_tab.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/view/widgets/qualifications_tab_veiw.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/qualifications/view/widgets/remote_qualifications_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/base/base_mixin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/controller/root_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/controller/root_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/base/image_converter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/base/image_converter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/controller/shared_prefrences.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/controller/shared_prefrences.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/extenstion/lesson_extention.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/extenstion/lesson_extention.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/network/api_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/api_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/repository/auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/network/api_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/api_response.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/repository/profile_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/repository/profile_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/usecase/auth_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/usecase/auth_usecase.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/usecase/profile_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/usecase/profile_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/model/class_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/model/class_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/model/subject_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/model/subject_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/model/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/model/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/auth_repository_remote.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/lesson_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/lesson_repository_remote.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/repository/profile_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/profile_repository_remote.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/auth_usecase_imp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/public_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/public_repository_remote.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/teacher_repository_remote.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/teacher_repository_remote.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/usecase/profile_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/profile_usecase_imp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/usecase/public_usecase_imp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/usecase/public_usecase_imp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flavors/myapp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flavors/myapp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flavors/dio_manage_class.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/dio_manager/dio_manage_class.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main_dev.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_dev.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main_prod.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_prod.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/controller/auth_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/controller/auth_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/widgets/rate_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/base login/widgets/rate_app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/privcy policy/privcy/privcy_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/privcy policy/privcy/privcy_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/privcy policy/terms/terms_condition.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/privcy policy/terms/terms_condition.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/add child/controller/add_child_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/controller/add_child_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/add child/view/add_child_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/add child/view/add_child_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/resgister/controller/register_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/resgister/controller/register_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/controller/sign_in_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/view/sign_in_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/childern_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/childern_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/button_bottom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/button_bottom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/item_childern.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign in/widgets/item_childern.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/auth/sign up/view/sign_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/back_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/back_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/button_settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/button_settings.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/custom_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/custom_text_form_field.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/image_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/image_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/base/html_viewer_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/base/html_viewer_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/city/view/city_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/city/view/city_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/binding/classe_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/binding/classe_binding.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/controller/classe_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/controller/classe_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/classe/view/classe_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/classe/view/classe_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/controller/edit_profile_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/controller/edit_profile_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/view/take_image_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/view/take_image_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/widget/grid_avatar_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/take image/widget/grid_avatar_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/edit_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/edit_profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_border_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_border_text.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_edit_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/custom_edit_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/edit_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/view/student/edit_student_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/delete_account_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/delete_account_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/intike_ticket.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/edit profile/widgets/intike_ticket.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/level/controller/level_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/level/controller/level_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/controller/profile_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/controller/profile_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/view/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/main_profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/intike_profile_imoji.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/intike_profile_imoji.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/binding/school_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/binding/school_bindings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/controller/school_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/controller/school_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/school/view/school_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/school/view/school_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/view/student_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/student_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/view/teacher_profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/profile/view/teacher_profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/add_child_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/add_child_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/brief_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/brief_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/intike_profile_imoji.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/intike_profile_imoji.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/item_subscrip_subiect.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/item_subscrip_subiect.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/profile_children_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/profile_children_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualification_item_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/qualification_item_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/profile/widgets/qualifications_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher_profile/widgets/qualifications_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/exercises/controller/exercise_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/exercises/controller/exercise_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/notification/controller/notification_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/notification/controller/notification_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/view/exercise_contact_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/exericse &amp; contact/view/exercise_contact_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/firsts/widgets/item_first_student.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/firsts/widgets/item_first_student.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/controller/page_subject_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/controller/page_subject_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/view/page_subject_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/pages subject/view/page_subject_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/bottom_widget_lesson.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/bottom_widget_lesson.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/comment_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/comment_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/tab_bar_queation_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/base/widget/tab_bar_queation_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/failure question/widget/show_expalin_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/failure question/widget/show_expalin_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/controller/lesson_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/controller/lesson_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/view/lesson_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/view/lesson_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/widget/teacher_lesson_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/lesson/widget/teacher_lesson_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/arithmetic_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/arithmetic_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/complete_value.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/complete_value.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/long_division.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/long_division.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/match_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/match_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/multi_choice_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/multi_choice_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/order_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/order_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/order_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/order_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/writing_board.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question answer/writing_board.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/controller/question_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/controller/question_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/widget/header_question_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/widget/header_question_section.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/widget/image_question_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/questions/question/widget/image_question_section.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/result subject/controller/result_subject_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/result subject/controller/result_subject_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/result subject/view/result_subject_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/result subject/view/result_subject_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/result/controller/result_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/result/controller/result_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/result/view/result_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/result/view/result_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subcription teacher details/bindings/subcription_teacher_details_binding.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subcription teacher details/bindings/subcription_teacher_details_binding.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subcription teacher details/view/subcription_teacher_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subcription teacher details/view/subcription_teacher_details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subject teacher/view/subject_teacher_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subject teacher/view/subject_teacher_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subject/controller/subjects_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subject/controller/subjects_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subject/view/subjects_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subject/view/subjects_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subject/widgets/exercise_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subject/widgets/exercise_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/subject/widgets/subject_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/subject/widgets/subject_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/body_details_teacher.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/body_details_teacher.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/body_subscrip_teacher.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/body_subscrip_teacher.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/bottom_subscrip_teacher.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/bottom_subscrip_teacher.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/tap_teacher_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher details/widget/tap_teacher_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller/teacher_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller/teacher_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/view/teacher_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/student/teacher/view/teacher_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_bindings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/Explanation/teacher_explanation_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_bindings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/My Explanation/teacher_my_lessons_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/Teacher Pages Explained/teacher_pages_lessons_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/Teacher Pages Explained/teacher_pages_lessons_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/Teacher Pages Explained/teacher_pages_lessons_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/Teacher Pages Explained/teacher_pages_lessons_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_bindings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/practice_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/view/practice_item_subject.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/practice/view/practice_item_subject.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_bindings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_bindings.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/subscribers_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/view/subscribers_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/subscription/view/subscribers_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/screens/teacher/teacher dashborad/bindings/teacher_bindings_dashbord.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_routes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/util/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/api_constant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/dimensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/dimensions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/shared_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/shared_constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/assets_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/assets_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/color.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/color.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/constant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/util/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,44 +225,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;AnalyzeApkAction.lastApkPath&quot;: &quot;C:/Users/TOP/Documents/GitHub/shater&quot;,
-    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
-    &quot;Flutter.main_dev.dart.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;anas&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/anas/programing/flutter/shater/lib/flavors&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;device.mirroring&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "AnalyzeApkAction.lastApkPath": "C:/Users/TOP/Documents/GitHub/shater",
+    "Flutter.main.dart.executor": "Run",
+    "Flutter.main_dev.dart.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "anas",
+    "io.flutter.reload.alreadyRun": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Eng.Anas/Desktop/aaaaaaaaaaaaaaaaaaaaaaaaa/Screenrecorder-2022-11-20-22-03-14-397.mp4",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "device.mirroring",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\anas\programing\flutter\shater\lib\flavors" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\add child" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\base" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\profile\widgets" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher" />
+      <recent name="E:\anas\programing\flutter\shater\lib\util" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\qualifications" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\qualifications\controller" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\edit profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\about" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\abou2" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\qualifications\view" />
+      <recent name="E:\anas\programing\flutter\shater\assets" />
       <recent name="E:\anas\programing\flutter\shater\assets\images" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\TeacherProfile\view" />
-      <recent name="$PROJECT_DIR$/assets/icons" />
-      <recent name="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.main_dev.dart">
@@ -431,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718987853590</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="7//11/2024">
+      <option name="closed" value="true" />
+      <created>1720711505089</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720711505089</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -469,6 +543,7 @@
     <MESSAGE value="dashborad teacher_controller.dart screen" />
     <MESSAGE value="subscribers screen" />
     <MESSAGE value="login || child_login" />
-    <option name="LAST_COMMIT_MESSAGE" value="login || child_login" />
+    <MESSAGE value="7//11/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="7//11/2024" />
   </component>
 </project>

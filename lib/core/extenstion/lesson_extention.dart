@@ -10,6 +10,7 @@ extension LessonExt on String {
       case Routes.getSubcriptionTeacherDetailsScreen:
         return teacherFun;
     }
+    return null;
   }
 
   Widget getLessonWidget(
