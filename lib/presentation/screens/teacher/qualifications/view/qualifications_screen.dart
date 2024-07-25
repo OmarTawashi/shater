@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,8 +11,6 @@ import '../../../../../util/app_shared_data.dart';
 import '../../../../../util/color.dart';
 import '../../../base/button_back.dart';
 import '../../../base/text_custom.dart';
-import '../../../profile/bindings/profile_binding.dart';
-import '../../../profile/view/main_profile_screen.dart';
 import '../controller/qualifications_controller.dart';
 
 class QualificationsScreen extends StatelessWidget {

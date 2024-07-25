@@ -4,15 +4,11 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:shater/core/controller/shared_prefrences.dart';
-import 'package:shater/presentation/screens/profile/bindings/profile_binding.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
-import 'package:shater/presentation/screens/profile/view/main_profile_screen.dart';
-import 'package:shater/util/assets_manager.dart';
 
 import '../../../../../core/network/api_client.dart';
 import '../../../../../data/model/qualification_response.dart';
 import '../../../../../data/model/qualifications_model.dart';
-import 'package:collection/collection.dart';
 
 import '../../../../../data/repository/profile_repository_remote.dart';
 import '../../../../../domain/usecase/profile_usecase_imp.dart';

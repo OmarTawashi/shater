@@ -6,7 +6,6 @@ import 'package:shater/data/model/empty_model.dart';
 import 'package:shater/data/model/user.dart';
 
 import '../../data/model/qualification_response.dart';
-import '../../data/model/qualifications_model.dart';
 
 abstract class ProfileUseCase {
   Future<Either<ApiException, User>?> fetchProfile(String token,

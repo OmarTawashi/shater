@@ -11,8 +11,6 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/data/repository/profile_repository_remote.dart';
 import 'package:shater/domain/usecase/profile_usecase_imp.dart';
-import 'package:shater/presentation/screens/edit%20profile/binding/edit_profile_binding.dart';
-import 'package:shater/presentation/screens/edit%20profile/controller/edit_profile_controller.dart';
 
 import '../../../../core/base/base_mixin.dart';
 import '../../../../core/controller/shared_prefrences.dart';
