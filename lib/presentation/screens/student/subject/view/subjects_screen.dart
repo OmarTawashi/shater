@@ -77,7 +77,6 @@ class SubjectsSCreen extends StatelessWidget {
         return ExerciseWidget(controller: controller);
       default:
         return SubjectWidget(controller: controller);
-        ;
     }
   }
 }

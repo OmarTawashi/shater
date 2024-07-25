@@ -2,8 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- <key>NSMicrophoneUsageDescription</key> -->
+	<!-- <string>نحتاج إلى إذن لاستخدام الميكروفون لتسجيل الصوت.</string> -->
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+
 	<key>CFBundleDisplayName</key>
 	<string>Shater</string>
 	<key>CFBundleExecutable</key>
@@ -48,7 +51,7 @@
 	 <!-- Camera usage description -->
     <key>NSCameraUsageDescription</key>
     <string>We need access to your camera to scan text.</string>
-
+	<key>NSDocumentsFolderUsageDescription</key><string>نحتاج إلى إذن للوصول إلى ملفات المستندات.</string>
     <!-- Photo library usage description -->
     <key>NSPhotoLibraryUsageDescription</key>
     <string>We need access to your photo library to pick images.</string>
@@ -63,5 +66,9 @@
     <string>We need access to documents to upload files.</string>
     <key>NSDownloadsFolderUsageDescription</key>
     <string>We need access to downloads to upload files.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need your permission to use the microphone</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need your permission to save photos</string>
 </dict>
 </plist>

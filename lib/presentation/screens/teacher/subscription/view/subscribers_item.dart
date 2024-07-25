@@ -1,12 +1,15 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 
 import '../../../../../data/model/student_model.dart';
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
+
 import '../../../base/text_custom.dart';
 
 class SubscribersItem extends StatelessWidget {

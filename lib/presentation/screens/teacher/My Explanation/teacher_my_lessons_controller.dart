@@ -11,7 +11,7 @@ import '../../../../data/repository/public_repository_remote.dart';
 import '../../../../domain/usecase/public_usecase_imp.dart';
 import '../teacher dashborad/controller/teacher_dashboard_controller.dart';
 
-class TeacherMyLessonsController  extends BaseController{
+class TeacherMyLessonsController extends BaseController {
   DashBaoardUseCaseImp? _dashBaoardUseCaseImp;
   PublicUseCaseImp? _publicUseCaseImp;
 
@@ -35,11 +35,12 @@ class TeacherMyLessonsController  extends BaseController{
     fetchTeacherCoursesLesson();
   }
 
-  void setCourse(CourseLearningModel course) {
+  setCourse(CourseLearningModel course) {
     _selectedCourse = course;
     update();
   }
-  Classes? getClassForItem(int? id){
+
+  Classes? getClassForItem(int? id) {
     return this.classes.firstWhere((element) => element.id == '$id');
   }
 
@@ -49,32 +50,43 @@ class TeacherMyLessonsController  extends BaseController{
     final schoolId = dashController.user?.school?.id;
     final dataRegister = SharedPrefs.dataRegister;
 
-   if(dataRegister?.country?.first != null){
-     _classes = dataRegister?.country?.first.classes ?? [];
-     this.populateData();
-     update();
-   }
-   else{
-     await _publicUseCaseImp
-         ?.fetchClassStudent(cityId ?? -1, schoolId ?? -1)
-         .then((value) {
-       value?.fold((l) {
-         updateViewType(ViewType.error);
-       }, (r) {
-         updateViewType(ViewType.success);
-         _classes = r.country?.first.classes ?? [];
-         this.populateData();
-              });
+    if (dataRegister?.country?.first != null) {
+      _classes = dataRegister?.country?.first.classes ?? [];
+      this.populateData();
+      update();
+    } else {
+      await _publicUseCaseImp
+          ?.fetchClassStudent(cityId ?? -1, schoolId ?? -1)
+          .then(
+        (value) {
+          value?.fold(
+            (l) {
+              updateViewType(ViewType.error);
+            },
+            (r) {
+              if (r == null) {
+                updateViewType(ViewType.empty);
+              } else {
+                updateViewType(ViewType.success);
+                _classes = r.country?.first.classes ?? [];
+                this.populateData();
+              }
+            },
+          );
 
-       update();
-     });
-   }
+          update();
+        },
+      );
+    }
   }
+
   void fetchTeacherCoursesLesson() async {
     final dashController = Get.find<TeacherDashBoardController>();
 
     updateViewType(ViewType.loading);
-    await _dashBaoardUseCaseImp?.fetchTeacherCoursesLesson(dashController.level?.id ?? -1).then((value) {
+    await _dashBaoardUseCaseImp
+        ?.fetchTeacherCoursesLesson(dashController.level?.id ?? -1)
+        .then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (s) {
@@ -89,10 +101,11 @@ class TeacherMyLessonsController  extends BaseController{
       update();
     });
   }
-  void populateData(){
-    var isEmpty = (this.classes ?? []).isEmpty;
+
+  void populateData() {
+    var isEmpty = (this.classes).isEmpty;
     _subjects.forEach((element) {
-      if(!isEmpty){
+      if (!isEmpty) {
         element.classes = this.getClassForItem(element.classId);
       }
     });

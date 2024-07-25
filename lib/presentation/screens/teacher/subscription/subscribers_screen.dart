@@ -7,7 +7,6 @@ import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subj
 import 'package:shater/presentation/screens/teacher/subscription/view/subscribers_item.dart';
 import 'package:shater/util/images.dart';
 
-
 import '../../base/animator_container.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
@@ -81,11 +80,11 @@ class SubscribersScreen extends StatelessWidget {
   SliverList SubscribersList(SubscribersController controller) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        childCount: 5 ,//controller.subjects.length
-            (context, index) {
-              // var item = controller.subjects[index];
-              return SubscribersItem();
-            },
+        childCount: 5, //controller.subjects.length
+        (context, index) {
+          // var item = controller.subjects[index];
+          return SubscribersItem();
+        },
       ),
     );
   }

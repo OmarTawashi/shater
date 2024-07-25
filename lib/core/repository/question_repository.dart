@@ -8,6 +8,6 @@ abstract class QuestionRepository {
   Future<Either<ApiException, PageModel>?> fetchQuestionPage(int? subjectID);
   Future<Either<ApiException, List<QuestionPageModel>>?> fetchQuestionSubject(
       int? subjectID, int? pageFrom, int? pageTo);
-  Future<Either<ApiException, Exam>?> fetchResultQuestion(
-      int? subjectID, int? pageFrom, int? pageTo, int? total, String data, int? helpAnswer);
+  Future<Either<ApiException, Exam>?> fetchResultQuestion(int? subjectID,
+      int? pageFrom, int? pageTo, int? total, String data, int? helpAnswer);
 }

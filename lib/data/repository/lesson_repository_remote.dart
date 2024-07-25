@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:fpdart/src/either.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/lesson_repository.dart';
@@ -7,7 +6,6 @@ import 'package:shater/data/model/comment_model.dart';
 import 'package:shater/data/model/empty_model.dart';
 import 'package:shater/data/model/teacher_exercise_model.dart';
 import 'package:shater/util/api_constant.dart';
-
 import '../../core/network/api_client.dart';
 import '../../core/network/api_response.dart';
 

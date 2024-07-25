@@ -19,6 +19,7 @@ class SubcriptionTeacherDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 86, 153, 1),
       appBar: AppBar(

@@ -4,13 +4,12 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/course_learning_model.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';
-
 import '../../../../data/model/class_model.dart';
 import '../../../../data/repository/public_repository_remote.dart';
 import '../../../../domain/usecase/public_usecase_imp.dart';
 import '../teacher dashborad/controller/teacher_dashboard_controller.dart';
 
-class PracticeController  extends BaseController{
+class PracticeController extends BaseController {
   DashBaoardUseCaseImp? _dashBaoardUseCaseImp;
   PublicUseCaseImp? _publicUseCaseImp;
 
@@ -38,7 +37,9 @@ class PracticeController  extends BaseController{
     final dashController = Get.find<TeacherDashBoardController>();
 
     updateViewType(ViewType.loading);
-    await _dashBaoardUseCaseImp?.teacherCoursesList(dashController.level?.id ?? -1).then((value) {
+    await _dashBaoardUseCaseImp
+        ?.teacherCoursesList(dashController.level?.id ?? -1)
+        .then((value) {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (s) {
@@ -52,5 +53,4 @@ class PracticeController  extends BaseController{
       update();
     });
   }
-
 }

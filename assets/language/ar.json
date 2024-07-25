@@ -174,8 +174,19 @@
     "delete_my_account" : "حذف حسابي",
     "do_you_want_delete_account" : "هل تريد حذف حساب شاطر الخاص بك؟",
     "enter_delete_my_account" : "الرجاء إدخال \"حذف حسابي\" للتأكيد",
+    "back" : "رجوع",
+    "myexplanation" : "شروحي",
+    "explan":"مشروح",
+    "notexplan":"غير مشروح",
+    "add_explain":"أضف شرح",
+    "practices":"التدريبات",
+    "lets_explain":"اشرح",
+    "types_of_exercise_questions":"أنواع أسئلة التدريبات"
     "Certificates" : "الشهادات",
     "Courses" : "الدورات",
     "back" : "رجوع"
+
+
+
 
 }

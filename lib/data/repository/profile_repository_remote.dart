@@ -8,7 +8,6 @@ import 'package:shater/core/repository/profile_repository.dart';
 import 'package:shater/data/model/empty_model.dart';
 import 'package:shater/data/model/user.dart';
 import 'package:shater/util/api_constant.dart';
-
 import '../../core/network/api_client.dart';
 import '../../core/network/api_response.dart';
 import '../model/qualifications_model.dart';

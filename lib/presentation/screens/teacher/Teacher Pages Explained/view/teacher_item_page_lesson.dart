@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/data/model/class_model.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-
 import '../../../../../util/color.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/text_custom.dart';
-
 
 class TeacherItemPageLesson extends StatelessWidget {
   final Function()? onTap;
@@ -78,19 +76,19 @@ class TeacherItemPageLesson extends StatelessWidget {
                       height: Dimensions.paddingSize20,
                     ),
                     Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.paddingSize12,
-                            vertical: Dimensions.paddingSize8),
-                        decoration: BoxDecoration(
-                            color: COLORS.primaryColor,
-                            borderRadius: BorderRadius.circular(16)),
-                        child: CustomText(
-                          text: '$teacherCountVideo' '\t' + 'درس'.tr,
-                          color: COLORS.whiteColor,
-                          fontSize: Dimensions.fontSize12,
-                          fontWeight: FontWeight.bold,
-                        ))
-                    ,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Dimensions.paddingSize12,
+                          vertical: Dimensions.paddingSize8),
+                      decoration: BoxDecoration(
+                          color: COLORS.primaryColor,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: CustomText(
+                        text: '$teacherCountVideo' '\t' + 'درس'.tr,
+                        color: COLORS.whiteColor,
+                        fontSize: Dimensions.fontSize12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),

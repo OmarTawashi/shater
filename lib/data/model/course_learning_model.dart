@@ -2,7 +2,6 @@ import 'package:shater/core/network/decodable.dart';
 import 'package:shater/data/model/class_model.dart';
 
 class CourseLearningModel extends Decodable<CourseLearningModel> {
-
   int? id;
   String? title;
   String? image;
@@ -16,6 +15,7 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
   int? countTeacher;
   int? isNotify;
   int? pagesCount;
+  bool?hasSubscription;
 
   Classes? classes;
 
@@ -33,7 +33,9 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
       this.countTeacher,
       this.isNotify,
       this.pagesCount,
-      this.classes});
+      this.classes,
+      this.hasSubscription
+      });
 
   CourseLearningModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -49,30 +51,14 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
     countTeacher = json['count_teacher'];
     isNotify = json['is_notify'];
     pagesCount = json['pages_count'];
+    hasSubscription = json['has_subscription'];
+
 
     if (json['classes'] != null) {
       classes = new Classes.fromJson(json['classes']);
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['class_id'] = this.classId;
-    data['level_id'] = this.levelId;
-    data['is_active_learning'] = this.isActiveLearning;
-    data['updated_at'] = this.updatedAt;
-    data['count_video'] = this.countVideo;
-    data['count_questions'] = this.countQuestions;
-    data['teacher_count_video'] = this.teacherCountVideo;
-    data['count_teacher'] = this.countTeacher;
-    data['is_notify'] = this.isNotify;
-    data['pages_count'] = this.pagesCount;
-    data['classes'] = this.classes;
-    return data;
-  }
 
   @override
   CourseLearningModel decode(json) {
@@ -89,6 +75,8 @@ class CourseLearningModel extends Decodable<CourseLearningModel> {
     countTeacher = json['count_teacher'];
     isNotify = json['is_notify'];
     pagesCount = json['pages_count'];
+    hasSubscription = json['has_subscription'];
+
     if (json['classes'] != null) {
       classes = new Classes.fromJson(json['classes']);
     }
