@@ -4,7 +4,6 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/course_learning_model.dart';
 import 'package:shater/data/repository/course_learning_repository_remote.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
-import 'package:shater/presentation/screens/student/subject/widgets/shimmer_subject.dart';
 
 import '../../../../../domain/usecase/course_learning_usecase_imp.dart';
 

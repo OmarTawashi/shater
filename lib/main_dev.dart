@@ -23,19 +23,21 @@ void main() async {
   Get.lazyPut(() => shared);
   await _requestPermissions();
   await FFmpegKitConfig.init();
-
   EnvConfig devConfig = EnvConfig(
     appName: "Shatter App Dev",
     baseUrl: "https://test.shattir.com",
     shouldCollectCrashLog: true,
+    
   );
   BuildConfig.instantiate(
     envType: Environment.DEVELOPMENT,
     envConfig: devConfig,
   );
+
   runApp(
     MyApp(
       languages: languages,
+      
     ),
   );
 }

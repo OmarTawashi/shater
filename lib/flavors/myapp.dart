@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shater/core/controller/localization_controller.dart';
 import 'package:shater/core/controller/root_binding.dart';
 import 'package:shater/flavors/env_config.dart';
+import 'package:shater/presentation/screens/student/exercise%20subject/view/exercise_subject_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 import '../routes/app_pages.dart';
 import '../util/constant.dart';
@@ -14,7 +15,6 @@ import 'build_config.dart';
 class MyApp extends StatelessWidget {
   final Map<String, Map<String, String>>? languages;
   const MyApp({super.key, this.languages});
-
   @override
   Widget build(BuildContext context) {
     final EnvConfig _envConfig = BuildConfig.instance.config;
@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         fallbackLocale: Locale(APPCONSTANT.languages[1].languageCode!,
             APPCONSTANT.languages[1].countryCode),
         getPages: AppPages.routes,
+ 
       ),
     );
   }
