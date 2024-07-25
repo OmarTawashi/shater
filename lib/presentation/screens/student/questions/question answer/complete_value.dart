@@ -43,7 +43,7 @@ class CompleteValue extends StatelessWidget {
               //   return null;
               // },
               onChanged: (value) {
-                if (value == null || value == '') {
+                if (value == '') {
                   controller.setQuestionStatus(QuestionStatusEnum.none);
                 } else {
                   controller.setQuestionStatus(QuestionStatusEnum.select);

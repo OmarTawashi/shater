@@ -6,6 +6,6 @@ class PrivcyPolicyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HtmlView(isPrivcy: true);
+    return HtmlView(htmlScreenType: HtmlScreenType.privacyPolicy,);
   }
 }

@@ -16,7 +16,6 @@ import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
 import 'package:shater/presentation/screens/classe/view/classe_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/binding/edit_profile_binding.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/widget/grid_avatar_view.dart';
-import 'package:shater/presentation/screens/edit%20profile/view/edit_profile_screen.dart';
 import 'package:shater/presentation/screens/level/bindings/level_bindings.dart';
 import 'package:shater/presentation/screens/level/view/level_screen.dart';
 import 'package:shater/presentation/screens/profile/bindings/profile_binding.dart';
@@ -63,8 +62,8 @@ import 'package:shater/presentation/screens/teacher/teacher%20dashborad/view/tea
 import 'package:shater/routes/app_routes.dart';
 
 import '../presentation/screens/add child/binding/add_child_binding.dart';
-import '../presentation/screens/auth/sign in/bindings/signin_binding.dart';
 import '../presentation/screens/city/view/city_screen.dart';
+import '../presentation/screens/edit profile/view/student/edit_student_profile_screen.dart';
 import '../presentation/screens/splach/view/splash_screen.dart';
 import '../presentation/screens/teacher/Explanation/teacher_explanation_bindings.dart';
 import '../presentation/screens/teacher/Explanation/view/add_excercise/selected_page_exercise_screen.dart';
@@ -106,7 +105,7 @@ class AppPages {
     ),
     GetPage(
       name: RoutesName.editProfileScreen,
-      page: () => const EditProfileScreen(),
+      page: () => const EditStudentProfileScreen(),
       binding: EditProfileBinding(),
     ),
     GetPage(
@@ -151,7 +150,7 @@ class AppPages {
         binding: ForgetPasswordBinding()),
     GetPage(
         name: RoutesName.subjectTeacherScreen,
-        page: () => const SubjectTeacherScreen(),
+        page: () => const SubjectTeacherScreen(typeFrom: 0,),
         binding: SubjectTeacherBinding()),
     GetPage(
       name: RoutesName.termsConditionScreen,

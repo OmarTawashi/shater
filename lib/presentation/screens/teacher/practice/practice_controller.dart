@@ -29,8 +29,8 @@ class PracticeController extends BaseController {
     teacherCoursesList();
   }
 
-  Classes? getClassForItem(int? id) {
-    return this.classes?.firstWhere((element) => element.id == '$id');
+  Classes? getClassForItem(int? id){
+    return this.classes.firstWhere((element) => element.id == '$id');
   }
 
   void teacherCoursesList() async {

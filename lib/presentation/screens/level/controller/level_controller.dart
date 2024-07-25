@@ -38,13 +38,9 @@ class LevelController extends BaseController {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (r) {
-        if (r == null) {
-          updateViewType(ViewType.empty);
-        } else {
-          updateViewType(ViewType.success);
-          _dataRegisterModels = r;
-        }
-      });
+        updateViewType(ViewType.success);
+        _dataRegisterModels = r;
+            });
 
       update();
     });

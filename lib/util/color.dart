@@ -7,6 +7,7 @@ class COLORS {
   static const Color strokeColor = Color.fromRGBO(72, 131, 196, 1);
   static const Color disabledColor = Color(0xFFBABFC4);
   static const Color hintColor = Color(0xFF9F9F9F);
+  static const Color hintBlueColor = Color(0xFF9FBFD8);
   static const Color canvasColor = Color.fromRGBO(249, 249, 249, 1);
   static const Color cardColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color textColor = Color.fromRGBO(159, 191, 216, 1);

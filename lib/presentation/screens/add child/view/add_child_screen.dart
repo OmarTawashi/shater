@@ -4,30 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/add%20child/controller/add_child_controller.dart';
-import 'package:shater/presentation/screens/add%20child/view/take_photo_screen.dart';
 import 'package:shater/presentation/screens/auth/sign%20up/controller/sign_up_controller.dart';
-import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
-import 'package:shater/presentation/screens/base/custom_intike_container.dart';
 import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
-import 'package:shater/presentation/screens/base/image_user.dart';
-import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/city/bindings/city_binding.dart';
 import 'package:shater/presentation/screens/classe/binding/classe_binding.dart';
-import 'package:shater/presentation/screens/edit%20profile/controller/edit_profile_controller.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
-import 'package:shater/presentation/screens/edit%20profile/widgets/custom_border_text.dart';
-import 'package:shater/presentation/screens/edit%20profile/widgets/custom_edit_form.dart';
-import 'package:shater/presentation/screens/edit%20profile/widgets/intike_ticket.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
 import 'package:shater/presentation/screens/school/binding/school_bindings.dart';
 import 'package:shater/presentation/screens/school/view/school_screen.dart';
 import 'package:shater/util/assets_manager.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
-import 'package:shater/util/images.dart';
 
-import '../../../../routes/app_routes.dart';
 import '../../../../util/app_shared_data.dart';
 import '../../../../util/font_style.dart';
 import '../../auth/base login/controller/auth_controller.dart';
@@ -181,6 +170,7 @@ class AddChildScreen extends StatelessWidget {
                           Get.to(
                               ClasseScreen(
                                 typeFrom: 1,
+
                               ),
                               binding: ClasseBinding(1));
                         },

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:shater/core/controller/base_controller.dart';
@@ -55,13 +54,9 @@ class ClasseController extends BaseController {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (r) {
-        if (r == null) {
-          updateViewType(ViewType.empty);
-        } else {
-          updateViewType(ViewType.success);
-          _classes = r.country?.first.classes ?? [];
-        }
-      });
+        updateViewType(ViewType.success);
+        _classes = r.country?.first.classes ?? [];
+            });
 
       update();
     });
@@ -77,13 +72,9 @@ class ClasseController extends BaseController {
       value?.fold((l) {
         updateViewType(ViewType.error);
       }, (r) {
-        if (r == null) {
-          updateViewType(ViewType.empty);
-        } else {
-          updateViewType(ViewType.success);
-          _classes = r;
-        }
-      });
+        updateViewType(ViewType.success);
+        _classes = r;
+            });
 
       update();
     });

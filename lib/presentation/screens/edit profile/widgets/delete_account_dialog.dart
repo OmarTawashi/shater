@@ -1,10 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/edit%20profile/controller/edit_profile_controller.dart';
 
 import '../../../../util/color.dart';
 import '../../../../util/dimensions.dart';

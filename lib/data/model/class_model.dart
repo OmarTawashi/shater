@@ -51,4 +51,17 @@ class Classes  extends Decodable<Classes> {
     redirectTo = json['redirect_to'];
     return this;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Classes && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
+
+  int compareTo(Classes other) {
+    // TODO: implement compareTo
+    return other.id!.compareTo(id!);
+  }
 }

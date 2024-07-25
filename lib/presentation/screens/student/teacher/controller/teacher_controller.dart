@@ -6,7 +6,6 @@ import 'package:shater/data/model/teacher_model.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
-import 'package:shater/routes/app_routes.dart';
 
 enum TeacherTap { teachers, subscriptions }
 

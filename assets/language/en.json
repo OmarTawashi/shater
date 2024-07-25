@@ -143,6 +143,9 @@
     "cancel": "Cancel",
     "ok_to": "Ok To",
     "privcy_policy": "Privcy policy",
+    "privcy": "privacy",
+    "and_policy": " and Terms Conditions",
+    "terms_conditions": "Terms Conditions",
     "sign_in": "Sign In",
     "have_an_acount": "Have An Acount?",
     "next": "Next",
@@ -175,6 +178,8 @@
     "delete_my_account" : "delete my account",
     "do_you_want_delete_account" : "Do you want to delete your Shater account?",
     "enter_delete_my_account" : "Please enter \"Delete my account\" to confirm",
+    "Certificates" : "Certificates",
+    "Courses" : "Courses",
     "back" : "back"
 
 }

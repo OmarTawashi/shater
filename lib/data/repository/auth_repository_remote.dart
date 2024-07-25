@@ -14,7 +14,6 @@ import 'package:shater/presentation/screens/auth/base%20login/controller/auth_co
 
 import '../../core/controller/shared_prefrences.dart';
 import '../../core/network/api_client.dart';
-import '../../flavors/dio_manage_class.dart';
 import '../../util/api_constant.dart';
 import '../model/user.dart';
 
@@ -52,7 +51,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             if (user != null) {
               SharedPrefs.saveUser(user, "signInWithEmailPassword 1");
               ApiClient.updateHeader();
-              completer.complete(Right(user!));
+              completer.complete(Right(user));
             }
           }
         },
@@ -188,68 +187,80 @@ class AuthRepositoryRemote extends BaseAuthRepository {
       int cityId,
       String classId,
       File? imageFile) async {
-    // final completer = Completer<Either<ApiException, ChildUser>?>();
+    final completer = Completer<Either<ApiException, ChildUser>?>();
     final data = {
       "name": fullName,
       "school_id": schoolId,
       "city_id": cityId,
       "class_id": classId,
+      "parentID": parentId
     };
-    // dio.FormData formData = await dio.FormData.fromMap(data);
-    // if (imageFile != null) {
-    //   formData.files.add(MapEntry(
-    //     'image',
-    //     await dio.MultipartFile.fromFile(imageFile.path ?? ''),
-    //   ));
-    // }
+    dio.FormData formData = await dio.FormData.fromMap(data);
+    if (imageFile != null) {
+      formData.files.add(MapEntry(
+        'image',
+        await dio.MultipartFile.fromFile(imageFile.path ?? ''),
+      ));
+    }
     try {
+      /*var response;
       if (imageFile != null) {
-        var response = await DioManagerClass.getInstance.dioMultiPartPostMethod(
+        response = await DioManagerClass.getInstance.dioMultiPartPostMethod(
             url: ApiConstant.registerChild(parentId),
             header: ApiConstant.header(TypeToken.Authorization),
             file: imageFile,
             body: data,
             keyName: 'image');
       } else {
-        var response = await DioManagerClass.getInstance.dioPostFormMethod(
+        response = await DioManagerClass.getInstance.dioPostFormMethod(
           url: ApiConstant.registerChild(parentId),
           header: ApiConstant.header(TypeToken.Authorization),
           body: data,
         );
       }
 
-      // await ApiClient.requestData(
-      //   endpoint: ApiConstant.registerChild(parentId),
-      //   requestType: RequestType.post,
-      //   create: () => APIResponse<ChildUser>(
-      //     create: () => ChildUser(),
-      //   ),
-      //   data: formData,
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
-      //   },
-      //   onSuccess: (response) {
-      //     if (response.data?.status == false ?? false) {
-      //       completer.complete(left(ApiException(
-      //         message: response.data?.errors?.first.message ?? "",
-      //         response: response.response,
-      //       )));
-      //     } else {
-      //       final user = response.data?.item;
-      //       completer.complete(Right(user ?? ChildUser()));
-      //       if (user != null) {
-      //         ApiClient.updateHeader();
-      //       }
-      //     }
-      //   },
-      //   onError: (error) {
-      //     log("addChild 2 : e : ${error.message}");
-      //     completer.complete(left(error));
-      //   },
-      // );
+      if (response.data?.status == false ?? false) {
+        log("registerChild left 1");
+        var decode = jsonDecode(response.toString());
+        return Left(ApiException(message: response));
+      } else {
+        log("registerChild Right 1");
+        final user = response.data?.item;
+        completer.complete(Right(user ?? ChildUser()));
+        if (user != null) {
+          ApiClient.updateHeader();
+        }
+      }*/
+      await ApiClient.requestData(
+        endpoint: ApiConstant.registerChild(parentId),
+        requestType: RequestType.post,
+        create: () => APIResponse<ChildUser>(
+          create: () => ChildUser(),
+        ),
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? ChildUser()));
+            if (user != null) {
+              ApiClient.updateHeader();
+            }
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
     } on ApiException catch (error) {
-      log("addChild 2 : Exception : ${error.message}");
-      // completer.complete(left(error));
+      completer.complete(left(error));
     }
     return null;
   }

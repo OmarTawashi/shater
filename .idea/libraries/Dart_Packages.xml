@@ -114,24 +114,31 @@
             </list>
           </value>
         </entry>
-        <entry key="checked_yaml">
+        <entry key="clock">
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/checked_yaml-2.0.3/lib" />
             </list>
           </value>
         </entry>
-        <entry key="cli_util">
+        <entry key="cloud_firestore">
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/cli_util-0.4.1/lib" />
             </list>
           </value>
         </entry>
-        <entry key="clock">
+        <entry key="cloud_firestore_platform_interface">
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/clock-1.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="cloud_firestore_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/cloud_firestore_web-4.0.3/lib" />
             </list>
           </value>
         </entry>
@@ -174,6 +181,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="dbus">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/dbus-0.7.10/lib" />
             </list>
           </value>
         </entry>
@@ -730,6 +744,13 @@
             </list>
           </value>
         </entry>
+        <entry key="nm">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/nm-0.5.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="numberpicker">
           <value>
             <list>
@@ -1059,10 +1080,38 @@
             </list>
           </value>
         </entry>
+        <entry key="url_launcher">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher-6.3.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="url_launcher_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_android-6.3.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="url_launcher_ios">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_ios-6.3.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="url_launcher_linux">
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="url_launcher_macos">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_macos-3.2.0/lib" />
             </list>
           </value>
         </entry>

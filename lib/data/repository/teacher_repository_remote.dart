@@ -63,7 +63,7 @@ class TeacherRepositoryRemote extends TeacherRepository {
         data: data,
         onSuccess: (response) {
           final data = response.data?.message;
-          completer.complete(right(EmptyModel(message: data)!));
+          completer.complete(right(EmptyModel(message: data)));
         },
         onError: (error) {
           completer.complete(left(error));

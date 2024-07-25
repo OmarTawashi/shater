@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/base/animator_container.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/exericse%20&%20contact/contact_me/view/contact_me_screen.dart';
 import 'package:shater/presentation/screens/student/questions/lesson/controller/lesson_controller.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
-import 'package:shater/util/images.dart';
 
 class CommentWidget extends StatelessWidget {
   final LessonController? controller;
@@ -58,7 +55,7 @@ class CommentWidget extends StatelessWidget {
                   SizedBox(
                     height: Dimensions.paddingSize20,
                   ),
-                  CommentList(controller!),
+                  CommentList(controller),
                   // AnimatorContainer(
                   //   viewType: controller.viewType,
                   //   isSliver: false,
@@ -92,10 +89,10 @@ class CommentWidget extends StatelessWidget {
                   child: FormWriteMessage(
                     hintText: 'write_comment',
                     fontColor: COLORS.primaryColor,
-                    isLoading: controller?.isLoadingMessage,
-                    controller: controller?.messageController,
+                    isLoading: controller.isLoadingMessage,
+                    controller: controller.messageController,
                     onTap: () {
-                      controller?.sendMessage();
+                      controller.sendMessage();
                     },
                   )),
             ),

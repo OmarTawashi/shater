@@ -3,6 +3,7 @@ import 'package:shater/core/network/decodable.dart';
 class Subject  extends Decodable<Subject>{
   String? title;
   int? isActiveLearning;
+  int? id;
   int? countQuestions;
   int? teacherCountVideo;
   int? pagesCount;
@@ -10,6 +11,7 @@ class Subject  extends Decodable<Subject>{
 
   Subject(
       {this.title,
+      this.id,
       this.isActiveLearning,
       this.countQuestions,
       this.teacherCountVideo,
@@ -18,6 +20,7 @@ class Subject  extends Decodable<Subject>{
 
   Subject.fromJson(Map<String, dynamic> json) {
     title = json['title'];
+    id = json['id'];
     isActiveLearning = json['is_active_learning'];
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];
@@ -28,6 +31,7 @@ class Subject  extends Decodable<Subject>{
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['title'] = this.title;
+    data['id'] = this.id;
     data['is_active_learning'] = this.isActiveLearning;
     data['count_questions'] = this.countQuestions;
     data['teacher_count_video'] = this.teacherCountVideo;
@@ -39,6 +43,7 @@ class Subject  extends Decodable<Subject>{
   @override
   Subject decode(json) {
   title = json['title'];
+  id = json['id'];
     isActiveLearning = json['is_active_learning'];
     countQuestions = json['count_questions'];
     teacherCountVideo = json['teacher_count_video'];

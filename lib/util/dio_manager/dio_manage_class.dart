@@ -3,35 +3,38 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'dart:async';
-
-import '../util/api_constant.dart';
-
+import 'package:shater/util/api_constant.dart';
 
 class DioManagerClass {
   DioManagerClass._();
 
   static final DioManagerClass getInstance = DioManagerClass._();
 
-  late Dio? _dio;
+  Dio? _dio;
 
   Dio init() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: ApiConstant.baseUrl2,
-        receiveDataWhenStatusError: true,
-      ),
-    );
-    _dio?.interceptors.add(ApiInterceptors());
+    try{
+      _dio = Dio(
+        BaseOptions(
+          baseUrl: ApiConstant.baseUrl2,
+          receiveDataWhenStatusError: true,
+        ),
+      );
+      _dio?.interceptors.add(ApiInterceptors());
+    }catch(e){
+      log("dio init e : $e");
+    }
     return _dio!;
   }
 
   Future<Response> dioGetMethod(
       {var url, Map<String, dynamic>? header, var queryParameters}) async {
-    print("msg_sendde_url $url");
-    print("msg_sendde_header $header");
-    print("msg_sendde_QP ${queryParameters.toString()}");
+    log("msg_sendde_url $url");
+    log("msg_sendde_header $header");
+    log("msg_sendde_QP ${queryParameters.toString()}");
     var containsTestKey = Platform.environment.containsKey('FLUTTER_TEST');
     if (containsTestKey) {
       return await _dio!.get(url,
@@ -42,8 +45,8 @@ class DioManagerClass {
             options: Options(headers: header),
             queryParameters: queryParameters);
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');
+        // snackError("No Connection");
+        throw SocketException("No Connection");
       }
     }
   }
@@ -70,8 +73,9 @@ class DioManagerClass {
           data: body,
         );
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');      }
+        // snackError("No Connection");
+        throw SocketException("No Connection");
+      }
     }
   }
 
@@ -95,15 +99,14 @@ class DioManagerClass {
           data: FormData.fromMap(body),
         );
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');      }
+        // snackError("No Connection");
+        throw SocketException("No Connection");
+      }
     }
   }
 
   Future<Response> dioFileDownload(
-      {var url,
-        var path,
-      Map<String, dynamic>? header}) async {
+      {var url, var path, Map<String, dynamic>? header}) async {
     return _dio!.download(
       url,
       path,
@@ -133,14 +136,16 @@ class DioManagerClass {
     //   keyName ?? 'file':
     //       /*await*/ MultipartFile.fromFileSync(file.path, /*filename: fileName*/),
     // });
+
     var containsTestKey = Platform.environment.containsKey('FLUTTER_TEST');
     if (containsTestKey) {
       return await _dio!.post(
         url,
         options: Options(headers: header),
         data: FormData.fromMap({
-          keyName ?? 'file':
-          /*await*/ MultipartFile.fromFileSync(file.path, /*filename: fileName*/),
+          keyName ?? 'file': /*await*/ MultipartFile.fromFileSync(
+            file.path, /*filename: fileName*/
+          ),
         }),
       );
     } else {
@@ -150,13 +155,14 @@ class DioManagerClass {
           options: Options(headers: header),
           // data: formData,
           data: FormData.fromMap({
-            keyName ?? 'file':
-            /*await*/ MultipartFile.fromFileSync(file.path, /*filename: fileName*/),
+            keyName ?? 'file': /*await*/ MultipartFile.fromFileSync(
+              file.path, /*filename: fileName*/
+            ),
           }),
         );
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');
+        // snackError("No Connection");
+        throw SocketException("No Connection");
       }
     }
   }
@@ -174,8 +180,9 @@ class DioManagerClass {
         return await _dio!
             .put(url, options: Options(headers: header), data: body);
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');      }
+        // snackError("No Connection");
+        throw SocketException("No Connection");
+      }
     }
   }
 
@@ -192,8 +199,28 @@ class DioManagerClass {
         return await _dio!
             .patch(url, options: Options(headers: header), data: body);
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');      }
+        // snackError("No Connection");
+        throw SocketException("No Connection");
+      }
+    }
+  }
+
+  Future<Response> dioPutMethod(
+      {var url,
+      Map<String, dynamic>? header,
+      Map<String, dynamic>? body}) async {
+    var containsTestKey = Platform.environment.containsKey('FLUTTER_TEST');
+    if (containsTestKey) {
+      return await _dio!
+          .put(url, options: Options(headers: header), data: body);
+    } else {
+      if (await checkInternetConnectivity()) {
+        return await _dio!
+            .patch(url, options: Options(headers: header), data: body);
+      } else {
+        // snackError("No Connection");
+        throw SocketException("No Connection");
+      }
     }
   }
 
@@ -215,36 +242,41 @@ class DioManagerClass {
             data: body,
             queryParameters: queryParameters);
       } else {
-        // snackError(AppStrings.txtNoConnection.tr.toString());
-        throw SocketException('No Connection');
+        // snackError("No Connection");
+        throw SocketException("No Connection");
       }
     }
   }
 
   Future<bool> checkInternetConnectivity() async {
-    // var connectivityResult = await (Connectivity().checkConnectivity());
+    var connectivityResult = await (Connectivity().checkConnectivity());
     // return connectivityResult == ConnectivityResult.mobile ||
     //     connectivityResult == ConnectivityResult.wifi;
-    return await true;
+    return true;
   }
 }
 
 class ApiInterceptors extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    super.onRequest(options, handler);
-    // log(
-    //     "onRequest : ${options.path} \n ${options.queryParameters} \n ${options.method} \n ${options.data}");
+    // TODO: implement onRequest
+    log("======================================= onRequest =======================================");
+    log("url : ${options.uri}");
+    log("data : ${options.data}");
+    log("headers : ${options.headers}");
+    log("method : ${options.method}");
+    log("contentType : ${options.contentType}");
+    log("======================================= onRequest =======================================");
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     super.onResponse(response, handler);
-   log("onResponse : ${response.statusCode}");
+    log("onResponse : ${response.statusCode}");
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     super.onError(err, handler);
     log("onError : ${err.message}");
   }

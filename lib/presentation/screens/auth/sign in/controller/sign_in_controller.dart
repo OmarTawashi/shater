@@ -16,27 +16,32 @@ class SignInController extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   bool _isHide = true;
+
   bool get isHide => _isHide;
 
   bool _isLoading = false;
+
   bool get isloading => _isLoading;
 
   bool _isValidEmail = false;
+
   bool get isValidEmail => _isValidEmail;
 
   bool _isValidPassword = false;
+
   bool get isValidPassword => _isValidPassword;
 
   bool get isEnable => (_isValidEmail && _isValidPassword);
 
   User? _parentUser;
+
   User? get parentUser => _parentUser;
 
   ChildUser? _childUser;
+
   ChildUser? get childUser => _childUser;
 
-  ChildUser? selectedChild ;
-
+  ChildUser? selectedChild;
 
   AuthUseCaseImp? _authUseCaseImp;
 
@@ -66,16 +71,16 @@ class SignInController extends GetxController {
     update();
   }
 
-  bool isSelectedChild(int userId){
+  bool isSelectedChild(int userId) {
     selectedChild = SharedPrefs.selectedChild;
-    if(userId == selectedChild?.id){
+    if (userId == selectedChild?.id) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  void changeSelectedChild(ChildUser selectedUser){
+  void changeSelectedChild(ChildUser selectedUser) {
     this.selectedChild = selectedUser;
     SharedPrefs.saveSelectedChild(selectedChild!);
     update();
@@ -117,12 +122,13 @@ class SignInController extends GetxController {
     }
   }
 
-
   void defStudent(User? user) {
-
     if (user?.children == null || user!.children!.isEmpty) {
       log("login 1");
       //this is mean the father not have any child
+      Get.offAllNamed(Routes.getDashBoardScreen());
+    } else if (user.children!.length == 1) {
+      changeSelectedChild(user.children![0]);
       Get.offAllNamed(Routes.getDashBoardScreen());
     } else {
       log("login 2");
@@ -147,7 +153,7 @@ class SignInController extends GetxController {
   void childSignIn(int id) async {
     changeLoading(true);
     await _authUseCaseImp
-        ?.childSignIn(parentUser?.email ?? '', id ,(parentUser?.id ?? 0) )
+        ?.childSignIn(parentUser?.email ?? '', id, (parentUser?.id ?? 0))
         .then((value) {
       value?.fold((l) {
         BaseMixin.showToastFlutter(messsage: l.message);

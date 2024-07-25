@@ -39,7 +39,7 @@ class ImageConverter {
     Uint8List? bytes;
 
     if (byteData != null) {
-      bytes = byteData!.buffer.asUint8List();
+      bytes = byteData.buffer.asUint8List();
     } else {
       bytes = null;
     }

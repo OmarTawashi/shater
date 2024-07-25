@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shater/data/model/user.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 class ItemChildern extends StatelessWidget {

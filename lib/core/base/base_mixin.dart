@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/base/custom_text_form_field.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 import '../../presentation/screens/auth/sign in/widgets/childern_widget.dart';
 import '../../presentation/screens/edit profile/widgets/delete_account_dialog.dart';
-import '../../util/font_style.dart';
 
 mixin BaseMixin {
   static void showToastFlutter({String? messsage}) {

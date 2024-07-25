@@ -9,15 +9,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f040d3-afbe-4b7a-9c76-5520cc0e3956" name="Changes" comment="login || child_login">
+      <change afterPath="$PROJECT_DIR$/ios/Runner/GoogleService-Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/ar.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/ar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/language/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shater.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shater.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,27 +117,28 @@
     &quot;git-widget-placeholder&quot;: &quot;anas&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/anas/programing/flutter/shater/lib/flavors&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jdk-17&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;device.mirroring&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\anas\programing\flutter\shater\lib\flavors" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\add child" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\base" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\profile\widgets" />
+      <recent name="E:\anas\programing\flutter\shater\android\app" />
+      <recent name="E:\anas\programing\flutter\shater\ios\Runner" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher" />
+      <recent name="E:\anas\programing\flutter\shater\lib\util" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\qualifications" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\about" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\abou2" />
+      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\qualifications\view" />
+      <recent name="E:\anas\programing\flutter\shater\assets" />
       <recent name="E:\anas\programing\flutter\shater\assets\images" />
-      <recent name="E:\anas\programing\flutter\shater\lib\presentation\screens\teacher\TeacherProfile\view" />
-      <recent name="$PROJECT_DIR$/assets/icons" />
-      <recent name="$PROJECT_DIR$/lib/presentation/screens/student/teacher/controller" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.main_dev.dart">
@@ -366,7 +374,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718987853590</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="7//11/2024">
+      <option name="closed" value="true" />
+      <created>1720711505089</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720711505089</updated>
+    </task>
+    <task id="LOCAL-00012" summary="7//24/2024">
+      <option name="closed" value="true" />
+      <created>1721824554497</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1721824554497</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -404,6 +428,8 @@
     <MESSAGE value="dashborad teacher_controller.dart screen" />
     <MESSAGE value="subscribers screen" />
     <MESSAGE value="login || child_login" />
-    <option name="LAST_COMMIT_MESSAGE" value="login || child_login" />
+    <MESSAGE value="7//11/2024" />
+    <MESSAGE value="7//24/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="7//24/2024" />
   </component>
 </project>
