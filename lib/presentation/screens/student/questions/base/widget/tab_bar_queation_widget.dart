@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shater/core/extenstion/lesson_extention.dart';
 import 'package:shater/core/extenstion/question_status.dart';
-import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/tap_section.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';

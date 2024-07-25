@@ -1,14 +1,8 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:shater/core/extenstion/question_status.dart';
-import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
-import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/questions/question%20answer/match_text.dart';
 import 'package:shater/presentation/screens/student/questions/question/controller/question_controller.dart';
-import 'package:shater/util/color.dart';
-import 'package:shater/util/images.dart';
 
 class MatchImage extends StatefulWidget {
   final QuestionController controller;

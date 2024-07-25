@@ -55,6 +55,17 @@
     <!-- Photo library usage description -->
     <key>NSPhotoLibraryUsageDescription</key>
     <string>We need access to your photo library to pick images.</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>sms</string>
+      <string>tel</string>
+    </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We need access to the photo library to upload files.</string>
+    <key>NSDocumentsFolderUsageDescription</key>
+    <string>We need access to documents to upload files.</string>
+    <key>NSDownloadsFolderUsageDescription</key>
+    <string>We need access to downloads to upload files.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>We need your permission to use the microphone</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

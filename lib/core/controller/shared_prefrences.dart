@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,15 +9,24 @@ import 'package:shater/data/model/user.dart';
 import '../../data/model/data_register_model.dart';
 import '../../util/shared_constant.dart';
 
-
 class SharedPrefs {
   SharedPrefs._();
 
   static SharedPreferences sharedPreferences = Get.find<SharedPreferences>();
 
-  static Future<void> saveUser(User user) async {
+  static Future<void> saveUser(User user , String a) async {
+    log("============================================= saveUser =============================================");
+    log("from : $a");
+    log("user.toJson() : ${user.toJson()}");
+    log("============================================= saveUser =============================================");
     await sharedPreferences.setString(
         SharedConstant.userKey, jsonEncode(user.toJson()));
+  }
+
+  static Future<void> saveSelectedChild(ChildUser child) async {
+    log("child id : ${child.id}");
+    await sharedPreferences.setString(
+        SharedConstant.selectedChildKey, jsonEncode(child.toJson()));
   }
 
   static Future<void> removeUser() async {
@@ -32,6 +42,24 @@ class SharedPrefs {
     return User().decode(map);
   }
 
+  // static ChildUser? get child {
+  //   final userStr = sharedPreferences.getString(SharedConstant.childKey);
+  //   if (userStr == null || userStr.isEmpty) {
+  //     return null;
+  //   }
+  //   Map<String, dynamic> map = jsonDecode(userStr) as Map<String, dynamic>;
+  //   return ChildUser().decode(map);
+  // }
+
+  static ChildUser? get selectedChild {
+    final userStr = sharedPreferences.getString(SharedConstant.selectedChildKey);
+    if (userStr == null || userStr.isEmpty) {
+      return null;
+    }
+    Map<String, dynamic> map = jsonDecode(userStr) as Map<String, dynamic>;
+    return ChildUser().decode(map);
+  }
+
   static String? get fcmToken {
     final fcmToken = sharedPreferences.getString(SharedConstant.fcmTokenKey);
     if (fcmToken == null || fcmToken.isEmpty) {
@@ -39,6 +67,7 @@ class SharedPrefs {
     }
     return fcmToken;
   }
+
 
   static String get storeLogoBase64 =>
       sharedPreferences.getString(SharedConstant.storeLogoBase64) ?? '';
@@ -61,14 +90,15 @@ class SharedPrefs {
     await sharedPreferences.setString(SharedConstant.storeLogoBase64, value);
   }
 
-  static Future<void> saveDataForUserRegistration(DataRegisterModel data) async {
+  static Future<void> saveDataForUserRegistration(
+      DataRegisterModel data) async {
     await sharedPreferences.setString(
         SharedConstant.dataForUserRegistrationKey, jsonEncode(data.toJson()));
   }
 
-
   static DataRegisterModel? get dataRegister {
-    final str = sharedPreferences.getString(SharedConstant.dataForUserRegistrationKey);
+    final str =
+        sharedPreferences.getString(SharedConstant.dataForUserRegistrationKey);
     if (str == null || str.isEmpty) {
       return null;
     }
@@ -76,4 +106,19 @@ class SharedPrefs {
     return DataRegisterModel().decode(map);
   }
 
+  static String getToken(int type) {
+    // type 0 = parent token || 1 = child token
+    if(type == 1){
+      return selectedChild?.apiToken ?? '';
+    }else{
+      return user?.apiToken ?? '';
+    }
+  }
+
+  static logout() async {
+    await sharedPreferences.remove(SharedConstant.childKey);
+    await sharedPreferences.remove(SharedConstant.dataForUserRegistrationKey);
+    await sharedPreferences.remove(SharedConstant.selectedChildKey);
+    await sharedPreferences.remove(SharedConstant.userKey);
+  }
 }

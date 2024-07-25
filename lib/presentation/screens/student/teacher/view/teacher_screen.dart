@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/base/animator_container.dart';
-import 'package:shater/presentation/screens/base/custom_empty_view.dart';
 import 'package:shater/presentation/screens/base/intike_tab_bar.dart';
 import 'package:shater/presentation/screens/base/perfect_app_bar.dart';
-import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/tap_section.dart';
-import 'package:shater/presentation/screens/base/text_custom.dart';
-import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
 import 'package:shater/presentation/screens/student/teacher/widget/body_teacher_widget.dart';
 import 'package:shater/presentation/screens/student/teacher/widget/header_teacher_widget.dart';
-import 'package:shater/presentation/screens/student/teacher/widget/teacher_list.dart';
-import 'package:shater/util/color.dart';
-import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
 
 class TeacherScreen extends StatelessWidget {

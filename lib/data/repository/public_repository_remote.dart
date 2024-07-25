@@ -97,7 +97,7 @@ class PublicRepositoryRemote extends PublicRepository {
         onSuccess: (response) {
           final data = response.data?.item;
           if (data != null) {
-            SharedPrefs.saveDataForUserRegistration(data!);
+            SharedPrefs.saveDataForUserRegistration(data);
             completer.complete(right(data));
           }
         },

@@ -143,6 +143,9 @@
     "cancel": "Cancel",
     "ok_to": "Ok To",
     "privcy_policy": "Privcy policy",
+    "privcy": "privacy",
+    "and_policy": " and Terms Conditions",
+    "terms_conditions": "Terms Conditions",
     "sign_in": "Sign In",
     "have_an_acount": "Have An Acount?",
     "next": "Next",
@@ -164,5 +167,19 @@
     "add_explain": "add_explain ",
     "practices": "practices",
     "lets_explain": "lets_explain",
-    "types_of_exercise_questions": "Types of exercise questions"
+    "types_of_exercise_questions": "Types of exercise questions",
+    "add student" : "add student",
+    "full name" : "full name",
+    "add new student" : "add new student",
+    "add" : "add",
+    "choose" : "choose",
+    "updated successfully" : "updated successfully",
+    "delete_account" : "delete account",
+    "delete_my_account" : "delete my account",
+    "do_you_want_delete_account" : "Do you want to delete your Shater account?",
+    "enter_delete_my_account" : "Please enter \"Delete my account\" to confirm",
+    "Certificates" : "Certificates",
+    "Courses" : "Courses",
+    "back" : "back"
+
 }

@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/data/model/result_exam_model.dart';
-import 'package:shater/presentation/screens/auth/base%20login/widgets/rate_app.dart';
+import 'package:shater/data/model/user.dart';
+import 'package:shater/presentation/screens/auth/sign%20in/controller/sign_in_controller.dart';
 import 'package:shater/presentation/screens/base/button_back.dart';
 import 'package:shater/presentation/screens/base/cashed_network_image_widget.dart';
 import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
@@ -13,16 +12,38 @@ import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/profile/controller/profile_controller.dart';
-import 'package:shater/presentation/screens/profile/widgets/intike_profile_imoji.dart';
-import 'package:shater/presentation/screens/profile/widgets/item_subscrip_subiect.dart';
+import 'package:shater/presentation/screens/teacher_profile/widgets/item_subscrip_subiect.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 import 'package:shater/util/images.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+import '../../../../core/controller/shared_prefrences.dart';
+import '../../teacher_profile/widgets/profile_children_widget.dart';
+
+class StudentProfileScreen extends StatefulWidget {
+  const StudentProfileScreen({super.key});
+
+  @override
+  State<StudentProfileScreen> createState() => _StudentProfileScreenState();
+}
+
+class _StudentProfileScreenState extends State<StudentProfileScreen> {
+  SignInController signInController = Get.find<SignInController>();
+  ProfileController controller = Get.find<ProfileController>();
+  User? parentUser = SharedPrefs.user;
+  ChildUser? childUser = SharedPrefs.selectedChild;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.getStudentProfile();
+    // if (controller.profileData == null) {
+    //   controller.getStudentProfile();
+    // } else {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,38 +54,25 @@ class ProfileScreen extends StatelessWidget {
         leading: ButtonBack(),
       ),
       body: GetBuilder<ProfileController>(
+        init: controller,
         builder: (controller) => Stack(
           children: [
             IgnorePointer(
               ignoring: controller.isLoading,
               child: CustomScrollView(slivers: [
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: Dimensions.paddingSize5.h,
+                  ),
+                ),
                 SliverPersistentHeader(
                   pinned: true,
                   delegate: SectionHeaderDelegate(
-                    height: 85,
-                    widget: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IntikeProfileImoji(
-                          asset: IMAGES.firstImages,
-                          text: 'mohamed',
-                          isEnable: true,
-                        ),
-                        IntikeProfileImoji(
-                          asset: IMAGES.firstImages,
-                          text: 'mohamed',
-                        ),
-                        IntikeProfileImoji(
-                          asset: IMAGES.add,
-                          text: 'add Student',
-                        ),
-                      ],
+                    height: 100.h,
+                    widget: ProfileChildrenWidget(
+                      parentUser: parentUser,
+                      controller: controller,
                     ),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: Dimensions.paddingSize25 + 5,
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -74,12 +82,12 @@ class ProfileScreen extends StatelessWidget {
                       TextNumber(
                         text: 'class',
                         secWidget: CustomText(
-                          text: controller.user?.classes?.title
+                          text: controller.profileData?.classes?.title
                                   ?.replaceRange(0, 5, '') ??
                               '',
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: Dimensions.fontSize15 + 1.sp,
+                          fontSize: (Dimensions.fontSize15 + 1.sp).sp,
                         ),
                       ),
                       GestureDetector(
@@ -87,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                           Get.toNamed(Routes.getResultSubjectScreen());
                         },
                         child: ImageUser(
-                          imageUrl: controller.user?.image ?? '',
+                          imageUrl: signInController.selectedChild?.image ?? '',
                         ),
                       ),
                       TextNumber(
@@ -100,7 +108,9 @@ class ProfileScreen extends StatelessWidget {
                               width: Dimensions.paddingSize5,
                             ),
                             CustomText(
-                              text: controller.user?.rateStar.toString() ?? "",
+                              text:
+                                  controller.profileData?.rateStar.toString() ??
+                                      "",
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: Dimensions.fontSize13 + 1.sp,
@@ -113,21 +123,15 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: SizedBox(
-                    height: Dimensions.paddingSize20,
+                    height: Dimensions.paddingSize20 - 5,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: Center(
                       child: Column(
                     children: [
-                      RateApp(
-                        initRate: double.tryParse(controller.user?.rate ?? ''),
-                      ),
-                      SizedBox(
-                        height: Dimensions.paddingSize10,
-                      ),
                       CustomText(
-                        text: controller.user?.email ?? '',
+                        text: controller.profileData?.email ?? '',
                         fontSize: Dimensions.fontSize16,
                         color: Colors.white,
                         fontWeight: FontWeight.w300,
@@ -143,7 +147,7 @@ class ProfileScreen extends StatelessWidget {
                           onPressed: () {
                             Get.toNamed(Routes.getEditProfileScreen());
                           },
-                          text: controller.user?.name ?? '',
+                          text:  controller.profileData?.name ?? '',
                           trailing: CustomSvgPicture(assetName: ICONS.setting),
                         ),
                       )
@@ -270,6 +274,7 @@ class ProfileScreen extends StatelessWidget {
 class ItemResult extends StatelessWidget {
   final ResultExam? resultExam;
   final Function()? onTap;
+
   const ItemResult({super.key, this.onTap, this.resultExam});
 
   @override
@@ -323,6 +328,7 @@ class ItemResult extends StatelessWidget {
 class TextNumber extends StatelessWidget {
   final String? text;
   final Widget? secWidget;
+
   const TextNumber({super.key, this.text, this.secWidget});
 
   @override

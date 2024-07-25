@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -37,7 +38,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           "email": email,
           "password": password,
           "FCM_token": fcmToken,
-          "device_type": 'ios'
+          "device_type": deviceType
         },
         onSuccess: (response) {
           if (response.data?.status == false ?? false) {
@@ -48,9 +49,54 @@ class AuthRepositoryRemote extends BaseAuthRepository {
           } else {
             final user = response.data?.item;
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "signInWithEmailPassword 1");
               ApiClient.updateHeader();
-              completer.complete(Right(user!));
+              completer.complete(Right(user));
+            }
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+  Future<Either<ApiException, User>?> childSignIn(
+      String email, int id, int parentId) async {
+    final completer = Completer<Either<ApiException, User>?>();
+    final fcmToken = SharedPrefs.fcmToken ?? '';
+    final deviceType = await DeviceInfoService.getDeviceType();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.childLogin,
+        requestType: RequestType.post,
+        create: () => APIResponse<User>(
+          create: () => User(),
+        ),
+        data: {
+          "FCM_token": fcmToken,
+          "device_type": deviceType,
+          "email": email,
+          "id": id,
+          "parent_id": parentId
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            log("child login success");
+            final user = response.data?.item;
+            if (user != null) {
+              SharedPrefs.saveSelectedChild(ChildUser.fromJson(user.toJson()));
+              ApiClient.updateHeader();
+              completer.complete(Right(user));
             }
           }
         },
@@ -118,7 +164,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "registerStudent 1");
               ApiClient.updateHeader();
             }
           }
@@ -131,6 +177,92 @@ class AuthRepositoryRemote extends BaseAuthRepository {
       completer.complete(left(error));
     }
     return completer.future;
+  }
+
+  @override
+  Future<Either<ApiException, ChildUser>?> addChild(
+      int parentId,
+      String fullName,
+      int schoolId,
+      int cityId,
+      String classId,
+      File? imageFile) async {
+    final completer = Completer<Either<ApiException, ChildUser>?>();
+    final data = {
+      "name": fullName,
+      "school_id": schoolId,
+      "city_id": cityId,
+      "class_id": classId,
+      "parentID": parentId
+    };
+    dio.FormData formData = await dio.FormData.fromMap(data);
+    if (imageFile != null) {
+      formData.files.add(MapEntry(
+        'image',
+        await dio.MultipartFile.fromFile(imageFile.path ?? ''),
+      ));
+    }
+    try {
+      /*var response;
+      if (imageFile != null) {
+        response = await DioManagerClass.getInstance.dioMultiPartPostMethod(
+            url: ApiConstant.registerChild(parentId),
+            header: ApiConstant.header(TypeToken.Authorization),
+            file: imageFile,
+            body: data,
+            keyName: 'image');
+      } else {
+        response = await DioManagerClass.getInstance.dioPostFormMethod(
+          url: ApiConstant.registerChild(parentId),
+          header: ApiConstant.header(TypeToken.Authorization),
+          body: data,
+        );
+      }
+
+      if (response.data?.status == false ?? false) {
+        log("registerChild left 1");
+        var decode = jsonDecode(response.toString());
+        return Left(ApiException(message: response));
+      } else {
+        log("registerChild Right 1");
+        final user = response.data?.item;
+        completer.complete(Right(user ?? ChildUser()));
+        if (user != null) {
+          ApiClient.updateHeader();
+        }
+      }*/
+      await ApiClient.requestData(
+        endpoint: ApiConstant.registerChild(parentId),
+        requestType: RequestType.post,
+        create: () => APIResponse<ChildUser>(
+          create: () => ChildUser(),
+        ),
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=${formData.boundary}',
+        },
+        onSuccess: (response) {
+          if (response.data?.status == false ?? false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? ChildUser()));
+            if (user != null) {
+              ApiClient.updateHeader();
+            }
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return null;
   }
 
   @override
@@ -190,7 +322,7 @@ class AuthRepositoryRemote extends BaseAuthRepository {
             final user = response.data?.item;
             completer.complete(Right(user ?? User()));
             if (user != null) {
-              SharedPrefs.saveUser(user);
+              SharedPrefs.saveUser(user, "registerTeacher 1");
               ApiClient.updateHeader();
             }
           }
@@ -279,6 +411,37 @@ class AuthRepositoryRemote extends BaseAuthRepository {
     try {
       await ApiClient.requestData(
         endpoint: ApiConstant.logout,
+        requestType: RequestType.post,
+        create: () => APIResponse<EmptyModel>(
+          create: () => EmptyModel(),
+        ),
+        onSuccess: (response) {
+          if (response.data?.status == false) {
+            completer.complete(left(ApiException(
+              message: response.data?.errors?.first.message ?? "",
+              response: response.response,
+            )));
+          } else {
+            final user = response.data?.item;
+            completer.complete(Right(user ?? EmptyModel()));
+          }
+        },
+        onError: (error) {
+          completer.complete(left(error));
+        },
+      );
+    } on ApiException catch (error) {
+      completer.complete(left(error));
+    }
+    return completer.future;
+  }
+
+
+  Future<Either<ApiException, EmptyModel>?> deleteAccount() async {
+    final completer = Completer<Either<ApiException, EmptyModel>?>();
+    try {
+      await ApiClient.requestData(
+        endpoint: ApiConstant.deleteAccount,
         requestType: RequestType.post,
         create: () => APIResponse<EmptyModel>(
           create: () => EmptyModel(),

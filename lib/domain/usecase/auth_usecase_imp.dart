@@ -20,9 +20,19 @@ class AuthUseCaseImp extends AuthUseCase {
   }
 
   @override
+  Future<Either<ApiException, User>?> childSignIn(
+      String email, int id, int parentId) {
+    return _authRepository.childSignIn(email, id, parentId);
+  }
+
+  @override
   Future<Either<ApiException, EmptyModel>?> signOut() {
     return _authRepository.signOut();
-    
+  }
+
+  @override
+  Future<Either<ApiException, EmptyModel>?> deleteAccount() {
+    return _authRepository.deleteAccount();
   }
 
   @override
@@ -45,10 +55,23 @@ class AuthUseCaseImp extends AuthUseCase {
       int countryId,
       int cityId,
       String classId,
-      File? imageFile
-      ) {
-    return _authRepository.registerStudent(email, password,
-        passwordConfirmation, schoolId, name, countryId, cityId, classId,imageFile);
+      File? imageFile) {
+    return _authRepository.registerStudent(
+        email,
+        password,
+        passwordConfirmation,
+        schoolId,
+        name,
+        countryId,
+        cityId,
+        classId,
+        imageFile);
+  }
+
+  Future<Either<ApiException, ChildUser>?> addChild(int parentId,String fullName, int schoolId,
+      int cityId, String classId, File? imageFile) {
+    return _authRepository.addChild(
+        parentId,fullName, schoolId, cityId, classId, imageFile);
   }
 
   @override
@@ -62,8 +85,7 @@ class AuthUseCaseImp extends AuthUseCase {
       int countryId,
       int cityId,
       String classIDS,
-      File? imageFile
-      ) {
+      File? imageFile) {
     return _authRepository.registerTeacher(
         email,
         password,
@@ -74,7 +96,6 @@ class AuthUseCaseImp extends AuthUseCase {
         countryId,
         cityId,
         classIDS,
-        imageFile
-        );
+        imageFile);
   }
 }

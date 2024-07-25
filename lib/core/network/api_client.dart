@@ -61,6 +61,10 @@ class ApiClient {
       ),
     );
 
+  static Dio getDio(){
+    return _dio;
+  }
+
   static _handleDioError({
     required DioException error,
     Function(ApiException)? onError,
@@ -192,6 +196,7 @@ class ApiClient {
         }
         try {
           if (onSuccess != null) {
+
             ResponseWrapper<T> responseeWrapper =
                 ResponseWrapper.init(create: create, data: response.data);
             responseeWrapper.response = response;

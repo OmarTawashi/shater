@@ -6,6 +6,6 @@ class TermsConditionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HtmlView(isPrivcy: false);
+    return HtmlView(htmlScreenType: HtmlScreenType.terms,);
   }
 }

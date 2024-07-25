@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shater/flavors/build_config.dart';
 import 'package:shater/flavors/env_config.dart';
 import 'package:shater/flavors/myapp.dart';
+import 'package:shater/util/dio_manager/dio_manage_class.dart';
+
 import 'core/controller/init_app.dart';
 import 'flavors/environment.dart';
 
@@ -21,6 +23,7 @@ void main() async {
   final languages = await InitApp.initLanguage();
   SharedPreferences shared = await SharedPreferences.getInstance();
   Get.lazyPut(() => shared);
+  await DioManagerClass.getInstance.init();
   await _requestPermissions();
   await FFmpegKitConfig.init();
   EnvConfig devConfig = EnvConfig(

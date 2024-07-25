@@ -8,7 +8,6 @@ import 'package:shater/presentation/screens/base/custom_cupertino_button.dart';
 import 'package:shater/presentation/screens/base/semester_type_widget.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/presentation/screens/student/dashBord/controller/dashboard_controller.dart';
-import 'package:shater/presentation/screens/student/exericse%20&%20contact/exercises/controller/exercise_controller.dart';
 import 'package:shater/presentation/screens/student/pages%20subject/controller/page_subject_controller.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/util/color.dart';

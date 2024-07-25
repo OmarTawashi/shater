@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/src/either.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/core/repository/public_repository.dart';
@@ -27,6 +29,7 @@ class PublicUseCaseImp extends PublicUseCase {
   @override
   Future<Either<ApiException, DataRegisterModel>?> fetchClassStudent(
       int cityId, int schoolId) {
+    log("fetchClassStudent 1");
     return _publicRepository.fetchClassStudent(cityId, schoolId);
   }
   @override

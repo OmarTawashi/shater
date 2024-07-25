@@ -1,7 +1,5 @@
-import 'package:get/get.dart';
 import 'package:shater/core/controller/base_controller.dart';
 import 'package:shater/core/network/api_client.dart';
-import 'package:shater/core/usecase/dachboard_usecase.dart';
 import 'package:shater/data/model/result_exam_model.dart';
 import 'package:shater/data/repository/dashboard_repository_remote.dart';
 import 'package:shater/domain/usecase/dachboard_usercase_imp.dart';

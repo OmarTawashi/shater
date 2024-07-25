@@ -60,13 +60,9 @@ class SubjectController extends BaseController {
       value?.fold((l) {
         handelError(l);
       }, (r) {
-        if (r == null) {
-          updateViewType(ViewType.empty);
-        } else {
-          _courseLearningModel = r;
-          updateViewType(ViewType.success);
-        }
-      });
+        _courseLearningModel = r;
+        updateViewType(ViewType.success);
+            });
 
       update();
     });

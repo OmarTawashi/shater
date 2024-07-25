@@ -7,6 +7,7 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
 import '../../presentation/screens/auth/sign in/widgets/childern_widget.dart';
+import '../../presentation/screens/edit profile/widgets/delete_account_dialog.dart';
 
 mixin BaseMixin {
   static void showToastFlutter({String? messsage}) {
@@ -34,6 +35,7 @@ mixin BaseMixin {
           ),
         ),
       );
+
   static showBottomSheet(Widget child, {double? heightFactor}) =>
       Get.bottomSheet(
         child,
@@ -119,4 +121,25 @@ mixin BaseMixin {
       },
     );
   }
+
+  static void showDialogDeleteAccount({
+    required BuildContext context,
+    required Function onConfirm,
+    required TextEditingController textEditingController,
+  }) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return DeleteAccountDialog(
+          context: context,
+          textEditingController: textEditingController,
+          onConfirm: () {
+            onConfirm();
+          },
+        );
+      },
+    );
+  }
 }
+
+
