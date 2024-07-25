@@ -27,7 +27,6 @@ void main() async {
     appName: "Shatter App Dev",
     baseUrl: "https://test.shattir.com",
     shouldCollectCrashLog: true,
-    
   );
   BuildConfig.instantiate(
     envType: Environment.DEVELOPMENT,
@@ -37,7 +36,6 @@ void main() async {
   runApp(
     MyApp(
       languages: languages,
-      
     ),
   );
 }
