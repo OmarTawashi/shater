@@ -31,7 +31,7 @@ class CustomEmptyView extends StatelessWidget {
               text: primaryText ?? "", //'soon'
               color: Colors.white,
               textAlign: TextAlign.center,
-    
+
               fontWeight: FontWeight.bold,
               fontSize: Dimensions.fontSize16,
             ),

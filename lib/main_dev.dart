@@ -1,3 +1,4 @@
+import 'package:ffmpeg_kit_flutter/ffmpeg_kit_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,13 +25,13 @@ void main() async {
   Get.lazyPut(() => shared);
   await DioManagerClass.getInstance.init();
   await _requestPermissions();
-
+  await FFmpegKitConfig.init();
   EnvConfig devConfig = EnvConfig(
     appName: "Shatter App Dev",
     baseUrl: "https://test.shattir.com",
     shouldCollectCrashLog: true,
+    
   );
-
   BuildConfig.instantiate(
     envType: Environment.DEVELOPMENT,
     envConfig: devConfig,
@@ -39,6 +40,7 @@ void main() async {
   runApp(
     MyApp(
       languages: languages,
+      
     ),
   );
 }

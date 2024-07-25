@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/data/model/SubjectPagesModel.dart';
 import 'package:shater/data/model/empty_model.dart';
+import 'package:shater/data/model/response_model.dart';
 import 'package:shater/data/model/specific_page_exercises_model.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/model/teacher_model.dart';
@@ -24,5 +25,11 @@ abstract class TeacherUseCase {
     required int subject_id,
     required int pageFrom,
     required int PageTo,
+  });
+
+   Future<Either<ApiException, ResponseModel>?>
+      createNewquastion({
+    required Map<String,dynamic> body,
+   
   });
 }

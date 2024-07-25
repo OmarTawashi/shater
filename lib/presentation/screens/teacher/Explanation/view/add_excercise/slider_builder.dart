@@ -8,6 +8,8 @@ import 'package:shater/util/color.dart';
 import 'package:shater/util/custom_textfield.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../record_title_audio/record_title_audio_controller_.dart';
+
 class SliderBiulder extends StatelessWidget {
   const SliderBiulder({
     super.key,
@@ -31,7 +33,7 @@ class SliderBiulder extends StatelessWidget {
                     height: 233.h,
                     width: MediaQuery.sizeOf(context).width,
                     child: GestureDetector(
-                      onTap: () => controller.showPicker(context, true),
+                      onTap: () => controller.showMediaPicker(context, true),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,7 +65,6 @@ class SliderBiulder extends StatelessWidget {
                                         backgroundColor: COLORS.backGroundColor,
                                         child: Center(
                                           child: IconButton(
-                                          
                                             onPressed: () =>
                                                 controller.deleteImage(),
                                             icon: Icon(
@@ -93,7 +94,8 @@ class SliderBiulder extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: () => controller.showPicker(context, false),
+                          onTap: () =>
+                              controller.showMediaPicker(context, false),
                           child: Icon(
                             Icons.video_call_rounded,
                             color: COLORS.strokeColor,
@@ -180,7 +182,37 @@ class SliderBiulder extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    alignment: Alignment.center,
+                    color: COLORS.textColor.withOpacity(0.2),
+                    // height: 600.h,
+                    width: MediaQuery.sizeOf(context).width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () => Get.find<RecordController>()
+                              .showAudioPicker(
+                                  context: context, istitle: false),
+                          child: Icon(
+                            Icons.video_call_rounded,
+                            color: COLORS.strokeColor,
+                            size: 40,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          "أضف تسجيل صوت",
+                          style: TextStyle(color: COLORS.textColor),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
                 onPageChanged: (value) => controller.changeCurrentIndex(value),
               ),
@@ -190,7 +222,7 @@ class SliderBiulder extends StatelessWidget {
               child: PageViewIndicator(
                 otherSize: 5,
                 currentSize: 8,
-                length: 3,
+                length: 4,
                 currentIndex: controller.currentIndex,
                 currentColor: COLORS.primaryColor,
                 otherColor: COLORS.strokeColor,

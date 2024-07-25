@@ -65,18 +65,18 @@ class _CustomeTextFieldState extends State<CustomeTextField> {
         filled: true,
         fillColor: Colors.white70,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.grey.shade200, width: 1),
+          // borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          // borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             color: Colors.grey.shade100,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           gapPadding: 0.1,
-          borderRadius: BorderRadius.circular(10),
+          // borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Colors.red),
         ),
       ),

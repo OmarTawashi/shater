@@ -1,8 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:shater/core/network/api_exceptions.dart';
 import 'package:shater/data/model/result_exam_model.dart';
-import 'package:shater/data/model/subject_video_model.dart';
-
 import '../../data/model/course_learning_model.dart';
 import '../../data/model/subject_model.dart';
 

@@ -1,5 +1,3 @@
-
-
 import 'package:shater/core/network/decodable.dart';
 
 class VedioSubjectTeacher extends Decodable<VedioSubjectTeacher> {
@@ -24,17 +22,6 @@ class VedioSubjectTeacher extends Decodable<VedioSubjectTeacher> {
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['message'] = this.message;
-    if (this.items != null) {
-      data['items'] = this.items!.map((v) => v.toJson()).toList();
-    }
-
-    return data;
-  }
-  
   @override
   VedioSubjectTeacher decode(json) {
     status = json['status'];
@@ -48,8 +35,6 @@ class VedioSubjectTeacher extends Decodable<VedioSubjectTeacher> {
 
     return this;
   }
-
- 
 }
 
 class Items {
@@ -147,20 +132,9 @@ class Items {
     data['like_count'] = this.likeCount;
     data['video_questions_count'] = this.videoQuestionsCount;
     data['questions_count'] = this.questionsCount;
-    if (this.page != null) {
-      data['page'] = this.page!.toJson();
-    }
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
-    }
-    if (this.subject != null) {
-      data['subject'] = this.subject!.toJson();
-    }
 
     return data;
   }
-
-
 }
 
 class Page {
@@ -192,19 +166,6 @@ class Page {
     isExplain = json['is_explain'];
     explainUrl = json['explain_url'];
     countQuestions = json['count_questions'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['subject_id'] = this.subjectId;
-    data['page_no'] = this.pageNo;
-    data['is_explain'] = this.isExplain;
-    data['explain_url'] = this.explainUrl;
-    data['count_questions'] = this.countQuestions;
-    return data;
   }
 }
 
@@ -320,47 +281,6 @@ class User {
     teacherRate = json['teacher_rate'];
     unreadNotification = json['unread_notification'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['class_id'] = this.classId;
-    data['level_id'] = this.levelId;
-    data['country_id'] = this.countryId;
-    data['image'] = this.image;
-    data['FCM_token'] = this.fCMToken;
-    data['device_type'] = this.deviceType;
-    data['api_token'] = this.apiToken;
-    data['video_notification'] = this.videoNotification;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['is_new'] = this.isNew;
-    data['is_teacher'] = this.isTeacher;
-    data['subject_id'] = this.subjectId;
-    data['account_type_id'] = this.accountTypeId;
-    data['about'] = this.about;
-    data['can_create_question'] = this.canCreateQuestion;
-    data['city_id'] = this.cityId;
-    data['school_id'] = this.schoolId;
-    data['can_edit_question'] = this.canEditQuestion;
-    data['login_at'] = this.loginAt;
-
-    data['can_comment'] = this.canComment;
-    data['is_online'] = this.isOnline;
-
-    data['count_video'] = this.countVideo;
-    data['count_questions'] = this.countQuestions;
-    data['count_star'] = this.countStar;
-    data['rate'] = this.rate;
-    data['is_notify'] = this.isNotify;
-    data['is_fav'] = this.isFav;
-    data['teacher_rate'] = this.teacherRate;
-    data['unread_notification'] = this.unreadNotification;
-    return data;
-  }
 }
 
 class Subject {
@@ -419,27 +339,5 @@ class Subject {
     isNotify = json['is_notify'];
     pagesCount = json['pages_count'];
     hasSubscription = json['has_subscription'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['class_id'] = this.classId;
-    data['level_id'] = this.levelId;
-    data['is_active_learning'] = this.isActiveLearning;
-    data['updated_at'] = this.updatedAt;
-    data['is_paid'] = this.isPaid;
-    data['price_per_month'] = this.pricePerMonth;
-    data['price_per_year'] = this.pricePerYear;
-    data['count_video'] = this.countVideo;
-    data['count_questions'] = this.countQuestions;
-    data['teacher_count_video'] = this.teacherCountVideo;
-    data['count_teacher'] = this.countTeacher;
-    data['is_notify'] = this.isNotify;
-    data['pages_count'] = this.pagesCount;
-    data['has_subscription'] = this.hasSubscription;
-    return data;
   }
 }

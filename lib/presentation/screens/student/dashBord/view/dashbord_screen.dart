@@ -57,11 +57,12 @@ class DashBoardScreen extends StatelessWidget {
       String? unActiveAssets,
       bool? isSelected}) {
     return BottomNavigationBarItem(
-        label: label,
-        icon: CustomSvgPicture(
-          assetName: isSelected == true ? activeAssets! : unActiveAssets!,
-          height: 22,
-          width: 22,
-        ));
+      label: label,
+      icon: CustomSvgPicture(
+        assetName: isSelected == true ? activeAssets! : unActiveAssets!,
+        height: 22,
+        width: 22,
+      ),
+    );
   }
 }

@@ -18,18 +18,27 @@ class TeacherExplanationController extends BaseController {
   TeacherUseCaseImp? _teacherUseCaseImp;
   List<CourseLearningModel> _subjects = [];
   List<CourseLearningModel> get subjects => _subjects;
-
   List<Classes> _classes = [];
   List<Classes> get classes => _classes;
   SubjectPagesModel subjectPagesModel = SubjectPagesModel();
   @override
   void onInit() {
     super.onInit();
-    _dashBaoardUseCaseImp =
-        DashBaoardUseCaseImp(DashBoardRepositoryRemote(ApiClient()));
-    _publicUseCaseImp = PublicUseCaseImp(PublicRepositoryRemote(ApiClient()));
-    _teacherUseCaseImp =
-        TeacherUseCaseImp(TeacherRepositoryRemote(ApiClient()));
+    _dashBaoardUseCaseImp = DashBaoardUseCaseImp(
+      DashBoardRepositoryRemote(
+        ApiClient(),
+      ),
+    );
+    _publicUseCaseImp = PublicUseCaseImp(
+      PublicRepositoryRemote(
+        ApiClient(),
+      ),
+    );
+    _teacherUseCaseImp = TeacherUseCaseImp(
+      TeacherRepositoryRemote(
+        ApiClient(),
+      ),
+    );
     teacherCoursesList();
   }
 
@@ -39,7 +48,6 @@ class TeacherExplanationController extends BaseController {
 
   void teacherCoursesList() async {
     final dashController = Get.find<TeacherDashBoardController>();
-
     updateViewType(ViewType.loading);
     await _dashBaoardUseCaseImp
         ?.teacherCoursesList(dashController.level?.id ?? -1)

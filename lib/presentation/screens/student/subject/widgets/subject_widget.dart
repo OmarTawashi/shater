@@ -46,8 +46,12 @@ class SubjectWidget extends StatelessWidget {
             pageCount: controller.courseLearningModel[index].pagesCount,
             questionCount: controller.courseLearningModel[index].countQuestions,
             imageUrl: controller.courseLearningModel[index].image,
+            has_subscription:
+                controller.courseLearningModel[index].hasSubscription!,
             onTap: () {
-              Get.toNamed(Routes.getExerciseSubjectScreen());
+              Get.toNamed(
+                Routes.getExerciseSubjectScreen(),
+              );
             }),
       ),
     );

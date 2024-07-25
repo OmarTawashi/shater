@@ -70,18 +70,21 @@ class ApiConstant {
   static String teacherCoursesList =
       '/api/$version/teacher/lesson/index2?level=';
   static String getVideoOfSubject =
-      '/api/v2/student/educational/videos/get-videos-for-subject';
+      '/api/$version/student/educational/videos/get-videos-for-subject';
   static String getVideoOfSubjectteacher =
-      '/api/v2/teacher/lesson/get-videos-for-subject';
+      '/api/$version/teacher/lesson/get-videos-for-subject';
 
   static String getVideoOfPage =
-      '/api/v2/student/educational/videos/get-videos-for-page';
+      '/api/$version/student/educational/videos/get-videos-for-page';
 
   static const String topic = 'all_zone_customer';
   static String getTeacherCoursesExercisesList =
       '/api/$version/teacher/lesson/133/get-subject-pages';
   static String specificPageExercise =
       '/api/$version/teacher/questions/subject';
+
+        static String createquestions=
+      '/api/$version/teacher/materials/:material_id/questions/create';
 
 
   // headers
