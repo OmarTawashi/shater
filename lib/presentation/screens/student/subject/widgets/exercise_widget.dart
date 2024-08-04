@@ -6,6 +6,7 @@ import 'package:shater/presentation/screens/base/custom_shimmer_list.dart';
 import 'package:shater/presentation/screens/student/exericse%20&%20contact/exercises/widgets/exercise_shimmer.dart';
 import 'package:shater/presentation/screens/student/subject/controller/subjects_controller.dart';
 import 'package:shater/presentation/screens/student/subject/widgets/item_exercise.dart';
+import 'package:shater/presentation/screens/student/subscription/subscription_screen.dart';
 import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/images.dart';
 
@@ -36,8 +37,17 @@ class ExerciseWidget extends StatelessWidget {
           (context, index) => ItemExercise(
             onTap: () {
               controller.setCourse(controller.courseLearningModel[index]);
-              Get.toNamed(Routes.getPageSubjectScreen());
+
+              controller.courseLearningModel[index].hasSubscription!
+                  ? Get.toNamed(
+                      Routes.getPageSubjectScreen(),
+                    )
+                  : Get.to(
+                      () => SubjectSubscriptionScreen(),
+                    );
             },
+            has_subscription:
+                controller.courseLearningModel[index].hasSubscription!,
             imageUrl: controller.courseLearningModel[index].image,
             subjectText: controller.courseLearningModel[index].title,
             trainingNumber:

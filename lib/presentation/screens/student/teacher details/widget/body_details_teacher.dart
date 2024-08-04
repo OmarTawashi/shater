@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
 import 'package:shater/util/color.dart';
@@ -71,6 +72,31 @@ class BodyDetailsTeacher extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: about_box(
+              mainTitle: "الخبرة",
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: COLORS.secanderyColor,
+                    radius: 18.r,
+                    child: Text("3"),
+                  ),
+                  SizedBox(
+                    width: 8.w,
+                  ),
+                  Text(
+                    "سنوات من الخبرة",
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Container(
             margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
             padding: EdgeInsets.symmetric(horizontal: 26, vertical: 14),
@@ -93,7 +119,7 @@ class BodyDetailsTeacher extends StatelessWidget {
                 CustomText(
                   text:
                       'qualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualificationsqualifications',
-                  fontSize: Dimensions.fontSize16,
+                  fontSize: Dimensions.fontSize14,
                   color: Colors.white,
                   textHeight: 1.2,
                   fontWeight: FontWeight.bold,
@@ -105,7 +131,7 @@ class BodyDetailsTeacher extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 16),
             padding: EdgeInsets.all(4),
             decoration: BoxDecoration(
-              gradient: COLORS.gradientContainer,
+              // gradient: COLORS.gradientContainer,
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Container(
@@ -136,6 +162,33 @@ class BodyDetailsTeacher extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Container about_box({required String mainTitle, required Widget child}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 15.h),
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: COLORS.backGroundColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            mainTitle,
+            style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.white),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          child
         ],
       ),
     );

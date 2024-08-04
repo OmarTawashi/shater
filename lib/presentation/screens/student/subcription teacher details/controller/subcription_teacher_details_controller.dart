@@ -4,7 +4,7 @@ import 'package:shater/core/network/api_client.dart';
 import 'package:shater/data/model/subject_video_model.dart';
 import 'package:shater/data/repository/teacher_repository_remote.dart';
 import 'package:shater/domain/usecase/teacher_usecase_imp.dart';
-import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
+import 'package:shater/presentation/screens/student/teachers/controller/teacher_controller.dart';
 
 class SubcriptionTeacherDetailsController extends BaseController {
   TeacherController? teacherController;

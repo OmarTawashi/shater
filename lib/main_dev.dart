@@ -8,7 +8,6 @@ import 'package:shater/flavors/build_config.dart';
 import 'package:shater/flavors/env_config.dart';
 import 'package:shater/flavors/myapp.dart';
 import 'package:shater/util/dio_manager/dio_manage_class.dart';
-
 import 'core/controller/init_app.dart';
 import 'flavors/environment.dart';
 
@@ -35,7 +34,6 @@ void main() async {
     envType: Environment.DEVELOPMENT,
     envConfig: devConfig,
   );
-
   runApp(
     MyApp(
       languages: languages,

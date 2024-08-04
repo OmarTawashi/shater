@@ -21,13 +21,15 @@ class PageSubjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: COLORS.primaryColor,
+      backgroundColor: COLORS.secanderyColor,
       bottomNavigationBar: GetBuilder<PageSubjectController>(
         builder: (controller) => Container(
-          margin:
-              EdgeInsets.only(bottom: 80, left: Dimensions.paddingSize16, right: Dimensions.paddingSize16),
+          margin: EdgeInsets.only(
+              bottom: 80,
+              left: Dimensions.paddingSize16,
+              right: Dimensions.paddingSize16),
           child: CustomCupertinoButton(
-            color: COLORS.secanderyColor,
+            color: COLORS.primaryColor,
             text: 'exercied',
             isLoading: controller.isLoadingButton,
             onPressed: () {
@@ -50,8 +52,9 @@ class PageSubjectScreen extends StatelessWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration:
-                    BoxDecoration(color: COLORS.backGroundColor, borderRadius: BorderRadius.circular(32)),
+                decoration: BoxDecoration(
+                    color: COLORS.backGroundColor,
+                    borderRadius: BorderRadius.circular(32)),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -64,7 +67,9 @@ class PageSubjectScreen extends StatelessWidget {
                       width: Dimensions.paddingSize5,
                     ),
                     CustomText(
-                      text: Get.find<SubjectController>().selectedCourse?.title ?? '',
+                      text:
+                          Get.find<SubjectController>().selectedCourse?.title ??
+                              '',
                       color: Colors.white,
                       textAlign: TextAlign.start,
                       fontWeight: FontWeight.bold,
@@ -87,7 +92,8 @@ class PageSubjectScreen extends StatelessWidget {
           IgnorePointer(
             ignoring: controller.isLoadingScreen,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSize16),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Dimensions.paddingSize16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -98,14 +104,18 @@ class PageSubjectScreen extends StatelessWidget {
                     height: 135,
                     width: 135,
                     alignment: Alignment.center,
-                    clipBehavior: Clip.hardEdge,
+                    // clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: Colors.white, width: 4, strokeAlign: BorderSide.strokeAlignOutside),
+                          color: Colors.white,
+                          width: 4,
+                          strokeAlign: BorderSide.strokeAlignOutside),
                       shape: BoxShape.circle,
                     ),
                     child: CachedNetworkImageWidget(
-                      imageUrl: Get.find<SubjectController>().selectedCourse?.image ?? '',
+                      imageUrl:
+                          Get.find<SubjectController>().selectedCourse?.image ??
+                              '',
                       fit: BoxFit.cover,
                       height: 135,
                       width: 135,
@@ -129,7 +139,7 @@ class PageSubjectScreen extends StatelessWidget {
                     fontSize: Dimensions.fontSize14,
                     textAlign: TextAlign.center,
                     textHeight: 1.8,
-                    color: Color.fromRGBO(179, 200, 215, 1),
+                    color: Colors.white.withOpacity(0.8),
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(
@@ -152,7 +162,9 @@ class PageSubjectScreen extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                            left: Dimensions.paddingSize16, right: Dimensions.paddingSize16, top: 60),
+                            left: Dimensions.paddingSize16,
+                            right: Dimensions.paddingSize16,
+                            top: 60),
                         child: Icon(
                           Icons.arrow_forward_sharp,
                           color: Colors.white,
@@ -164,7 +176,8 @@ class PageSubjectScreen extends StatelessWidget {
                           text: 'to_page_number',
                           page: controller.pageModel,
                           currentValue: ((controller.toValue ?? -1)),
-                          minValue: ((controller.pageModel?.fromPageNo ?? -2) + 1),
+                          minValue:
+                              ((controller.pageModel?.fromPageNo ?? -2) + 1),
                           maxValue: (controller.pageModel?.toPageNo ?? 1),
                           onChanged: (p0) {
                             controller.setToValue(p0);
@@ -219,12 +232,14 @@ class HeaderGetPage extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.center,
-          padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.paddingSize25, vertical: Dimensions.paddingSize16),
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.paddingSize25,
+              vertical: Dimensions.paddingSize16),
           decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(width: 2, color: COLORS.strokeColor),
-              borderRadius: BorderRadius.circular(12)),
+            color: COLORS.primaryColor,
+            border: Border.all(width: 2, color: COLORS.strokeColor),
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: CustomText(
             text: text ?? '',
             color: Colors.white,
@@ -235,9 +250,12 @@ class HeaderGetPage extends StatelessWidget {
           height: Dimensions.paddingSize10,
         ),
         Container(
-          padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.paddingSize8, vertical: Dimensions.paddingSize16),
-          decoration: BoxDecoration(color: COLORS.backGroundColor, borderRadius: BorderRadius.circular(12)),
+          padding: EdgeInsets.symmetric(
+              horizontal: Dimensions.paddingSize8,
+              vertical: Dimensions.paddingSize16),
+          decoration: BoxDecoration(
+              color: COLORS.primaryColor,
+              borderRadius: BorderRadius.circular(12)),
           child: NumberPicker(
             minValue: minValue,
             maxValue: maxValue,
@@ -246,14 +264,15 @@ class HeaderGetPage extends StatelessWidget {
             itemWidth: 200,
             value: currentValue,
             textStyle: FontStyleConstant.hNLTBMedium
-                .copyWith(color: Colors.white54, fontSize: Dimensions.fontSize15),
+                .copyWith(color: Colors.white, fontSize: Dimensions.fontSize15),
             axis: Axis.vertical,
-            selectedTextStyle:
-                FontStyleConstant.hNLTBMedium.copyWith(color: Colors.white, fontSize: Dimensions.fontSize18),
+            selectedTextStyle: FontStyleConstant.hNLTBMedium
+                .copyWith(color: Colors.white, fontSize: Dimensions.fontSize18),
             decoration: BoxDecoration(
-                backgroundBlendMode: BlendMode.color,
-                borderRadius: BorderRadius.circular(50),
-                color: Color.fromRGBO(8, 202, 254, 1)),
+              backgroundBlendMode: BlendMode.lighten,
+              borderRadius: BorderRadius.circular(50),
+              color: COLORS.secanderyColor,
+            ),
             onChanged: onChanged!,
           ),
         ),

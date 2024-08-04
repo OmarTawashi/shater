@@ -26,7 +26,7 @@ class TapSection extends StatelessWidget {
         child: AnimatedContainer(
           duration: Duration(milliseconds: 300),
           curve: Curves.linear,
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(
               color: isSelected ?? false ? selectColor : Colors.transparent,

@@ -20,21 +20,21 @@ class SubjectTeacherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SubjectTeacherController>(
-      builder: (controller) =>
-          WidgetDataUser(
-              headerText: 'select_subject',
-              list: AnimatorContainer(
-                viewType: controller.viewType,
-                isSliver: true,
-                emptyParams: EmptyParams(
-                    text: 'empty subject',
-                    caption: '',
-                    image: ICONS.internalServerError),
-                successWidget: listSubject(controller),
-                retry: () {
-                  controller.fetchSubject();
-                },
-              )),
+      builder: (controller) => WidgetDataUser(
+        headerText: 'select_subject',
+        list: AnimatorContainer(
+          viewType: controller.viewType,
+          isSliver: true,
+          emptyParams: EmptyParams(
+              text: 'empty subject',
+              caption: '',
+              image: ICONS.internalServerError),
+          successWidget: listSubject(controller),
+          retry: () {
+            controller.fetchSubject();
+          },
+        ),
+      ),
     );
   }
 
@@ -42,32 +42,27 @@ class SubjectTeacherScreen extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: controller.subjects.length,
-            (context, index) =>
-            ItemCity(
-              name: controller.subjects[index].title,
-              onTap: () {
-                Subject? subject = controller.subjects[index];
-                if (typeFrom == 0) {
-                  Get.find<SignUpController>().setSubject(subject);
-                  if (Get
-                      .find<SignUpController>()
-                      .subjectSlected != null) {
-                    Get.toNamed(Routes.getCityScreen());
-                  } else {
-                    BaseMixin.showToastFlutter(messsage: 'select_subject');
-                  }
-                } else {
-                  Get.find<EditProfileController>().setSubject(subject);
-                  if (Get
-                      .find<EditProfileController>()
-                      .subjectSelected != null) {
-                    Get.back();
-                  } else {
-                    BaseMixin.showToastFlutter(messsage: 'select_subject');
-                  }
-                }
-              },
-            ),
+        (context, index) => ItemCity(
+          name: controller.subjects[index].title,
+          onTap: () {
+            Subject? subject = controller.subjects[index];
+            if (typeFrom == 0) {
+              Get.find<SignUpController>().setSubject(subject);
+              if (Get.find<SignUpController>().subjectSlected != null) {
+                Get.toNamed(Routes.getCityScreen());
+              } else {
+                BaseMixin.showToastFlutter(messsage: 'select_subject');
+              }
+            } else {
+              Get.find<EditProfileController>().setSubject(subject);
+              if (Get.find<EditProfileController>().subjectSelected != null) {
+                Get.back();
+              } else {
+                BaseMixin.showToastFlutter(messsage: 'select_subject');
+              }
+            }
+          },
+        ),
       ),
     );
   }

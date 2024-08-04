@@ -18,10 +18,21 @@ class COLORS {
   static const Color trueAnswer = Color.fromRGBO(106, 209, 0, 1);
   static const Color falseAnswer = Color.fromRGBO(233, 103, 111, 1);
   static const Color errorColor = Color.fromARGB(255, 242, 81, 78);
+
   static const Gradient gradientContainer = LinearGradient(
     colors: [
       Color.fromRGBO(8, 202, 254, 1.0),
       Color.fromRGBO(229, 89, 241, 1.0),
+    ],
+    stops: [0.0, 1.0],
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+  );
+   static const Gradient balkContainer = LinearGradient(
+    colors: [
+   backGroundColor,
+   backGroundColor
+
     ],
     stops: [0.0, 1.0],
     begin: Alignment.topRight,

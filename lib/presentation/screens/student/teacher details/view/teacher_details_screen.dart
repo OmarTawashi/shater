@@ -6,9 +6,9 @@ import 'package:shater/presentation/screens/base/cashed_network_image_widget.dar
 import 'package:shater/presentation/screens/base/section_header_delegate.dart';
 import 'package:shater/presentation/screens/base/svgpicture_custom.dart';
 import 'package:shater/presentation/screens/base/text_custom.dart';
+import 'package:shater/presentation/screens/student/subscription/subscription_screen.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/controller/teacher_details_controller.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/widget/body_details_teacher.dart';
-import 'package:shater/presentation/screens/student/teacher%20details/widget/body_subscrip_teacher.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/widget/bottom_subscrip_teacher.dart';
 import 'package:shater/presentation/screens/student/teacher%20details/widget/tap_teacher_widget.dart';
 import 'package:shater/util/color.dart';
@@ -22,8 +22,8 @@ class TeacherDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(0, 86, 153, 1),
-      bottomNavigationBar: GetBuilder<TeacherDetailsController>(
-          builder: (controller) => getBottomWidget(controller)),
+      // bottomNavigationBar: GetBuilder<TeacherDetailsController>(
+      //     builder: (controller) => getBottomWidget(controller)),
       appBar: AppBar(
         backgroundColor: COLORS.primaryColor,
         leading: ButtonBack(),
@@ -188,7 +188,7 @@ class TeacherDetailsScreen extends StatelessWidget {
                         height: Dimensions.paddingSize16,
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -205,18 +205,33 @@ class TeacherDetailsScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: Dimensions.paddingSize16,
+                              width: Dimensions.paddingSize10,
                             ),
                             Expanded(
-                                child: TapTeacherWidget(
-                              text: 'to_subscription'.tr,
-                              isSelected: controller.teacherTapSelected ==
-                                  TeacherDetailsTap.Subscription,
-                              onTap: () {
-                                controller.changeTeacherTap(
-                                    TeacherDetailsTap.Subscription);
-                              },
-                            )),
+                              child: TapTeacherWidget(
+                                text: 'to_subscription'.tr,
+                                isSelected: controller.teacherTapSelected ==
+                                    TeacherDetailsTap.Subscription,
+                                onTap: () {
+                                  controller.changeTeacherTap(
+                                      TeacherDetailsTap.Subscription);
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              width: Dimensions.paddingSize10,
+                            ),
+                            Expanded(
+                              child: TapTeacherWidget(
+                                text: 'الدروس'.tr,
+                                isSelected: controller.teacherTapSelected ==
+                                    TeacherDetailsTap.lessons,
+                                onTap: () {
+                                  controller.changeTeacherTap(
+                                      TeacherDetailsTap.lessons);
+                                },
+                              ),
+                            ),
                           ],
                         ),
                       )
@@ -240,8 +255,17 @@ class TeacherDetailsScreen extends StatelessWidget {
       case TeacherDetailsTap.Teacher:
         return BodyDetailsTeacher();
       case TeacherDetailsTap.Subscription:
-        return BodySubScripTeacher();
-
+        return SliverToBoxAdapter(
+          child: SubscriptionWidget(
+            withHeader: true,
+          ),
+        );
+      case TeacherDetailsTap.lessons:
+        return SliverToBoxAdapter(
+          child: SubscriptionWidget(
+            withHeader: true,
+          ),
+        );
       default:
         return SliverToBoxAdapter();
     }

@@ -14,7 +14,7 @@ class TapTeacherWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: isSelected
                 ? Color.fromRGBO(72, 131, 196, 1.0)
@@ -26,7 +26,7 @@ class TapTeacherWidget extends StatelessWidget {
           text: text ?? '',
           color: Colors.white,
           textAlign: TextAlign.center,
-          fontSize: Dimensions.fontSize18,
+          fontSize: Dimensions.fontSize14,
           fontWeight: FontWeight.bold,
         ),
       ),

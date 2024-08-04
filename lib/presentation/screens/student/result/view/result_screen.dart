@@ -27,7 +27,9 @@ class ResultScreen extends StatelessWidget {
       // backgroundColor: COLORS.secanderyColor,
       appBar: PerfectAppBar(),
       body: GetBuilder<ResultController>(
-        builder: (controller) => RefreshIndicator.adaptive(
+        builder: (controller) => 
+        
+        RefreshIndicator.adaptive(
           color: Colors.black,
           onRefresh: () async {
             controller.fetchResultSubject();
@@ -78,6 +80,7 @@ class ResultScreen extends StatelessWidget {
             ],
           ),
         ),
+     
       ),
     );
   }

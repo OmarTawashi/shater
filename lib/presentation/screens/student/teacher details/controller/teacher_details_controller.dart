@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
+import 'package:shater/presentation/screens/student/teachers/controller/teacher_controller.dart';
 
-enum TeacherDetailsTap { Teacher, Subscription }
+enum TeacherDetailsTap { Teacher, Subscription ,lessons }
 
 class TeacherDetailsController extends GetxController {
   TeacherDetailsTap _teacherTapSelected = TeacherDetailsTap.Subscription;

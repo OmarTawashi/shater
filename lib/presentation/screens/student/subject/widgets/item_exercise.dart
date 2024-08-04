@@ -11,13 +11,15 @@ class ItemExercise extends StatelessWidget {
   final String? subjectText;
   final int? trainingNumber;
   final String? imageUrl;
+  final bool has_subscription;
   final Function()? onTap;
   const ItemExercise(
       {super.key,
       this.subjectText,
       this.trainingNumber,
       this.imageUrl,
-      this.onTap});
+      this.onTap,
+      required this.has_subscription});
 
   @override
   Widget build(BuildContext context) {
@@ -93,12 +95,12 @@ class ItemExercise extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32),
                         color: Colors.white),
-                    child: const Row(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: 'exercied',
+                          text: has_subscription ? 'exercied'.tr : "افتح ",
                           color: COLORS.primaryColor,
                           textAlign: TextAlign.start,
                           fontSize: Dimensions.fontSize14,

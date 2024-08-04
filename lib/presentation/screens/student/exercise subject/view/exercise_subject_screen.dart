@@ -16,7 +16,7 @@ class ExerciseSubjectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Get.put(TeacherExplanationController());
+    Get.put(TeacherExplanationController());
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -28,13 +28,12 @@ class ExerciseSubjectScreen extends StatelessWidget {
             automaticallyImplyLeading: false,
             excludeHeaderSemantics: true,
             leading: IconTextCont(
-                text:
-                     "myexplanation".tr,
-                    // Get.find<TeacherMyLessonsController>()
-                    //         .selectedCourse
-                    //         ?.title ??
-                    //     ""
-                        ),
+              text: "myexplanation".tr,
+              // Get.find<TeacherMyLessonsController>()
+              //         .selectedCourse
+              //         ?.title ??
+              //     ""
+            ),
             centerTitle: true,
             title: Container(
               margin: const EdgeInsets.only(
@@ -65,20 +64,22 @@ class ExerciseSubjectScreen extends StatelessWidget {
                   return ItemExerciseSubject(
                     index: index,
                     onTap: () {},
-                    image: controller.subjectPagesModel.items?[index].image??"",
+                    image:
+                        controller.subjectPagesModel.items?[index].image ?? "",
                     pageNo: controller.subjectPagesModel.items?[index].pageNo
-                        .toString()??"0",
+                            .toString() ??
+                        "0",
                     subText:
-                        controller.subjectPagesModel.items?[index].isExplain??true
+                        controller.subjectPagesModel.items?[index].isExplain ??
+                                true
                             ? "explaned".tr
                             : "اشرح",
                   );
                 },
-                childCount: controller.subjectPagesModel.items?.length??2,
+                childCount: controller.subjectPagesModel.items?.length ?? 2,
               ),
             ),
           ),
-     
         ],
       ),
     );

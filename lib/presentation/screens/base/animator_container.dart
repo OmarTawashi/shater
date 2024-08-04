@@ -39,10 +39,11 @@ class AnimatorContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isSliver && viewType != ViewType.success) {
       return SliverToBoxAdapter(
-          child: SizedBox(
-        height: Get.height * 0.7.h,
-        child: _getChild(context),
-      ));
+        child: SizedBox(
+          height: Get.height * 0.7.h,
+          child: _getChild(context),
+        ),
+      );
     } else if (isSliver && viewType == ViewType.success) {
       return _getChild(context);
     } else {

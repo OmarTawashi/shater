@@ -4,7 +4,8 @@ import 'package:shater/util/font_style.dart';
 
 class ThemeApp {
   //material theme
-  static ThemeData materialLightTheme({Color color = COLORS.primaryColor}) => ThemeData(
+  static ThemeData materialLightTheme({Color color = COLORS.primaryColor}) =>
+      ThemeData(
         fontFamily: FontStyleConstant.familyFont,
         primaryColor: color,
         brightness: Brightness.light,
@@ -17,7 +18,7 @@ class ThemeApp {
           primary: color,
           secondary: color,
         ),
-        chipTheme: ChipThemeData(color: WidgetStatePropertyAll(Colors.white)),
+        //  chipTheme: ChipThemeData(color: WidgetStatePropertyAll(Colors.white)),
         textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom()),
       );
 }

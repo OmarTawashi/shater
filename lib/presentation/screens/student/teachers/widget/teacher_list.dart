@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:shater/presentation/screens/student/teacher/controller/teacher_controller.dart';
-import 'package:shater/presentation/screens/student/teacher/widget/item_teacher.dart';
+import 'package:shater/presentation/screens/student/teachers/controller/teacher_controller.dart';
+import 'package:shater/presentation/screens/student/teachers/widget/item_teacher.dart';
 import 'package:shater/routes/app_routes.dart';
 
 class TeacherList extends StatelessWidget {
@@ -17,7 +17,11 @@ class TeacherList extends StatelessWidget {
           onTap: () {
             controller.setTeacher(controller.teachers[index]);
             controller.sendReadTeacher(controller.teachers[index].id);
-            Get.toNamed(Routes.getSubcriptionTeacherDetailsScreen());
+            Get.toNamed(Routes.getTeacherDetailsScreen());
+
+            // Get.toNamed(
+            //   Routes.getSubcriptionTeacherDetailsScreen(),
+            // );
           },
           imageUrl: controller.teachers[index].image,
           name: controller.teachers[index].name,

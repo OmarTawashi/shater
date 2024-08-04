@@ -44,8 +44,6 @@ import 'package:shater/presentation/screens/student/pages%20subject/view/page_su
 import 'package:shater/presentation/screens/student/questions/lesson/widget/lesson_teacher_view.dart';
 import 'package:shater/presentation/screens/student/result%20subject/binding/result_subject_binding.dart';
 import 'package:shater/presentation/screens/student/result%20subject/view/result_subject_screen.dart';
-import 'package:shater/presentation/screens/student/subcription%20teacher%20details/bindings/subcription_teacher_details_binding.dart';
-import 'package:shater/presentation/screens/student/subcription%20teacher%20details/view/subcription_teacher_details_screen.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/binding/subject_teacher_binding.dart';
 import 'package:shater/presentation/screens/student/subject%20teacher/view/subject_teacher_screen.dart';
 import 'package:shater/presentation/screens/edit%20profile/take%20image/binding/take_image_binding.dart';
@@ -87,11 +85,11 @@ class AppPages {
       page: () => const TeacherDashBoardScreen(),
       binding: TeacherDashBoardBindings(),
     ),
-    GetPage(
-      name: RoutesName.subcriptionTeacherDetailsScreen,
-      page: () => const SubcriptionTeacherDetailsScreen(),
-      binding: SubcriptionTeacherDetailsBinding(),
-    ),
+    // GetPage(
+    //   name: RoutesName.subcriptionTeacherDetailsScreen,
+    //   page: () =>  SubcriptionTeacherDetailsScreen(),
+    //   binding: SubcriptionTeacherDetailsBinding(),
+    // ),
     GetPage(
       name: RoutesName.lessonTeacherView,
       page: () => LessonTeacherView(),

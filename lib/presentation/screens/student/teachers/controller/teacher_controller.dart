@@ -36,8 +36,11 @@ class TeacherController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    _teacherUseCaseImp =
-        TeacherUseCaseImp(TeacherRepositoryRemote(ApiClient()));
+    _teacherUseCaseImp = TeacherUseCaseImp(
+      TeacherRepositoryRemote(
+        ApiClient(),
+      ),
+    );
     // getTeachers();
     getData(_teacherTapSelected);
   }

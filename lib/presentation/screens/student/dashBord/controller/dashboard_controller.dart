@@ -8,7 +8,7 @@ import 'package:shater/presentation/screens/student/firsts/view/first_screen.dar
 import 'package:shater/presentation/screens/student/result/view/result_screen.dart';
 import 'package:shater/presentation/screens/student/subject/view/subjects_screen.dart';
 
-import '../../teacher/view/teacher_screen.dart';
+import '../../teachers/view/teacher_screen.dart';
 
 class DashBoardController extends GetxController {
   User? _user = SharedPrefs.user;
