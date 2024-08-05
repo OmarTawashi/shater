@@ -8,7 +8,6 @@ import 'package:shater/presentation/screens/teacher/practice/practice_controller
 import 'package:shater/presentation/screens/teacher/practice/view/practice_item_subject.dart';
 import 'package:shater/util/images.dart';
 
-
 import '../../base/animator_container.dart';
 import '../../base/intike_tab_bar.dart';
 import '../../base/perfect_app_bar.dart';
@@ -82,16 +81,16 @@ class PracticeScreen extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         childCount: controller.subjects.length,
-            (context, index) {
-              var item = controller.subjects[index];
-              return PracticeItemSubject(
-            textSubject: item.classes?.title,
-            questionCount: controller.subjects[index].countQuestions,
-            imageUrl: item.image,
-            onTap: () {
-              // Get.toNamed(Routes.getExerciseSubjectScreen());
-            });
-            },
+        (context, index) {
+          var item = controller.subjects[index];
+          return PracticeItemSubject(
+              textSubject: item.classes?.title,
+              questionCount: controller.subjects[index].countQuestions,
+              imageUrl: item.image,
+              onTap: () {
+                // Get.toNamed(Routes.getExerciseSubjectScreen());
+              });
+        },
       ),
     );
   }

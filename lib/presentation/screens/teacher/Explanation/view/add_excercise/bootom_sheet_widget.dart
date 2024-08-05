@@ -7,15 +7,21 @@ import 'package:shater/routes/app_routes.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/dimensions.dart';
 
+import '../teacher_new_explanation_screen.dart';
+
 class BottomSheetWidget extends StatelessWidget {
   BottomSheetWidget(
       {required this.page_number,
       this.canCreateQuestion = 0,
+      required this.image,
       required this.subject_id});
+
   final String page_number;
+  final String image;
   final int subject_id;
 
   final int canCreateQuestion;
+
   @override
   Widget build(BuildContext context) {
     Get.put(SelectedPageExerciseControoler());
@@ -40,7 +46,11 @@ class BottomSheetWidget extends StatelessWidget {
               height: Dimensions.paddingSize25,
             ),
             CustomeButton(
-              onClick: () {},
+              onClick: () {
+                Get.to(() => TeacherNewExplanationScreen(
+                      pageImage: image,
+                    ));
+              },
               title: "add_explain".tr,
               backgroundColor: COLORS.primaryColor,
               fontSize: 16,
@@ -62,7 +72,6 @@ class BottomSheetWidget extends StatelessWidget {
                         subject_id: subject_id,
                         pageFrom: int.parse(page_number),
                         PageTo: int.parse(page_number),
-                        
                       );
                     },
                     title: "practices".tr,

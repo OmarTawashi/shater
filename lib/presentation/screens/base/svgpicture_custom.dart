@@ -7,24 +7,30 @@ class CustomSvgPicture extends StatelessWidget {
   final Color? color;
   final double? width;
   final double? height;
+  final Function()? ontap;
+
   const CustomSvgPicture({
     super.key,
     required this.assetName,
     this.fit = BoxFit.contain,
     this.color,
+    this.ontap,
     this.width,
     this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      assetName,
-      fit: fit,
-      colorFilter:
-          color == null ? null : ColorFilter.mode(color!, BlendMode.srcIn),
-      width: width,
-      height: height,
+    return InkWell(
+      onTap: ontap,
+      child: SvgPicture.asset(
+        assetName,
+        fit: fit,
+        colorFilter:
+            color == null ? null : ColorFilter.mode(color!, BlendMode.srcIn),
+        width: width,
+        height: height,
+      ),
     );
   }
 }

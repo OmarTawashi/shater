@@ -180,6 +180,9 @@
     "enter_delete_my_account" : "Please enter \"Delete my account\" to confirm",
     "Certificates" : "Certificates",
     "Courses" : "Courses",
-    "back" : "back"
+    "back" : "back",
+    "board" : "Board",
+    "video" : "Video",
+    "page" : "Page"
 
 }

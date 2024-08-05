@@ -8,6 +8,7 @@ import 'package:shater/presentation/screens/base/tap_section.dart';
 import 'package:shater/presentation/screens/student/exercise%20subject/widgets/item_exercise_subject.dart';
 import 'package:shater/util/color.dart';
 import 'package:shater/util/images.dart';
+
 import '../../../../../core/controller/shared_prefrences.dart';
 import '../../../../../util/dimensions.dart';
 import '../../../base/custom_empty_view.dart';
@@ -15,8 +16,8 @@ import '../../../base/custom_shimmer_list.dart';
 import '../../../student/exercise subject/view/exercise_subject_screen.dart';
 import '../../../student/subject/widgets/shimmer_subject.dart';
 import '../../../teacher/Explanation/teacher_explanation_controller.dart';
-import 'add_excercise/bootom_sheet_widget.dart';
 import '../../My Explanation/teacher_my_lessons_controller.dart';
+import 'add_excercise/bootom_sheet_widget.dart';
 
 class TeacherExerciseSubjectScreen extends StatelessWidget {
   TeacherExerciseSubjectScreen({
@@ -132,6 +133,8 @@ class TeacherExerciseSubjectScreen extends StatelessWidget {
                                                 .subjectPagesModel
                                                 .items![index]
                                                 .subjectId!,
+                                            image: controller.subjectPagesModel
+                                                .items![index].image!,
                                             page_number: controller
                                                 .subjectPagesModel
                                                 .items![index]

@@ -35,6 +35,11 @@ class ICONS {
   static const String subjectUnActive = 'assets/icons/subjectUnActive.svg';
   static const String firstsTap = 'assets/icons/firstsTap.svg';
   static const String cameraEdit = 'assets/icons/cameraEdit.svg';
+  static const String click = 'assets/icons/click.svg';
+  static const String draw = 'assets/icons/draw.svg';
+  static const String erase = 'assets/icons/erase.svg';
+  static const String redo = 'assets/icons/redo.svg';
+  static const String undo = 'assets/icons/undo.svg';
 
   static const String logoAppt = 'assets/icons/logoAppt.svg';
   static const String resultTap = 'assets/icons/result.svg';
@@ -61,6 +66,7 @@ class ICONS {
   static const String teacherTop = 'assets/icons/teacherTop.svg';
   static const String teacherWhite = 'assets/icons/teacherIconWhite.svg';
   static const String contactWhite = 'assets/icons/contactWhite.svg';
+  static const String cancelWhite = 'assets/icons/cancel.svg';
   static const String contactTop = 'assets/icons/contactTop.svg';
   static const String notification = 'assets/icons/notification.svg';
   static const String subscriptionTop = 'assets/icons/subscriptionTop.svg';
